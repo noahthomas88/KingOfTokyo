@@ -47,3 +47,6 @@ End of Game:
 When a player accrues 20 victory points and health is not zero, They win
 When only one player is the only player left alive, They win
 If all players die at the same time every player loses
+
+Helpful link:
+http://www.iellogames.com/downloads/KOT2-rulebook_EN.pdf
