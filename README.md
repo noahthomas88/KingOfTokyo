@@ -1,16 +1,14 @@
-# CSSE376TeamA
-KingOfTokyo Definition of Done:
+King Of Tokyo Definition of Done:
+
+By John Gear, Noah Thomas, Joshua Warning, Fisher Shen
 
 Game Set-Up:
-Ensure that the game is properly set up for the number of people playing
-There may be 2 to 6 players
-Each player will have 10 health, 0 victory points, 0 energy, and 0 power cards
->= 5 players
-There are 3 places on the board: outside Tokyo, Tokyo city, and Tokyo bay.
-< 5 players
-There are only 2 places on the board, Tokyo City, and outside of Tokyo
-Three power cards is revealed from the deck.
-Each player rolls the six dice and whoever has the most attacks on their role is first and the game progresses clockwise around the “table” from that point
+There may be 2 to 6 players.
+Each player will have 10 health, 0 victory points, 0 energy, and 0 power cards.
+If there are 5 to 6 players then there are 3 places on the board: outside Tokyo, Tokyo city, and Tokyo bay.
+If there are currently 2 to 4 players There are only 2 places on the board, Tokyo City, and outside of Tokyo.
+Three power cards are revealed from the deck.
+Each player rolls the six dice and whoever has the most attacks on their role is first and when there are multiple players have most attacks, repeat the process. The game progresses clockwise around the “table” from that point.
 
 Dice Mechanics
 The game begins with 6 dice for each player to roll
@@ -24,7 +22,7 @@ For each energy face that is rolled, the player gains one energy point.
 Once a players turn is over, they will pass the dice to the next player
 
 Tokyo City/Tokyo Bay Rules:
-If no one is in Tokyo City, a player must enter Tokyo City. The same is true for Tokyo Bay if there are more than 5 players
+If no one is in Tokyo City, a player must enter Tokyo City. This includes the first turn of the game. The same is true for Tokyo Bay if there are more than 5 players
 A player earns 1 victory point when they enter Tokyo City or Tokyo Bay
 If a player starts their turn in Tokyo City or Tokyo Bay then they gain 2 victory points
 Players in Tokyo City or Tokyo Bay cannot heal from dice rolls.
@@ -43,11 +41,9 @@ Power cards have three different properties, either they will take effect immedi
 When a player reaches 0 health:
 When a player reaches 0 health they lose. The only exception to this rule is if a player possesses the power card that gives them an extra life.
 If a player reaches 0 health and 20 victory points at the same time they still lose, unless they have the power card that gives them an extra life.
+All cards and energy points are discarded.
 
-End Game:
+End of Game:
 When a player accrues 20 victory points and health is not zero, They win
 When only one player is the only player left alive, They win
 If all players die at the same time every player loses
-
-
-http://www.iellogames.com/downloads/KOT2-rulebook_EN.pdf
