@@ -2,7 +2,13 @@ package Game;
 
 public class Board {
 
-	public Board(){
-		
+	public int numOfPlayers;
+	
+	public Board(int numOfPlayers){
+		if(numOfPlayers < 2 || numOfPlayers > 6){
+			throw new IllegalArgumentException();
+		}
+		this.numOfPlayers = numOfPlayers;
 	}
+	
 }
