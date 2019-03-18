@@ -1,9 +1,19 @@
 package Game;
 
 public class Token {
+	
+	private String type = null;
 
-	public String type() {
-		return "null";
+	public Token() {
+		
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }
