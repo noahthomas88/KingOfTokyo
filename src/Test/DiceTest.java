@@ -15,9 +15,11 @@ public class DiceTest {
 	@Test
 	public void rollAppropriateValueTest() {
 		Dice testDice = new Dice();
-		int numberRolled = testDice.roll();
-		assertTrue(numberRolled < 7 );
-		assertTrue(numberRolled > 0 );
+		for(int i = 0; i< 20; i++){
+			int numberRolled = testDice.roll();
+			assertTrue(numberRolled < 7 );
+			assertTrue(numberRolled > 0 );
+		}
 	}
 	
 	@Test
