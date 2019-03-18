@@ -11,4 +11,9 @@ public class Dice {
 	public boolean isEmpty(){
 		return this.isEmpty;
 	}
+
+	public int roll() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
 }
