@@ -15,5 +15,13 @@ public class BoardTest {
 		
 		assertEquals(2, num);
 	}
+	
+	@Test
+	public void testGetNumOfPlayersmax() {
+		Board b = new Board(6);
+		int num = b.getNumOfPlayers();
+		
+		assertEquals(6, num);
+	}
 
 }
