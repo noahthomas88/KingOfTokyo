@@ -1,9 +1,11 @@
 package Game;
 
 public class Token {
+	
+	public String type = null;
 
-	public String type() {
-		return "null";
+	public Token() {
+		
 	}
 
 }

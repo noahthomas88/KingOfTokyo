@@ -4,11 +4,17 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import Game.Player;
+
 public class PlayerTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		Player player = new Player();
+		assertFalse(player.isEmpty());
+		assertTrue(player.health == 10);
+		assertTrue(player.victoryPoints == 0);
+		assertTrue(player.energy == 0);
 	}
 
 }
