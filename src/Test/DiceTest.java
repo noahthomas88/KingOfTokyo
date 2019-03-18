@@ -4,11 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import Dice;
+
 public class DiceTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void diceConstructorTest() {
+		Dice testDice = new Dice();
+		assertTrue(testDice.isEmpty());
 	}
 
 }
