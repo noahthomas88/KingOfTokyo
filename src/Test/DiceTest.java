@@ -13,11 +13,25 @@ public class DiceTest {
 	}
 	
 	@Test
-	public void rollTest() {
+	public void rollAppropriateValueTest() {
 		Dice testDice = new Dice();
 		int numberRolled = testDice.roll();
 		assertTrue(numberRolled < 7 );
 		assertTrue(numberRolled > 0 );
 	}
+	
+	@Test
+	public void rollRandomValueTest() {
+		Dice testDice = new Dice();
+		boolean nonDuplicateFlag = false;
+		int firstRoll = testDice.roll();
+		for(int i = 0; i< 20; i++){
+			if(firstRoll != testDice.roll()){
+				nonDuplicateFlag = true;
+			}
+		}
+		assertTrue(nonDuplicateFlag);
+	}
+
 
 }
