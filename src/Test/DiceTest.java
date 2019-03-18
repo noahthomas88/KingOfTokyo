@@ -11,5 +11,13 @@ public class DiceTest {
 		Dice testDice = new Dice();
 		assertTrue(testDice.isEmpty());
 	}
+	
+	@Test
+	public void rollTest() {
+		Dice testDice = new Dice();
+		int numberRolled = testDice.roll();
+		assertTrue(numberRolled < 7 );
+		assertTrue(numberRolled > 1 );
+	}
 
 }
