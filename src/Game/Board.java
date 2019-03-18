@@ -4,7 +4,10 @@ public class Board {
 
 	private int numOfPlayers;
 	
-	public Board(int numOfPlayers) throws IllegalArgumentException{
+	public Board(int numOfPlayers){
+		if(numOfPlayers < 2){
+			throw new IllegalArgumentException();
+		}
 		this.numOfPlayers = numOfPlayers;
 	}
 
