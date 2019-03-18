@@ -31,5 +31,15 @@ public class BoardTest {
 			
 		}
 	}
+	
+	@Test
+	public void testGetNumOfPlayersUB() {
+		try{
+			Board b = new Board(7);
+			fail("should throw IllegalArgumentException");
+		}catch(IllegalArgumentException e){
+			
+		}
+	}
 
 }
