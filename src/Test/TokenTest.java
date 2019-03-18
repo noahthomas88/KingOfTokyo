@@ -15,33 +15,32 @@ public class TokenTest {
 	@Test
 	public void GenericTokenTypeTest() {
 		Token mytoken = new Token();
-		assertEquals(mytoken.getType(),null);
+		assertEquals(mytoken.type,null);
 	}
 
 	@Test
 	public void PoisonTokenTypeTest() {
 		Token mytoken = new PoisonToken();
-		assertEquals(mytoken.getType(),"poison");
+		assertEquals(mytoken.type,"poison");
 	}
 	
 	@Test
 	public void MimicTokenTypeTest() {
 		Token mytoken = new MimicToken();
-		assertEquals(mytoken.getType(),"mimic");
+		assertEquals(mytoken.type,"mimic");
 	}
 	
 	@Test
 	public void SmokeTokenTypeTest() {
 		Token mytoken = new SmokeToken();
-		assertEquals(mytoken.getType(),"smoke");
+		assertEquals(mytoken.type,"smoke");
 	}
 	
 	@Test
 	public void ShrinkTokenTypeTest() {
 		Token mytoken = new ShrinkToken();
-		assertEquals(mytoken.getType(),"shrink");
+		assertEquals(mytoken.type,"shrink");
 	}
-	
 	
 	
 }
