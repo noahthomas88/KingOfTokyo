@@ -4,9 +4,10 @@ public class Dice {
 	
 	private boolean isEmpty;
 
-	public void Dice(){
+	public Dice(){
 		this.isEmpty = true;
 	}
+	
 	public boolean isEmpty(){
 		return this.isEmpty;
 	}
