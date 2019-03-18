@@ -12,6 +12,7 @@ public class PlayerTest {
 	public void test() {
 		Player player = new Player();
 		assertTrue(player.isEmpty());
+		assertTrue(player.health == 10);
 	}
 
 }
