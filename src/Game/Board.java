@@ -2,7 +2,7 @@ package Game;
 
 public class Board {
 
-	private int numOfPlayers;
+	public int numOfPlayers;
 	
 	public Board(int numOfPlayers){
 		if(numOfPlayers < 2 || numOfPlayers > 6){
@@ -10,8 +10,5 @@ public class Board {
 		}
 		this.numOfPlayers = numOfPlayers;
 	}
-
-	public int getNumOfPlayers() {
-		return this.numOfPlayers;
-	}
+	
 }

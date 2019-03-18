@@ -7,38 +7,34 @@ import Game.Board;
 public class BoardTest {
 
 	@Test
-	public void testGetNumOfPlayersmin() {
+	public void testNumOfPlayersmin() {
 		Board b = new Board(2);
-		int num = b.getNumOfPlayers();
 
-		assertEquals(2, num);
+		assertEquals(2, b.numOfPlayers);
 	}
 
 	@Test
-	public void testGetNumOfPlayersmax() {
+	public void testNumOfPlayersmax() {
 		Board b = new Board(6);
-		int num = b.getNumOfPlayers();
 
-		assertEquals(6, num);
+		assertEquals(6, b.numOfPlayers);
 	}
 
 	@Test
-	public void testGetNumOfPlayersLB() {
-		try{
+	public void testNumOfPlayersLB() {
+		try {
 			Board b = new Board(1);
 			fail("should throw IllegalArgumentException");
-		}catch(IllegalArgumentException e){
-			
+		} catch (IllegalArgumentException e) {
 		}
 	}
-	
+
 	@Test
-	public void testGetNumOfPlayersUB() {
-		try{
+	public void testNumOfPlayersUB() {
+		try {
 			Board b = new Board(7);
 			fail("should throw IllegalArgumentException");
-		}catch(IllegalArgumentException e){
-			
+		} catch (IllegalArgumentException e) {
 		}
 	}
 
