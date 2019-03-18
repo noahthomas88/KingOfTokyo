@@ -7,11 +7,7 @@ public class Dice {
 	private boolean isEmpty;
 
 	public Dice(){
-		this.isEmpty = true;
-	}
-	
-	public boolean isEmpty(){
-		return this.isEmpty;
+		Random diceRoller = new Random();
 	}
 
 	public int roll() {

@@ -9,7 +9,7 @@ public class DiceTest {
 	@Test
 	public void diceConstructorTest() {
 		Dice testDice = new Dice();
-		assertTrue(testDice.isEmpty());
+		assertTrue(testDice != null);
 	}
 	
 	@Test
@@ -21,7 +21,7 @@ public class DiceTest {
 	}
 	
 	@Test
-	public void rollRandomValueTest() {
+	public void rollDifferentValuesTest() {
 		Dice testDice = new Dice();
 		boolean nonDuplicateFlag = false;
 		int firstRoll = testDice.roll();
