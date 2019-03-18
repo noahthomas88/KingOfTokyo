@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.Random;
+
 public class Dice {
 	
 	private boolean isEmpty;
@@ -14,6 +16,7 @@ public class Dice {
 
 	public int roll() {
 		// TODO Auto-generated method stub
-		return 1;
+		Random diceRoller = new Random();
+		return diceRoller.nextInt(6) + 1;
 	}
 }
