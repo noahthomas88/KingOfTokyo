@@ -14,6 +14,7 @@ public class PlayerTest {
 		assertFalse(player.isEmpty());
 		assertTrue(player.health == 10);
 		assertTrue(player.victoryPoints == 0);
+		assertTrue(player.energy == 0);
 	}
 
 }
