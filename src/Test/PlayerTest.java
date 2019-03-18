@@ -11,8 +11,10 @@ public class PlayerTest {
 	@Test
 	public void test() {
 		Player player = new Player();
-		assertTrue(player.isEmpty());
+		assertFalse(player.isEmpty());
 		assertTrue(player.health == 10);
+		assertFalse(player.health == 9);
+		assertFalse(player.health == 11);
 	}
 
 }
