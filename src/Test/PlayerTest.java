@@ -13,8 +13,7 @@ public class PlayerTest {
 		Player player = new Player();
 		assertFalse(player.isEmpty());
 		assertTrue(player.health == 10);
-		assertFalse(player.health == 9);
-		assertFalse(player.health == 11);
+		assertTrue(player.victoryPoints == 0);
 	}
 
 }
