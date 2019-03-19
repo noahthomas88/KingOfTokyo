@@ -34,6 +34,12 @@ public class DiceTest {
 		}
 		assertTrue(nonDuplicateFlag);
 	}
+	
+	@Test
+	public void timesRolledTest() {
+		Dice testDice = new Dice();
+		assertTrue(testDice.timesRolled() == 0);
+	}
 
 
 }
