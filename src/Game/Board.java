@@ -1,15 +1,27 @@
 package Game;
 
+import java.util.ArrayList;
+
 public class Board {
 
 	public int numOfPlayers;
-	public Player[] player;
-	
-	public Board(int numOfPlayers){
-		if(numOfPlayers < 2 || numOfPlayers > 6){
+	public ArrayList<Player> player;
+
+	public Board(int numOfPlayers) {
+		if (numOfPlayers < 2 || numOfPlayers > 6) {
 			throw new IllegalArgumentException();
 		}
+
 		this.numOfPlayers = numOfPlayers;
+		this.player = new ArrayList<Player>();
+
+		constructPlayers();
 	}
-	
+
+	private void constructPlayers() {
+		for (int i = 0; i < this.numOfPlayers; i++) {
+			this.player.add(new Player());
+		}
+	}
+
 }
