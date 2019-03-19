@@ -6,7 +6,9 @@ public class Board {
 
 	public int numOfPlayers;
 	public ArrayList<Player> player;
-
+	public Player tokyoCity;
+	public Player tokyoBay;
+	
 	public Board(int numOfPlayers) {
 		if (numOfPlayers < 2 || numOfPlayers > 6) {
 			throw new IllegalArgumentException();
