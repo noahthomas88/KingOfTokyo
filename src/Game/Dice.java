@@ -5,17 +5,19 @@ import java.util.Random;
 public class Dice {
 	
 	private boolean isEmpty;
+	private int timesRolled;
 
 	public Dice(){
-		Random diceRoller = new Random();
+		this.timesRolled = 0;
 	}
 
 	public int roll() {
+		this.timesRolled++;
 		Random diceRoller = new Random();
-		return diceRoller.nextInt(6) + 1;
+		return diceRoller .nextInt(6) + 1;
 	}
 
-	public int timesRolled() {
-		return 0;
+	public int getTimesRolled() {
+		return this.timesRolled;
 	}
 }

@@ -36,11 +36,11 @@ public class DiceTest {
 	}
 	
 	@Test
-	public void timesRolledTest() {
+	public void getTimesRolledTest() {
 		Dice testDice = new Dice();
-		assertTrue(testDice.timesRolled() == 0);
+		assertTrue(testDice.getTimesRolled() == 0);
 		testDice.roll();
-		assertTrue(testDice.timesRolled() == 1);
+		assertTrue(testDice.getTimesRolled() == 1);
 	}
 
 
