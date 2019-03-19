@@ -41,6 +41,10 @@ public class DiceTest {
 		assertTrue(testDice.getTimesRolled() == 0);
 		testDice.roll();
 		assertTrue(testDice.getTimesRolled() == 1);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 2);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 3);
 	}
 
 
