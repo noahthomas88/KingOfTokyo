@@ -22,6 +22,9 @@ public class BoardTest {
 		Board b = new Board(6);
 
 		assertEquals(6, b.numOfPlayers);
+		for(int i = 0;i<6;i++){
+			assertEquals(Player.class, b.player.get(i).getClass());
+		}	
 	}
 
 	@Test
