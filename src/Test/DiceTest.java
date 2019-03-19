@@ -39,6 +39,8 @@ public class DiceTest {
 	public void timesRolledTest() {
 		Dice testDice = new Dice();
 		assertTrue(testDice.timesRolled() == 0);
+		testDice.roll();
+		assertTrue(testDice.timesRolled() == 1);
 	}
 
 
