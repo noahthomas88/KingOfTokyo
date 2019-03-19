@@ -1,16 +1,20 @@
 package Test;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
-import Game.Board;
+import Game.*;
 
 public class BoardTest {
 
 	@Test
 	public void testNumOfPlayersmin() {
-		Board b = new Board(2);
+		Board b = new Board(2);		
 
 		assertEquals(2, b.numOfPlayers);
+		for(int i = 0;i<2;i++){
+			assertEquals(Player.class, b.player[i].getClass());
+		}	
 	}
 
 	@Test
