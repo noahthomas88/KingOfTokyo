@@ -47,5 +47,13 @@ public class DiceTest {
 		assertTrue(testDice.getTimesRolled() == 3);
 	}
 
+	@Test(expected = UnsupportedOperationException.class)
+	public void isResolvedTest() {
+		//TODO will not allow us to roll the die once we have resolved it currently, It will only be resolved after 3 dice rolls
+		Dice testDice = new Dice();
+		testDice.isResolved = true;
+		testDice.roll();
+	}
+
 
 }
