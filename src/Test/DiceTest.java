@@ -1,5 +1,8 @@
 package Test;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import Game.Dice;
@@ -14,24 +17,23 @@ public class DiceTest {
 	
 	@Test
 	public void rollAppropriateValueTest() {
-		Dice testDice = new Dice();
-		for(int i = 0; i< 20; i++){
-			int numberRolled = testDice.roll();
-			assertTrue(numberRolled < 7 );
-			assertTrue(numberRolled > 0 );
-		}
+		 ArrayList<Integer> listOfRolls = get30RollResults();
+		 for(int roll: listOfRolls){
+				assertTrue(roll < 7 );
+				assertTrue(roll > 0 ); 
+		 }
 	}
 	
 	@Test
 	public void rollDifferentValuesTest() {
-		Dice testDice = new Dice();
 		boolean nonDuplicateFlag = false;
-		int firstRoll = testDice.roll();
-		for(int i = 0; i< 20; i++){
-			if(firstRoll != testDice.roll()){
-				nonDuplicateFlag = true;
-			}
-		}
+		 ArrayList<Integer> listOfRolls = get30RollResults();
+		 for(int roll: listOfRolls){
+				if(roll != listOfRolls.get(0)){
+					nonDuplicateFlag = true;
+				}
+		 }
+		
 		assertTrue(nonDuplicateFlag);
 	}
 	
@@ -55,5 +57,15 @@ public class DiceTest {
 		testDice.roll();
 	}
 
+	public ArrayList<Integer> get30RollResults(){
+		ArrayList<Integer> rollResults = new ArrayList();
+		for(int i = 0; i< 10; i++){
+			Dice testDice = new Dice();
+			for(int j = 0; i < 3; i++){
+				rollResults.add(testDice.roll());
+			}
+		}
+		return rollResults;
+	}
 
 }

@@ -7,14 +7,16 @@ public class Dice {
 	private boolean isEmpty;
 	private int timesRolled;
 	public boolean isResolved;
+	public int numberRolled;
 
 	public Dice(){
 		this.timesRolled = 0;
 		this.isResolved = false;
+		this.numberRolled = 1;
 	}
 
 	public int roll() {
-		if(this.timesRolled == 3){
+		if(this.timesRolled > 3){
 			this.isResolved = true;
 		}
 		if(this.isResolved){
@@ -25,7 +27,8 @@ public class Dice {
 		}
 		this.timesRolled++;
 		Random diceRoller = new Random();
-		return diceRoller .nextInt(6) + 1;
+		this.numberRolled = diceRoller .nextInt(6) + 1;
+		return this.numberRolled;
 		}
 
 	public int getTimesRolled() {
