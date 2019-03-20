@@ -3,6 +3,7 @@ package Game;
 public class Player {
 	
 	private boolean isEmpty;
+	public String name = "";
 	public int health;
 	public int victoryPoints;
 	public int energy;
