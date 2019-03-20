@@ -16,7 +16,7 @@ public class Dice {
 	}
 
 	public int roll() {
-		if(this.timesRolled > 3){
+		if(this.timesRolled >= 3){
 			this.isResolved = true;
 		}
 		if(this.isResolved){
