@@ -56,6 +56,16 @@ public class DiceTest {
 		testDice.isResolved = true;
 		testDice.roll();
 	}
+	
+	@Test(expected = UnsupportedOperationException.class)
+	public void threeRollMaximumTest() {
+		//TODO will not allow us to roll the die once we have resolved it currently, It will only be resolved after 3 dice rolls
+		Dice testDice = new Dice();
+		testDice.roll();
+		testDice.roll();
+		testDice.roll();
+		testDice.roll();
+	}
 
 	public ArrayList<Integer> get30RollResults(){
 		ArrayList<Integer> rollResults = new ArrayList();
