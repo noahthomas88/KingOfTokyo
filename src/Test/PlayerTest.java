@@ -32,10 +32,10 @@ public class PlayerTest {
 	public void testBuildPlayerStatusString() {
 		Player player = new Player("TestDummy");
 		String result = player.buildPlayerStatusString();
-		assertTrue(result.equals("name: " + player.name + "\n" 
-							+ "health: " + player.health + "\n"
-							+ "victory points: " + player.victoryPoints + "\n"
-							+ "energy: " + player.energy + "\n"));
+		assertTrue(result.equals("<html>name: " + player.name + "<br/>" 
+							+ "health: " + player.health + "<br/>"
+							+ "victory points: " + player.victoryPoints + "<br/>"
+							+ "energy: " + player.energy + "</html>"));
 	}
 
 }

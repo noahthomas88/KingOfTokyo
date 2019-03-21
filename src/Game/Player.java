@@ -25,10 +25,10 @@ public class Player {
 
 	public String buildPlayerStatusString() {
 		String playerStatusString = "";
-		playerStatusString = "name: " + this.name + "\n" 
-							+ "health: " + this.health + "\n"
-							+ "victory points: " + this.victoryPoints + "\n"
-							+ "energy: " + this.energy + "\n";
+		playerStatusString = "<html>name: " + this.name + "<br/>" 
+				+ "health: " + this.health + "<br/>"
+				+ "victory points: " + this.victoryPoints + "<br/>"
+				+ "energy: " + this.energy + "</html>";
 		return playerStatusString;
 	}
 
