@@ -18,6 +18,10 @@ public class GUI {
 	public Integer getNumPlayers() {
 		String result = JOptionPane.showInputDialog("enter number of players");
 		int numplayers = Integer.parseInt(result);
+		while(numplayers>6 || numplayers <2) {
+			System.err.println("invalid player number trying again");
+			numplayers = getNumPlayers();
+		}
 		return numplayers;
 	}
 
