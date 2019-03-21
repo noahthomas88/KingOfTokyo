@@ -22,7 +22,8 @@ public class Board {
 
 	private void constructPlayers() {
 		for (int i = 0; i < this.numOfPlayers; i++) {
-			this.player.add(new Player());
+			String name = GUI.getName(i);
+			this.player.add(new Player(name));
 		}
 	}
 

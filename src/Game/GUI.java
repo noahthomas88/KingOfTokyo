@@ -9,12 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class GUI {
 	
+	Board myboard;
+	
 	public GUI () {
-		
+		myboard = new Board(getNumPlayers());
 	}
 	
 	public Integer getNumPlayers() {
@@ -23,16 +24,11 @@ public class GUI {
 		return numplayers;
 	}
 	
-	public void getNames(ArrayList<Player> playerlist) {
-		for(int i=0;i<playerlist.size();i++) {
-			Player playertochange = playerlist.get(i);
-			while(playertochange.name.equals("")) {
-				playertochange.name = JOptionPane.showInputDialog("Player #" + (i+1) + " Enter Your Name");
-			}
-		}
+	public static String getName(int i) {
+		return JOptionPane.showInputDialog("Player #" + (i+1) + " Enter Your Name");		
 	}
 	
-	public void displayBoard(Board myboard) {
+	public void displayBoard() {
 		JFrame myframe = new JFrame();
 		myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -43,7 +39,6 @@ public class GUI {
 		myframe.add(tokyoPanel,BorderLayout.NORTH);
 		myframe.add(playerPanel,BorderLayout.CENTER);
 		myframe.add(diebutton, BorderLayout.EAST);
-		
 		
 		JButton tokyo = new JButton("Tokyo City");
 		JButton bay = new JButton("Tokyo Bay");
