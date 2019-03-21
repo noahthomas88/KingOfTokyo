@@ -1,4 +1,5 @@
 package Test;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -14,29 +15,40 @@ public class DiceTest {
 		Dice testDice = new Dice();
 		assertTrue(testDice != null);
 	}
-	
+
 	@Test
 	public void rollAppropriateValueTest() {
-		 ArrayList<Integer> listOfRolls = get30RollResults();
-		 for(int roll: listOfRolls){
-				assertTrue(roll < 7 );
-				assertTrue(roll > 0 ); 
-		 }
+		ArrayList<Integer> listOfRolls = get30RollResults();
+		for (int roll : listOfRolls) {
+			assertTrue(roll < 7);
+			assertTrue(roll > 0);
+		}
 	}
-	
+
 	@Test
 	public void rollDifferentValuesTest() {
 		boolean nonDuplicateFlag = false;
-		 ArrayList<Integer> listOfRolls = get30RollResults();
-		 for(int roll: listOfRolls){
-				if(roll != listOfRolls.get(0)){
-					nonDuplicateFlag = true;
-				}
-		 }
-		
+		ArrayList<Integer> listOfRolls = get30RollResults();
+		for (int roll : listOfRolls) {
+			if (roll != listOfRolls.get(0)) {
+				nonDuplicateFlag = true;
+			}
+		}
+
 		assertTrue(nonDuplicateFlag);
 	}
-	
+
+	public ArrayList<Integer> get30RollResults() {
+		ArrayList<Integer> rollResults = new ArrayList();
+		for (int i = 0; i < 10; i++) {
+			Dice testDice = new Dice();
+			for (int j = 0; i < 3; i++) {
+				rollResults.add(testDice.roll());
+			}
+		}
+		return rollResults;
+	}
+
 	@Test
 	public void getTimesRolledTest() {
 		Dice testDice = new Dice();
@@ -55,7 +67,7 @@ public class DiceTest {
 		testDice.isResolved = true;
 		testDice.roll();
 	}
-	
+
 	@Test(expected = UnsupportedOperationException.class)
 	public void threeRollMaximumTest() {
 		Dice testDice = new Dice();
@@ -63,17 +75,6 @@ public class DiceTest {
 		testDice.roll();
 		testDice.roll();
 		testDice.roll();
-	}
-
-	public ArrayList<Integer> get30RollResults(){
-		ArrayList<Integer> rollResults = new ArrayList();
-		for(int i = 0; i< 10; i++){
-			Dice testDice = new Dice();
-			for(int j = 0; i < 3; i++){
-				rollResults.add(testDice.roll());
-			}
-		}
-		return rollResults;
 	}
 
 }
