@@ -1,8 +1,9 @@
 package Test;
 
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 import org.junit.Test;
-import Game.Board;
+import Game.*;
 
 public class BoardTest {
 
@@ -35,6 +36,36 @@ public class BoardTest {
 			Board b = new Board(7);
 			fail("should throw IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
+		}
+	}
+
+	@Test
+	public void testConstructPlayers() {
+		Board b = new Board(2);
+		
+		ArrayList<String> names = new ArrayList<>();
+		names.add("test1");
+		names.add("test2");
+		
+		b.constructPlayers(names);
+
+		assertEquals("test1", b.player.get(0).name);
+		assertEquals("test2", b.player.get(1).name);
+	}
+	
+
+	@Test
+	public void testConstructPlayersIllegal() {
+		Board b = new Board(2);
+		
+		ArrayList<String> names = new ArrayList<>();
+		names.add("test1");
+		names.add("");
+		
+		try{
+			b.constructPlayers(names);
+		}catch(IllegalArgumentException e){
+			
 		}
 	}
 
