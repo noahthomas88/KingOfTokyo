@@ -16,14 +16,11 @@ public class Board {
 
 		this.numOfPlayers = numOfPlayers;
 		this.player = new ArrayList<Player>();
-
-		constructPlayers();
 	}
 
-	private void constructPlayers() {
+	public void constructPlayers(ArrayList<String> names) {
 		for (int i = 0; i < this.numOfPlayers; i++) {
-			String name = GUI.getName(i);
-			this.player.add(new Player(name));
+			this.player.add(new Player(names.get(i)));
 		}
 	}
 
