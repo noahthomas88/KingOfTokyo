@@ -8,7 +8,10 @@ public class Player {
 	public int victoryPoints;
 	public int energy;
 
-	public Player(String name) {
+	public Player(String name){
+		if(name.equals("")){
+			throw new IllegalArgumentException();
+		}
 		this.isEmpty = false;
 		this.health = 10;
 		this.victoryPoints = 0;

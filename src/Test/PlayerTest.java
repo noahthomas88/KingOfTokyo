@@ -17,5 +17,15 @@ public class PlayerTest {
 		assertTrue(player.energy == 0);
 		assertTrue(player.name.equals("test"));
 	}
+	
+	@Test
+	public void testPlayerConstructorIllegal() {
+		try{
+			Player player = new Player("");
+			fail("should throw IllegalArgumentException");
+		}catch(IllegalArgumentException e){
+			
+		}	
+	}
 
 }
