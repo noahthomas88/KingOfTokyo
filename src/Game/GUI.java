@@ -71,7 +71,7 @@ public class GUI {
 
 		for (int i = 0; i < myBoard.player.size(); i++) {
 			JLabel playertoset = playertexts.get(i);
-			playertoset.setText(myBoard.player.get(i).name);
+			playertoset.setText(myBoard.player.get(i).buildPlayerStatusString());
 		}
 
 		panel.add(tokyoPanel, BorderLayout.NORTH);
