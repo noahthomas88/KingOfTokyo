@@ -1,10 +1,12 @@
 package Game;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -33,31 +35,38 @@ public class GUI {
 	public void displayBoard(Board myboard) {
 		JFrame myframe = new JFrame();
 		myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel mypanel = new JPanel();
-		myframe.add(mypanel);
-		JButton tokyo = new JButton("Tokyo");
+		
+		JPanel tokyoPanel = new JPanel();
+		JPanel playerPanel = new JPanel();
+		JButton diebutton = new JButton("roll dice");
+		
+		myframe.add(tokyoPanel,BorderLayout.NORTH);
+		myframe.add(playerPanel,BorderLayout.CENTER);
+		myframe.add(diebutton, BorderLayout.EAST);
+		
+		diebutton.setPreferredSize(new Dimension(100,100));
+		JButton tokyo = new JButton("Tokyo City");
 		tokyo.setPreferredSize(new Dimension(500,500));
 		JButton bay = new JButton("Tokyo Bay");
 		bay.setPreferredSize(new Dimension(500,500));
-		mypanel.add(tokyo);
-		mypanel.add(bay);
-		ArrayList<JTextField> playertexts = new ArrayList<JTextField>();
+		tokyoPanel.add(tokyo);
+		tokyoPanel.add(bay);
+		ArrayList<JLabel> playertexts = new ArrayList<JLabel>();
 		for(int i=0;i<6;i++) {
-			JTextField playertext = new JTextField("empty");
+			JLabel playertext = new JLabel("empty");
 			playertext.setEnabled(false);
 			playertext.setPreferredSize(new Dimension(200,200));
-			mypanel.add(playertext);
+			playerPanel.add(playertext);
 			playertexts.add(playertext);
 		}
 		
 		for(int i=0;i<myboard.player.size();i++) {
-			JTextField playertoset = playertexts.get(i);
+			JLabel playertoset = playertexts.get(i);
 			playertoset.setText(myboard.player.get(i).name);
 			playertoset.setEnabled(true);
 		}
-		JButton diebutton = new JButton("roll dice");
-		diebutton.setPreferredSize(new Dimension(100,100));
-		mypanel.add(diebutton);
+		
+		playerPanel.add(diebutton);
 		myframe.pack();
 		myframe.setVisible(true);
 	}
