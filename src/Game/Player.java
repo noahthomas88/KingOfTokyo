@@ -23,4 +23,13 @@ public class Player {
 		return this.isEmpty;
 	}
 
+	public String buildPlayerStatusString() {
+		String playerStatusString = "";
+		playerStatusString = "name: " + this.name + "/n" 
+							+ "health: " + this.health + "/n"
+							+ "victory points: " + this.victoryPoints + "/n"
+							+ "energy: " + this.energy + "/n";
+		return playerStatusString;
+	}
+
 }
