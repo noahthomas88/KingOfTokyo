@@ -8,11 +8,12 @@ public class Player {
 	public int victoryPoints;
 	public int energy;
 
-	public Player() {
+	public Player(String name) {
 		this.isEmpty = false;
 		this.health = 10;
 		this.victoryPoints = 0;
 		this.energy = 0;
+		this.name = name;
 	}
 
 	public boolean isEmpty() {

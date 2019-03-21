@@ -44,13 +44,16 @@ public class GUI {
 		myframe.add(playerPanel,BorderLayout.CENTER);
 		myframe.add(diebutton, BorderLayout.EAST);
 		
-		diebutton.setPreferredSize(new Dimension(100,100));
+		
 		JButton tokyo = new JButton("Tokyo City");
-		tokyo.setPreferredSize(new Dimension(500,500));
 		JButton bay = new JButton("Tokyo Bay");
-		bay.setPreferredSize(new Dimension(500,500));
 		tokyoPanel.add(tokyo);
 		tokyoPanel.add(bay);
+		
+		tokyo.setPreferredSize(new Dimension(500,500));
+		bay.setPreferredSize(new Dimension(500,500));
+		diebutton.setPreferredSize(new Dimension(100,100));
+		
 		ArrayList<JLabel> playertexts = new ArrayList<JLabel>();
 		for(int i=0;i<6;i++) {
 			JLabel playertext = new JLabel("empty");
