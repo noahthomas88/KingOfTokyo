@@ -18,10 +18,6 @@ public class GUI {
 	public Integer getNumPlayers() {
 		String result = JOptionPane.showInputDialog("enter number of players");
 		int numplayers = Integer.parseInt(result);
-		while(numplayers>6 || numplayers <2) {
-			System.err.println("invalid player number trying again");
-			numplayers = getNumPlayers();
-		}
 		return numplayers;
 	}
 
@@ -46,20 +42,30 @@ public class GUI {
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
+		JPanel cardPanel = new JPanel();
 		JPanel tokyoPanel = new JPanel();
 		JPanel playerPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		
+		JButton card1 = new JButton("Card1");
+		JButton card2 = new JButton("Card2");
+		JButton card3 = new JButton("Card3");
 		JButton tokyo = new JButton("Tokyo City");
 		JButton bay = new JButton("Tokyo Bay");
-		JButton diebutton = new JButton("roll dice");
+		JButton dieButton = new JButton("roll dice");
+		cardPanel.add(card1);
+		cardPanel.add(card2);
+		cardPanel.add(card3);
 		tokyoPanel.add(tokyo);
 		tokyoPanel.add(bay);
-		buttonPanel.add(diebutton);
+		buttonPanel.add(dieButton);
 		
+		card1.setPreferredSize(new Dimension(100, 200));
+		card2.setPreferredSize(new Dimension(100, 200));
+		card3.setPreferredSize(new Dimension(100, 200));
 		tokyo.setPreferredSize(new Dimension(400, 400));
 		bay.setPreferredSize(new Dimension(400, 400));
-		diebutton.setPreferredSize(new Dimension(100, 100));
+		dieButton.setPreferredSize(new Dimension(100, 100));
 
 		ArrayList<JLabel> playertexts = new ArrayList<JLabel>();
 		for (int i = 0; i < 6; i++) {
@@ -73,10 +79,11 @@ public class GUI {
 			JLabel playertoset = playertexts.get(i);
 			playertoset.setText(myBoard.player.get(i).name);
 		}
-
-		panel.add(tokyoPanel, BorderLayout.NORTH);
-		panel.add(playerPanel, BorderLayout.CENTER);
-		panel.add(buttonPanel, BorderLayout.SOUTH);
+		
+		panel.add(cardPanel, BorderLayout.NORTH);
+		panel.add(tokyoPanel, BorderLayout.CENTER);
+		panel.add(playerPanel, BorderLayout.SOUTH);
+		panel.add(buttonPanel, BorderLayout.EAST);
 		
 		myframe.add(panel);
 		myframe.pack();
