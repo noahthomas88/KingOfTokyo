@@ -57,4 +57,19 @@ public class BoardTest {
 	}
 	
 
+	@Test
+	public void testConstructPlayersIllegal() {
+		Board b = new Board(2);
+		
+		ArrayList<String> names = new ArrayList<>();
+		names.add("test1");
+		names.add("");
+		
+		try{
+			b.constructPlayers(names);
+		}catch(IllegalArgumentException e){
+			
+		}
+	}
+
 }
