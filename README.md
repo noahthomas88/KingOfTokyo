@@ -64,6 +64,329 @@ A player can choose to spend 2 energy points to “sweep” the three visible ca
 
 Power cards have three different properties, either they will take effect immediately after purchase, they will be kept by a player and will cause a permanent change, or they are kept by a player until the conditions of the card have been met and then discarded.
 
+The power cards contained in the original deck are as follows:
+
+Name: We’re only making it stronger
+Energy cost: 3
+Keep or Discard: Keep
+Effect: When you use 2 health, you gain 1 energy
+
+Name: High altitude bombing 
+Energy cost: 4
+Keep or Discard: Discard
+Effect: All monsters including you lose 3 health
+
+Name: Ultravore
+Energy cost: 4
+Keep or Discard: Keep
+Effect: Gain 1 extra victory point when beginning your turn in tokyo. If you roll an attack dice in tokyo add an attack to your roll
+
+Name: Extra Head
+Energy cost: 7
+Keep or Discard: Keep
+Effect: Gain 1 extra die
+
+Name: Gas Refinery
+Energy cost: 6
+Keep or Discard: Discard
+Effect: Gain 2 victory points and all other monsters lose 3 health
+
+Name: Parasitic Tentacles
+Energy cost: 4
+Keep or Discard: Keep
+Effect: You can buy power cards from other monsters, pay them the energy price on the card
+Name: Detritivore
+Energy cost: 4
+Keep or Discard: Keep
+Effect: When you roll at least a 1, 2 or 3 gain 2 victory points
+
+Name: Opportunist
+Energy cost: 3
+Keep or Discard: Keep
+Effect: Whenever a power card is revealed to you have the option of buying it immediately.
+
+Name: Shrink Ray
+Energy cost: 6
+Keep or Discard: Keep
+Effect: Give 1 shrink ray token to each Monster you attack with your attack dice. At the beginning of their turn , Monsters roll 1 less dice for each shrink ray token they are carrying. A shrink ray token can be discarded by using a health roll instead of gaining health a player will discard their shrink ray token.
+
+Name: Energy Hoarder
+Energy cost: 3
+Keep or Discard: Keep
+Effect: Gain 1 victory point for every 6 energy points you have at the end of your turn.
+
+Name: Vast Storm
+Energy cost: 6
+Keep or Discard: Discard
+Effect: gain 2 victory points and all other monsters lose 1 energy for every 2 energy they have
+
+Name: Gourmet
+Energy cost: 4
+Keep or Discard: Keep
+Effect: when you roll 111 or more gain 2 extra victory points
+
+Name: Apartment Building
+Energy cost: 5
+Keep or Discard: Discard
+Effect: Gain 3 victory points
+
+Name: Freeze Time
+Energy cost: 5
+Keep or Discard: Keep
+Effect: On a turn when you roll 111 or more you can take another turn with one less dice
+
+Name: Jet Fighters
+Energy cost: 5
+Keep or Discard: Discard
+Effect: Gain 5 victory points and lose 4 health
+
+Name: Tank
+Energy cost: 4
+Keep or Discard: Discard
+Effect: Gain 4 victory points lose 3 health
+
+Name: Burrowing
+Energy cost: 5
+Keep or Discard: Keep
+Effect: Add a attack to your Roll while you are in Tokyo. When you yield Tokyo the monster taking it loses 1 health
+
+Name: Fire Breathing
+Energy cost: 4
+Keep or Discard: keep
+Effect: Your neighbors lose 1 health when you roll at least one attack
+
+Name: Rooting for the Underdog
+Energy cost: 3
+Keep or Discard: Keep
+Effect: At the end of turn, if you have the fewest victory points, gain a victory point
+
+Name: Giant Brain
+Energy cost: 5
+Keep or Discard: Keep
+Effect: You have 1 extra die roll each turn
+
+Name: Stretchy
+Energy cost: 3
+Keep or Discard: keep
+Effect: Before resolving your dice you can spend 2 energy to change any of your dice to any result
+
+Name: Poison Quills
+Energy cost: 3
+Keep or Discard: keep
+Effect: When you roll 2, 2, 2 or more, add 2 attacks to your roll
+
+Name: Healing Ray
+Energy cost: 4
+Keep or Discard: Keep
+Effect: You can use a health roll to make other monsters gain health. Each monster must pay you 2 energy (1 if its their last one) for each heart they gain this way
+
+Name: Regeneration
+Energy cost: 4
+Keep or Discard: Keep
+Effect: When you gain a heart gain 1 extra hearth
+
+Name: Camouflage 
+Energy cost: 3
+Keep or Discard: Keep
+Effect: When you lose a heart roll a day for each heart you lost, Each heart roll reduces the damage taken by one
+
+Name: Rapid Healing
+Energy cost: 3
+Keep or Discard: Keep
+Effect: Spend 2 energy at any time to heal one heart
+
+Name: Eater of the Dead
+Energy cost: 4
+Keep or Discard: Keep
+Effect: Gain 3 victory points every time a monster goes to 0 hearts
+
+Name: Wings
+Energy cost: 6
+Keep or Discard: Keep
+Effect: Spend 2 energy to not lose health this turn
+
+Name: Psychic Probe
+Energy cost: 3
+Keep or Discard: Keep
+Effect: You can reroll a die of your choice after the last Roll of each other monster. If you reroll a heart discard this card
+
+Name: Nova Breath
+Energy cost: 7
+Keep or Discard: Keep
+Effect: Your attack rolls attack all other monsters
+
+Name: Solar Powered
+Energy cost: 2
+Keep or Discard: Keep
+Effect: At the end of your turn gain 1 energy if you have no energy
+
+Name: Nuclear power plant
+Energy cost: 6
+Keep or Discard: discard
+Effect: + 2 points, + 3 health
+
+Name: Jets
+Energy cost: 5
+Keep or Discard: keep
+Effect: don’t lose hearts if you yield tokyo to attacker
+
+Name: Energize
+Energy cost: 8
+Keep or Discard: discard
+Effect: + 9 energy
+
+Name: National Guard
+Energy cost: 3
+Keep or Discard: discard
+Effect: +2 points, -2 health
+
+Name: Friend of children
+Energy cost: 3
+Keep or Discard: keep
+Effect: whenever you gain energy gain 1 extra energy
+
+Name: Armor plating
+Energy cost: 4
+Keep or Discard: keep
+Effect: do not lose health when you lose exactly 1 health
+
+Name: Plot twist
+Energy cost: 3
+Keep or Discard: keep
+Effect: before resolving your dice you may change one die to any result, discard after use
+
+Name: Commuter train
+Energy cost: 4
+Keep or Discard: discard
+Effect: + 2 points
+
+Name: Poison Spit
+Energy cost: 4
+Keep or Discard: keep
+Effect: give 1 poison token to each monster you attack, at the end of their turn monsters lose 1 health for each poison token they have on them, a poison token can be cured by using a health die instead of gaining 1 health back
+
+Name: Metamorph
+Energy cost: 3
+Keep or Discard: keep
+Effect: at the end of your turn you can discard any keep cards you have to regain their full cost in energy
+
+Name: Death from above
+Energy cost: 5
+Keep or Discard: discard
+Effect: + 2 points and take control of tokyo if you do not already control it
+
+Name: Made in a lab
+Energy cost: 2
+Keep or Discard: keep
+Effect: during the buy power cards step, you can peek at the top card of the deck and buy it or put it back at the top of the deck
+
+Name: Heal 
+Energy cost: 3
+Keep or Discard: discard
+Effect: + 2 health
+
+Name: Mimic
+Energy cost: 8
+Keep or Discard: keep
+Effect: choose a keep card any monster has in play and put a mimic token on it. This card counts as a duplicate of that card as if you had just bought it. Spend 1 energy at the start of your turn to move the mimic token and change the card you are mimicking.
+
+Name: Evacuation Orders
+Energy cost: 7
+Keep or Discard: discard
+Effect: all other monsters lose 5 points
+
+Name: Herd Culler
+Energy cost: 3
+Keep or Discard: keep
+Effect: you can change one of your dice to a 1 dice each turn
+
+Name: Battery Monster
+Energy cost: 3
+Keep or Discard: keep
+Effect: when you buy battery monster place 6 energy on it from the bank, at the start of each turn take 2 energy off and add them to your pool. When there are no energy left discard this card.
+---------------------------
+
+Name: Even bigger
+Energy cost: 4
+Keep or Discard: Keep
+Effect: The player has 12 maximum health as long as he/she owns this card. The player gain 2 health he/she buys this card. 
+
+Name: Media-friendly
+Energy cost: 3
+Keep or Discard: Keep
+Effect: Gain 1 victory point whenever you buy a power card.
+
+Name: Herbivore
+Energy cost: 5
+Keep or Discard: Keep
+Effect: Gain 1 victory point at the end of the turn if you don’t make anyone lose health.
+
+Name: Smoke cloud
+Energy cost: 4
+Keep or Discard: Keep
+Effect: Place 3 Smoke counters on this card. Spend 1 Smoke counter for an extra roll. Discard this card when all smoke counters are spent.
+
+Name: Acid attack
+Energy cost: 6
+Keep or Discard: Keep
+Effect: Add an attack to your roll
+
+Name: Frenzy
+Energy cost: 7
+Keep or Discard: Discard
+Effect: Take another turn after this one
+
+Name: Alpha monster
+Energy cost: 5
+Keep or Discard: Keep
+Effect: Gain 1 victory point when you roll at least one attack.
+
+Name: Complete destruction
+Energy cost: 3
+Keep or Discard: Keep
+Effect: If you roll 1, 2, 3, heart, attack, and energy, gain 9 victory points in addition to the regular effects.  
+
+Name: Energy Drink
+Energy cost: 4
+Keep or Discard: Keep
+Effect: Spend 1 energy points to get 1 extra die roll.
+
+Name: Background Dweller
+Energy cost: 4
+Keep or Discard: Keep
+Effect: You can always reroll any 3 you have.
+
+Name: Alien Origin
+Energy cost: 3
+Keep or Discard: Keep
+Effect: Buying power cards costs you 1 less energy point.
+
+
+Name: Corner Store
+Energy cost: 3
+Keep or Discard: Discard
+Effect: Gain 1 victory point.
+
+Name: Flame Thrower
+Energy cost: 3
+Keep or Discard: Discard
+Effect: All other players lose 2 health points.
+
+Name:Skyscraper
+Energy cost: 6
+Keep or Discard: Discard
+Effect: Gain 4 victory points.
+
+Name: It has a child!
+Energy cost: 7
+Keep or Discard: Keep
+Effect: If you reach 0 health, discard all your cards and lose all your victory points. Gain 10 health and continue playing outside Tokyo.
+
+Name: Spiked tail
+Energy cost: 5
+Keep or Discard: Keep
+Effect: If you roll at least 1 attack, add an attack to your roll.
+
 When a Player Reaches 0 health.
 
 When a player reaches 0 health they lose.The only exception to this rule is if a player possesses the power card that gives them an extra life. They will never possess negative health.
