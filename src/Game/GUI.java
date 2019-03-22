@@ -50,12 +50,14 @@ public class GUI {
 		JButton card1 = new JButton("Card1");
 		JButton card2 = new JButton("Card2");
 		JButton card3 = new JButton("Card3");
+		JButton swipeCards = new JButton("Swipe Cards");
 		JButton tokyo = new JButton("Tokyo City");
 		JButton bay = new JButton("Tokyo Bay");
 		JButton dieButton = new JButton("roll dice");
 		cardPanel.add(card1);
 		cardPanel.add(card2);
 		cardPanel.add(card3);
+		cardPanel.add(swipeCards);
 		tokyoPanel.add(tokyo);
 		tokyoPanel.add(bay);
 		buttonPanel.add(dieButton);
@@ -63,6 +65,7 @@ public class GUI {
 		card1.setPreferredSize(new Dimension(100, 200));
 		card2.setPreferredSize(new Dimension(100, 200));
 		card3.setPreferredSize(new Dimension(100, 200));
+		swipeCards.setPreferredSize(new Dimension(200, 50));
 		tokyo.setPreferredSize(new Dimension(400, 400));
 		bay.setPreferredSize(new Dimension(400, 400));
 		dieButton.setPreferredSize(new Dimension(100, 100));
