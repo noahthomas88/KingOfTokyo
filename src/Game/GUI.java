@@ -18,6 +18,10 @@ public class GUI {
 	public Integer getNumPlayers() {
 		String result = JOptionPane.showInputDialog("enter number of players");
 		int numplayers = Integer.parseInt(result);
+		while (numplayers > 6 || numplayers < 2) {
+			System.err.println("invalid player number trying again");
+			numplayers = getNumPlayers();
+		}
 		return numplayers;
 	}
 
@@ -25,9 +29,9 @@ public class GUI {
 		ArrayList<String> names = new ArrayList<>();
 		for (int index = 0; index < numOfPlayers; index++) {
 			String name = "";
-			while(name.equals("")){
+			while (name.equals("")) {
 				name = JOptionPane.showInputDialog("Player #" + (index + 1) + " please enter your name");
-				if(name.equals("")){
+				if (name.equals("")) {
 					JOptionPane.showMessageDialog(null, "name cannot be empty");
 				}
 			}
@@ -39,14 +43,14 @@ public class GUI {
 	public void displayBoard(Board myBoard) {
 		JFrame myframe = new JFrame();
 		myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		JPanel cardPanel = new JPanel();
 		JPanel tokyoPanel = new JPanel();
 		JPanel playerPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
-		
+
 		JButton card1 = new JButton("Card1");
 		JButton card2 = new JButton("Card2");
 		JButton card3 = new JButton("Card3");
@@ -61,7 +65,7 @@ public class GUI {
 		tokyoPanel.add(tokyo);
 		tokyoPanel.add(bay);
 		buttonPanel.add(dieButton);
-		
+
 		card1.setPreferredSize(new Dimension(100, 200));
 		card2.setPreferredSize(new Dimension(100, 200));
 		card3.setPreferredSize(new Dimension(100, 200));
@@ -82,12 +86,12 @@ public class GUI {
 			JLabel playertoset = playertexts.get(i);
 			playertoset.setText(myBoard.player.get(i).buildPlayerStatusString());
 		}
-		
+
 		panel.add(cardPanel, BorderLayout.NORTH);
 		panel.add(tokyoPanel, BorderLayout.CENTER);
 		panel.add(playerPanel, BorderLayout.SOUTH);
 		panel.add(buttonPanel, BorderLayout.EAST);
-		
+
 		myframe.add(panel);
 		myframe.pack();
 		myframe.setVisible(true);
