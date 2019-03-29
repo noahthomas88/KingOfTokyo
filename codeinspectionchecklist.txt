@@ -1,0 +1,91 @@
+Ch 2 Names 
+    Should always be descriptive
+Ch 3 Functions 
+    Should have descriptive names also short
+Ch 4 Comments 
+    Will not be needed because we used good naming techniques
+Ch 5 Formatting 
+Reduce spacing between related elements. If codes are directly related, they should be near each other.
+Ch 6 Demeter
+Hide the data’s implementation 
+
+
+Concrete Vehicle
+ public interface Vehicle {
+double getFuelTankCapacityInGallons(); double getGallonsOfGasoline();
+}
+Abstract Vehicle
+ public interface Vehicle {
+double getPercentFuelRemaining();
+}
+
+These two examples show the difference between objects and data structures. Objects hide their data behind abstractions and expose functions that operate on that data. Data structure expose their data and have no meaningful functions.
+
+The Law of Demeter says that a method f of a class C should only call the methods of these:
+•C
+• An object created by f
+If it is an object we should use only one . for a function call not a field
+
+Ch 7 Error Handling 
+Errors should be caught in a try catch, not a throws declaration. Errors should also have descriptive names.
+Ch 9 Unit Testing 
+    Should be clean, fast, independent, repeatable, self-validating, and timely.
+Ch 10 Classes 
+    Classes should be descriptive and should be able to be described in one sentence
+Ch 12 TDD
+    Fail test, code, pass test
+
+Logistics:
+  1. When will a formal code inspection be warranted?
+    A formal code inspection will be warranted whenever a merge request is made.
+  2. Who will take the lead on moderating inspections?
+    Whoever makes the merge request will be the moderator.
+  3. How will you share the results of inspections?
+We will share the results of the inspection to each other via talking as all code inspections will be conducted in person. The code will be edited and quickly re-inspected before completing the merge request.
+ 
+Criteria:
+  4. What are the key "code smells" from each chapter of Clean Code? This is the big question. Chapter 17 of Clean Code might help you recall them.
+Comments: If we employ the skills the books are trying to teach we encounter redundant comments far to often as they are made redundant by the descriptive nature of the code
+Functions: Functions should be small, concise, and neat so it is easy to tell when a function starts taking on too many responsibilities. Constants vs enums. Functions Should Do One Thing
+Java: If you use two or more classes from a package, then import the whole package with import package.*; use enums when necessary
+public enum HourlyPayGrade { APPRENTICE {
+public double rate() { 
+     return 1.0;
+} },
+LEUTENANT_JOURNEYMAN {
+}
+public double return 1.2;
+} },
+JOURNEYMAN { public double return 1.5;
+} },
+MASTER { public double
+return 2.0; }
+};
+
+
+General: Code Duplication, Dead Code(this includes unused variables, functions and classes can be checked using the bug spotter tool), Keeping code at the right abstraction (following Demeter's law), removing clutter (default constructors with no implementation), Making sure code has the correct responsibilities. If data is used more than once give it a descriptive name to describe it.
+Names: Use consistent and descriptive names with consistent items grouped into like names, that are in the same level of abstraction. Such as modem.connect instead of modem.dial
+Tests: Should provide full coverage except for GUI, test boundary conditions, tests should be fast and ignored tests raise questions about ambiguity
+    
+ 
+  5. Will everyone apply all criteria from every chapter from Clean Code? Or will each person specialize in a few criteria?
+We will break the criteria down dynamically as we conduct inspections. People will be assigned chapters to look for criteria in the code with “important” chapters receiving overlap.
+ 
+Scope:
+  6. Will your team inspect every file in your codebase? Every file you touch in your feature branch? Or something else entirely?
+    Our team will inspect all new and modified code.
+ 
+  7. Of those files, will each person look at every file in consideration? Or will your team assign different files to different people?
+    Everybody will look at every file in consideration.
+ 
+ 
+ 
+Tools:
+  8. To what extent can your inspection criteria be automated? Automation will increase your inspection's speed and reliability.
+    We can use tools such as find bugs and code coverage tools to aid in inspection but the majority of the review will be by hand.
+ 
+  9. Which aspects of your inspection criteria will need human intervention?
+Aspects other than find bugs and coverage tools will need human intervention. Making code easily readable will require human assessment.
+ 
+ 
+Have one person commit your team's plan to GitLab and have them submit a link to it in the box below. Add the graders as Developers to your project. Then, move on to the Practice Code Inspection.
