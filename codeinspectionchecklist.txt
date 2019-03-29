@@ -1,13 +1,8 @@
-Ch 2 Names 
-    Should always be descriptive
-Ch 3 Functions 
-    Should have descriptive names also short
-Ch 4 Comments 
-    Will not be needed because we used good naming techniques
-Ch 5 Formatting 
-Reduce spacing between related elements. If codes are directly related, they should be near each other.
-Ch 6 Demeter
-Hide the data’s implementation 
+Ch 2 Names Should always be descriptive
+Ch 3 Functions Should have descriptive names also short
+Ch 4 Comments Will not be needed because we used good naming techniques
+Ch 5 Formatting Reduce spacing between related elements. If codes are directly related, they should be near each other.
+Ch 6 Demeter Hide the data’s implementation 
 
 
 Concrete Vehicle
@@ -26,14 +21,10 @@ The Law of Demeter says that a method f of a class C should only call the method
 • An object created by f
 If it is an object we should use only one . for a function call not a field
 
-Ch 7 Error Handling 
-Errors should be caught in a try catch, not a throws declaration. Errors should also have descriptive names.
-Ch 9 Unit Testing 
-    Should be clean, fast, independent, repeatable, self-validating, and timely.
-Ch 10 Classes 
-    Classes should be descriptive and should be able to be described in one sentence
-Ch 12 TDD
-    Fail test, code, pass test
+Ch 7 Error Handling Errors should be caught in a try catch, not a throws declaration. Errors should also have descriptive names.
+Ch 9 Unit Testing Should be clean, fast, independent, repeatable, self-validating, and timely.
+Ch 10 Classes Classes should be descriptive and should be able to be described in one sentence
+Ch 12 TDD Fail test, code, pass test
 
 Logistics:
   1. When will a formal code inspection be warranted?
@@ -76,9 +67,7 @@ Scope:
     Our team will inspect all new and modified code.
  
   7. Of those files, will each person look at every file in consideration? Or will your team assign different files to different people?
-    Everybody will look at every file in consideration.
- 
- 
+    The team will collectively divide and conquer to look at every file in consideration
  
 Tools:
   8. To what extent can your inspection criteria be automated? Automation will increase your inspection's speed and reliability.
