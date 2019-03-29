@@ -1,5 +1,5 @@
 Ch 2 Names Should always be descriptive
-Ch 3 Functions Should have descriptive names also short
+Ch 3 Functions Should have descriptive names, a function should only be responsible for one thing
 Ch 4 Comments Will not be needed because we used good naming techniques
 Ch 5 Formatting Reduce spacing between related elements. If codes are directly related, they should be near each other.
 Ch 6 Demeter Hide the data’s implementation 
