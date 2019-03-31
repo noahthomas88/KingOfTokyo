@@ -13,5 +13,13 @@ public class DiceHandlerTest {
 		DiceHandler dh = new DiceHandler();
 		assertFalse(dh.equals(null));
 	}
+	
+	@Test
+	public void numberOfDieTest() {
+		DiceHandler dh = new DiceHandler();
+		assertTrue(dh.numberOfDie() == 0);
+	}
+	
+	
 
 }
