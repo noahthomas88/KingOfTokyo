@@ -27,7 +27,7 @@ public class Player {
 	}
 	
 	public void takesDamage(int i) {
-		this.health = 9;
+		this.health = this.health - i;
 	}
 
 }

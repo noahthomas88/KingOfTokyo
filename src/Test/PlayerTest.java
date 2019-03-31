@@ -43,5 +43,12 @@ public class PlayerTest {
 		player.takesDamage(1);
 		assertEquals(player.health, 9);
 	}
+	
+	@Test
+	public void testTakesTwoDamage() {
+		Player player = new Player("Test");
+		player.takesDamage(2);
+		assertEquals(player.health, 8);
+	}
 
 }
