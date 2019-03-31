@@ -50,5 +50,17 @@ public class PlayerTest {
 		player.takesDamage(2);
 		assertEquals(player.health, 8);
 	}
+	
+	@Test
+	public void testTakesNegativeDamage() {
+		Player player = new Player("Test");
+		try {
+			player.takesDamage(-1);
+			fail("Should throw IllegalArgument Exception");
+		}catch(IllegalArgumentException e) {
+			
+		}
+		
+	}
 
 }

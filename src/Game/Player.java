@@ -27,6 +27,9 @@ public class Player {
 	}
 	
 	public void takesDamage(int i) {
+		if (i < 0) {
+			throw new IllegalArgumentException();
+		}
 		this.health = this.health - i;
 	}
 
