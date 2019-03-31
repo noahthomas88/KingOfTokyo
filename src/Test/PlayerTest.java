@@ -37,5 +37,12 @@ public class PlayerTest {
 							+ "victory points: " + player.victoryPoints + "<br/>"
 							+ "energy: " + player.energy + "</html>"));
 	}
+	
+	@Test
+	public void testPlayerNumberOfDie() {
+		Player player = new Player("TestDummy");
+		int dieNum = player.numberOfDieToRoll;
+		assertTrue(dieNum == 6);
+	}
 
 }
