@@ -1,7 +1,6 @@
 CSSE 376 Team A
 King Of Tokyo Definition of Done:
 By John Gear, Noah Thomas, Joshua Warning, Fisher Shen
-TODO: Add in as many edge cases as we can think of
 
 Game Set-Up:
 There may be 2 to 6 players. We will not allow a game to begin with less than or more than this amount. 
