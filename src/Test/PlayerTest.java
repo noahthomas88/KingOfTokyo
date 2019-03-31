@@ -11,7 +11,6 @@ public class PlayerTest {
 	@Test
 	public void testPlayerConstructor() {
 		Player player = new Player("test");
-		assertFalse(player.isEmpty());
 		assertTrue(player.health == 10);
 		assertTrue(player.victoryPoints == 0);
 		assertTrue(player.energy == 0);
@@ -36,6 +35,13 @@ public class PlayerTest {
 							+ "health: " + player.health + "<br/>"
 							+ "victory points: " + player.victoryPoints + "<br/>"
 							+ "energy: " + player.energy + "</html>"));
+	}
+	
+	@Test
+	public void testTakesOneDamage() {
+		Player player = new Player("Test");
+		player.takesDamage(1);
+		assertEquals(player.health, 9);
 	}
 
 }

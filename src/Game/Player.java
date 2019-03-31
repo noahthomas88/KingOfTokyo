@@ -2,7 +2,6 @@ package Game;
 
 public class Player {
 	
-	private boolean isEmpty;
 	public String name = "";
 	public int health;
 	public int victoryPoints;
@@ -12,15 +11,10 @@ public class Player {
 		if(name.equals("")){
 			throw new IllegalArgumentException();
 		}
-		this.isEmpty = false;
 		this.health = 10;
 		this.victoryPoints = 0;
 		this.energy = 0;
 		this.name = name;
-	}
-
-	public boolean isEmpty() {
-		return this.isEmpty;
 	}
 
 	public String buildPlayerStatusString() {
@@ -30,6 +24,10 @@ public class Player {
 				+ "victory points: " + this.victoryPoints + "<br/>"
 				+ "energy: " + this.energy + "</html>";
 		return playerStatusString;
+	}
+	
+	public void takesDamage(int i) {
+		
 	}
 
 }
