@@ -32,5 +32,9 @@ public class Player {
 		}
 		this.health = this.health - i;
 	}
+	
+	public void addEnergy(int i) {
+		this.energy = 1;
+	}
 
 }

@@ -67,7 +67,13 @@ public class PlayerTest {
 		}catch(IllegalArgumentException e) {
 			
 		}
-		
+	}
+	
+	@Test
+	public void testAddOneEnergy() {
+		Player player = new Player("Test");
+		player.addEnergy(1);;
+		assertEquals(player.energy, 1);
 	}
 
 }
