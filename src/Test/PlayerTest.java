@@ -52,6 +52,13 @@ public class PlayerTest {
 	}
 	
 	@Test
+	public void testTakesZeroDamage() {
+		Player player = new Player("Test");
+		player.takesDamage(0);
+		assertEquals(player.health, 10);
+	}
+	
+	@Test
 	public void testTakesNegativeDamage() {
 		Player player = new Player("Test");
 		try {
