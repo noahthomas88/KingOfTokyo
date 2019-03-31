@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Game.MimicToken;
-import Game.PoisonToken;
-import Game.ShrinkToken;
-import Game.SmokeToken;
-import Game.Token;
+import Tokens.MimicToken;
+import Tokens.PoisonToken;
+import Tokens.ShrinkToken;
+import Tokens.SmokeToken;
+import Tokens.Token;
 
 public class TokenTest {
 

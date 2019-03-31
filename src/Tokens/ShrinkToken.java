@@ -1,4 +1,4 @@
-package Game;
+package Tokens;
 
 public class ShrinkToken extends Token {
 	
