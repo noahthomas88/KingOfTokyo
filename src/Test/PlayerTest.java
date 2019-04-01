@@ -11,6 +11,7 @@ public class PlayerTest {
 	@Test
 	public void testPlayerConstructor() {
 		Player player = new Player("test");
+		assertFalse(player.isEmpty());
 		assertTrue(player.health == 10);
 		assertTrue(player.victoryPoints == 0);
 		assertTrue(player.energy == 0);
@@ -37,6 +38,28 @@ public class PlayerTest {
 							+ "energy: " + player.energy + "</html>"));
 	}
 	
+	@Test
+	public void testPlayerNumberOfDie() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.numberOfDieToRoll == 6);
+	}
+	
+	@Test
+	public void testAddOneDie() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.numberOfDieToRoll == 6);
+		player.addOneDie();
+		assertTrue(player.numberOfDieToRoll == 7);
+	}
+	
+	@Test
+	public void testSubOneDie() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.numberOfDieToRoll == 6);
+		player.subOneDie();
+		assertTrue(player.numberOfDieToRoll == 5);
+	}
+
 	@Test
 	public void testAddOneHealth() {
 		Player player = new Player("Test");
