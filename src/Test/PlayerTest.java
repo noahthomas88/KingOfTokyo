@@ -69,6 +69,14 @@ public class PlayerTest {
 	}
 	
 	@Test
+	public void testAddHealthExceed() {
+		Player player = new Player("Test");
+		player.health = 7;
+		player.addHealth(4);
+		assertEquals(player.health, 10);
+	}
+	
+	@Test
 	public void testAddOneEnergy() {
 		Player player = new Player("Test");
 		player.addEnergy(1);;

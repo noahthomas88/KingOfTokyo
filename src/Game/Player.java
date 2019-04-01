@@ -28,6 +28,9 @@ public class Player {
 	
 	public void addHealth(int i) {
 		this.health = this.health + i;
+		if (this.health > 10) {
+			this.health = 10;
+		}
 	}
 	
 	public void addEnergy(int i) {
