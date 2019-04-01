@@ -154,5 +154,20 @@ public class PlayerTest {
 		player.addVictory(2);
 		assertEquals(4,player.victoryPoints);
 	}
+	
+	@Test
+	public void testAddZeroVictory() {
+		Player player = new Player("Test");
+		player.addVictory(0);
+		assertEquals(0,player.victoryPoints);
+	}
+	
+	@Test
+	public void testAddNegativeVictory() {
+		Player player = new Player("Test");
+		player.addVictory(5);
+		player.addVictory(-3);
+		assertEquals(2,player.victoryPoints);
+	}
 
 }
