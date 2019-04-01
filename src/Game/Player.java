@@ -2,25 +2,21 @@ package Game;
 
 public class Player {
 	
-	private boolean isEmpty;
 	public String name = "";
 	public int health;
 	public int victoryPoints;
 	public int energy;
+	public int numberOfDieToRoll;
 
 	public Player(String name){
 		if(name.equals("")){
 			throw new IllegalArgumentException();
 		}
-		this.isEmpty = false;
 		this.health = 10;
 		this.victoryPoints = 0;
 		this.energy = 0;
 		this.name = name;
-	}
-
-	public boolean isEmpty() {
-		return this.isEmpty;
+		this.numberOfDieToRoll = 6;
 	}
 
 	public String buildPlayerStatusString() {
@@ -30,6 +26,37 @@ public class Player {
 				+ "victory points: " + this.victoryPoints + "<br/>"
 				+ "energy: " + this.energy + "</html>";
 		return playerStatusString;
+	}
+	
+	public void addHealth(int i) {
+		this.health = this.health + i;
+		if (this.health > 10) {
+			this.health = 10;
+		}
+	}
+	
+	public void addEnergy(int i) {
+		this.energy = this.energy + i;
+		if(this.energy < 0) {
+			this.energy = this.energy - i;
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	public void addVictory(int i) {
+		this.victoryPoints = this.victoryPoints + i;
+		if(this.victoryPoints < 0) {
+			this.victoryPoints = 0;
+		}
+	}
+
+	public void addOneDie() {
+		this.numberOfDieToRoll ++;	
+	}
+
+	public void subOneDie() {
+		this.numberOfDieToRoll --;
+		
 	}
 
 }

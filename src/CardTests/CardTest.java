@@ -1,4 +1,4 @@
-package Test;
+package CardTests;
 
 import static org.junit.Assert.*;
 
@@ -25,6 +25,12 @@ public class CardTest {
 	public void testGetDescription() {
 		Card mycard = new Card();
 		assertTrue(mycard.description.equals("This is the base card, override me"));
+	}
+	
+	@Test
+	public void testGetName() {
+		Card mycard = new Card();
+		assertTrue(mycard.name.equals("default"));
 	}
 	
 	
