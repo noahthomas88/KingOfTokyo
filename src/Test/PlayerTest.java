@@ -119,5 +119,13 @@ public class PlayerTest {
 		player.addEnergy(0);
 		assertEquals(player.energy, 0);
 	}
+	
+	@Test
+	public void testAddNegativeEnergy() {
+		Player player = new Player("Test");
+		player.addEnergy(5);
+		player.addEnergy(-3);
+		assertEquals(player.energy, 2);
+	}
 
 }
