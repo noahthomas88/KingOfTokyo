@@ -44,5 +44,14 @@ public class PlayerTest {
 		int dieNum = player.numberOfDieToRoll;
 		assertTrue(dieNum == 6);
 	}
+	
+	@Test
+	public void testAddOneDie() {
+		Player player = new Player("TestDummy");
+		int dieNum = player.numberOfDieToRoll;
+		assertTrue(dieNum == 6);
+		player.addOneDie();
+		assertTrue(dieNum == 7);
+	}
 
 }
