@@ -146,5 +146,13 @@ public class PlayerTest {
 		player.addVictory(1);
 		assertEquals(1,player.victoryPoints);
 	}
+	
+	@Test
+	public void testAddTwoVictoryTwice() {
+		Player player = new Player("Test");
+		player.addVictory(2);
+		player.addVictory(2);
+		assertEquals(4,player.victoryPoints);
+	}
 
 }
