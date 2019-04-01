@@ -38,28 +38,28 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void testTakesOneDamage() {
+	public void testAddOneHealth() {
 		Player player = new Player("Test");
 		player.takesDamage(1);
 		assertEquals(player.health, 9);
 	}
 	
 	@Test
-	public void testTakesTwoDamage() {
+	public void testAddTwoHealth() {
 		Player player = new Player("Test");
 		player.takesDamage(2);
 		assertEquals(player.health, 8);
 	}
 	
 	@Test
-	public void testTakesZeroDamage() {
+	public void testAddZeroHealth() {
 		Player player = new Player("Test");
 		player.takesDamage(0);
 		assertEquals(player.health, 10);
 	}
 	
 	@Test
-	public void testTakesNegativeDamage() {
+	public void testAddNegativeHealth() {
 		Player player = new Player("Test");
 		try {
 			player.takesDamage(-1);
