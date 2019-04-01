@@ -40,33 +40,32 @@ public class PlayerTest {
 	@Test
 	public void testAddOneHealth() {
 		Player player = new Player("Test");
-		player.takesDamage(1);
-		assertEquals(player.health, 9);
+		player.health = 5;
+		player.addHealth(1);
+		assertEquals(player.health, 6);
 	}
 	
 	@Test
-	public void testAddTwoHealth() {
+	public void testAddTwoHealthTwice() {
 		Player player = new Player("Test");
-		player.takesDamage(2);
-		assertEquals(player.health, 8);
+		player.health = 6;
+		player.addHealth(2);
+		player.addHealth(2);
+		assertEquals(player.health, 10);
 	}
 	
 	@Test
 	public void testAddZeroHealth() {
 		Player player = new Player("Test");
-		player.takesDamage(0);
+		player.addHealth(0);
 		assertEquals(player.health, 10);
 	}
 	
 	@Test
 	public void testAddNegativeHealth() {
 		Player player = new Player("Test");
-		try {
-			player.takesDamage(-1);
-			fail("Should throw IllegalArgument Exception");
-		}catch(IllegalArgumentException e) {
-			
-		}
+		player.addHealth(-1);
+		assertEquals(player.health, 9);
 	}
 	
 	@Test

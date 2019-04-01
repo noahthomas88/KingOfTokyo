@@ -26,7 +26,7 @@ public class Player {
 		return playerStatusString;
 	}
 	
-	public void takesDamage(int i) {
+	public void addHealth(int i) {
 		if (i < 0) {
 			throw new IllegalArgumentException();
 		}
