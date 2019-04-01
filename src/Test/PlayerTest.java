@@ -75,5 +75,13 @@ public class PlayerTest {
 		player.addEnergy(1);;
 		assertEquals(player.energy, 1);
 	}
+	
+	@Test
+	public void testAddTwoEnergyTwice() {
+		Player player = new Player("Test");
+		player.addEnergy(2);
+		player.addEnergy(2);
+		assertEquals(player.energy, 4);
+	}
 
 }

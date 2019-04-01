@@ -34,7 +34,7 @@ public class Player {
 	}
 	
 	public void addEnergy(int i) {
-		this.energy = 1;
+		this.energy = this.energy + i;
 	}
 
 }
