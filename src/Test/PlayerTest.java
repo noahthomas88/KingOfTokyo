@@ -37,5 +37,27 @@ public class PlayerTest {
 							+ "victory points: " + player.victoryPoints + "<br/>"
 							+ "energy: " + player.energy + "</html>"));
 	}
+	
+	@Test
+	public void testPlayerNumberOfDie() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.numberOfDieToRoll == 6);
+	}
+	
+	@Test
+	public void testAddOneDie() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.numberOfDieToRoll == 6);
+		player.addOneDie();
+		assertTrue(player.numberOfDieToRoll == 7);
+	}
+	
+	@Test
+	public void testSubOneDie() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.numberOfDieToRoll == 6);
+		player.subOneDie();
+		assertTrue(player.numberOfDieToRoll == 5);
+	}
 
 }
