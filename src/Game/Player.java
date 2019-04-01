@@ -38,4 +38,9 @@ public class Player {
 		this.numberOfDieToRoll ++;	
 	}
 
+	public void subOneDie() {
+		this.numberOfDieToRoll --;
+		
+	}
+
 }
