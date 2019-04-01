@@ -51,5 +51,13 @@ public class PlayerTest {
 		player.addOneDie();
 		assertTrue(player.numberOfDieToRoll == 7);
 	}
+	
+	@Test
+	public void testSubOneDie() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.numberOfDieToRoll == 6);
+		player.subOneDie();
+		assertTrue(player.numberOfDieToRoll == 5);
+	}
 
 }
