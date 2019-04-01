@@ -37,6 +37,10 @@ public class Player {
 	
 	public void addEnergy(int i) {
 		this.energy = this.energy + i;
+		if(this.energy < 0) {
+			this.energy = this.energy - i;
+			throw new IllegalArgumentException();
+		}
 	}
 
 	public void addOneDie() {

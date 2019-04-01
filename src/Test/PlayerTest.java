@@ -127,5 +127,18 @@ public class PlayerTest {
 		player.addEnergy(-3);
 		assertEquals(player.energy, 2);
 	}
+	
+	@Test
+	public void testAddNegativeEnergyExceed() {
+		Player player = new Player("Test");
+		player.addEnergy(5);
+		try {
+			player.addEnergy(-6);
+			fail("Cannot spend that much energy");
+		}catch(IllegalArgumentException e) {
+			assertEquals(player.energy, 5);
+		}
+		
+	}
 
 }
