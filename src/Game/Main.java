@@ -20,7 +20,8 @@ public class Main {
 		}		
 		
 		myBoard.constructPlayers(mygui.getNames(numOfPlayers));
-		mygui.displayBoard(myBoard);
+		Gameplay game = new Gameplay(myBoard);
+		mygui.displayBoard(myBoard, numOfPlayers);
 	}
 
 }
