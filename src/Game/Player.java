@@ -27,10 +27,7 @@ public class Player {
 	}
 	
 	public void addHealth(int i) {
-		if (i < 0) {
-			throw new IllegalArgumentException();
-		}
-		this.health = this.health - i;
+		this.health = this.health + i;
 	}
 	
 	public void addEnergy(int i) {
