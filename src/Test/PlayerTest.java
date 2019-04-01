@@ -169,5 +169,13 @@ public class PlayerTest {
 		player.addVictory(-3);
 		assertEquals(2,player.victoryPoints);
 	}
+	
+	@Test
+	public void testAddNegativeVictoryExceed() {
+		Player player = new Player("Test");
+		player.addVictory(5);
+		player.addVictory(-6);
+		assertEquals(0,player.victoryPoints);
+	}
 
 }
