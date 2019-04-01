@@ -34,4 +34,8 @@ public class Player {
 		return playerStatusString;
 	}
 
+	public void addOneDie() {
+		this.numberOfDieToRoll ++;	
+	}
+
 }

@@ -41,17 +41,15 @@ public class PlayerTest {
 	@Test
 	public void testPlayerNumberOfDie() {
 		Player player = new Player("TestDummy");
-		int dieNum = player.numberOfDieToRoll;
-		assertTrue(dieNum == 6);
+		assertTrue(player.numberOfDieToRoll == 6);
 	}
 	
 	@Test
 	public void testAddOneDie() {
 		Player player = new Player("TestDummy");
-		int dieNum = player.numberOfDieToRoll;
-		assertTrue(dieNum == 6);
+		assertTrue(player.numberOfDieToRoll == 6);
 		player.addOneDie();
-		assertTrue(dieNum == 7);
+		assertTrue(player.numberOfDieToRoll == 7);
 	}
 
 }
