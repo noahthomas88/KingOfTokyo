@@ -4,11 +4,17 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class GasRefineryTest {
+import Cards.GasRefinery;
 
+public class GasRefineryTest {
+	
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		GasRefinery GasRefinery = new GasRefinery();
+		assertTrue(GasRefinery.name.equals("Gas Refinery"));
+		assertTrue(GasRefinery.description.equals("Gain 2 victory points and all other monsters lose 3 health"));
+		assertTrue(GasRefinery.type.equals("Discard"));
+		assertTrue(GasRefinery.cost == 6);
 	}
 
 }
