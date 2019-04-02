@@ -137,8 +137,45 @@ public class PlayerTest {
 			fail("Cannot spend that much energy");
 		}catch(IllegalArgumentException e) {
 			assertEquals(player.energy, 5);
-		}
-		
+		}	
+	}
+	
+	@Test
+	public void testAddOneVictory() {
+		Player player = new Player("Test");
+		player.addVictory(1);
+		assertEquals(1,player.victoryPoints);
+	}
+	
+	@Test
+	public void testAddTwoVictoryTwice() {
+		Player player = new Player("Test");
+		player.addVictory(2);
+		player.addVictory(2);
+		assertEquals(4,player.victoryPoints);
+	}
+	
+	@Test
+	public void testAddZeroVictory() {
+		Player player = new Player("Test");
+		player.addVictory(0);
+		assertEquals(0,player.victoryPoints);
+	}
+	
+	@Test
+	public void testAddNegativeVictory() {
+		Player player = new Player("Test");
+		player.addVictory(5);
+		player.addVictory(-3);
+		assertEquals(2,player.victoryPoints);
+	}
+	
+	@Test
+	public void testAddNegativeVictoryExceed() {
+		Player player = new Player("Test");
+		player.addVictory(5);
+		player.addVictory(-6);
+		assertEquals(0,player.victoryPoints);
 	}
 
 }

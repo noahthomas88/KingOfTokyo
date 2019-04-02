@@ -42,6 +42,13 @@ public class Player {
 			throw new IllegalArgumentException();
 		}
 	}
+	
+	public void addVictory(int i) {
+		this.victoryPoints = this.victoryPoints + i;
+		if(this.victoryPoints < 0) {
+			this.victoryPoints = 0;
+		}
+	}
 
 	public void addOneDie() {
 		this.numberOfDieToRoll ++;	

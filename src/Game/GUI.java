@@ -2,14 +2,23 @@ package Game;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class GUI {
+	
+	HashMap<String, JButton> buttonmap = new HashMap<String, JButton>();
+	HashMap<String, JTextArea> textmap = new HashMap<String, JTextArea>();
 
 	public GUI() {
 
@@ -23,6 +32,16 @@ public class GUI {
 			numplayers = getNumPlayers();
 		}
 		return numplayers;
+	}
+	
+	public void moveToTokyo(Player player) {
+		JTextArea tokyo = textmap.get("tokyo");
+		tokyo.setText("    Tokyo City \n  Occupied By: \n" + player.name);
+	}
+	
+	public void moveToBay(Player player) {
+		JTextArea bay = textmap.get("bay");
+		bay.setText("    Tokyo Bay \n  Occupied By: \n" + player.name);
 	}
 
 	public ArrayList<String> getNames(int numOfPlayers) {
@@ -40,7 +59,7 @@ public class GUI {
 		return names;
 	}
 
-	public void displayBoard(Board myBoard) {
+	public void displayBoard(Board myBoard, int numberOfPlayers) {
 		JFrame myframe = new JFrame();
 		myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -54,16 +73,30 @@ public class GUI {
 		JButton card1 = new JButton("Card1");
 		JButton card2 = new JButton("Card2");
 		JButton card3 = new JButton("Card3");
+		buttonmap.put("card1", card1);
+		buttonmap.put("card2", card2);
+		buttonmap.put("card2", card3);
 		JButton swipeCards = new JButton("Swipe Cards");
-		JButton tokyo = new JButton("Tokyo City");
-		JButton bay = new JButton("Tokyo Bay");
+		buttonmap.put("swipeCards", swipeCards);
+		Font tokyofont = new Font("TimesRoman", Font.BOLD, 60);
+		JTextArea tokyo = new JTextArea("    Tokyo City \n   Unoccupied!");
+		tokyo.setFont(tokyofont);
+		tokyo.setEditable(false);
+		JTextArea bay = new JTextArea("    Tokyo Bay \n   Unoccupied!");
+		bay.setFont(tokyofont);
+		bay.setEditable(false);
 		JButton dieButton = new JButton("roll dice");
+		textmap.put("tokyo", tokyo);
+		textmap.put("bay", bay);
+		buttonmap.put("die",dieButton);
 		cardPanel.add(card1);
 		cardPanel.add(card2);
 		cardPanel.add(card3);
 		cardPanel.add(swipeCards);
 		tokyoPanel.add(tokyo);
-		tokyoPanel.add(bay);
+		if(numberOfPlayers>4) {
+			tokyoPanel.add(bay);
+		}
 		buttonPanel.add(dieButton);
 
 		card1.setPreferredSize(new Dimension(100, 200));
@@ -95,6 +128,15 @@ public class GUI {
 		myframe.add(panel);
 		myframe.pack();
 		myframe.setVisible(true);
+	}
+	
+	public class ButtonListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 
 }
