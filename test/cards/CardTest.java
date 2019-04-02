@@ -1,11 +1,11 @@
-package CardTests;
+package cards;
 
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
 
-import Cards.Card;
+import cards.Card;
 
 public class CardTest {
 

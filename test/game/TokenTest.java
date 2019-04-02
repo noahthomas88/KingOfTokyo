@@ -1,14 +1,14 @@
-package Test;
+package game;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Tokens.MimicToken;
-import Tokens.PoisonToken;
-import Tokens.ShrinkToken;
-import Tokens.SmokeToken;
-import Tokens.Token;
+import tokens.MimicToken;
+import tokens.PoisonToken;
+import tokens.ShrinkToken;
+import tokens.SmokeToken;
+import tokens.Token;
 
 public class TokenTest {
 

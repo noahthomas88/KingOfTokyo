@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
