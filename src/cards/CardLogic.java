@@ -1,10 +1,9 @@
 package cards;
 
-public class CardLogic {
+import game.Player;
 
-	public boolean use() {
-		return false;
-		
-	}
+interface CardLogic {
+
+	void use(Player player);
 
 }
