@@ -1,10 +1,10 @@
-package CardTests;
+package cards;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Cards.Ultravore;
+import cards.Ultravore;
 
 public class UltravoreTest {
 

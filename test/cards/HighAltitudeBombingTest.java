@@ -1,11 +1,11 @@
-package CardTests;
+package cards;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Cards.HighAltitudeBombing;
-import Cards.HighAltitudeBombing;
+import cards.HighAltitudeBombing;
+import cards.HighAltitudeBombing;
 
 public class HighAltitudeBombingTest {
 
