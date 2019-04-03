@@ -8,7 +8,11 @@ public class ApartmentBuildingTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		ApartmentBuilding apartmentBuilding= new ApartmentBuilding();
+		assertTrue(apartmentBuilding.name.equals("Apartment Building"));
+		assertTrue(apartmentBuilding.description.equals("Gain 3 Victory Points"));
+		assertTrue(apartmentBuilding.type.equals("Discard"));
+		assertTrue(apartmentBuilding.cost == 5);
 	}
 
 }
