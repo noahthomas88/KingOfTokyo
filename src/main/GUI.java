@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,12 +17,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import game.Board;
+import game.Dice;
 import game.Player;
 
 public class GUI {
 	
 	HashMap<String, JButton> buttonmap = new HashMap<String, JButton>();
 	HashMap<String, JTextArea> textmap = new HashMap<String, JTextArea>();
+	GUI self = this;
 
 	public GUI() {
 
@@ -61,6 +64,43 @@ public class GUI {
 		}
 		return names;
 	}
+	
+	public void displayDice() {
+		JPanel panel = new JPanel();
+		ArrayList<Dice> dicelist = new ArrayList<Dice>();
+		ArrayList<JButton> diebuttons = new ArrayList<JButton>();
+		for(int i=0;i<6;i++) {
+			Dice dice = new Dice();
+			dice.roll();
+			dicelist.add(dice);
+			JButton diebutton = new JButton(dice.numberToString(dicelist.get(i).numberRolled));
+			diebuttons.add(diebutton);
+			diebutton.addActionListener(new DieListener(diebutton));
+			panel.add(diebutton);
+		}
+		JOptionPane.showConfirmDialog(null, panel, "Select dice to re-roll",JOptionPane.OK_CANCEL_OPTION);
+		int toresolve = 6;
+		while(toresolve>1) {
+			for(int i=0;i<6;i++) {
+				JButton button = diebuttons.get(i);
+				Dice die = dicelist.get(i);
+				if(button.getBackground()!=Color.RED) {
+					button.setEnabled(false);
+					die.isResolved=true;
+					toresolve--;
+				} else {
+					if(die.isResolved) {
+						toresolve--;
+						button.setEnabled(false);
+					} else {
+						die.roll();
+						button.setText(die.numberToString(die.numberRolled));
+					}
+				}
+			}
+			JOptionPane.showConfirmDialog(null, panel, "Select dice to re-roll",JOptionPane.OK_CANCEL_OPTION);
+		}
+	}
 
 	public void displayBoard(Board myBoard, int numberOfPlayers) {
 		JFrame myframe = new JFrame();
@@ -89,6 +129,7 @@ public class GUI {
 		bay.setFont(tokyofont);
 		bay.setEditable(false);
 		JButton dieButton = new JButton("roll dice");
+		dieButton.addActionListener(new RollListener());
 		textmap.put("tokyo", tokyo);
 		textmap.put("bay", bay);
 		buttonmap.put("die",dieButton);
@@ -133,12 +174,29 @@ public class GUI {
 		myframe.setVisible(true);
 	}
 	
-	public class ButtonListener implements ActionListener {
+	public class RollListener implements ActionListener {
 		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			
+				self.displayDice();
+		}
+	}
+	
+	public class DieListener implements ActionListener {
+		
+		JButton button;
+		
+		DieListener(JButton button){
+			this.button = button;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			if(this.button.getBackground() == new JButton().getBackground()) {
+				this.button.setBackground(Color.RED);
+			} else {
+				this.button.setBackground(null);
+			}
 		}
 	}
 
