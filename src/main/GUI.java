@@ -1,4 +1,4 @@
-package game;
+package main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import game.Board;
+import game.Player;
 
 public class GUI {
 	

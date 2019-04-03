@@ -9,7 +9,7 @@ import cards.ExtraHead;
 public class ExtraHeadTest {
 
 	@Test
-	public void test() {
+	public void constructorTest() {
 		ExtraHead extraHead = new ExtraHead();
 		assertTrue(extraHead.name.equals("Extra Head"));
 		assertTrue(extraHead.description.equals("Gain one extra die"));

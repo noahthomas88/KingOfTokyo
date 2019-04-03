@@ -9,7 +9,7 @@ import cards.GasRefinery;
 public class GasRefineryTest {
 	
 	@Test
-	public void test() {
+	public void constructorTest() {
 		GasRefinery GasRefinery = new GasRefinery();
 		assertTrue(GasRefinery.name.equals("Gas Refinery"));
 		assertTrue(GasRefinery.description.equals("Gain 2 victory points and all other monsters lose 3 health"));

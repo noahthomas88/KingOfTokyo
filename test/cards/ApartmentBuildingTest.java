@@ -7,7 +7,7 @@ import org.junit.Test;
 public class ApartmentBuildingTest {
 
 	@Test
-	public void test() {
+	public void constructorTest() {
 		ApartmentBuilding apartmentBuilding= new ApartmentBuilding();
 		assertTrue(apartmentBuilding.name.equals("Apartment Building"));
 		assertTrue(apartmentBuilding.description.equals("Gain 3 Victory Points"));
