@@ -12,7 +12,7 @@ public class GasRefineryTest {
 	public void constructorTest() {
 		GasRefinery GasRefinery = new GasRefinery();
 		assertTrue(GasRefinery.name.equals("Gas Refinery"));
-		assertTrue(GasRefinery.description.equals("Gain 2 victory points and all other monsters lose 3 health"));
+		assertTrue(GasRefinery.description.equals("Gain 2 Victory Points and all other monsters lose 3 health"));
 		assertTrue(GasRefinery.type.equals("Discard"));
 		assertTrue(GasRefinery.cost == 6);
 	}
