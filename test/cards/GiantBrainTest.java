@@ -11,7 +11,7 @@ public class GiantBrainTest {
 		GiantBrain bigBrain = new GiantBrain();
 		assertTrue(bigBrain.name.equals("Giant Brain"));
 		assertTrue(bigBrain.description.equals("You have one extra die roll each turn"));
-		assertTrue(bigBrain.type.equals(""));
+		assertTrue(bigBrain.type.equals("Keep"));
 		assertTrue(bigBrain.cost == 5);
 	}
 
