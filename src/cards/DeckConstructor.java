@@ -13,6 +13,9 @@ public class DeckConstructor {
 	public DeckConstructor() {
 		this.deck = new ArrayList<>();
 		this.visibleCard = new Card[3];
+		for (int index = 0; index < 3; index++) {
+			this.visibleCard[index] = new Card();
+		}
 		this.discard = new ArrayList<>();
 	}
 	
@@ -33,6 +36,10 @@ public class DeckConstructor {
 	
 	public void shuffle() {
 		Collections.shuffle(deck);
+	}
+	
+	public void reveal() {
+		
 	}
 
 }

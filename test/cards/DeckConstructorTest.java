@@ -11,6 +11,9 @@ public class DeckConstructorTest {
 		DeckConstructor d = new DeckConstructor();
 		assertTrue(d.deck.isEmpty());
 		assertEquals(d.visibleCard.length, 3);
+		for (int index = 0; index < 3; index++) {
+			assertEquals(d.visibleCard[index].name, "default");
+		}
 		assertTrue(d.discard.isEmpty());
 	}
 	
