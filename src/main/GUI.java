@@ -25,6 +25,7 @@ public class GUI {
 	HashMap<String, JButton> buttonmap = new HashMap<String, JButton>();
 	HashMap<String, JTextArea> textmap = new HashMap<String, JTextArea>();
 	GUI self = this;
+	ArrayList<JLabel> playertexts;
 
 	public GUI() {
 
@@ -48,6 +49,14 @@ public class GUI {
 	public void moveToBay(Player player) {
 		JTextArea bay = textmap.get("bay");
 		bay.setText("    Tokyo Bay \n  Occupied By: \n" + player.name);
+	}
+	
+	public void setActivePlayer(Integer playerNumber) {
+		for(int i=0;i<playertexts.size();i++) {
+			playertexts.get(i).setBackground(null);
+		}
+		playertexts.get(playerNumber).setBackground(Color.GREEN);
+		System.out.println("setting" + playerNumber);
 	}
 
 	public ArrayList<String> getNames(int numOfPlayers) {
@@ -151,11 +160,12 @@ public class GUI {
 		bay.setPreferredSize(new Dimension(400, 400));
 		dieButton.setPreferredSize(new Dimension(100, 100));
 
-		ArrayList<JLabel> playertexts = new ArrayList<JLabel>();
+		playertexts = new ArrayList<JLabel>();
 		for (int i = 0; i < 6; i++) {
 			JLabel playertext = new JLabel("empty");
 			playertext.setPreferredSize(new Dimension(250, 250));
 			playerPanel.add(playertext);
+			playertext.setOpaque(true);
 			playertexts.add(playertext);
 		}
 
