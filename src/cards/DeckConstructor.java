@@ -14,6 +14,7 @@ public class DeckConstructor {
 	
 	public void createDeck(){
 		deck.add(new ApartmentBuilding());
+		deck.add(new CommuterTrain());
 		deck.add(new Energize());
 		deck.add(new ExtraHead());
 		deck.add(new GasRefinery());

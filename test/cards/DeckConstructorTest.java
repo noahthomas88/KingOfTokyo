@@ -18,7 +18,7 @@ public class DeckConstructorTest {
 		d.createDeck();
 		assertFalse(d.deck.isEmpty());
 		
-		String[] cardNames = {"Apartment Building", "Energize", "Extra Head",
+		String[] cardNames = {"Apartment Building", "Commuter Train", "Energize", "Extra Head",
 				"Gas Refinery", "Giant Brain", "High Altitude Bombing",
 				"Jet Fighter", "National Guard", "Nuclear Power Plant", "Tank", "Ultravore"};
 		for (int index = 0; index < cardNames.length; index++) {
