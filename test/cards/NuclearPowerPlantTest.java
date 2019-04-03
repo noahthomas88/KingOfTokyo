@@ -10,7 +10,7 @@ public class NuclearPowerPlantTest {
 	public void constructorTest() {
 		NuclearPowerPlant powerPlant = new NuclearPowerPlant();
 		assertTrue(powerPlant.name.equals("Nuclear Power Plant"));
-		assertTrue(powerPlant.description.equals("Gain two Victory Points and gain 3 Health"));
+		assertTrue(powerPlant.description.equals("Gain 2 Victory Points and gain 3 Health"));
 		assertTrue(powerPlant.type.equals("Discard"));
 		assertTrue(powerPlant.cost == 6);
 	}
