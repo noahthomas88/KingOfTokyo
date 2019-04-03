@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Cards.JetFighter;
+import cards.JetFighter;
 
 public class JetFighterTest {
 
