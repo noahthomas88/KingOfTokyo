@@ -78,7 +78,7 @@ public class GUI {
 		buttonmap.put("card2", card3);
 		JButton swipeCards = new JButton("Swipe Cards");
 		buttonmap.put("swipeCards", swipeCards);
-		Font tokyofont = new Font("TimesRoman", Font.BOLD, 60);
+		Font tokyofont = new Font("TimesRoman", Font.BOLD, 40);
 		JTextArea tokyo = new JTextArea("    Tokyo City \n   Unoccupied!");
 		tokyo.setFont(tokyofont);
 		tokyo.setEditable(false);
