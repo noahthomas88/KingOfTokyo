@@ -1,4 +1,4 @@
-package Tokens;
+package tokens;
 
 public class PoisonToken extends Token {
 	

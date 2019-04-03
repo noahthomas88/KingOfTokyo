@@ -1,12 +1,12 @@
-package Test;
+package game;
 
 import static org.junit.Assert.*;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import Game.DiceHandler;
-import Game.Player;
+import game.DiceHandler;
+import game.Player;
 
 public class DiceHandlerTest {
 

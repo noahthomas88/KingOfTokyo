@@ -1,15 +1,13 @@
-package Test;
+package game;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
-import Game.Board;
-import Game.Gameplay;
-import Game.Player;
+import game.Board;
+import game.Gameplay;
 
 public class GameplayTest {
 
