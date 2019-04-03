@@ -40,7 +40,7 @@ public class Gameplay {
 	
 	public void beginGame() {
 		selectFirstPlayer();
-		JOptionPane.showMessageDialog(null, this.currentplayer.name+" has been selected as the starting player");
+		gameUI.displayStartingPlayer(currentplayer.name);
 		gameUI.setActivePlayer(playerToNumber.get(currentplayer.name));
 	}
 

@@ -110,6 +110,10 @@ public class GUI {
 			JOptionPane.showConfirmDialog(null, panel, "Select dice to re-roll",JOptionPane.OK_CANCEL_OPTION);
 		}
 	}
+	
+	public void displayStartingPlayer(String name) {
+		JOptionPane.showMessageDialog(null, name + "has been selected as the starting player");
+	}
 
 	public void displayBoard(Board myBoard, int numberOfPlayers) {
 		JFrame myframe = new JFrame();
