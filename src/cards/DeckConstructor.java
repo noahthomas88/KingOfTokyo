@@ -7,9 +7,13 @@ import java.util.List;
 public class DeckConstructor {
 	
 	List<Card> deck;
+	Card[] visibleCard;
+	List<Card> discard;
 
 	public DeckConstructor() {
 		this.deck = new ArrayList<>();
+		this.visibleCard = new Card[3];
+		this.discard = new ArrayList<>();
 	}
 	
 	public void createDeck(){
@@ -30,4 +34,5 @@ public class DeckConstructor {
 	public void shuffle() {
 		Collections.shuffle(deck);
 	}
+
 }

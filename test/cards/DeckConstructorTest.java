@@ -10,6 +10,8 @@ public class DeckConstructorTest {
 	public void testConstrctor() {
 		DeckConstructor d = new DeckConstructor();
 		assertTrue(d.deck.isEmpty());
+		assertEquals(d.visibleCard.length, 3);
+		assertTrue(d.discard.isEmpty());
 	}
 	
 	@Test
