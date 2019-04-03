@@ -79,6 +79,7 @@ public class DeckConstructorTest {
 		d.createDeck();
 		d.shuffle();
 		d.reveal();
+		
 		for (int index = 0; index < 3; index++) {
 			assertNotEquals(d.visibleCard[index].name, "default");
 		}
