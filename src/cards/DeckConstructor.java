@@ -38,8 +38,18 @@ public class DeckConstructor {
 		Collections.shuffle(deck);
 	}
 	
+	public void addDiscardtoDeck() {
+		this.deck.addAll(this.discard);
+		this.discard.removeAll(this.discard);
+	}
+	
 	public void reveal() {
-		
+		int index = 0;
+		while(this.visibleCard[index].name.equals("default")) {
+			if(this.deck.isEmpty()) {
+				
+			}
+		}
 	}
 
 }
