@@ -4,24 +4,59 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.easymock.EasyMock;
 import org.junit.Test;
 
-import game.Board;
 import game.Gameplay;
 
 public class GameplayTest {
-
+	
 	@Test
-	public void PlayerSelectionTest() {
-		Board myboard = new Board(2);
+	public void GameplayInitializationTest() {
+		GUI gui = EasyMock.createNiceMock(GUI.class);
+		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
 		ArrayList<String> fakenames = new ArrayList<String>();
 		fakenames.add("player1");
 		fakenames.add("player2");
-		myboard.constructPlayers(fakenames);
-		Gameplay gameplay = new Gameplay(myboard);
+		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		EasyMock.replay(gui);
+		Gameplay gameplay = new Gameplay(gui);
+		gameplay.initializeGame();
+		assertTrue(gameplay.gameUI==gui);
+		EasyMock.verify(gui);
+	}
+
+	@Test
+	public void PlayerSelectionTest() {
+		ArrayList<String> fakenames = new ArrayList<String>();
+		fakenames.add("player1");
+		fakenames.add("player2");
+		GUI gui = EasyMock.createNiceMock(GUI.class);
+		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		EasyMock.replay(gui);
+		Gameplay gameplay = new Gameplay(gui);
+		gameplay.initializeGame();
 		assertTrue(gameplay.currentplayer == null);
 		gameplay.selectFirstPlayer();
 		assertTrue(gameplay.currentplayer!=null);
+		EasyMock.verify(gui);
 	}
+	
+	@Test
+	public void BeginGameTest() {
+		ArrayList<String> fakenames = new ArrayList<String>();
+		fakenames.add("player1");
+		fakenames.add("player2");
+		GUI gui = EasyMock.createNiceMock(GUI.class);
+		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		EasyMock.replay(gui);
+		Gameplay gameplay = new Gameplay(gui);
+		gameplay.initializeGame();
+		gameplay.beginGame();
+		EasyMock.verify(gui);
+	}
+	
 
 }

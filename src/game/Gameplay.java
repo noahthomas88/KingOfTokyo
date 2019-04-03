@@ -3,13 +3,36 @@ package game;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Gameplay {
 
 	public Player currentplayer;
 	public Board gameboard;
+	public GUI gameUI;
 
-	public Gameplay(Board myBoard) {
-		this.gameboard = myBoard;
+	public Gameplay(GUI gui) {
+		this.gameUI = gui;
+	}
+	
+	public void initializeGame() {
+		
+		int numOfPlayers;
+
+		try{
+			numOfPlayers = gameUI.getNumPlayers();
+			gameboard = new Board(numOfPlayers);
+		}catch(IllegalArgumentException e){
+			JOptionPane.showMessageDialog(null, "Number of players have to be between 2 to 6");
+			return;
+		}		
+		
+		gameboard.constructPlayers(gameUI.getNames(numOfPlayers));
+		gameUI.displayBoard(gameboard, numOfPlayers);
+	}
+	
+	public void beginGame() {
+		
 	}
 
 	public void selectFirstPlayer() {
