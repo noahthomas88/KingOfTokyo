@@ -8,6 +8,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import game.Gameplay;
+import main.GUI;
 
 public class GameplayTest {
 	

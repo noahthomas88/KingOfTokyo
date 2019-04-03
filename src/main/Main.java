@@ -1,4 +1,6 @@
-package game;
+package main;
+
+import game.Gameplay;
 
 public class Main {
 

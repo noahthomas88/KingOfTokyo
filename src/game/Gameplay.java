@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+import main.GUI;
+
 public class Gameplay {
 
 	public Player currentplayer;
