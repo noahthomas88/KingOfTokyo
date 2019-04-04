@@ -80,7 +80,7 @@ public class GUI {
 		ArrayList<Dice> dicelist = new ArrayList<Dice>();
 		ArrayList<JButton> diebuttons = new ArrayList<JButton>();
 		for(int i=0;i<6;i++) {
-			Dice dice = new Dice();
+			Dice dice = new Dice(game.currentplayer);
 			dice.roll();
 			dicelist.add(dice);
 			JButton diebutton = new JButton(dice.numberToString(dicelist.get(i).numberRolled));
@@ -116,6 +116,13 @@ public class GUI {
 	public void displayStartingPlayer(String name) {
 		JOptionPane.showMessageDialog(null, name + " has been selected as the starting player");
 	}
+	
+	public void updatePlayerText(Board myBoard) {
+		for (int i = 0; i < myBoard.playerList.size(); i++) {
+			JLabel playertoset = playertexts.get(i);
+			playertoset.setText(myBoard.playerList.get(i).buildPlayerStatusString());
+		}
+	}
 
 	public void displayBoard(Board myBoard, int numberOfPlayers, Gameplay game) {
 		this.game = game;
@@ -146,22 +153,28 @@ public class GUI {
 		bay.setEditable(false);
 		JButton dieButton = new JButton("roll dice");
 		JButton endTurn = new JButton("End Turn");
+		JButton cedeTokyo = new JButton("Cede Tokyo");
+		cedeTokyo.setEnabled(false);
 		endTurn.setEnabled(false);
 		dieButton.addActionListener(new RollListener());
 		endTurn.addActionListener(new EndListener());
+		cedeTokyo.addActionListener(new CedeListener());
 		textmap.put("tokyo", tokyo);
 		textmap.put("bay", bay);
 		buttonmap.put("die",dieButton);
 		buttonmap.put("end", endTurn);
+		buttonmap.put("cede", cedeTokyo);
 		cardPanel.add(card1);
 		cardPanel.add(card2);
 		cardPanel.add(card3);
 		cardPanel.add(swipeCards);
+		cardPanel.add(cedeTokyo);
 		tokyoPanel.add(tokyo);
 		if(numberOfPlayers>4) {
 			tokyoPanel.add(bay);
 		}
 		buttonPanel.add(dieButton);
+		buttonPanel.add(endTurn);
 
 		card1.setPreferredSize(new Dimension(100, 200));
 		card2.setPreferredSize(new Dimension(100, 200));
@@ -180,9 +193,9 @@ public class GUI {
 			playertexts.add(playertext);
 		}
 
-		for (int i = 0; i < myBoard.player.size(); i++) {
+		for (int i = 0; i < myBoard.playerList.size(); i++) {
 			JLabel playertoset = playertexts.get(i);
-			playertoset.setText(myBoard.player.get(i).buildPlayerStatusString());
+			playertoset.setText(myBoard.playerList.get(i).buildPlayerStatusString());
 		}
 
 		panel.add(cardPanel, BorderLayout.NORTH);
@@ -234,6 +247,14 @@ public class GUI {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 				game.endTurn();
+		}
+	}
+	
+	public class CedeListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+				game.cedeTokyo();
 		}
 	}
 

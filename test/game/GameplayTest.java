@@ -59,5 +59,69 @@ public class GameplayTest {
 		EasyMock.verify(gui);
 	}
 	
+	@Test
+	public void BeginTurnTest() {
+		ArrayList<String> fakenames = new ArrayList<String>();
+		fakenames.add("player1");
+		fakenames.add("player2");
+		GUI gui = EasyMock.createNiceMock(GUI.class);
+		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		EasyMock.replay(gui);
+		Gameplay gameplay = new Gameplay(gui);
+		gameplay.beginTurn();
+		EasyMock.verify(gui);
+	}
+	
+	@Test
+	public void EndTurnTest() {
+		GUI gui = EasyMock.createNiceMock(GUI.class);
+		ArrayList<String> fakenames = new ArrayList<String>();
+		fakenames.add("player1");
+		fakenames.add("player2");
+		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		Gameplay gameplay = new Gameplay(gui);
+		gameplay.endTurn();
+	}
+	
+	@Test
+	public void DiceRolledTest() {
+		GUI gui = EasyMock.createNiceMock(GUI.class);
+		ArrayList<String> fakenames = new ArrayList<String>();
+		fakenames.add("player1");
+		fakenames.add("player2");
+		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		Gameplay gameplay = new Gameplay(gui);
+		ArrayList<Dice> dicelist = EasyMock.createNiceMock(ArrayList.class);
+		gameplay.diceRolled(dicelist);
+	}
+	
+	@Test
+	public void CalculateScoreTest() {
+		GUI gui = EasyMock.createNiceMock(GUI.class);
+		ArrayList<String> fakenames = new ArrayList<String>();
+		fakenames.add("player1");
+		fakenames.add("player2");
+		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		Gameplay gameplay = new Gameplay(gui);
+		ArrayList<Dice> dicelist = EasyMock.createNiceMock(ArrayList.class);
+		gameplay.calculateScore(dicelist);
+	}
+	
+	@Test
+	public void CedeTokyoTest() {
+		GUI gui = EasyMock.createNiceMock(GUI.class);
+		ArrayList<String> fakenames = new ArrayList<String>();
+		fakenames.add("player1");
+		fakenames.add("player2");
+		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		Gameplay gameplay = new Gameplay(gui);
+		gameplay.cedeTokyo();
+	}
+	
 
 }
