@@ -12,6 +12,7 @@ public class NuclearPowerPlantLogicTest {
 	public void nuclearPowerPlantUseTest() {
 		Player p = new Player("TestPlayer");
 		p.victoryPoints = 10;
+		p.health = 1;
 		NuclearPowerPlantLogic cardLogic = new NuclearPowerPlantLogic();
 		int savedVictoryPoints = p.victoryPoints;
 		int savedHealth = p.health;

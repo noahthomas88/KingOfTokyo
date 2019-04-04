@@ -13,9 +13,9 @@ public class EnergizeLogicTest {
 		Player p = new Player("PlayerName");
 		p.energy = 10;
 		EnergizeLogic cardLogic = new EnergizeLogic();
-		int saved = p.victoryPoints;
+		int saved = p.energy;
 		cardLogic.use(p);
-		assertTrue(p.victoryPoints == saved + 9);
+		assertTrue(p.energy == saved + 9);
 		
 	}
 
