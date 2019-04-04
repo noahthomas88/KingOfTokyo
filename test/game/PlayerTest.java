@@ -210,7 +210,6 @@ public class PlayerTest {
 		Player player = new Player("TestDummy");
 		player.addMaxHealth();
 		player.addHealth(2);
-		
 		assertEquals(player.health, 11);		
 	}
 

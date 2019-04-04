@@ -7,9 +7,9 @@ import cards.DeckConstructor;
 public class Board {
 
 	public int numOfPlayers;
-	public ArrayList<Player> player;
-	public Player tokyoCity;
-	public Player tokyoBay;
+	public ArrayList<Player> playerList;
+	public Player cityPlayer;
+	public Player bayPlayer;
 	public DeckConstructor deck;
 	
 	public Board(int numOfPlayers) {
@@ -18,18 +18,25 @@ public class Board {
 		}
 
 		this.numOfPlayers = numOfPlayers;
-		this.player = new ArrayList<Player>();
+		this.playerList = new ArrayList<Player>();
 		this.deck = new DeckConstructor();
 	}
 
 	public void constructPlayers(ArrayList<String> names) {
 		for (int i = 0; i < this.numOfPlayers; i++) {
-			this.player.add(new Player(names.get(i)));
+			this.playerList.add(new Player(names.get(i)));
 		}
 	}
 	
 	public void doAttack(Player attacker) {
-		
+		if(cityPlayer.equals(attacker) || bayPlayer.equals(attacker)) {
+			for(int i = 0; i < playerList.size(); i++) {
+				Player indexedPlayer = playerList.get(i);
+				if(!indexedPlayer.equals(cityPlayer) || !indexedPlayer.equals(bayPlayer)){
+					indexedPlayer.addHealth(-1);
+				}
+			}
+		}
 	}
 	
 	public void initializeDeck() {
