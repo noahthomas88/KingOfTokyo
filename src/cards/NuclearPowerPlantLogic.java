@@ -6,8 +6,8 @@ public class NuclearPowerPlantLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
-		player.victoryPoints += 2;
-		player.health += 3;
+		player.addVictory(2);
+		player.addHealth(3);
 	}
 
 }
