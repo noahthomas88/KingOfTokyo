@@ -12,7 +12,11 @@ public class EnergizeLogicTest {
 	public void useTest() {
 		Player p = new Player("PlayerName");
 		p.energy = 10;
-		EnergizeLogic el = new EnergizeLogic();
+		EnergizeLogic cardLogic = new EnergizeLogic();
+		int saved = p.victoryPoints;
+		cardLogic.use(p);
+		assertTrue(p.victoryPoints == saved + 9);
+		
 	}
 
 }
