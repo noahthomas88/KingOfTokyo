@@ -2,10 +2,6 @@ package cards;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -136,6 +132,26 @@ public class DeckConstructorTest {
 		for (int index = 0; index<3; index++) {
 			assertNotEquals(deckCons.visibleCard[index].name, "default");
 		}
+	}
+	
+	@Test
+	public void testAddToEmptyDiscard(){
+		DeckConstructor deckCons = new DeckConstructor();
+		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
+		
+		deckCons.addToDiscard(card);
+		
+		assertEquals(deckCons.discard.size(), 1);		
+	}
+	
+	@Test
+	public void testAddToNonEmptyDiscard(){
+		DeckConstructor deckCons = new DeckConstructor();
+		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
+		deckCons.discard.add(card);
+		deckCons.addToDiscard(card);
+		
+		assertEquals(deckCons.discard.size(), 2);		
 	}
 
 }

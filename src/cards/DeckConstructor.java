@@ -58,5 +58,9 @@ public class DeckConstructor {
 		}
 		return;
 	}
+	
+	public void addToDiscard(Card card){
+		this.discard.add(card);
+	}
 
 }
