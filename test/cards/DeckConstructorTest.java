@@ -92,5 +92,43 @@ public class DeckConstructorTest {
 			assertNotEquals(deckCons.visibleCard[index].name, "default");
 		}
 	}
+	
+	@Test
+	public void testRevealOneCardDeck() {
+		DeckConstructor deckCons = new DeckConstructor();
+		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
+			
+		deckCons.discard.add(card);
+		deckCons.discard.add(card);
+		deckCons.discard.add(card);
+		deckCons.deck.add(card);
+		
+		deckCons.reveal();
+		
+		assertTrue(deckCons.discard.isEmpty());
+		assertEquals(deckCons.deck.size(), 1);
+		for (int index = 0; index<3; index++) {
+			assertNotEquals(deckCons.visibleCard[index].name, "default");
+		}
+	}
+	
+	@Test
+	public void testRevealMultiCardDeck() {
+		DeckConstructor deckCons = new DeckConstructor();
+		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
+			
+		deckCons.discard.add(card);
+		deckCons.deck.add(card);
+		deckCons.deck.add(card);
+		deckCons.deck.add(card);
+		
+		deckCons.reveal();
+		
+		assertTrue(deckCons.deck.isEmpty());
+		assertEquals(deckCons.discard.size(), 1);
+		for (int index = 0; index<3; index++) {
+			assertNotEquals(deckCons.visibleCard[index].name, "default");
+		}
+	}
 
 }
