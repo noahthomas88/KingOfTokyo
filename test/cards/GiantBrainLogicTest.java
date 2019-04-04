@@ -4,11 +4,17 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import game.Player;
+
 public class GiantBrainLogicTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		Player p = new Player("PlayerName");
+		assertTrue(p.numberOfDieRolls == 3);
+		GiantBrainLogic cardLogic = new GiantBrainLogic();
+		cardLogic.use(p);
+		assertTrue(p.numberOfDieRolls == 4);
 	}
 
 }
