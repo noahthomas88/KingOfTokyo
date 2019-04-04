@@ -18,6 +18,7 @@ import javax.swing.JTextArea;
 
 import game.Board;
 import game.Dice;
+import game.Gameplay;
 import game.Player;
 
 public class GUI {
@@ -26,9 +27,9 @@ public class GUI {
 	HashMap<String, JTextArea> textmap = new HashMap<String, JTextArea>();
 	GUI self = this;
 	ArrayList<JLabel> playertexts;
+	Gameplay game;
 
 	public GUI() {
-
 	}
 
 	public Integer getNumPlayers() {
@@ -109,13 +110,15 @@ public class GUI {
 			}
 			JOptionPane.showConfirmDialog(null, panel, "Select dice to re-roll",JOptionPane.OK_CANCEL_OPTION);
 		}
+		game.diceRolled(dicelist);
 	}
 	
 	public void displayStartingPlayer(String name) {
-		JOptionPane.showMessageDialog(null, name + "has been selected as the starting player");
+		JOptionPane.showMessageDialog(null, name + " has been selected as the starting player");
 	}
 
-	public void displayBoard(Board myBoard, int numberOfPlayers) {
+	public void displayBoard(Board myBoard, int numberOfPlayers, Gameplay game) {
+		this.game = game;
 		JFrame myframe = new JFrame();
 		myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -142,10 +145,14 @@ public class GUI {
 		bay.setFont(tokyofont);
 		bay.setEditable(false);
 		JButton dieButton = new JButton("roll dice");
+		JButton endTurn = new JButton("End Turn");
+		endTurn.setEnabled(false);
 		dieButton.addActionListener(new RollListener());
+		endTurn.addActionListener(new EndListener());
 		textmap.put("tokyo", tokyo);
 		textmap.put("bay", bay);
 		buttonmap.put("die",dieButton);
+		buttonmap.put("end", endTurn);
 		cardPanel.add(card1);
 		cardPanel.add(card2);
 		cardPanel.add(card3);
@@ -188,6 +195,14 @@ public class GUI {
 		myframe.setVisible(true);
 	}
 	
+	public void EnableEndTurnButton() {
+		this.buttonmap.get("end").setEnabled(true);
+	}
+	
+	public void DisableEndTurnButton() {
+		this.buttonmap.get("end").setEnabled(false);
+	}
+	
 	public class RollListener implements ActionListener {
 		
 		@Override
@@ -211,6 +226,14 @@ public class GUI {
 			} else {
 				this.button.setBackground(null);
 			}
+		}
+	}
+	
+	public class EndListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+				game.endTurn();
 		}
 	}
 
