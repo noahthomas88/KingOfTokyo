@@ -3,6 +3,8 @@ package cards;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
@@ -77,15 +79,19 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testRevealEmptyDeck() {
-		DeckConstructor deckCons = new DeckConstructor();
+		DeckConstructor deckCons = EasyMock.createMockBuilder(DeckConstructor.class).addMockedMethod("shuffle").withConstructor().createNiceMock();
 		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
-			
+		
+		deckCons.shuffle();
+		EasyMock.replay(deckCons);
+		
 		deckCons.discard.add(card);
 		deckCons.discard.add(card);
 		deckCons.discard.add(card);
 		
 		deckCons.reveal();
 		
+		EasyMock.verify(deckCons);		
 		assertTrue(deckCons.deck.isEmpty());
 		assertTrue(deckCons.discard.isEmpty());
 		for (int index = 0; index<3; index++) {

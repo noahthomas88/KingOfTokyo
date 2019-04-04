@@ -2,13 +2,12 @@ package cards;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class DeckConstructor {
 	
-	List<Card> deck;
+	ArrayList<Card> deck;
 	Card[] visibleCard;
-	List<Card> discard;
+	ArrayList<Card> discard;
 
 	public DeckConstructor() {
 		this.deck = new ArrayList<>();

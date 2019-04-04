@@ -101,6 +101,14 @@ public class PlayerTest {
 	}
 	
 	@Test
+	public void testAddHealthToNine() {
+		Player player = new Player("Test");
+		player.health = 7;
+		player.addHealth(2);
+		assertEquals(player.health, 9);
+	}
+	
+	@Test
 	public void testAddOneEnergy() {
 		Player player = new Player("Test");
 		player.addEnergy(1);;
