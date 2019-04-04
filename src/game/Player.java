@@ -7,6 +7,7 @@ public class Player {
 	public int victoryPoints;
 	public int energy;
 	public int numberOfDieToRoll;
+	public int numberOfDieRolls;
 
 	public Player(String name){
 		if(name.equals("")){
@@ -17,6 +18,7 @@ public class Player {
 		this.energy = 0;
 		this.name = name;
 		this.numberOfDieToRoll = 6;
+		this.numberOfDieRolls = 3;
 	}
 
 	public String buildPlayerStatusString() {
