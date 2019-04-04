@@ -33,7 +33,7 @@ public class Board {
 			for(int i = 0; i < playerList.size(); i++) {
 				Player indexedPlayer = playerList.get(i);
 				if(!indexedPlayer.equals(cityPlayer) || !indexedPlayer.equals(bayPlayer)){
-					indexedPlayer.health--;
+					indexedPlayer.addHealth(-1);
 				}
 			}
 		}
