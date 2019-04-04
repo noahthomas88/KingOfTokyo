@@ -4,8 +4,10 @@ import game.Player;
 
 public class ExtraHeadLogic implements CardLogic {
 
-	public void use(Player p) {
-		p.addOneDie();
+	
+	@Override
+	public void use(Player player) {
+		player.addOneDie();
 	}
 
 }

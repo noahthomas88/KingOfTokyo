@@ -4,9 +4,9 @@ import game.Player;
 
 public class TankLogic implements CardLogic {
 
-	public void use(Player p) {
-		p.health -= 3;
-		p.victoryPoints += 4;
+	public void use(Player player) {
+		player.health -= 3;
+		player.victoryPoints += 4;
 	}
 
 }
