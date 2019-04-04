@@ -60,7 +60,14 @@ public class Player {
 
 	public void subOneDie() {
 		this.numberOfDieToRoll --;
-		
+	}
+	
+	public void addMaxHealth(){
+		this.maxHealth++;
+	}
+	
+	public void subMaxHealth(){
+		this.maxHealth--;
 	}
 
 }
