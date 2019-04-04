@@ -15,6 +15,8 @@ public class PlayerTest {
 		assertTrue(player.victoryPoints == 0);
 		assertTrue(player.energy == 0);
 		assertTrue(player.name.equals("test"));
+		assertTrue(player.numberOfDieRolls == 3);
+		assertTrue(player.numberOfDieToRoll == 6);
 	}
 	
 	@Test

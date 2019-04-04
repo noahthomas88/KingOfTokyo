@@ -32,4 +32,16 @@ public class Dice {
 	public int getTimesRolled() {
 		return this.timesRolled;
 	}
+	
+	public String numberToString(int number) {
+		if(number < 4) {
+			return number + "";
+		} else if (number == 4){
+			return "attack";
+		} else if (number == 5) {
+			return "energy";
+		} else {
+			return "heal";
+		}
+	}
 }

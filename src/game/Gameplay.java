@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ public class Gameplay {
 	public Player currentplayer;
 	public Board gameboard;
 	public GUI gameUI;
+	HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 
 	public Gameplay(GUI gui) {
 		this.gameUI = gui;
@@ -30,11 +32,16 @@ public class Gameplay {
 		}		
 		
 		gameboard.constructPlayers(gameUI.getNames(numOfPlayers));
+		for(int i=0;i<gameboard.player.size();i++) {
+			playerToNumber.put(gameboard.player.get(i).name,i);
+		}
 		gameUI.displayBoard(gameboard, numOfPlayers);
 	}
 	
 	public void beginGame() {
-		
+		selectFirstPlayer();
+		gameUI.displayStartingPlayer(currentplayer.name);
+		gameUI.setActivePlayer(playerToNumber.get(currentplayer.name));
 	}
 
 	public void selectFirstPlayer() {

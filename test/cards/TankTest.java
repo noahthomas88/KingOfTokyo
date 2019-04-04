@@ -12,6 +12,7 @@ public class TankTest {
 		assertTrue(Tank.name.equals("Tank"));
 		assertTrue(Tank.description.equals("Gain 4 Victory Points and lose 3 Health"));
 		assertTrue(Tank.type.equals("Discard"));
-		assertTrue(Tank.cost == 4);	}
+		assertTrue(Tank.cost == 4);	
+		}
 
 }
