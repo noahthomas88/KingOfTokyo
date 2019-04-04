@@ -47,9 +47,13 @@ public class DeckConstructor {
 		int index = 0;
 		while(this.visibleCard[index].name.equals("default")) {
 			if(this.deck.isEmpty()) {
-				
+				addDiscardtoDeck();
+				shuffle();
 			}
+			this.visibleCard[index] = this.deck.remove(0);
+			index = (index + 1) % 3;
 		}
+		return;
 	}
 
 }
