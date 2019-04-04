@@ -17,6 +17,7 @@ public class PlayerTest {
 		assertTrue(player.name.equals("test"));
 		assertTrue(player.numberOfDieRolls == 3);
 		assertTrue(player.numberOfDieToRoll == 6);
+		assertTrue(player.maxHealth == 10);
 	}
 	
 	@Test
