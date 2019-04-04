@@ -6,18 +6,18 @@ import org.junit.Test;
 
 import game.Player;
 
-public class JetFighterLogicTest {
+public class NationalGuardLogicTest {
 
 	@Test
-	public void jetFighterUseTest() {
+	public void nationalGuardUseTest() {
 		Player p = new Player("TestPlayer");
 		p.victoryPoints = 10;
-		JetFighterLogic cardLogic = new JetFighterLogic();
+		NationalGuardLogic cardLogic = new NationalGuardLogic();
 		int savedVictoryPoints = p.victoryPoints;
 		int savedHealth = p.health;
 		cardLogic.use(p);
-		assertTrue(p.victoryPoints == savedVictoryPoints + 5);
-		assertTrue(p.health == savedHealth - 4);
+		assertTrue(p.victoryPoints == savedVictoryPoints + 2);
+		assertTrue(p.health == savedHealth - 2);
 	}
 
 }
