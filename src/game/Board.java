@@ -28,6 +28,10 @@ public class Board {
 		}
 	}
 	
+	public void doAttack(Player attacker) {
+		
+	}
+	
 	public void initializeDeck() {
 		deck.createDeck();
 		deck.shuffle();
