@@ -6,7 +6,7 @@ public class EnergizeLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
-		// TODO Auto-generated method stub
+		player.addEnergy(9);
 
 	}
 

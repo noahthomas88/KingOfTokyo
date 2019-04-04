@@ -6,7 +6,7 @@ public class HealLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
-		player.health += 2;
+		player.addHealth(2);
 
 	}
 

@@ -6,7 +6,7 @@ public class CornerStoreLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
-		player.victoryPoints++;
+		player.addVictory(1);
 
 	}
 

@@ -6,7 +6,7 @@ public class ApartmentBuildingLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
-		player.victoryPoints += 3;
+		player.addVictory(3);
 	}
 
 }
