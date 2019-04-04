@@ -17,6 +17,7 @@ public class PlayerTest {
 		assertTrue(player.name.equals("test"));
 		assertTrue(player.numberOfDieRolls == 3);
 		assertTrue(player.numberOfDieToRoll == 6);
+		assertTrue(player.maxHealth == 10);
 	}
 	
 	@Test
@@ -186,6 +187,31 @@ public class PlayerTest {
 		player.addVictory(5);
 		player.addVictory(-6);
 		assertEquals(0,player.victoryPoints);
+	}
+	
+	@Test
+	public void testAddMaxHealth() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.maxHealth == 10);
+		player.addMaxHealth();
+		assertTrue(player.maxHealth == 11);
+	}
+	
+	@Test
+	public void testSubMaxHealth() {
+		Player player = new Player("TestDummy");
+		assertTrue(player.maxHealth == 10);
+		player.subMaxHealth();
+		assertTrue(player.maxHealth == 9);
+	}
+	
+	@Test
+	public void testAddHealthWhen11() {
+		Player player = new Player("TestDummy");
+		player.addMaxHealth();
+		player.addHealth(2);
+		
+		assertEquals(player.health, 11);		
 	}
 
 }
