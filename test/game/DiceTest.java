@@ -4,15 +4,16 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.easymock.EasyMock;
 import org.junit.Test;
 
 import game.Dice;
 
 public class DiceTest {
-
 	@Test
 	public void diceConstructorTest() {
-		Dice testDice = new Dice();
+		Player p = new Player("test");
+		Dice testDice = new Dice(p);
 		assertTrue(testDice != null);
 	}
 
@@ -41,7 +42,8 @@ public class DiceTest {
 	public ArrayList<Integer> get30RollResults() {
 		ArrayList<Integer> rollResults = new ArrayList();
 		for (int i = 0; i < 10; i++) {
-			Dice testDice = new Dice();
+			Player p = new Player("test");
+			Dice testDice = new Dice(p);
 			for (int j = 0; i < 3; i++) {
 				rollResults.add(testDice.roll());
 			}
@@ -51,7 +53,8 @@ public class DiceTest {
 
 	@Test
 	public void getTimesRolledTest() {
-		Dice testDice = new Dice();
+		Player p = new Player("test");
+		Dice testDice = new Dice(p);
 		assertTrue(testDice.getTimesRolled() == 0);
 		testDice.roll();
 		assertTrue(testDice.getTimesRolled() == 1);
@@ -60,17 +63,35 @@ public class DiceTest {
 		testDice.roll();
 		assertTrue(testDice.getTimesRolled() == 3);
 	}
+	
+	@Test
+	public void alteredRollLimitTest() {
+		Player p = new Player("test");
+		p.numberOfDieRolls = 4;
+		Dice testDice = new Dice(p);
+		assertTrue(testDice.getTimesRolled() == 0);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 1);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 2);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 3);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 4);
+	}
 
 	@Test(expected = UnsupportedOperationException.class)
 	public void isResolvedTest() {
-		Dice testDice = new Dice();
+		Player p = new Player("test");
+		Dice testDice = new Dice(p);
 		testDice.isResolved = true;
 		testDice.roll();
 	}
 
 	@Test(expected = UnsupportedOperationException.class)
 	public void threeRollMaximumTest() {
-		Dice testDice = new Dice();
+		Player p = new Player("test");
+		Dice testDice = new Dice(p);
 		testDice.roll();
 		testDice.roll();
 		testDice.roll();
