@@ -12,7 +12,7 @@ public class JetFighterLogicTest {
 	public void test() {
 		Player p = new Player("TestPlayer");
 		p.victoryPoints = 10;
-		TankLogic cardLogic = new TankLogic();
+		JetFighterLogic cardLogic = new JetFighterLogic();
 		int savedVictoryPoints = p.victoryPoints;
 		int savedHealth = p.health;
 		cardLogic.use(p);
