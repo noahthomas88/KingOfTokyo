@@ -21,14 +21,18 @@ public class DeckConstructor {
 	public void createDeck(){
 		deck.add(new ApartmentBuilding());
 		deck.add(new CommuterTrain());
+		deck.add(new CornerStore());
 		deck.add(new Energize());
+		deck.add(new EvacuationOrders());
 		deck.add(new ExtraHead());
 		deck.add(new GasRefinery());
 		deck.add(new GiantBrain());
+		deck.add(new Heal());
 		deck.add(new HighAltitudeBombing());
 		deck.add(new JetFighter());
 		deck.add(new NationalGuard());
 		deck.add(new NuclearPowerPlant());
+		deck.add(new Skyscraper());
 		deck.add(new Tank());
 		deck.add(new Ultravore());
 	}

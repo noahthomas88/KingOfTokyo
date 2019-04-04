@@ -134,8 +134,8 @@ public class PlayerTest {
 	public void testAddNegativeEnergy() {
 		Player player = new Player("Test");
 		player.addEnergy(5);
-		player.addEnergy(-3);
-		assertEquals(player.energy, 2);
+		player.addEnergy(-4);
+		assertEquals(player.energy, 1);
 	}
 	
 	@Test
