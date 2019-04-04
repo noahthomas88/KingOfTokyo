@@ -63,6 +63,22 @@ public class DiceTest {
 		testDice.roll();
 		assertTrue(testDice.getTimesRolled() == 3);
 	}
+	
+	@Test
+	public void alteredRollLimitTest() {
+		Player p = new Player("test");
+		p.numberOfDieRolls = 4;
+		Dice testDice = new Dice(p);
+		assertTrue(testDice.getTimesRolled() == 0);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 1);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 2);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 3);
+		testDice.roll();
+		assertTrue(testDice.getTimesRolled() == 4);
+	}
 
 	@Test(expected = UnsupportedOperationException.class)
 	public void isResolvedTest() {
