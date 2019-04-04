@@ -2,7 +2,7 @@ package cards;
 
 import game.Player;
 
-public class ExtraHeadLogic extends CardLogic {
+public class ExtraHeadLogic implements CardLogic {
 
 	public void use(Player p) {
 		p.addOneDie();

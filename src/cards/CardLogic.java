@@ -1,9 +1,8 @@
 package cards;
 
-public class CardLogic {
+import game.Player;
+interface CardLogic {
 
-	public boolean use() {
-		return false;	
-	}
+	void use(Player player);
 
 }

@@ -1,0 +1,15 @@
+package cards;
+
+import game.Player;
+
+<<<<<<< HEAD
+	public boolean use() {
+		return false;	
+	}
+=======
+interface CardLogic {
+
+	void use(Player player);
+>>>>>>> 1a4ab8ddd0fda0b3b3b3af279fba9ffedf39afe6
+
+}

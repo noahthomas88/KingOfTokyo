@@ -2,7 +2,7 @@ package cards;
 
 import game.Player;
 
-public class CommuterTrainLogic extends CardLogic {
+public class CommuterTrainLogic implements CardLogic {
 
 	public void use(Player p) {
 		p.victoryPoints += 2;
