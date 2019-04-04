@@ -8,15 +8,17 @@ public class Dice {
 	private int timesRolled;
 	public boolean isResolved;
 	public int numberRolled;
+	private int rollLimit;
 
-	public Dice() {
+	public Dice(Player player) {
 		this.timesRolled = 0;
 		this.isResolved = false;
 		this.numberRolled = 1;
+		this.rollLimit = player.numberOfDieRolls;
 	}
 
 	public int roll() {
-		if (this.timesRolled >= 3) {
+		if (this.timesRolled >= rollLimit) {
 			this.isResolved = true;
 		}
 		if (this.isResolved) {
