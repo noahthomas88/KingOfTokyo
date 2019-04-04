@@ -32,7 +32,7 @@ public class Player {
 	
 	public void addHealth(int i) {
 		this.health = this.health + i;
-		if (this.health > 10) {
+		if (this.health >= 11) {
 			this.health = 10;
 		}
 	}
@@ -47,7 +47,7 @@ public class Player {
 	
 	public void addVictory(int i) {
 		this.victoryPoints = this.victoryPoints + i;
-		if(this.victoryPoints < 0) {
+		if(this.victoryPoints <= -1) {
 			this.victoryPoints = 0;
 		}
 	}
