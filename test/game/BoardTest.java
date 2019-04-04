@@ -52,8 +52,8 @@ public class BoardTest {
 		
 		board.constructPlayers(names);
 
-		assertEquals("test1", board.player.get(0).name);
-		assertEquals("test2", board.player.get(1).name);
+		assertEquals("test1", board.playerList.get(0).name);
+		assertEquals("test2", board.playerList.get(1).name);
 	}
 	
 
@@ -85,5 +85,26 @@ public class BoardTest {
 		board.initializeDeck();
 		
 		EasyMock.verify(deck);
+	}
+	
+	@Test
+	public void testDoAttack() {
+		Board board = new Board(2);
+		ArrayList<String> names = new ArrayList<>();
+		names.add("test1");
+		names.add("test2");
+		board.constructPlayers(names);
+		
+		Player tokyoPlayer = board.playerList.get(0);
+		Player notTokyoPlayer = board.playerList.get(1);
+		int originalHealth = notTokyoPlayer.health;
+		board.cityPlayer = tokyoPlayer;
+		
+		for(int i = 0; i < 3; i++) {
+			board.doAttack(tokyoPlayer);
+		}
+		assertTrue(notTokyoPlayer.health == originalHealth - 3);
+		
+		
 	}
 }
