@@ -204,5 +204,14 @@ public class PlayerTest {
 		player.subMaxHealth();
 		assertTrue(player.maxHealth == 9);
 	}
+	
+	@Test
+	public void testAddHealthWhen11() {
+		Player player = new Player("TestDummy");
+		player.addMaxHealth();
+		player.addHealth(2);
+		
+		assertEquals(player.health, 11);		
+	}
 
 }

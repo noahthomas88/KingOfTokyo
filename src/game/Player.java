@@ -34,8 +34,8 @@ public class Player {
 	
 	public void addHealth(int i) {
 		this.health = this.health + i;
-		if (this.health >= 11) {
-			this.health = 10;
+		if (this.health >= this.maxHealth + 1) {
+			this.health = this.maxHealth;
 		}
 	}
 	
