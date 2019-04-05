@@ -6,6 +6,8 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+import cards.Card;
+import cards.DeckConstructor;
 import main.GUI;
 
 public class Gameplay {
@@ -13,6 +15,7 @@ public class Gameplay {
 	public Player currentplayer;
 	public Board gameboard;
 	public GUI gameUI;
+	DeckConstructor deck = new DeckConstructor();
 	HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 
 	public Gameplay(GUI gui) {
@@ -35,7 +38,10 @@ public class Gameplay {
 		for (int i = 0; i < gameboard.playerList.size(); i++) {
 			playerToNumber.put(gameboard.playerList.get(i).name, i);
 		}
+		deck.createDeck();
+		deck.reveal();
 		gameUI.displayBoard(gameboard, numOfPlayers, this);
+		gameUI.setCards(deck.visibleCard);
 	}
 
 	public void beginGame() {
@@ -115,6 +121,18 @@ public class Gameplay {
 		}
 		beginTurn();
 	}
+	
+	public void buyCard(int number) {
+		Card tobuy = deck.visibleCard[number-1];
+		if(currentplayer.energy>=tobuy.cost) {
+			currentplayer.cardsInHand.add(deck.visibleCard[number-1]);
+			currentplayer.addEnergy(-tobuy.cost);
+			deck.buy(number-1);
+			gameUI.setCards(deck.visibleCard);
+		} else {
+			gameUI.energyWarning();
+		}
+	}
 
 	public void selectFirstPlayer() {
 		ArrayList<Player> playerlist = gameboard.playerList;
@@ -128,6 +146,32 @@ public class Gameplay {
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
+	}
+
+	public void swipeCard() {
+		if(currentplayer.energy>=2) {
+			deck.swipe();
+			gameUI.setCards(deck.visibleCard);
+			currentplayer.addEnergy(-2);
+		} else {
+			gameUI.energyWarning();
+		}
+	}
+
+	public void useCard(String cardname) {
+		Card touse = null;
+		for(Card card : currentplayer.cardsInHand) {
+			if(card.name.equals(cardname)) {
+				touse = card;
+			}
+		}
+		if(touse!=null) {
+			touse.logic.use(currentplayer);
+			if(touse.type.equals("Discard")) {
+				currentplayer.cardsInHand.remove(touse);
+			}
+		}
+		
 	}
 
 }

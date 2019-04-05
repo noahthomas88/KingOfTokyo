@@ -18,6 +18,7 @@ public class PlayerTest {
 		assertTrue(player.numberOfDieRolls == 3);
 		assertTrue(player.numberOfDieToRoll == 6);
 		assertTrue(player.maxHealth == 10);
+		assertTrue(player.cardsInHand.size() == 0);
 	}
 	
 	@Test

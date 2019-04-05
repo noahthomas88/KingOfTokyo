@@ -153,5 +153,38 @@ public class DeckConstructorTest {
 		
 		assertEquals(deckCons.discard.size(), 2);		
 	}
+	
+	@Test
+	public void testSwipe(){
+		DeckConstructor deckCons = new DeckConstructor();
+		Card healCard = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
+		Card energizeCard = EasyMock.createMockBuilder(Energize.class).withConstructor().createMock();
+		deckCons.visibleCard[0] = healCard;
+		deckCons.visibleCard[1] = healCard;
+		deckCons.visibleCard[2] = healCard;
+		deckCons.deck.add(energizeCard);
+		deckCons.deck.add(energizeCard);
+		deckCons.deck.add(energizeCard);
+		deckCons.swipe();
+		for(int index = 0;index<3;index++){
+			assertEquals("Energize", deckCons.visibleCard[index].name);
+			assertEquals("Heal", deckCons.discard.get(index).name);
+		}
+		assertEquals(deckCons.discard.size(), 3);
+		assertEquals(deckCons.deck.size(),0);
+	}
+	
+	@Test
+	public void testBuy(){
+		DeckConstructor deckCons = new DeckConstructor();
+		Card healCard = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
+		Card energizeCard = EasyMock.createMockBuilder(Energize.class).withConstructor().createMock();
+		deckCons.visibleCard[0] = healCard;
+		deckCons.visibleCard[1] = healCard;
+		deckCons.visibleCard[2] = healCard;
+		deckCons.deck.add(energizeCard);
+		deckCons.buy(2);
+		assertEquals("Energize", deckCons.visibleCard[2].name);
+	}
 
 }

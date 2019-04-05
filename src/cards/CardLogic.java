@@ -2,7 +2,7 @@ package cards;
 
 import game.Player;
 
-interface CardLogic {
+public interface CardLogic {
 
 	void use(Player player);
 

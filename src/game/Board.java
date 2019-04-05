@@ -29,13 +29,22 @@ public class Board {
 	}
 	
 	public void doAttack(Player attacker) {
-		if(cityPlayer.equals(attacker) || bayPlayer.equals(attacker)) {
+		if(cityPlayer.equals(attacker) || (bayPlayer != null && bayPlayer.equals(attacker))) {
 			for(int i = 0; i < playerList.size(); i++) {
 				Player indexedPlayer = playerList.get(i);
-				if(!indexedPlayer.equals(cityPlayer) || !indexedPlayer.equals(bayPlayer)){
-					indexedPlayer.addHealth(-1);
+				if(!indexedPlayer.equals(cityPlayer)){
+					if(bayPlayer == null){
+						indexedPlayer.addHealth(-1);
+					} else if(!indexedPlayer.equals(bayPlayer)){
+						indexedPlayer.addHealth(-1);
+					}
 				}
 			}
+		} else if (bayPlayer != null){
+			cityPlayer.addHealth(-1);
+			bayPlayer.addHealth(-1);
+		} else {
+			cityPlayer.addHealth(-1);
 		}
 	}
 	
