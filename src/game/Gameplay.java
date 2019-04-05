@@ -131,6 +131,7 @@ public class Gameplay {
 			currentplayer.addEnergy(-tobuy.cost);
 			deck.buy(number-1);
 			gameUI.setCards(deck.visibleCard);
+			gameUI.updatePlayerText(gameboard);
 		} else {
 			gameUI.energyWarning();
 		}
