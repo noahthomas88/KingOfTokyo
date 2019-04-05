@@ -1,5 +1,9 @@
 package game;
 
+import java.util.ArrayList;
+
+import cards.Card;
+
 public class Player {
 	
 	public String name = "";
@@ -9,6 +13,7 @@ public class Player {
 	public int numberOfDieToRoll;
 	public int numberOfDieRolls;
 	public int maxHealth;
+	public ArrayList<Card> cardsInHand;
 
 	public Player(String name){
 		if(name.equals("")){
@@ -21,6 +26,7 @@ public class Player {
 		this.numberOfDieToRoll = 6;
 		this.numberOfDieRolls = 3;
 		this.maxHealth = 10;
+		this.cardsInHand = new ArrayList<Card>();
 	}
 
 	public String buildPlayerStatusString() {
