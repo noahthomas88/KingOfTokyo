@@ -109,12 +109,14 @@ public class BoardTest {
 		}
 		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
 		assertTrue(tokyoPlayer.health == originalHealthP2);
+		assertTrue(bayPlayer.health == originalHealthP3);
 
 		for (int i = 0; i < 2; i++) {
 			board.doAttack(notTokyoPlayer);
 		}
 		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
 		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
+		assertTrue(bayPlayer.health == originalHealthP3 - 2);
 
 		for (int i = 0; i < 1; i++) {
 			board.doAttack(bayPlayer);
