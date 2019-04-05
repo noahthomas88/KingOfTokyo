@@ -67,6 +67,7 @@ public class Gameplay {
 			currentplayer.addVictory(1);
 		}
 		gameUI.updatePlayerText(gameboard);
+		gameUI.DisableCedeButton();
 		runCardEffects();
 	}
 
@@ -76,6 +77,7 @@ public class Gameplay {
 			String result = die.numberToString(die.numberRolled);
 			if (result.equals("attack")) {
 				gameboard.doAttack(currentplayer);
+				gameUI.EnableCedeButton();
 			} else if (result.equals("heal") && currentplayer != gameboard.cityPlayer) {
 				currentplayer.addHealth(1);
 			} else if (result.equals("energy")) {
@@ -146,6 +148,7 @@ public class Gameplay {
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
+		gameUI.DisableCedeButton();
 	}
 
 	public void swipeCard() {

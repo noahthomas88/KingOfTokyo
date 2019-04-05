@@ -246,6 +246,14 @@ public class GUI {
 		this.buttonmap.get("end").setEnabled(false);
 	}
 	
+	public void EnableCedeButton() {
+		this.buttonmap.get("cede").setEnabled(true);
+	}
+	
+	public void DisableCedeButton() {
+		this.buttonmap.get("cede").setEnabled(false);
+	}
+	
 	public class RollListener implements ActionListener {
 		
 		@Override
