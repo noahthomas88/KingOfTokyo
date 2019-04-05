@@ -89,7 +89,7 @@ public class DiceTest {
 	}
 
 	@Test(expected = UnsupportedOperationException.class)
-	public void threeRollMaximumTest() {
+	public void defaultThreeRollMaximumTest() {
 		Player p = new Player("test");
 		Dice testDice = new Dice(p);
 		testDice.roll();

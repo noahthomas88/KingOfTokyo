@@ -18,44 +18,44 @@ public class Gameplay {
 	public Gameplay(GUI gui) {
 		this.gameUI = gui;
 	}
-	
+
 	public void initializeGame() {
-		
+
 		int numOfPlayers;
 
-		try{
+		try {
 			numOfPlayers = gameUI.getNumPlayers();
 			gameboard = new Board(numOfPlayers);
-		}catch(IllegalArgumentException e){
+		} catch (IllegalArgumentException e) {
 			JOptionPane.showMessageDialog(null, "Number of players have to be between 2 to 6");
 			return;
-		}		
-		
+		}
+
 		gameboard.constructPlayers(gameUI.getNames(numOfPlayers));
-		for(int i=0;i<gameboard.playerList.size();i++) {
-			playerToNumber.put(gameboard.playerList.get(i).name,i);
+		for (int i = 0; i < gameboard.playerList.size(); i++) {
+			playerToNumber.put(gameboard.playerList.get(i).name, i);
 		}
 		gameUI.displayBoard(gameboard, numOfPlayers, this);
 	}
-	
+
 	public void beginGame() {
 		selectFirstPlayer();
 		gameUI.displayStartingPlayer(currentplayer.name);
 		beginTurn();
-		
+
 	}
-	
+
 	public void runCardEffects() {
 		System.out.println("running card effects");
 	}
-	
+
 	public void beginTurn() {
 		gameUI.setActivePlayer(playerToNumber.get(currentplayer.name));
 		gameUI.DisableEndTurnButton();
-		if(gameboard.cityPlayer == currentplayer) {
+		if (gameboard.cityPlayer == currentplayer) {
 			currentplayer.addVictory(2);
 		}
-		if(gameboard.cityPlayer==null) {
+		if (gameboard.cityPlayer == null) {
 			gameboard.cityPlayer = currentplayer;
 			gameUI.moveToTokyo(currentplayer);
 			currentplayer.addVictory(1);
@@ -63,16 +63,16 @@ public class Gameplay {
 		gameUI.updatePlayerText(gameboard);
 		runCardEffects();
 	}
-	
-	public void diceRolled(ArrayList<Dice> dicelist){
+
+	public void diceRolled(ArrayList<Dice> dicelist) {
 		ArrayList<Dice> otherdice = new ArrayList<Dice>();
-		for(Dice die : dicelist) {
+		for (Dice die : dicelist) {
 			String result = die.numberToString(die.numberRolled);
-			if(result.equals("attack")) {
+			if (result.equals("attack")) {
 				gameboard.doAttack(currentplayer);
-			} else if(result.equals("heal") && currentplayer != gameboard.cityPlayer) {
+			} else if (result.equals("heal") && currentplayer != gameboard.cityPlayer) {
 				currentplayer.addHealth(1);
-			} else if(result.equals("energy")) {
+			} else if (result.equals("energy")) {
 				currentplayer.addEnergy(1);
 			} else {
 				otherdice.add(die);
@@ -82,40 +82,40 @@ public class Gameplay {
 		gameUI.EnableEndTurnButton();
 		gameUI.updatePlayerText(gameboard);
 	}
-	
+
 	public void calculateScore(ArrayList<Dice> dice) {
 		int count3 = 0;
 		int count2 = 0;
 		int count1 = 0;
-		for(Dice die : dice) {
-			if(die.numberRolled == 1) {
+		for (Dice die : dice) {
+			if (die.numberRolled == 1) {
 				count1++;
-			} else if(die.numberRolled == 2) {
+			} else if (die.numberRolled == 2) {
 				count2++;
 			} else {
 				count3++;
 			}
 		}
-		if(count3>2) {
-			currentplayer.addVictory(3+(count3-3));
+		if (count3 > 2) {
+			currentplayer.addVictory(3 + (count3 - 3));
 		}
-		if(count2>2) {
-			currentplayer.addVictory(2+(count2-3));
+		if (count2 > 2) {
+			currentplayer.addVictory(2 + (count2 - 3));
 		}
-		if(count1>2) {
-			currentplayer.addVictory(1+(count1-3));
+		if (count1 > 2) {
+			currentplayer.addVictory(1 + (count1 - 3));
 		}
 	}
 
 	public void endTurn() {
-		if(playerToNumber.get(currentplayer.name)>=(gameboard.numOfPlayers-1)) {
+		if (playerToNumber.get(currentplayer.name) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
-			currentplayer = gameboard.playerList.get(playerToNumber.get(currentplayer.name)+1);
+			currentplayer = gameboard.playerList.get(playerToNumber.get(currentplayer.name) + 1);
 		}
 		beginTurn();
 	}
-	
+
 	public void selectFirstPlayer() {
 		ArrayList<Player> playerlist = gameboard.playerList;
 		Integer numOfPlayers = gameboard.numOfPlayers;
@@ -129,5 +129,5 @@ public class Gameplay {
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
 	}
-	
+
 }
