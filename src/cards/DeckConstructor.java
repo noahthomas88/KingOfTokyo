@@ -48,13 +48,15 @@ public class DeckConstructor {
 	
 	public void reveal() {
 		int index = 0;
-		while(this.visibleCard[index].name.equals("default")) {
-			if(this.deck.isEmpty()) {
-				addDiscardtoDeck();
-				shuffle();
+		while(index != 3){
+			if(this.visibleCard[index].name.equals("default")){
+				if(this.deck.isEmpty()) {
+					addDiscardtoDeck();
+					shuffle();
+				}
+				this.visibleCard[index] = this.deck.remove(0);
 			}
-			this.visibleCard[index] = this.deck.remove(0);
-			index = (index + 1) % 3;
+			index++;
 		}
 		return;
 	}
@@ -65,16 +67,21 @@ public class DeckConstructor {
 	
 	public void swipe() {
 		int index = 0;
-		while(index != 2) {
+		while(index != 3) {
 			if(this.deck.isEmpty()) {
 				addDiscardtoDeck();
 				shuffle();
 			}
 			this.discard.add(this.visibleCard[index]);
 			this.visibleCard[index] = this.deck.remove(0);
-			index = index++;
+			index++;
 		}
 		return;
+	}
+	
+	public void buy(int i){
+		this.visibleCard[i] = new Card();
+		reveal();
 	}
 
 }
