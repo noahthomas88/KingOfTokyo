@@ -6,7 +6,7 @@ import java.util.Collections;
 public class DeckConstructor {
 	
 	ArrayList<Card> deck;
-	Card[] visibleCard;
+	public Card[] visibleCard;
 	ArrayList<Card> discard;
 
 	public DeckConstructor() {
@@ -61,6 +61,20 @@ public class DeckConstructor {
 	
 	public void addToDiscard(Card card){
 		this.discard.add(card);
+	}
+	
+	public void swipe() {
+		int index = 0;
+		while(index != 2) {
+			if(this.deck.isEmpty()) {
+				addDiscardtoDeck();
+				shuffle();
+			}
+			this.discard.add(this.visibleCard[index]);
+			this.visibleCard[index] = this.deck.remove(0);
+			index = index++;
+		}
+		return;
 	}
 
 }
