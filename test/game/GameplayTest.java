@@ -102,8 +102,34 @@ public class GameplayTest {
 		fakenames.add("player2");
 		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
 		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		EasyMock.replay(gui);
 		Gameplay gameplay = new Gameplay(gui);
-		ArrayList<Dice> dicelist = EasyMock.createNiceMock(ArrayList.class);
+		
+		ArrayList<Dice> dicelist = new ArrayList<Dice>();
+		
+		Dice numDie = EasyMock.mock(Dice.class);
+		numDie.numberRolled = 3;
+		EasyMock.expect(numDie.numberRolled).andReturn(3);
+		EasyMock.expect(numDie.numberToString(4)).andReturn("4");
+		Dice attackDie = EasyMock.mock(Dice.class);
+		attackDie.numberRolled = 4;
+		EasyMock.expect(attackDie.numberToString(4)).andReturn("attack");
+		Dice energyDie = EasyMock.mock(Dice.class);
+		energyDie.numberRolled = 5;
+		EasyMock.expect(attackDie.numberToString(5)).andReturn("heal");
+		Dice healDie = EasyMock.mock(Dice.class);
+		EasyMock.expect(attackDie.numberToString(4)).andReturn("energy");
+		healDie.numberRolled = 6;
+		
+		
+		
+		dicelist.add(numDie);
+		dicelist.add(attackDie);
+		dicelist.add(energyDie);
+		dicelist.add(healDie);
+		gameplay.initializeGame();
+		gameplay.selectFirstPlayer();
+		gameplay.beginGame();
 		gameplay.diceRolled(dicelist);
 	}
 	
