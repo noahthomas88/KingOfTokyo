@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import cards.Card;
 import game.Board;
 import game.Dice;
 import game.Gameplay;
@@ -32,6 +33,29 @@ public class GUI {
 	public GUI() {
 	}
 
+	public void viewHand() {
+		JPanel panel = new JPanel();
+		for(Card card : game.currentplayer.cardsInHand) {
+			JButton cardbutton = new JButton();
+			cardbutton.setText(card.name);
+			cardbutton.setPreferredSize(new Dimension(200,200));
+			panel.add(cardbutton);
+		}
+		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.OK_OPTION);
+	}
+	
+	public void setCards(Card[] cards) {
+		Card c1 = cards[0];
+		Card c2 = cards[1];
+		Card c3 = cards[2];
+		JButton b1 = buttonmap.get("card1");
+		JButton b2 = buttonmap.get("card2");
+		JButton b3 = buttonmap.get("card3");
+		b1.setText(c1.name);
+		b2.setText(c2.name);
+		b3.setText(c3.name);
+	}
+	
 	public Integer getNumPlayers() {
 		String result = JOptionPane.showInputDialog("enter number of players");
 		int numplayers = Integer.parseInt(result);
@@ -141,8 +165,12 @@ public class GUI {
 		JButton card3 = new JButton("Card3");
 		buttonmap.put("card1", card1);
 		buttonmap.put("card2", card2);
-		buttonmap.put("card2", card3);
+		buttonmap.put("card3", card3);
+		card3.addActionListener(new Card3Listener());
+		card2.addActionListener(new Card2Listener());
+		card1.addActionListener(new Card1Listener());
 		JButton swipeCards = new JButton("Swipe Cards");
+		swipeCards.addActionListener(new SwipeListener());
 		buttonmap.put("swipeCards", swipeCards);
 		Font tokyofont = new Font("TimesRoman", Font.BOLD, 40);
 		JTextArea tokyo = new JTextArea("    Tokyo City \n   Unoccupied!");
@@ -159,6 +187,8 @@ public class GUI {
 		dieButton.addActionListener(new RollListener());
 		endTurn.addActionListener(new EndListener());
 		cedeTokyo.addActionListener(new CedeListener());
+		JButton viewHand = new JButton("View Hand");
+		viewHand.addActionListener(new HandListener());
 		textmap.put("tokyo", tokyo);
 		textmap.put("bay", bay);
 		buttonmap.put("die",dieButton);
@@ -176,9 +206,9 @@ public class GUI {
 		buttonPanel.add(dieButton);
 		buttonPanel.add(endTurn);
 
-		card1.setPreferredSize(new Dimension(100, 200));
-		card2.setPreferredSize(new Dimension(100, 200));
-		card3.setPreferredSize(new Dimension(100, 200));
+		card1.setPreferredSize(new Dimension(200, 200));
+		card2.setPreferredSize(new Dimension(200, 200));
+		card3.setPreferredSize(new Dimension(200, 200));
 		swipeCards.setPreferredSize(new Dimension(200, 50));
 		tokyo.setPreferredSize(new Dimension(400, 400));
 		bay.setPreferredSize(new Dimension(400, 400));
@@ -192,7 +222,7 @@ public class GUI {
 			playertext.setOpaque(true);
 			playertexts.add(playertext);
 		}
-
+		playerPanel.add(viewHand);
 		for (int i = 0; i < myBoard.playerList.size(); i++) {
 			JLabel playertoset = playertexts.get(i);
 			playertoset.setText(myBoard.playerList.get(i).buildPlayerStatusString());
@@ -255,6 +285,46 @@ public class GUI {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 				game.cedeTokyo();
+		}
+	}
+	
+	public class HandListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+				self.viewHand();
+		}
+	}
+	
+	public class Card1Listener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			game.buyCard(1);
+		}
+	}
+	
+	public class Card2Listener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			game.buyCard(2);
+		}
+	}
+	
+	public class Card3Listener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			game.buyCard(3);
+		}
+	}
+	
+	public class SwipeListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			game.swipeCard();
 		}
 	}
 
