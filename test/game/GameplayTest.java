@@ -70,7 +70,9 @@ public class GameplayTest {
 		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
 		EasyMock.replay(gui);
 		Gameplay gameplay = new Gameplay(gui);
+		gameplay.initializeGame();
 		gameplay.selectFirstPlayer();
+		gameplay.beginGame();
 		gameplay.beginTurn();
 		EasyMock.verify(gui);
 	}
