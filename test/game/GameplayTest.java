@@ -55,6 +55,7 @@ public class GameplayTest {
 		EasyMock.replay(gui);
 		Gameplay gameplay = new Gameplay(gui);
 		gameplay.initializeGame();
+		gameplay.selectFirstPlayer();
 		gameplay.beginGame();
 		EasyMock.verify(gui);
 	}
@@ -69,6 +70,7 @@ public class GameplayTest {
 		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
 		EasyMock.replay(gui);
 		Gameplay gameplay = new Gameplay(gui);
+		gameplay.selectFirstPlayer();
 		gameplay.beginTurn();
 		EasyMock.verify(gui);
 	}
@@ -117,9 +119,15 @@ public class GameplayTest {
 		ArrayList<String> fakenames = new ArrayList<String>();
 		fakenames.add("player1");
 		fakenames.add("player2");
-		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
-		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		EasyMock.expect(gui.getNumPlayers()).andStubReturn(2);
+		EasyMock.expect(gui.getNames(2)).andStubReturn(fakenames);
+		
+		
 		Gameplay gameplay = new Gameplay(gui);
+		
+		Player currentPlayer = EasyMock.mock(Player.class);
+		
+		gameplay.selectFirstPlayer();
 		gameplay.cedeTokyo();
 	}
 	
