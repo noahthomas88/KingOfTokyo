@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+import cards.DeckConstructor;
 import main.GUI;
 
 public class Gameplay {
@@ -13,6 +14,7 @@ public class Gameplay {
 	public Player currentplayer;
 	public Board gameboard;
 	public GUI gameUI;
+	DeckConstructor deck = new DeckConstructor();
 	HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 
 	public Gameplay(GUI gui) {
@@ -35,7 +37,10 @@ public class Gameplay {
 		for (int i = 0; i < gameboard.playerList.size(); i++) {
 			playerToNumber.put(gameboard.playerList.get(i).name, i);
 		}
+		deck.createDeck();
+		deck.reveal();
 		gameUI.displayBoard(gameboard, numOfPlayers, this);
+		gameUI.setCards(deck.visibleCard);
 	}
 
 	public void beginGame() {
@@ -115,6 +120,10 @@ public class Gameplay {
 		}
 		beginTurn();
 	}
+	
+	public void buyCard(int number) {
+		currentplayer.cardsInHand.add(deck.visibleCard[number]);
+	}
 
 	public void selectFirstPlayer() {
 		ArrayList<Player> playerlist = gameboard.playerList;
@@ -128,6 +137,11 @@ public class Gameplay {
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
+	}
+
+	public void swipeCard() {
+		System.out.println("swiping cards");
+		
 	}
 
 }
