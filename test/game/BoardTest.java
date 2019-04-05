@@ -45,30 +45,29 @@ public class BoardTest {
 	@Test
 	public void testConstructPlayers() {
 		Board board = new Board(2);
-		
+
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
 		names.add("test2");
-		
+
 		board.constructPlayers(names);
 
 		assertEquals("test1", board.playerList.get(0).name);
 		assertEquals("test2", board.playerList.get(1).name);
 	}
-	
 
 	@Test
 	public void testConstructPlayersIllegal() {
 		Board board = new Board(2);
-		
+
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
 		names.add("");
-		
-		try{
+
+		try {
 			board.constructPlayers(names);
-		}catch(IllegalArgumentException e){
-			
+		} catch (IllegalArgumentException e) {
+
 		}
 	}
 
@@ -77,25 +76,25 @@ public class BoardTest {
 		Board board = new Board(2);
 		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
 		board.deck = deck;
-		
+
 		deck.createDeck();
 		deck.shuffle();
 		EasyMock.replay(deck);
-		
+
 		board.initializeDeck();
-		
+
 		EasyMock.verify(deck);
 	}
-	
+
 	@Test
-	public void testDoAttack() {
+	public void testDoAttackWithBothTokyoSpotsFull() {
 		Board board = new Board(3);
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
 		names.add("test2");
 		names.add("test3");
 		board.constructPlayers(names);
-		
+
 		Player tokyoPlayer = board.playerList.get(0);
 		Player notTokyoPlayer = board.playerList.get(1);
 		Player bayPlayer = board.playerList.get(2);
@@ -104,6 +103,41 @@ public class BoardTest {
 		int originalHealthP1 = notTokyoPlayer.health;
 		board.cityPlayer = tokyoPlayer;
 		board.bayPlayer = bayPlayer;
+
+		for (int i = 0; i < 3; i++) {
+			board.doAttack(tokyoPlayer);
+		}
+		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
+		assertTrue(tokyoPlayer.health == originalHealthP2);
+
+		for (int i = 0; i < 2; i++) {
+			board.doAttack(notTokyoPlayer);
+		}
+		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
+		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
+
+		for (int i = 0; i < 1; i++) {
+			board.doAttack(bayPlayer);
+		}
+		assertTrue(notTokyoPlayer.health == originalHealthP1 - 4);
+		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
+		assertTrue(bayPlayer.health == originalHealthP3 - 2);
+
+	}
+	
+	@Test
+	public void testDoAttackWithNoBayPlayer() {
+		Board board = new Board(2);
+		ArrayList<String> names = new ArrayList<>();
+		names.add("test1");
+		names.add("test2");
+		board.constructPlayers(names);
+		
+		Player tokyoPlayer = board.playerList.get(0);
+		Player notTokyoPlayer = board.playerList.get(1);
+		int originalHealthP2 = tokyoPlayer.health;
+		int originalHealthP1 = notTokyoPlayer.health;
+		board.cityPlayer = tokyoPlayer;
 		
 		for(int i = 0; i < 3; i++) {
 			board.doAttack(tokyoPlayer);
@@ -116,14 +150,6 @@ public class BoardTest {
 		}
 		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
 		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
-		
-		for(int i = 0; i < 1; i++){
-			board.doAttack(bayPlayer);
-		}
-		assertTrue(notTokyoPlayer.health == originalHealthP1 - 4);
-		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
-		assertTrue(bayPlayer.health == originalHealthP3 - 2);
-		
 		
 	}
 }
