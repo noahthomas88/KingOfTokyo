@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+import cards.Card;
 import cards.DeckConstructor;
 import main.GUI;
 
@@ -122,7 +123,15 @@ public class Gameplay {
 	}
 	
 	public void buyCard(int number) {
-		currentplayer.cardsInHand.add(deck.visibleCard[number]);
+		Card tobuy = deck.visibleCard[number-1];
+		if(currentplayer.energy>=tobuy.cost) {
+			currentplayer.cardsInHand.add(deck.visibleCard[number-1]);
+			currentplayer.addEnergy(-tobuy.cost);
+			deck.buy(number-1);
+			gameUI.setCards(deck.visibleCard);
+		} else {
+			gameUI.energyWarning();
+		}
 	}
 
 	public void selectFirstPlayer() {
@@ -140,7 +149,28 @@ public class Gameplay {
 	}
 
 	public void swipeCard() {
-		System.out.println("swiping cards");
+		if(currentplayer.energy>=2) {
+			deck.swipe();
+			gameUI.setCards(deck.visibleCard);
+			currentplayer.addEnergy(-2);
+		} else {
+			gameUI.energyWarning();
+		}
+	}
+
+	public void useCard(String cardname) {
+		Card touse = null;
+		for(Card card : currentplayer.cardsInHand) {
+			if(card.name.equals(cardname)) {
+				touse = card;
+			}
+		}
+		if(touse!=null) {
+			touse.logic.use(currentplayer);
+			if(touse.type.equals("Discard")) {
+				currentplayer.cardsInHand.remove(touse);
+			}
+		}
 		
 	}
 

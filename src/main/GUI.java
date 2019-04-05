@@ -327,5 +327,22 @@ public class GUI {
 			game.swipeCard();
 		}
 	}
+	
+	public class UseCardListener implements ActionListener {
+		String cardname;
+		
+		UseCardListener(String name){
+			this.cardname = name;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			game.useCard(cardname);
+		}
+	}
+
+	public void energyWarning() {
+		JOptionPane.showMessageDialog(null, "Insufficient Energy");
+	}
 
 }
