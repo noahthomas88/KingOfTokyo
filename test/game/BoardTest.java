@@ -89,21 +89,40 @@ public class BoardTest {
 	
 	@Test
 	public void testDoAttack() {
-		Board board = new Board(2);
+		Board board = new Board(3);
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
 		names.add("test2");
+		names.add("test3");
 		board.constructPlayers(names);
 		
 		Player tokyoPlayer = board.playerList.get(0);
 		Player notTokyoPlayer = board.playerList.get(1);
-		int originalHealth = notTokyoPlayer.health;
+		Player bayPlayer = board.playerList.get(2);
+		int originalHealthP3 = bayPlayer.health;
+		int originalHealthP2 = tokyoPlayer.health;
+		int originalHealthP1 = notTokyoPlayer.health;
 		board.cityPlayer = tokyoPlayer;
+		board.bayPlayer = bayPlayer;
 		
 		for(int i = 0; i < 3; i++) {
 			board.doAttack(tokyoPlayer);
 		}
-		assertTrue(notTokyoPlayer.health == originalHealth - 3);
+		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
+		assertTrue(tokyoPlayer.health == originalHealthP2);
+		
+		for(int i = 0; i < 2; i++) {
+			board.doAttack(notTokyoPlayer);
+		}
+		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
+		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
+		
+		for(int i = 0; i < 1; i++){
+			board.doAttack(bayPlayer);
+		}
+		assertTrue(notTokyoPlayer.health == originalHealthP1 - 4);
+		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
+		assertTrue(bayPlayer.health == originalHealthP3 - 2);
 		
 		
 	}
