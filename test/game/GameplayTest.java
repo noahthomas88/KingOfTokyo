@@ -85,7 +85,12 @@ public class GameplayTest {
 		fakenames.add("player2");
 		EasyMock.expect(gui.getNumPlayers()).andReturn(2);
 		EasyMock.expect(gui.getNames(2)).andReturn(fakenames);
+		EasyMock.replay(gui);
 		Gameplay gameplay = new Gameplay(gui);
+		gameplay.initializeGame();
+		gameplay.selectFirstPlayer();
+		gameplay.beginGame();
+		gameplay.beginTurn();
 		gameplay.endTurn();
 	}
 	
