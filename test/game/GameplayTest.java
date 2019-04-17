@@ -27,5 +27,159 @@ public class GameplayTest {
 		assertEquals(game.playerToNumber, playerToNumber);
 		assertEquals(game.deck, deck);
 	}
+	
+	@Test
+	public void CalculateScoreTestNoduplication() {
+		Player player = EasyMock.strictMock(Player.class);
+		Gameplay gameplay = new Gameplay(null, player, null, null, null);
+		
+		ArrayList<Dice> dicelist = new ArrayList<>();
+		Dice dice = EasyMock.strictMock(Dice.class);
+				
+		for(int index = 0; index < 6; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(index+1);
+		}
+		
+		EasyMock.replay(player, dice);
+		
+		gameplay.calculateScore(dicelist);
+		
+		EasyMock.verify(player,dice);
+	}
+	
+	@Test
+	public void CalculateScoreTestThreeOne() {
+		Player player = EasyMock.strictMock(Player.class);
+		Gameplay gameplay = new Gameplay(null, player, null, null, null);
+		
+		ArrayList<Dice> dicelist = new ArrayList<>();
+		Dice dice = EasyMock.strictMock(Dice.class);
+				
+		for(int index = 0; index < 3; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(1);
+		}
+		
+		for(int index = 3; index < 6; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(index-1);
+		}
+		
+		player.addVictory(1);
+		
+		EasyMock.replay(player, dice);
+		
+		gameplay.calculateScore(dicelist);
+		
+		EasyMock.verify(player,dice);
+	}
+	
+	@Test
+	public void CalculateScoreTestThreeTwo() {
+		Player player = EasyMock.strictMock(Player.class);
+		Gameplay gameplay = new Gameplay(null, player, null, null, null);
+		
+		ArrayList<Dice> dicelist = new ArrayList<>();
+		Dice dice = EasyMock.strictMock(Dice.class);
+				
+		for(int index = 0; index < 3; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(2);
+		}
+		
+		for(int index = 3; index < 6; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(index);
+		}
+		
+		player.addVictory(2);
+		
+		EasyMock.replay(player, dice);
+		
+		gameplay.calculateScore(dicelist);
+		
+		EasyMock.verify(player,dice);
+	}
+	
+	@Test
+	public void CalculateScoreTestThreeThree() {
+		Player player = EasyMock.strictMock(Player.class);
+		Gameplay gameplay = new Gameplay(null, player, null, null, null);
+		
+		ArrayList<Dice> dicelist = new ArrayList<>();
+		Dice dice = EasyMock.strictMock(Dice.class);
+				
+		for(int index = 0; index < 3; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(3);
+		}
+		
+		for(int index = 3; index < 6; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(index+1);
+		}
+		
+		player.addVictory(3);
+		
+		EasyMock.replay(player, dice);
+		
+		gameplay.calculateScore(dicelist);
+		
+		EasyMock.verify(player,dice);
+	}
+	
+	@Test
+	public void CalculateScoreTestFiveTwo() {
+		Player player = EasyMock.strictMock(Player.class);
+		Gameplay gameplay = new Gameplay(null, player, null, null, null);
+		
+		ArrayList<Dice> dicelist = new ArrayList<>();
+		Dice dice = EasyMock.strictMock(Dice.class);
+				
+		for(int index = 0; index < 5; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(2);
+		}
+		
+		dicelist.add(dice);
+		EasyMock.expect(dice.getNumberRolled()).andReturn(1);
+		
+		player.addVictory(4);
+		
+		EasyMock.replay(player, dice);
+		
+		gameplay.calculateScore(dicelist);
+		
+		EasyMock.verify(player,dice);
+	}
+	
+	@Test
+	public void CalculateScoreTestThreeOneThreeThree() {
+		Player player = EasyMock.strictMock(Player.class);
+		Gameplay gameplay = new Gameplay(null, player, null, null, null);
+		
+		ArrayList<Dice> dicelist = new ArrayList<>();
+		Dice dice = EasyMock.strictMock(Dice.class);
+				
+		for(int index = 0; index < 3; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(3);
+		}
+		
+		for(int index = 3; index < 6; index++){
+			dicelist.add(dice);
+			EasyMock.expect(dice.getNumberRolled()).andReturn(1);
+		}
+		
+		player.addVictory(3);
+		player.addVictory(1);	
+		
+		EasyMock.replay(player, dice);
+		
+		gameplay.calculateScore(dicelist);
+		
+		EasyMock.verify(player,dice);
+	}
 
 }

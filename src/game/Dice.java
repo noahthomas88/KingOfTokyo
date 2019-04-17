@@ -46,4 +46,8 @@ public class Dice {
 			return "heal";
 		}
 	}
+
+	public int getNumberRolled() {
+		return this.numberRolled;
+	}
 }
