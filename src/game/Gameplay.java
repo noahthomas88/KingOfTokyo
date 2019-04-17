@@ -18,7 +18,6 @@ public class Gameplay {
 	DeckConstructor deck = new DeckConstructor();
 	HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 
-
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
 		this.gameUI = gui;
 		this.currentplayer = player;
