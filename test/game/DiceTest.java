@@ -40,7 +40,7 @@ public class DiceTest {
 	}
 
 	public ArrayList<Integer> get30RollResults() {
-		ArrayList<Integer> rollResults = new ArrayList();
+		ArrayList<Integer> rollResults = new ArrayList<Integer>();
 		for (int i = 0; i < 10; i++) {
 			Player p = new Player("test");
 			Dice testDice = new Dice(p);
