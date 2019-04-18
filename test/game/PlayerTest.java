@@ -225,5 +225,12 @@ public class PlayerTest {
 		Player player = new Player("TestDummy");
 		assertEquals(player.getNumberOfDieRolls(), 3);		
 	}
+	
+	@Test
+	public void getEnergyTest() {
+		Player player = new Player("TestDummy");
+		player.energy = 6;
+		assertEquals(player.getEnergy(), 6);
+	}
 
 }
