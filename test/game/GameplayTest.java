@@ -455,4 +455,21 @@ public class GameplayTest {
 		
 		assertTrue(player.energy == energy - 2);
 	}
+	
+	@Test
+	public void swipeCardsTestPlayerDoesNotHaveEnoughEnergy() {
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.niceMock(GUI.class);
+		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
+		Gameplay gameplay = new Gameplay(ui, null, board, deck, null);
+		Player player = new Player("TestPlayer");
+		player.energy = 1;
+		int energy = player.energy;
+		
+		gameplay.currentplayer = player;
+		
+		gameplay.swipeCard();
+		
+		assertTrue(player.energy == energy);
+	}
 }
