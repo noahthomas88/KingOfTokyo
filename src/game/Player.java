@@ -83,6 +83,14 @@ public class Player {
 	public int getNumberOfDieRolls(){
 		return this.numberOfDieRolls;
 	}
+	
+	public int getHealth(){
+		return this.health;
+	}
+	
+	public int getVictoryPoints(){
+		return this.victoryPoints;
+	}
 
 	public int getEnergy() {
 		return this.energy;

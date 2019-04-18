@@ -477,4 +477,102 @@ public class GameplayTest {
 		EasyMock.verify(ui, player);
 
 	}
+	
+	@Test
+	public void checkWinTest1() {
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.createMock(GUI.class);
+		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
+		Player player = EasyMock.createMock(Player.class);
+		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
+		EasyMock.expect(player.getVictoryPoints()).andReturn(20);
+		EasyMock.expect(player.getHealth()).andReturn(1);
+		ui.endGame(gameplay.currentplayer);
+		EasyMock.replay(board,deck,ui,player);
+		gameplay.checkWin();
+		EasyMock.verify(board,deck,ui,player);
+	}
+	
+	@Test
+	public void checkWinTest2() {
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.createMock(GUI.class);
+		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
+		Player player = EasyMock.createMock(Player.class);
+		Player p1 = new Player("hi");
+		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
+		ArrayList<Player> playerlist = new ArrayList<Player>();
+		Player p2 = new Player("hi2");
+		p1.health = 0;
+		p2.health = 1;
+		playerlist.add(p1);
+		playerlist.add(p2);
+		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
+		EasyMock.expect(player.getVictoryPoints()).andReturn(20);
+		EasyMock.expect(player.getHealth()).andReturn(0);
+		ui.endGame(gameplay.currentplayer);
+		EasyMock.replay(board,deck,ui,player);
+		gameplay.checkWin();
+		EasyMock.verify(board,deck,ui,player);
+	}
+	
+	@Test
+	public void checkWinTest3() {
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.niceMock(GUI.class);
+		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
+		Player p1 = new Player("hi");
+		Gameplay gameplay = new Gameplay(ui, p1, board, deck, null);
+		ArrayList<Player> playerlist = new ArrayList<Player>();
+		Player p2 = new Player("hi2");
+		p1.health = 0;
+		p2.health = 1;
+		playerlist.add(p1);
+		playerlist.add(p2);
+		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
+		ui.endGame(gameplay.currentplayer);
+		EasyMock.replay(board,deck,ui);
+		gameplay.checkWin();
+		EasyMock.verify(board,deck,ui);
+	}
+	
+	@Test
+	public void checkWinTest4() {
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.niceMock(GUI.class);
+		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
+		Player p1 = new Player("hi");
+		Gameplay gameplay = new Gameplay(ui, p1, board, deck, null);
+		ArrayList<Player> playerlist = new ArrayList<Player>();
+		Player p2 = new Player("hi2");
+		p1.health = 1;
+		p2.health = 0;
+		playerlist.add(p1);
+		playerlist.add(p2);
+		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
+		ui.endGame(gameplay.currentplayer);
+		EasyMock.replay(board,deck,ui);
+		gameplay.checkWin();
+		EasyMock.verify(board,deck,ui);
+	}
+	
+	@Test
+	public void checkWinTest5() {
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.niceMock(GUI.class);
+		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
+		Player p1 = new Player("hi");
+		Gameplay gameplay = new Gameplay(ui, p1, board, deck, null);
+		ArrayList<Player> playerlist = new ArrayList<Player>();
+		Player p2 = new Player("hi2");
+		p1.health = 1;
+		p2.health = 1;
+		playerlist.add(p1);
+		playerlist.add(p2);
+		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
+		EasyMock.replay(board,deck,ui);
+		gameplay.checkWin();
+		EasyMock.verify(board,deck,ui);
+	}
+	
 }

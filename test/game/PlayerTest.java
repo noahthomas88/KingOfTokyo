@@ -232,5 +232,17 @@ public class PlayerTest {
 		player.energy = 6;
 		assertEquals(player.getEnergy(), 6);
 	}
+	public void getHealthTest() {
+		Player player = new Player("TestDummy");
+		player.health = 1;
+		assertEquals(player.getHealth(), 1);		
+	}
+	
+	@Test
+	public void getVictoryPointsTest() {
+		Player player = new Player("TestDummy");
+		player.victoryPoints = 1;
+		assertEquals(player.getVictoryPoints(), 1);		
+	}
 
 }
