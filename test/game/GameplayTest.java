@@ -259,6 +259,8 @@ public class GameplayTest {
 		EasyMock.verify(gameUI, test1, board);
 		assertEquals(board.cityPlayer, test1);
 	}
+	
+	@Test
 	public void GameplayInitializationTest() {
 		Board board = EasyMock.createMock(Board.class);
 		GUI ui = EasyMock.createNiceMock(GUI.class);
@@ -302,6 +304,100 @@ public class GameplayTest {
 		EasyMock.verify(board,ui,deck);
 	}
 	
+	@Test
+	public void GameplayDiceRolledTest1() {
+		Board board = EasyMock.createMock(Board.class);
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		Gameplay game = new Gameplay(ui, null, board, null, null);
+		Player player = EasyMock.createMock(Player.class);
+		ArrayList<Dice> dice = new ArrayList<Dice>();
+		EasyMock.expect(player.getNumberOfDieRolls()).andReturn(0);
+		Dice die = new Dice(player);
+		die.numberRolled = 1;
+		dice.add(die);
+		ui.EnableEndTurnButton();
+		ui.updatePlayerText(board);
+		
+		EasyMock.replay(board, ui);
+		game.diceRolled(dice);
+		EasyMock.verify(board,ui);
+	}
 	
+	@Test
+	public void GameplayDiceRolledTest2() {
+		Board board = EasyMock.createMock(Board.class);
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		Gameplay game = new Gameplay(ui, null, board, null, null);
+		Player player = EasyMock.createMock(Player.class);
+		ArrayList<Dice> dice = new ArrayList<Dice>();
+		EasyMock.expect(player.getNumberOfDieRolls()).andReturn(0);
+		Dice die = new Dice(player);
+		die.numberRolled = 4;
+		board.doAttack(null);
+		dice.add(die);
+		ui.EnableEndTurnButton();
+		ui.updatePlayerText(board);
+		
+		EasyMock.replay(board, ui);
+		game.diceRolled(dice);
+		EasyMock.verify(board,ui);
+	}
+	
+	@Test
+	public void GameplayDiceRolledTest3() {
+		Board board = EasyMock.createMock(Board.class);
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		Player player = new Player("bla");
+		Gameplay game = new Gameplay(ui, player, board, null, null);
+		ArrayList<Dice> dice = new ArrayList<Dice>();
+		Dice die = new Dice(player);
+		die.numberRolled = 5;
+		player.addEnergy(1);
+		dice.add(die);
+		ui.EnableEndTurnButton();
+		ui.updatePlayerText(board);
+		
+		EasyMock.replay(board, ui);
+		game.diceRolled(dice);
+		EasyMock.verify(board,ui);
+	}
+	
+	@Test
+	public void GameplayDiceRolledTest4() {
+		Board board = EasyMock.createMock(Board.class);
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		Player player = new Player("null");
+		Gameplay game = new Gameplay(ui, player, board, null, null);
+		ArrayList<Dice> dice = new ArrayList<Dice>();
+		EasyMock.expect(board.getCityPlayer()).andReturn(null);
+		Dice die = new Dice(player);
+		die.numberRolled = 6;
+		dice.add(die);
+		ui.EnableEndTurnButton();
+		ui.updatePlayerText(board);
+		
+		EasyMock.replay(board, ui);
+		game.diceRolled(dice);
+		EasyMock.verify(board,ui);
+	}
+	
+	@Test
+	public void GameplayDiceRolledTest4two() {
+		Board board = EasyMock.createMock(Board.class);
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		Player player = new Player("null");
+		Gameplay game = new Gameplay(ui, null, board, null, null);
+		ArrayList<Dice> dice = new ArrayList<Dice>();
+		EasyMock.expect(board.getCityPlayer()).andReturn(null);
+		Dice die = new Dice(player);
+		die.numberRolled = 6;
+		dice.add(die);
+		ui.EnableEndTurnButton();
+		ui.updatePlayerText(board);
+		
+		EasyMock.replay(board, ui);
+		game.diceRolled(dice);
+		EasyMock.verify(board,ui);
+	}
 
 }
