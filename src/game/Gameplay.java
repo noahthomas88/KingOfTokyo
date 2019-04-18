@@ -150,4 +150,22 @@ public class Gameplay {
 		
 	}
 
+	public void checkWin() {
+		if((currentplayer.getVictoryPoints()>=20 && currentplayer.getHealth() > 0)) {
+			gameUI.endGame(currentplayer);
+			return;
+		}
+		int total = 0;
+		for(Player player : gameboard.getPlayerList()) {
+			if(player.getHealth() > 0) {
+				total++;
+			}
+		}
+		if(total < 2) {
+			gameUI.endGame(currentplayer);
+			return;
+		}
+		
+	}
+
 }
