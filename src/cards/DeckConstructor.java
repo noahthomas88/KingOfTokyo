@@ -79,11 +79,4 @@ public class DeckConstructor {
 		reveal();
 	}
 
-	public void buy(Card tobuy) {
-		// TODO Auto-generated method stub
-		this.discard.add(tobuy);
-		this.visibleCard[this.deck.indexOf(tobuy)] = new Card();
-		reveal();
-	}
-
 }

@@ -55,11 +55,12 @@ public class Gameplay {
 		beginTurn();
 	}
 	
-	public void buyCard(Card tobuy) {
+	public void buyCard(int number) {
+		Card tobuy = deck.visibleCard[number-1];
 		if(currentplayer.energy>=tobuy.cost) {
 			currentplayer.cardsInHand.add(deck.visibleCard[number-1]);
 			currentplayer.addEnergy(-tobuy.cost);
-			deck.buy(tobuy);
+			deck.buy(number-1);
 			gameUI.setCards(deck.visibleCard);
 			gameUI.updatePlayerText(gameboard);
 		} else {

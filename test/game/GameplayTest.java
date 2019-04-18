@@ -44,6 +44,7 @@ public class GameplayTest {
 		assertEquals(game.deck, deck);
 	}
 
+	//mock 3 cards add them to the public feilds in a mocked deck construtor
 	@Test
 	public void buyCardUpdatesPlayerDisplayTextTest() {
 		GUI gui = EasyMock.mock(GUI.class);
@@ -51,20 +52,23 @@ public class GameplayTest {
 		Board board = EasyMock.mock(Board.class);
 		DeckConstructor deck = EasyMock.mock(DeckConstructor.class);
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		Card toBuy = EasyMock.mock(Card.class);
+		Card firstCard = EasyMock.mock(Card.class);
+		Card secondCard = EasyMock.mock(Card.class);
+		Card thirdCard = EasyMock.mock(Card.class);
+		
 
 		EasyMock.expect(currentPlayer.energy).andReturn(1);
-		EasyMock.expect(toBuy.cost).andReturn(1);
+		EasyMock.expect(firstCard.cost).andReturn(1);
 
 		EasyMock.replay(currentPlayer);
-		EasyMock.replay(toBuy);
+		EasyMock.replay(firstCard);
 
 		gui.updatePlayerText(board);
 		EasyMock.replay(gui);
 
 		Gameplay g = new Gameplay(gui, currentPlayer, board, deck, map);
 
-		g.buyCard(toBuy);
+		g.buyCard(1);
 
 		EasyMock.verify(gui);
 	}
@@ -73,20 +77,23 @@ public class GameplayTest {
 	public void buyCardFailTest() {
 		GUI gui = EasyMock.mock(GUI.class);
 		Player currentPlayer = EasyMock.mock(Player.class);
-		Card toBuy = EasyMock.mock(Card.class);
+		Card firstCard = EasyMock.mock(Card.class);
+		Card secondCard = EasyMock.mock(Card.class);
+		Card thirdCard = EasyMock.mock(Card.class);
 
+		
 		EasyMock.expect(currentPlayer.energy).andReturn(0);
-		EasyMock.expect(toBuy.cost).andReturn(1);
+		EasyMock.expect(firstCard.cost).andReturn(1);
 
 		EasyMock.replay(currentPlayer);
-		EasyMock.replay(toBuy);
+		EasyMock.replay(firstCard);
 
 		gui.energyWarning();
 		EasyMock.replay(gui);
 
 		Gameplay g = new Gameplay(gui, currentPlayer, null, null, null);
 
-		g.buyCard(toBuy);
+		g.buyCard(1);
 
 		EasyMock.verify(gui);
 	}
@@ -95,13 +102,16 @@ public class GameplayTest {
 	public void buyCardAddedToPlayerHandTest() {
 		GUI gui = EasyMock.mock(GUI.class);
 		Player currentPlayer = EasyMock.mock(Player.class);
-		Card toBuy = EasyMock.mock(Card.class);
+		Card firstCard = EasyMock.mock(Card.class);
+		Card secondCard = EasyMock.mock(Card.class);
+		Card thirdCard = EasyMock.mock(Card.class);
+
 
 		EasyMock.expect(currentPlayer.energy).andReturn(0);
-		EasyMock.expect(toBuy.cost).andReturn(1);
+		EasyMock.expect(firstCard.cost).andReturn(1);
 
 		EasyMock.replay(currentPlayer);
-		EasyMock.replay(toBuy);
+		EasyMock.replay(firstCard);
 
 		gui.energyWarning();
 		EasyMock.replay(gui);
@@ -116,16 +126,19 @@ public class GameplayTest {
 	@Test
 	public void buyCardPlayerEnergyRemovedTest() {
 		GUI gui = EasyMock.mock(GUI.class);
+		DeckConstructor deck = EasyMock.mock(DeckConstructor.class);
 		Player currentPlayer = new Player("testPlayer");
 		currentPlayer.energy = 1;
-		Card toBuy = EasyMock.mock(Card.class);
+		Card firstCard = EasyMock.mock(Card.class);
+		Card secondCard = EasyMock.mock(Card.class);
+		Card thirdCard = EasyMock.mock(Card.class);
 
-		EasyMock.expect(toBuy.cost).andReturn(1);
-		EasyMock.replay(toBuy);
-
+		EasyMock.expect(firstCard.cost).andReturn(1);
+		
 		Gameplay g = new Gameplay(gui, currentPlayer, null, null, null);
 
-		g.buyCard(toBuy);
+		//this card costs 5 points
+		g.buyCard(1);
 		assertEquals(currentPlayer.energy, 0);
 	}
 
