@@ -76,4 +76,12 @@ public class Player {
 		this.maxHealth--;
 	}
 
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getNumberOfDieRolls(){
+		return this.numberOfDieRolls;
+	}
+
 }

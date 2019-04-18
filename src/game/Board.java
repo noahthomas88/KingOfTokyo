@@ -53,6 +53,8 @@ public class Board {
 		deck.shuffle();
 	}
 	
+	public Player getCityPlayer(){
+		return this.cityPlayer;
 	public int getPlayerListSize() {
 		return playerList.size();
 	}

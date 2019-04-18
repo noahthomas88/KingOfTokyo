@@ -52,7 +52,17 @@ public class Gameplay {
 	}
 
 	public void beginTurn() {
-	
+		gameUI.setActivePlayer(playerToNumber.get(currentplayer.getName()));
+		gameUI.DisableEndTurnButton();
+		if (gameboard.getCityPlayer() == currentplayer) {
+			currentplayer.addVictory(2);
+		}else if (gameboard.getCityPlayer() == null) {
+			gameboard.cityPlayer = currentplayer;
+			gameUI.moveToTokyo(currentplayer);
+			currentplayer.addVictory(1);
+		}
+		gameUI.updatePlayerText(gameboard);
+		gameUI.DisableCedeButton();
 	}
 
 	public void diceRolled(ArrayList<Dice> dicelist) {
@@ -60,7 +70,28 @@ public class Gameplay {
 	}
 
 	public void calculateScore(ArrayList<Dice> dice) {
-
+		int count3 = 0;
+		int count2 = 0;
+		int count1 = 0;
+		for (Dice die : dice) {
+			int number = die.getNumberRolled();
+			if (number == 1) {
+				count1++;
+			} else if (number == 2) {
+				count2++;
+			} else if (number == 3) {
+				count3++;
+			}
+		}
+		if (count3 > 2) {
+			currentplayer.addVictory(3 + (count3 - 3));
+		}
+		if (count2 > 2) {
+			currentplayer.addVictory(2 + (count2 - 3));
+		}
+		if (count1 > 2) {
+			currentplayer.addVictory(1 + (count1 - 3));
+		}
 	}
 
 	public void endTurn() {

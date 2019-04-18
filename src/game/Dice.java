@@ -14,7 +14,7 @@ public class Dice {
 		this.timesRolled = 0;
 		this.isResolved = false;
 		this.numberRolled = 1;
-		this.rollLimit = player.numberOfDieRolls;
+		this.rollLimit = player.getNumberOfDieRolls();
 	}
 
 	public int roll() {
@@ -45,5 +45,9 @@ public class Dice {
 		} else {
 			return "heal";
 		}
+	}
+
+	public int getNumberRolled() {
+		return this.numberRolled;
 	}
 }
