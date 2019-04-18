@@ -52,5 +52,9 @@ public class Board {
 		deck.createDeck();
 		deck.shuffle();
 	}
+	
+	public Player getCityPlayer(){
+		return this.cityPlayer;
+	}
 
 }

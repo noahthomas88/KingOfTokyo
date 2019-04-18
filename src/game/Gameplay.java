@@ -35,7 +35,17 @@ public class Gameplay {
 	}
 
 	public void beginTurn() {
-	
+		gameUI.setActivePlayer(playerToNumber.get(currentplayer.getName()));
+		gameUI.DisableEndTurnButton();
+		if (gameboard.getCityPlayer() == currentplayer) {
+			currentplayer.addVictory(2);
+		}else if (gameboard.getCityPlayer() == null) {
+			gameboard.cityPlayer = currentplayer;
+			gameUI.moveToTokyo(currentplayer);
+			currentplayer.addVictory(1);
+		}
+		gameUI.updatePlayerText(gameboard);
+		gameUI.DisableCedeButton();
 	}
 
 	public void diceRolled(ArrayList<Dice> dicelist) {
