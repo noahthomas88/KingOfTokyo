@@ -130,7 +130,10 @@ public class Gameplay {
 	}
 
 	public void cedeTokyo() {
-
+		gameboard.cityPlayer = currentplayer;
+		gameUI.moveToTokyo(currentplayer);
+		currentplayer.addVictory(1);
+		gameUI.DisableCedeButton();
 	}
 
 	public void swipeCard() {
