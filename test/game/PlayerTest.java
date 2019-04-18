@@ -213,5 +213,17 @@ public class PlayerTest {
 		player.addHealth(2);
 		assertEquals(player.health, 11);		
 	}
+	
+	@Test
+	public void getNameTest() {
+		Player player = new Player("TestDummy");
+		assertEquals(player.getName(), "TestDummy");		
+	}
+	
+	@Test
+	public void getNumberOfDieRollsTest() {
+		Player player = new Player("TestDummy");
+		assertEquals(player.getNumberOfDieRolls(), 3);		
+	}
 
 }

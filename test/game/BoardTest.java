@@ -154,4 +154,14 @@ public class BoardTest {
 		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
 		
 	}
+	
+	@Test
+	public void testGetCityPlayer() {
+		Player test = EasyMock.niceMock(Player.class);
+		Board board = new Board(2);
+		
+		board.cityPlayer = test;
+		
+		assertEquals(board.getCityPlayer(), test);
+	}
 }
