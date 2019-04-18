@@ -137,6 +137,7 @@ public class Gameplay {
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
 		gameUI.DisableCedeButton();
+		checkWin();
 	}
 
 	public void swipeCard() {
@@ -151,7 +152,7 @@ public class Gameplay {
 	}
 
 	public void useCard(String cardname) {
-		checkWin();
+		
 	}
 
 	public void checkWin() {
