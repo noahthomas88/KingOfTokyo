@@ -144,12 +144,23 @@ public class GameplayTest {
 
 	@Test
 	public void selectFirstPlayerTest() {
-		Board board = new Board(1);
-		Player onlyPlayer = board.playerList.get(0);
-
-		Gameplay g = new Gameplay(null, null, null, null, null);
+		Board board = new Board(3);
+		ArrayList<String> names = new ArrayList<String>();
+		names.add("first");
+		names.add("second");
+		names.add("third");
+		board.constructPlayers(names);
+		Player firstPlayer = board.playerList.get(0);
+		Player secondPlayer = board.playerList.get(1);
+		Player thirdPlayer = board.playerList.get(2);
+		boolean flag = false;
+		
+		Gameplay g = new Gameplay(null, null, board, null, null);
 
 		g.selectFirstPlayer();
-		assertFalse(g.currentplayer == onlyPlayer);
+		if(g.currentplayer == firstPlayer|| g.currentplayer == secondPlayer|| g.currentplayer == thirdPlayer){
+		flag = true;
+		}
+		assertTrue(flag);
 	}
 }
