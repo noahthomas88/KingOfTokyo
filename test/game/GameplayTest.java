@@ -301,8 +301,6 @@ public class GameplayTest {
 		EasyMock.verify(board,ui,deck);
 	}
 	
-	
-
 	@Test
 	public void beginGameTest(){
 		GUI gameUI = EasyMock.niceMock(GUI.class);
