@@ -31,7 +31,9 @@ public class Gameplay {
 	}
 
 	public void beginGame() {
-
+		selectFirstPlayer();
+		gameUI.displayStartingPlayer(currentplayer.getName());
+		beginTurn();
 	}
 
 	public void beginTurn() {
