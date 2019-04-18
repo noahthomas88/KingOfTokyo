@@ -14,21 +14,6 @@ import game.Gameplay;
 import main.GUI;
 
 public class GameplayTest {
-
-	
-	@Test
-	public void endTurnTest() {
-		Board board = new Board(2);
-		Player firstPlayer = board.playerList.get(0);
-		Player secondPlayer = board.playerList.get(0);
-		
-		Gameplay g = new Gameplay(null, null, null, null, null);
-
-		g.currentplayer = firstPlayer;
-		g.endTurn();
-		assertFalse(g.currentplayer != firstPlayer);
-		assertFalse(g.currentplayer == secondPlayer);
-	}
 	
 	@Test
 	public void GameplayConstructorTest() {
@@ -43,24 +28,57 @@ public class GameplayTest {
 		assertEquals(game.playerToNumber, playerToNumber);
 		assertEquals(game.deck, deck);
 	}
+	
+	@Test
+	public void endTurnTest() {
+		Board board = new Board(3);
+		ArrayList<String> names = new ArrayList<String>();
+		names.add("first");
+		names.add("second");
+		names.add("third");
+		HashMap<String, Integer> playerToNumberMap = new HashMap<String, Integer>();
+		playerToNumberMap.put("first", 1);
+		playerToNumberMap.put("second", 2);
+		playerToNumberMap.put("third", 3);
+		board.constructPlayers(names);
+		Player firstPlayer = board.playerList.get(0);
+		Player secondPlayer = board.playerList.get(1);
+		Player thirdPlayer = board.playerList.get(2);
+		boolean flag = false;
+		
+		
+		Gameplay g = new Gameplay(null, firstPlayer, board, null, playerToNumberMap);
+		
+		g.endTurn();
+		assertTrue(g.currentplayer != firstPlayer);
+	}
 
 	//mock 3 cards add them to the public feilds in a mocked deck construtor
 	@Test
 	public void buyCardUpdatesPlayerDisplayTextTest() {
 		GUI gui = EasyMock.mock(GUI.class);
-		Player currentPlayer = EasyMock.mock(Player.class);
+		Player currentPlayer = new Player("current");
 		Board board = EasyMock.mock(Board.class);
-		DeckConstructor deck = EasyMock.mock(DeckConstructor.class);
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		Card firstCard = EasyMock.mock(Card.class);
 		Card secondCard = EasyMock.mock(Card.class);
 		Card thirdCard = EasyMock.mock(Card.class);
+		DeckConstructor deck = EasyMock.mock(DeckConstructor.class);
+		
+		deck.visibleCard = new Card[3];
+		deck.visibleCard[0] = firstCard;
+		deck.visibleCard[1] = secondCard;
+		deck.visibleCard[2] = thirdCard;
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		
 
-		EasyMock.expect(currentPlayer.energy).andReturn(1);
-		EasyMock.expect(firstCard.cost).andReturn(1);
+		EasyMock.expect(firstCard.name).andReturn("first");
+		EasyMock.expect(secondCard.name).andReturn("second");
+		EasyMock.expect(thirdCard.name).andReturn("third");
+		
+//		EasyMock.expect(currentPlayer.energy).andReturn(1);
+//		EasyMock.expect(firstCard.cost).andReturn(1);
 
-		EasyMock.replay(currentPlayer);
+//		EasyMock.replay(currentPlayer);
 		EasyMock.replay(firstCard);
 
 		gui.updatePlayerText(board);
