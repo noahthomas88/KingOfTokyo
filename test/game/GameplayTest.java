@@ -236,7 +236,6 @@ public class GameplayTest {
 	public void beginTurnTestTokyoEmpty(){
 		GUI gameUI = EasyMock.niceMock(GUI.class);
 		Player test1 = EasyMock.niceMock(Player.class);
-		Player test2 = EasyMock.niceMock(Player.class);
 		Board board = EasyMock.niceMock(Board.class);
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("test1", 0);
@@ -400,4 +399,24 @@ public class GameplayTest {
 		EasyMock.verify(board,ui);
 	}
 
+	@Test
+	public void beginGameTest(){
+		GUI gameUI = EasyMock.niceMock(GUI.class);
+		Player test1 = EasyMock.niceMock(Player.class);
+		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("selectFirstPlayer")
+				.addMockedMethod("beginTurn").createNiceMock();
+		gameplay.gameUI = gameUI;
+		gameplay.currentplayer = test1;
+		
+		gameplay.selectFirstPlayer();
+		EasyMock.expect(test1.getName()).andStubReturn("test1");
+		gameUI.displayStartingPlayer("test1");
+		gameplay.beginTurn();
+		
+		EasyMock.replay(gameplay, test1, gameUI);
+		
+		gameplay.beginGame();
+		
+		EasyMock.verify(gameplay, test1, gameUI);
+	}
 }
