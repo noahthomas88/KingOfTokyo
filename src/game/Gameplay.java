@@ -137,7 +137,8 @@ public class Gameplay {
 	}
 
 	public void swipeCard() {
-		if(currentplayer.energy>=2) {
+		int playerEnergy = currentplayer.getEnergy();
+		if(playerEnergy >= 2) {
 			deck.swipe();
 			gameUI.setCards(deck.visibleCard);
 			currentplayer.addEnergy(-2);

@@ -92,4 +92,8 @@ public class Player {
 		return this.victoryPoints;
 	}
 
+	public int getEnergy() {
+		return this.energy;
+	}
+
 }
