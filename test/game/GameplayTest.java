@@ -427,49 +427,54 @@ public class GameplayTest {
 		Board board = EasyMock.niceMock(Board.class);
 		GUI ui = EasyMock.niceMock(GUI.class);
 		Gameplay gameplay = new Gameplay(ui, null, board, null, null);
-		Player player = new Player("TestPlayer");
-		int victoryP = player.victoryPoints;
-
+		Player player = EasyMock.niceMock(Player.class);
+		
+		ui.moveToTokyo(player);
+		player.addVictory(1);
+		ui.DisableCedeButton();
+		
+		EasyMock.replay(player, ui);
 		gameplay.currentplayer = player;
-
 		gameplay.cedeTokyo();
-
-		assertTrue(player.victoryPoints == victoryP + 1);
-		assertTrue(board.cityPlayer.equals(player));
+		EasyMock.verify(player, ui);
 
 	}
-	
+
 	@Test
 	public void swipeCardsTestPlayerHasEnoughEnergy() {
 		Board board = EasyMock.niceMock(Board.class);
 		GUI ui = EasyMock.niceMock(GUI.class);
 		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
-		Gameplay gameplay = new Gameplay(ui, null, board, deck, null);
-		Player player = new Player("TestPlayer");
-		player.energy = 6;
-		int energy = player.energy;
+		Player player = EasyMock.niceMock(Player.class);
+		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
 		
-		gameplay.currentplayer = player;
+		EasyMock.expect(player.getEnergy()).andReturn(6);
+		deck.swipe();
+		ui.setCards(deck.visibleCard);
+		player.addEnergy(-2);
 		
+		EasyMock.replay(deck, ui, player);
+
 		gameplay.swipeCard();
-		
-		assertTrue(player.energy == energy - 2);
+
+		EasyMock.verify(deck, ui, player);
 	}
-	
+
 	@Test
 	public void swipeCardsTestPlayerDoesNotHaveEnoughEnergy() {
 		Board board = EasyMock.niceMock(Board.class);
 		GUI ui = EasyMock.niceMock(GUI.class);
-		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
-		Gameplay gameplay = new Gameplay(ui, null, board, deck, null);
-		Player player = new Player("TestPlayer");
-		player.energy = 1;
-		int energy = player.energy;
+		Player player = EasyMock.niceMock(Player.class);
+		Gameplay gameplay = new Gameplay(ui, player, board, null, null);
 		
-		gameplay.currentplayer = player;
+		EasyMock.expect(player.getEnergy()).andReturn(1);
+		ui.energyWarning();
+		
+		EasyMock.replay(ui, player);
 		
 		gameplay.swipeCard();
 		
-		assertTrue(player.energy == energy);
+		EasyMock.verify(ui, player);
+
 	}
 }

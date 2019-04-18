@@ -84,7 +84,7 @@ public class Player {
 		return this.numberOfDieRolls;
 	}
 
-	public Object getEnergy() {
+	public int getEnergy() {
 		return this.energy;
 	}
 
