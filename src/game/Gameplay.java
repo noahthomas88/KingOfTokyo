@@ -65,6 +65,7 @@ public class Gameplay {
 		}
 		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
+		checkWin();
 	}
 
 	public void diceRolled(ArrayList<Dice> dicelist) {
@@ -115,6 +116,8 @@ public class Gameplay {
 		if (count1 > 2) {
 			currentplayer.addVictory(1 + (count1 - 3));
 		}
+		
+		checkWin();
 	}
 
 	public void endTurn() {
@@ -148,7 +151,7 @@ public class Gameplay {
 	}
 
 	public void useCard(String cardname) {
-		
+		checkWin();
 	}
 
 	public void checkWin() {
