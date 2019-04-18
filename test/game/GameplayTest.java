@@ -258,6 +258,50 @@ public class GameplayTest {
 		EasyMock.verify(gameUI, test1, board);
 		assertEquals(board.cityPlayer, test1);
 	}
+	public void GameplayInitializationTest() {
+		Board board = EasyMock.createMock(Board.class);
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deck = EasyMock.createMock(DeckConstructor.class);
+		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
+		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
+		EasyMock.expect(ui.getNumPlayers()).andReturn(2);
+		ArrayList<String> names = new ArrayList<String>();
+		names.add("bla");
+		names.add("bla2");
+		EasyMock.expect(ui.getNames(2)).andReturn(names);
+		deck.createDeck();
+		deck.reveal();
+		ui.setCards(null);
+		EasyMock.replay(board,ui,deck);
+		
+		game.initializeGame();
+		
+		EasyMock.verify(board,ui,deck);
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void GameplayInitializationErrorTest() {
+		Board board = EasyMock.createMock(Board.class);
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deck = EasyMock.createMock(DeckConstructor.class);
+		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
+		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
+		EasyMock.expect(ui.getNumPlayers()).andReturn(1);
+		ArrayList<String> names = new ArrayList<String>();
+		names.add("bla");
+		names.add("bla2");
+		EasyMock.expect(ui.getNames(2)).andReturn(names);
+		deck.createDeck();
+		deck.reveal();
+		ui.setCards(null);
+		EasyMock.replay(board,ui,deck);
+		
+		game.initializeGame();
+		
+		EasyMock.verify(board,ui,deck);
+	}
+	
+	
 
 	@Test
 	public void beginGameTest(){

@@ -353,4 +353,8 @@ public class GUI {
 		JOptionPane.showMessageDialog(null, "Insufficient Energy");
 	}
 
+	public void playerCountWarning() {
+		JOptionPane.showMessageDialog(null, "Number of players have to be between 2 to 6");
+	}
+
 }

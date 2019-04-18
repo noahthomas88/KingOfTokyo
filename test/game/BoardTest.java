@@ -164,4 +164,15 @@ public class BoardTest {
 		
 		assertEquals(board.getCityPlayer(), test);
 	}
+	public void testgetPlayerListSize() {
+		Board board = new Board(2);
+		ArrayList<Player> playerList = EasyMock.createMock(ArrayList.class);
+		board.playerList = playerList;
+		EasyMock.expect(playerList.size()).andReturn(2);
+		EasyMock.replay(playerList);
+		assertEquals(board.getPlayerListSize(), 2);
+		EasyMock.verify(playerList);
+	}
+	
+
 }
