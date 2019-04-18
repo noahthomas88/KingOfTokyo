@@ -52,5 +52,9 @@ public class Board {
 		deck.createDeck();
 		deck.shuffle();
 	}
+	
+	public int getPlayerListSize() {
+		return playerList.size();
+	}
 
 }

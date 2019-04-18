@@ -27,6 +27,23 @@ public class Gameplay {
 	}
 
 	public void initializeGame() {
+		int numOfPlayers;
+		try {
+			numOfPlayers = gameUI.getNumPlayers();
+			gameboard = new Board(numOfPlayers);
+		} catch (IllegalArgumentException e) {
+			gameUI.playerCountWarning();
+			return;
+		}
+		ArrayList<String> names = gameUI.getNames(numOfPlayers);
+		gameboard.constructPlayers(names);
+		for (int i = 0; i < gameboard.playerList.size(); i++) {
+			playerToNumber.put(gameboard.playerList.get(i).name, i);
+		}
+		deck.createDeck();
+		deck.reveal();
+		gameUI.displayBoard(gameboard, numOfPlayers, this);
+		gameUI.setCards(deck.visibleCard);
 
 	}
 

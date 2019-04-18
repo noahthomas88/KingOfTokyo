@@ -186,5 +186,15 @@ public class DeckConstructorTest {
 		deckCons.buy(2);
 		assertEquals("Energize", deckCons.visibleCard[2].name);
 	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testGetVisibleCard(){
+		DeckConstructor deckCons = new DeckConstructor();
+		Card[] cards = new Card[3];
+		deckCons.visibleCard = cards;
+		assertEquals(cards,deckCons.getVisibleCard());
+	}
+	
 
 }

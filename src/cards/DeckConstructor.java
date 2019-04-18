@@ -78,5 +78,9 @@ public class DeckConstructor {
 		this.visibleCard[index] = new Card();
 		reveal();
 	}
+	
+	public Card[] getVisibleCard() {
+		return this.visibleCard;
+	}
 
 }
