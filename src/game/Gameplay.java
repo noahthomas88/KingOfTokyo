@@ -56,7 +56,15 @@ public class Gameplay {
 	}
 	
 	public void buyCard(Card tobuy) {
-
+		if(currentplayer.energy>=tobuy.cost) {
+			currentplayer.cardsInHand.add(deck.visibleCard[number-1]);
+			currentplayer.addEnergy(-tobuy.cost);
+			deck.buy(tobuy);
+			gameUI.setCards(deck.visibleCard);
+			gameUI.updatePlayerText(gameboard);
+		} else {
+			gameUI.energyWarning();
+		}
 	}
 
 	public void selectFirstPlayer() {

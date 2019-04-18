@@ -108,7 +108,7 @@ public class GameplayTest {
 
 		Gameplay g = new Gameplay(gui, currentPlayer, null, null, null);
 
-		g.buyCard(toBuy);
+		g.buyCard(1);
 
 		EasyMock.verify(gui);
 	}
