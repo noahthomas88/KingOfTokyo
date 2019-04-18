@@ -438,4 +438,20 @@ public class GameplayTest {
 		assertTrue(board.cityPlayer.equals(player));
 
 	}
+	
+	@Test
+	public void swipeCardsTestPlayerHasEnoughEnergy() {
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.niceMock(GUI.class);
+		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
+		Gameplay gameplay = new Gameplay(ui, null, board, deck, null);
+		Player player = new Player("TestPlayer");
+		int victoryP = player.victoryPoints;
+		
+		gameplay.currentplayer = player;
+		
+		gameplay.swipeCard();
+		
+		assertTrue(player.victoryPoints == victoryP - 2);
+	}
 }
