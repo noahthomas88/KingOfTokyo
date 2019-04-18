@@ -446,12 +446,13 @@ public class GameplayTest {
 		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
 		Gameplay gameplay = new Gameplay(ui, null, board, deck, null);
 		Player player = new Player("TestPlayer");
-		int victoryP = player.victoryPoints;
+		player.energy = 6;
+		int energy = player.energy;
 		
 		gameplay.currentplayer = player;
 		
 		gameplay.swipeCard();
 		
-		assertTrue(player.victoryPoints == victoryP - 2);
+		assertTrue(player.energy == energy - 2);
 	}
 }

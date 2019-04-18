@@ -137,7 +137,13 @@ public class Gameplay {
 	}
 
 	public void swipeCard() {
-
+		if(currentplayer.energy>=2) {
+			deck.swipe();
+			gameUI.setCards(deck.visibleCard);
+			currentplayer.addEnergy(-2);
+		} else {
+			gameUI.energyWarning();
+		}
 	}
 
 	public void useCard(String cardname) {
