@@ -251,11 +251,11 @@ public class GUI {
 	}
 	
 	public void EnableRollButton() {
-		this.buttonmap.get("diebutton").setEnabled(true);
+		this.buttonmap.get("die").setEnabled(true);
 	}
 	
 	public void DisableRollButton() {
-		this.buttonmap.get("diebutton").setEnabled(false);
+		this.buttonmap.get("die").setEnabled(false);
 	}
 	
 	public void DisableCedeButton() {
