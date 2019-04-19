@@ -13,8 +13,7 @@ public class CommuterTrainLogic implements CardLogic {
 
 	@Override
 	public void use(Player player, ArrayList<Player> players) {
-		// TODO Auto-generated method stub
-		
+		use(player);
 	}
 
 }

@@ -20,4 +20,7 @@ public class Card {
 		return this.name;
 	}
 
+	public int getCost(){
+		return this.cost;
+	}
 }

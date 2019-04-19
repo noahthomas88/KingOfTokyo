@@ -72,6 +72,10 @@ public class Player {
 		this.maxHealth++;
 	}
 	
+	public void addToHand(Card card){
+		this.cardsInHand.add(card);
+	}
+	
 	public void subMaxHealth(){
 		this.maxHealth--;
 	}

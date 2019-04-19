@@ -17,5 +17,15 @@ public class ExtraHeadLogicTest {
 		assertTrue(p.numberOfDieToRoll == 7);
 		
 	}
+	
+	@Test
+	public void extraHeadUseTest2() {
+		Player p = new Player("NewPlayer");
+		assertTrue(p.numberOfDieToRoll == 6);
+		ExtraHeadLogic cardLogic = new ExtraHeadLogic();
+		cardLogic.use(p, null);
+		assertTrue(p.numberOfDieToRoll == 7);
+		
+	}
 
 }

@@ -16,5 +16,14 @@ public class GiantBrainLogicTest {
 		cardLogic.use(p);
 		assertTrue(p.numberOfDieRolls == 4);
 	}
+	
+	@Test
+	public void test2() {
+		Player p = new Player("PlayerName");
+		assertTrue(p.numberOfDieRolls == 3);
+		GiantBrainLogic cardLogic = new GiantBrainLogic();
+		cardLogic.use(p, null);
+		assertTrue(p.numberOfDieRolls == 4);
+	}
 
 }

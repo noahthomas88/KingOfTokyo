@@ -2,8 +2,10 @@ package game;
 
 import static org.junit.Assert.*;
 
+import org.easymock.EasyMock;
 import org.junit.Test;
 
+import cards.Card;
 import game.Player;
 
 public class PlayerTest {
@@ -245,6 +247,14 @@ public class PlayerTest {
 		Player player = new Player("TestDummy");
 		player.victoryPoints = 1;
 		assertEquals(player.getVictoryPoints(), 1);		
+	}
+	
+	@Test
+	public void addToHandTest() {
+		Player player = new Player("TestDummy");
+		Card card = EasyMock.niceMock(Card.class);
+		player.addToHand(card);
+		assertEquals(player.cardsInHand.get(0), card);		
 	}
 
 }

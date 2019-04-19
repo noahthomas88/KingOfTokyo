@@ -18,5 +18,16 @@ public class EnergizeLogicTest {
 		assertTrue(p.energy == saved + 9);
 		
 	}
+	
+	@Test
+	public void energizeUseTest2() {
+		Player p = new Player("PlayerName");
+		p.energy = 10;
+		EnergizeLogic cardLogic = new EnergizeLogic();
+		int saved = p.energy;
+		cardLogic.use(p, null);
+		assertTrue(p.energy == saved + 9);
+		
+	}
 
 }
