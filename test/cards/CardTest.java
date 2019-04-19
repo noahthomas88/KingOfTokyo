@@ -18,7 +18,7 @@ public class CardTest {
 	@Test
 	public void testGetCost() {
 		Card mycard = new Card();
-		assertTrue(mycard.cost == 0);
+		assertTrue(mycard.getCost() == 0);
 	}
 	
 	@Test
