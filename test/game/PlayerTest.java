@@ -232,6 +232,8 @@ public class PlayerTest {
 		player.energy = 6;
 		assertEquals(player.getEnergy(), 6);
 	}
+	
+	@Test
 	public void getHealthTest() {
 		Player player = new Player("TestDummy");
 		player.health = 1;
