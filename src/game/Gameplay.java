@@ -65,7 +65,6 @@ public class Gameplay {
 		}
 		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
-		checkWin();
 	}
 
 	public void diceRolled(ArrayList<Dice> dicelist) {
@@ -91,6 +90,7 @@ public class Gameplay {
 		calculateScore(otherdice);
 		gameUI.EnableEndTurnButton();
 		gameUI.updatePlayerText(gameboard);
+		checkWin();
 	}
 
 	public void calculateScore(ArrayList<Dice> dice) {
@@ -117,7 +117,7 @@ public class Gameplay {
 			currentplayer.addVictory(1 + (count1 - 3));
 		}
 		
-		checkWin();
+		
 	}
 
 	public void endTurn() {
@@ -137,7 +137,6 @@ public class Gameplay {
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
 		gameUI.DisableCedeButton();
-		checkWin();
 	}
 
 	public void swipeCard() {
@@ -166,7 +165,7 @@ public class Gameplay {
 				total++;
 			}
 		}
-		if(total < 2) {
+		if(total < 2 && total > 0) {
 			gameUI.endGame(currentplayer);
 			return;
 		}
