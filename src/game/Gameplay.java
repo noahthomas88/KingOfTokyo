@@ -121,10 +121,11 @@ public class Gameplay {
 	}
 
 	public void endTurn() {
-		if (playerToNumber.get(currentplayer.name) >= (gameboard.numOfPlayers - 1)) {
+		String currentPlayerName = currentplayer.getName();
+		if (playerToNumber.get(currentPlayerName) >= (gameboard.getPlayerListSize() - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
-			currentplayer = gameboard.playerList.get(playerToNumber.get(currentplayer.name) + 1);
+			currentplayer = gameboard.playerList.get(playerToNumber.get(currentPlayerName) + 1);
 		}
 		beginTurn();
 	}

@@ -586,25 +586,63 @@ public class GameplayTest {
 
 	@Test
 	public void endTurnTest() {
-		Board board = new Board(3);
-		ArrayList<String> names = new ArrayList<String>();
-		names.add("first");
-		names.add("second");
-		names.add("third");
-		HashMap<String, Integer> playerToNumberMap = new HashMap<String, Integer>();
-		playerToNumberMap.put("first", 1);
-		playerToNumberMap.put("second", 2);
-		playerToNumberMap.put("third", 3);
-		board.constructPlayers(names);
-		Player firstPlayer = board.playerList.get(0);
-		Player secondPlayer = board.playerList.get(1);
-		Player thirdPlayer = board.playerList.get(2);
-		boolean flag = false;
-
-		Gameplay g = new Gameplay(null, firstPlayer, board, null, playerToNumberMap);
-
-		g.endTurn();
-		assertTrue(g.currentplayer != firstPlayer);
+		GUI gameUI = EasyMock.niceMock(GUI.class);
+		Player test1 = EasyMock.niceMock(Player.class);
+		Player test2 = EasyMock.niceMock(Player.class);
+		Board board = EasyMock.niceMock(Board.class);
+		ArrayList<Player> players = new ArrayList<>();
+		players.add(test1);
+		players.add(test2);
+		board.playerList = players;
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("test1", 0);
+		map.put("test2", 1);
+		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createNiceMock();
+		gameplay.gameUI = gameUI;
+		gameplay.currentplayer = test1;
+		gameplay.gameboard = board;
+		gameplay.playerToNumber = map;
+		
+		EasyMock.expect(test1.getName()).andReturn("test1");
+		EasyMock.expect(board.getPlayerListSize()).andReturn(2);
+		gameplay.beginTurn();
+		
+		EasyMock.replay(test1, board, gameplay);
+		
+		gameplay.endTurn();
+		
+		EasyMock.verify(gameplay);
+		assertEquals(gameplay.currentplayer, test2);		
+	}
+	@Test
+	public void endTurnTest2() {
+		GUI gameUI = EasyMock.niceMock(GUI.class);
+		Player test1 = EasyMock.niceMock(Player.class);
+		Player test2 = EasyMock.niceMock(Player.class);
+		Board board = EasyMock.niceMock(Board.class);
+		ArrayList<Player> players = new ArrayList<>();
+		players.add(test1);
+		players.add(test2);
+		board.playerList = players;
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("test1", 0);
+		map.put("test2", 1);
+		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createNiceMock();
+		gameplay.gameUI = gameUI;
+		gameplay.currentplayer = test2;
+		gameplay.gameboard = board;
+		gameplay.playerToNumber = map;
+		
+		EasyMock.expect(test2.getName()).andReturn("test2");
+		EasyMock.expect(board.getPlayerListSize()).andReturn(2);
+		gameplay.beginTurn();
+		
+		EasyMock.replay(test2, board, gameplay);
+		
+		gameplay.endTurn();
+		
+		EasyMock.verify(gameplay);
+		assertEquals(gameplay.currentplayer, test1);		
 	}
 
 	@Test
