@@ -17,5 +17,15 @@ public class CommuterTrainLogicTest {
 		cardLogic.use(p);
 		assertTrue(p.victoryPoints == saved + 2);
 	}
+	
+	@Test
+	public void commuterTrainUseTest2() {
+		Player p = new Player("TestPlayer");
+		p.victoryPoints = 10;
+		CommuterTrainLogic cardLogic = new CommuterTrainLogic();
+		int saved = p.victoryPoints;
+		cardLogic.use(p, null);
+		assertTrue(p.victoryPoints == saved + 2);
+	}
 
 }
