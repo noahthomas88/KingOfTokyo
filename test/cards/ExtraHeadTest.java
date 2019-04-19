@@ -15,6 +15,8 @@ public class ExtraHeadTest {
 		assertTrue(extraHead.description.equals("Gain 1 extra die"));
 		assertTrue(extraHead.type.equals("Keep"));
 		assertTrue(extraHead.cost == 7);
+		assertTrue(extraHead.logic.getClass().equals(ExtraHeadLogic.class));
+
 	}
 
 }

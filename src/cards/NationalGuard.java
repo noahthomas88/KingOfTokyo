@@ -7,5 +7,6 @@ public class NationalGuard extends Card{
 		this.cost = 3;
 		this.description = "Gain 2 Victory Points, But lose 2 Health";
 		this.type = "Discard";
+		this.logic = new NationalGuardLogic();
 	}
 }

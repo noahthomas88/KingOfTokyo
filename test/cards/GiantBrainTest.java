@@ -13,6 +13,8 @@ public class GiantBrainTest {
 		assertTrue(bigBrain.description.equals("You have 1 extra die roll each turn"));
 		assertTrue(bigBrain.type.equals("Keep"));
 		assertTrue(bigBrain.cost == 5);
+		assertTrue(bigBrain.logic.getClass().equals(GiantBrainLogic.class));
+
 	}
 
 }

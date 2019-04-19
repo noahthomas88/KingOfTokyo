@@ -7,6 +7,7 @@ public class Heal extends Card {
 		this.cost = 3;
 		this.description = "Gain 2 Health";
 		this.type = "Discard";
+		this.logic = new HealLogic();
 	}
 
 }

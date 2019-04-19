@@ -13,6 +13,7 @@ public class ApartmentBuildingTest {
 		assertTrue(apartmentBuilding.description.equals("Gain 3 Victory Points"));
 		assertTrue(apartmentBuilding.type.equals("Discard"));
 		assertTrue(apartmentBuilding.cost == 5);
+		assertTrue(apartmentBuilding.logic.getClass().equals(ApartmentBuildingLogic.class));
 	}
 
 }

@@ -13,6 +13,8 @@ public class CommuterTrainTest {
 		assertTrue(iLikeTrains.description.equals("Gain 2 Victory Points"));
 		assertTrue(iLikeTrains.type.equals("Discard"));
 		assertTrue(iLikeTrains.cost == 4);
+		assertTrue(iLikeTrains.logic.getClass().equals(CommuterTrainLogic.class));
+
 	}
 
 }

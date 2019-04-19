@@ -7,6 +7,7 @@ public class CornerStore extends Card {
 		this.cost = 3;
 		this.description = "Gain 1 Victory Point";
 		this.type = "Discard";
+		this.logic = new CornerStoreLogic();
 	}
 
 }

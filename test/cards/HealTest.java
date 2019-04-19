@@ -13,6 +13,8 @@ public class HealTest {
 		assertTrue(heal.description.equals("Gain 2 Health"));
 		assertTrue(heal.type.equals("Discard"));
 		assertTrue(heal.cost == 3);
+		assertTrue(heal.logic.getClass().equals(HealLogic.class));
+
 	}
 
 }

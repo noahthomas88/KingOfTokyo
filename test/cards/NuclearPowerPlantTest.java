@@ -13,6 +13,8 @@ public class NuclearPowerPlantTest {
 		assertTrue(powerPlant.description.equals("Gain 2 Victory Points and gain 3 Health"));
 		assertTrue(powerPlant.type.equals("Discard"));
 		assertTrue(powerPlant.cost == 6);
+		assertTrue(powerPlant.logic.getClass().equals(NuclearPowerPlantLogic.class));
+
 	}
 
 }

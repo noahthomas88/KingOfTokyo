@@ -13,6 +13,8 @@ public class CornerStoreTest {
 		assertTrue(store.description.equals("Gain 1 Victory Point"));
 		assertTrue(store.type.equals("Discard"));
 		assertTrue(store.cost == 3);
+		assertTrue(store.logic.getClass().equals(CornerStoreLogic.class));
+
 	}
 
 }

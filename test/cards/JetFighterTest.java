@@ -10,10 +10,12 @@ public class JetFighterTest {
 
 	@Test
 	public void constructorTest() {
-		JetFighter JetFighter  = new JetFighter();
-		assertTrue(JetFighter.name.equals("Jet Fighter"));
-		assertTrue(JetFighter.description.equals("Gain 5 Victory Points and lose 4 health"));
-		assertTrue(JetFighter.type.equals("Discard"));
-		assertTrue(JetFighter.cost == 5);
+		JetFighter jetFighter  = new JetFighter();
+		assertTrue(jetFighter.name.equals("Jet Fighter"));
+		assertTrue(jetFighter.description.equals("Gain 5 Victory Points and lose 4 health"));
+		assertTrue(jetFighter.type.equals("Discard"));
+		assertTrue(jetFighter.cost == 5);
+		assertTrue(jetFighter.logic.getClass().equals(JetFighterLogic.class));
+
 	}
 }

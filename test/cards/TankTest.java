@@ -8,11 +8,13 @@ public class TankTest {
 
 	@Test
 	public void constructorTest() {
-		Tank Tank = new Tank();
-		assertTrue(Tank.name.equals("Tank"));
-		assertTrue(Tank.description.equals("Gain 4 Victory Points and lose 3 Health"));
-		assertTrue(Tank.type.equals("Discard"));
-		assertTrue(Tank.cost == 4);	
-		}
+		Tank tank = new Tank();
+		assertTrue(tank.name.equals("Tank"));
+		assertTrue(tank.description.equals("Gain 4 Victory Points and lose 3 Health"));
+		assertTrue(tank.type.equals("Discard"));
+		assertTrue(tank.cost == 4);	
+		assertTrue(tank.logic.getClass().equals(TankLogic.class));
+
+	}
 
 }
