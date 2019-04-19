@@ -33,5 +33,11 @@ public class CardTest {
 		assertTrue(mycard.getName().equals("default"));
 	}
 	
+	@Test
+	public void testGetLogic() {
+		Card mycard = new Card();	
+		assertEquals(mycard.getLogic(),null);
+	}
+	
 
 }

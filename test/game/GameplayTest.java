@@ -486,6 +486,36 @@ public class GameplayTest {
 		EasyMock.verify(ui, player);
 
 	}
+	@Test
+	public void useCardDoesNotHaveCardTest(){
+		
+	}
+	
+	@Test
+	public void useCardHasCardTest() {
+		ArrayList<Card> hand = new ArrayList<Card>();
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.createMock(GUI.class);
+		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
+		Player player = EasyMock.createMock(Player.class);
+		Card card = EasyMock.niceMock(Card.class);
+		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
+		
+		hand.add(card);
+		hand.add(card);
+		hand.add(card);
+		
+		player.cardsInHand = hand;
+		
+		EasyMock.expect(card.getName()).andReturn("Health");
+		
+		
+	}
+	
+	@Test
+	public void useCardHasCardDiscardTest() {
+		
+	}
 
 	@Test
 	public void checkWinTest1() {

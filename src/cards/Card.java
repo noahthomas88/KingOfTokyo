@@ -23,4 +23,5 @@ public class Card {
 	public int getCost(){
 		return this.cost;
 	}
+	
 }
