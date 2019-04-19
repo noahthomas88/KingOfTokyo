@@ -23,5 +23,8 @@ public class Card {
 	public int getCost(){
 		return this.cost;
 	}
-	
+
+	public CardLogic getCardLogic() {
+		return this.logic;
+	}
 }

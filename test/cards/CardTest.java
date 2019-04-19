@@ -2,7 +2,7 @@ package cards;
 
 import static org.junit.Assert.*;
 
-
+import org.easymock.EasyMock;
 import org.junit.Test;
 
 import cards.Card;
@@ -34,10 +34,12 @@ public class CardTest {
 	}
 	
 	@Test
-	public void testGetLogic() {
-		Card mycard = new Card();	
-		assertEquals(mycard.getLogic(),null);
+	public void testgetCardLogic() {
+		Card mycard = new Card();
+		CardLogic logic = EasyMock.niceMock(CommuterTrainLogic.class);
+		mycard.logic = logic;
+		assertEquals(mycard.getCardLogic(),logic);
 	}
-	
+
 
 }

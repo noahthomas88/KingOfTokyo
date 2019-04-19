@@ -250,6 +250,14 @@ public class GUI {
 		this.buttonmap.get("cede").setEnabled(true);
 	}
 	
+	public void EnableRollButton() {
+		this.buttonmap.get("die").setEnabled(true);
+	}
+	
+	public void DisableRollButton() {
+		this.buttonmap.get("die").setEnabled(false);
+	}
+	
 	public void DisableCedeButton() {
 		this.buttonmap.get("cede").setEnabled(false);
 	}
