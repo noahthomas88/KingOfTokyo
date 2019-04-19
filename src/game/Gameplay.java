@@ -125,7 +125,7 @@ public class Gameplay {
 	}
 	
 	public void buyCard(int number) {
-<<<<<<< HEAD
+
 		Card tobuy = deck.visibleCard[number-1];
 		if(currentplayer.getEnergy()>=tobuy.getCost()) {
 			currentplayer.addToHand(deck.visibleCard[number-1]);
@@ -136,9 +136,6 @@ public class Gameplay {
 		} else {
 			gameUI.energyWarning();
 		}
-=======
-
->>>>>>> fe9c4d8631c8d4d67a0b7dc20b8d42855f46520a
 	}
 
 	public void selectFirstPlayer() {
