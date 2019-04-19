@@ -71,9 +71,9 @@ public class GameplayTest {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		
 
-		EasyMock.expect(firstCard.name).andReturn("first");
-		EasyMock.expect(secondCard.name).andReturn("second");
-		EasyMock.expect(thirdCard.name).andReturn("third");
+		EasyMock.expect(firstCard.getName()).andReturn("first");
+		EasyMock.expect(secondCard.getName()).andReturn("second");
+		EasyMock.expect(thirdCard.getName()).andReturn("third");
 		
 //		EasyMock.expect(currentPlayer.energy).andReturn(1);
 //		EasyMock.expect(firstCard.cost).andReturn(1);

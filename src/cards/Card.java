@@ -15,5 +15,9 @@ public class Card {
 		this.description = "This is the base card, override me";
 		this.logic = null;
 	}
+	
+	public String getName(){
+		return this.name;
+	}
 
 }

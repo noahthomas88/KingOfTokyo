@@ -29,11 +29,9 @@ public class CardTest {
 	
 	@Test
 	public void testGetName() {
-		Card mycard = new Card();
-		assertTrue(mycard.name.equals("default"));
+		Card mycard = new Card();	
+		assertTrue(mycard.getName().equals("default"));
 	}
-	
-	
 	
 
 }
