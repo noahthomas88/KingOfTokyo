@@ -154,4 +154,35 @@ public class BoardTest {
 		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
 		
 	}
+	
+	@Test
+	public void testGetCityPlayer() {
+		Player test = EasyMock.niceMock(Player.class);
+		Board board = new Board(2);
+		
+		board.cityPlayer = test;
+		
+		assertEquals(board.getCityPlayer(), test);
+	}
+	
+	@Test
+	public void testgetPlayerListSize() {
+		Player test = EasyMock.niceMock(Player.class);
+		Board board = new Board(2);
+		ArrayList<Player> playerList = new ArrayList<>();
+		playerList.add(test);
+		playerList.add(test);
+		board.playerList = playerList;
+		
+		assertEquals(board.getPlayerListSize(), 2);
+	}
+	
+	@Test
+	public void testGetPlayerList() {
+		Board board = new Board(2);
+		ArrayList<Player> playerList = EasyMock.createMock(ArrayList.class);
+		board.playerList = playerList;
+		assertEquals(board.getPlayerList(), playerList);
+	}
+
 }

@@ -12,7 +12,10 @@ import game.Dice;
 public class DiceTest {
 	@Test
 	public void diceConstructorTest() {
-		Player p = new Player("test");
+		Player p = EasyMock.niceMock(Player.class);
+		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
+		EasyMock.replay(p);
+		
 		Dice testDice = new Dice(p);
 		assertTrue(testDice != null);
 	}
@@ -40,9 +43,12 @@ public class DiceTest {
 	}
 
 	public ArrayList<Integer> get30RollResults() {
-		ArrayList<Integer> rollResults = new ArrayList();
+		ArrayList<Integer> rollResults = new ArrayList<Integer>();
 		for (int i = 0; i < 10; i++) {
-			Player p = new Player("test");
+			Player p = EasyMock.niceMock(Player.class);
+			EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
+			EasyMock.replay(p);
+			
 			Dice testDice = new Dice(p);
 			for (int j = 0; i < 3; i++) {
 				rollResults.add(testDice.roll());
@@ -53,7 +59,10 @@ public class DiceTest {
 
 	@Test
 	public void getTimesRolledTest() {
-		Player p = new Player("test");
+		Player p = EasyMock.niceMock(Player.class);
+		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
+		EasyMock.replay(p);
+		
 		Dice testDice = new Dice(p);
 		assertTrue(testDice.getTimesRolled() == 0);
 		testDice.roll();
@@ -66,8 +75,10 @@ public class DiceTest {
 	
 	@Test
 	public void alteredRollLimitTest() {
-		Player p = new Player("test");
-		p.numberOfDieRolls = 4;
+		Player p = EasyMock.niceMock(Player.class);
+		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(4);
+		EasyMock.replay(p);
+		
 		Dice testDice = new Dice(p);
 		assertTrue(testDice.getTimesRolled() == 0);
 		testDice.roll();
@@ -82,7 +93,10 @@ public class DiceTest {
 
 	@Test(expected = UnsupportedOperationException.class)
 	public void isResolvedTest() {
-		Player p = new Player("test");
+		Player p = EasyMock.niceMock(Player.class);
+		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
+		EasyMock.replay(p);
+		
 		Dice testDice = new Dice(p);
 		testDice.isResolved = true;
 		testDice.roll();
@@ -90,12 +104,40 @@ public class DiceTest {
 
 	@Test(expected = UnsupportedOperationException.class)
 	public void defaultThreeRollMaximumTest() {
-		Player p = new Player("test");
+		Player p = EasyMock.niceMock(Player.class);
+		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
+		EasyMock.replay(p);
+		
 		Dice testDice = new Dice(p);
 		testDice.roll();
 		testDice.roll();
 		testDice.roll();
 		testDice.roll();
 	}
+	
+	@Test
+	public void testNumberToString() {
+		Player p = EasyMock.niceMock(Player.class);
+		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
+		EasyMock.replay(p);
+		
+		Dice testDice = new Dice(p);
+		assertEquals(testDice.numberToString(1),"1");
+		assertEquals(testDice.numberToString(2),"2");
+		assertEquals(testDice.numberToString(3),"3");
+		assertEquals(testDice.numberToString(4),"attack");
+		assertEquals(testDice.numberToString(5),"energy");
+		assertEquals(testDice.numberToString(6),"heal");
+	}
 
+	@Test
+	public void testGetNumberRolled() {
+		Player p = EasyMock.niceMock(Player.class);
+		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
+		EasyMock.replay(p);
+		
+		Dice testDice = new Dice(p);
+		testDice.numberRolled = 5;
+		assertEquals(testDice.getNumberRolled(), 5);
+	}
 }
