@@ -131,9 +131,9 @@ public class Gameplay {
 	
 	public void buyCard(int number) {
 		Card tobuy = deck.visibleCard[number-1];
-		if(currentplayer.energy>=tobuy.cost) {
-			currentplayer.cardsInHand.add(deck.visibleCard[number-1]);
-			currentplayer.addEnergy(-tobuy.cost);
+		if(currentplayer.getEnergy()>=tobuy.getCost()) {
+			currentplayer.addToHand(deck.visibleCard[number-1]);
+			currentplayer.addEnergy(-tobuy.getCost());
 			deck.buy(number-1);
 			gameUI.setCards(deck.visibleCard);
 			gameUI.updatePlayerText(gameboard);
