@@ -1,5 +1,7 @@
 package cards;
 
+import java.util.ArrayList;
+
 import game.Player;
 
 public class TankLogic implements CardLogic {
@@ -7,6 +9,12 @@ public class TankLogic implements CardLogic {
 	public void use(Player player) {
 		player.addHealth(-3);
 		player.addVictory(4);
+	}
+
+	@Override
+	public void use(Player player, ArrayList<Player> players) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

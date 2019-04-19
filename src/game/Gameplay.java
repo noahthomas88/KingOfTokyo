@@ -65,7 +65,6 @@ public class Gameplay {
 		}
 		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
-		checkWin();
 	}
 
 	public void diceRolled(ArrayList<Dice> dicelist) {
@@ -91,6 +90,7 @@ public class Gameplay {
 		calculateScore(otherdice);
 		gameUI.EnableEndTurnButton();
 		gameUI.updatePlayerText(gameboard);
+		checkWin();
 	}
 
 	public void calculateScore(ArrayList<Dice> dice) {
@@ -117,19 +117,15 @@ public class Gameplay {
 			currentplayer.addVictory(1 + (count1 - 3));
 		}
 		
-		checkWin();
+		
 	}
 
 	public void endTurn() {
-		if (playerToNumber.get(currentplayer.name) >= (gameboard.numOfPlayers - 1)) {
-			currentplayer = gameboard.playerList.get(0);
-		} else {
-			currentplayer = gameboard.playerList.get(playerToNumber.get(currentplayer.name) + 1);
-		}
-		beginTurn();
+
 	}
 	
 	public void buyCard(int number) {
+<<<<<<< HEAD
 		Card tobuy = deck.visibleCard[number-1];
 		if(currentplayer.getEnergy()>=tobuy.getCost()) {
 			currentplayer.addToHand(deck.visibleCard[number-1]);
@@ -140,14 +136,13 @@ public class Gameplay {
 		} else {
 			gameUI.energyWarning();
 		}
+=======
+
+>>>>>>> fe9c4d8631c8d4d67a0b7dc20b8d42855f46520a
 	}
 
 	public void selectFirstPlayer() {
-		ArrayList<Player> playerlist = gameboard.playerList;
-		Integer numOfPlayers = gameboard.numOfPlayers;
-		Random random = new Random();
-		Integer firstplayer = random.nextInt(numOfPlayers);
-		this.currentplayer = playerlist.get(firstplayer);
+
 	}
 
 	public void cedeTokyo() {
@@ -155,7 +150,6 @@ public class Gameplay {
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
 		gameUI.DisableCedeButton();
-		checkWin();
 	}
 
 	public void swipeCard() {
@@ -184,7 +178,7 @@ public class Gameplay {
 				total++;
 			}
 		}
-		if(total < 2) {
+		if(total < 2 && total > 0) {
 			gameUI.endGame(currentplayer);
 			return;
 		}
