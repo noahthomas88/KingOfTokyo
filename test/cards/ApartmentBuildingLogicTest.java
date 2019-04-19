@@ -17,5 +17,15 @@ public class ApartmentBuildingLogicTest {
 		cardLogic.use(p);
 		assertTrue(p.victoryPoints == saved + 3);
 	}
+	
+	@Test
+	public void apartmentBuildingUseTest2() {
+		Player p = new Player("TestPlayer");
+		p.victoryPoints = 10;
+		ApartmentBuildingLogic cardLogic = new ApartmentBuildingLogic();
+		int saved = p.victoryPoints;
+		cardLogic.use(p, null);
+		assertTrue(p.victoryPoints == saved + 3);
+	}
 
 }

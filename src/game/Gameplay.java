@@ -121,15 +121,34 @@ public class Gameplay {
 	}
 
 	public void endTurn() {
-
+		if (playerToNumber.get(currentplayer.name) >= (gameboard.numOfPlayers - 1)) {
+			currentplayer = gameboard.playerList.get(0);
+		} else {
+			currentplayer = gameboard.playerList.get(playerToNumber.get(currentplayer.name) + 1);
+		}
+		beginTurn();
 	}
 	
 	public void buyCard(int number) {
 
+		Card tobuy = deck.visibleCard[number-1];
+		if(currentplayer.getEnergy()>=tobuy.getCost()) {
+			currentplayer.addToHand(deck.visibleCard[number-1]);
+			currentplayer.addEnergy(-tobuy.getCost());
+			deck.buy(number-1);
+			gameUI.setCards(deck.visibleCard);
+			gameUI.updatePlayerText(gameboard);
+		} else {
+			gameUI.energyWarning();
+		}
 	}
 
 	public void selectFirstPlayer() {
-
+		ArrayList<Player> playerlist = gameboard.playerList;
+		Integer numOfPlayers = gameboard.numOfPlayers;
+		Random random = new Random();
+		Integer firstplayer = random.nextInt(numOfPlayers);
+		this.currentplayer = playerlist.get(firstplayer);
 	}
 
 	public void cedeTokyo() {
