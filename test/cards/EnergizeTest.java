@@ -8,11 +8,13 @@ public class EnergizeTest {
 
 	@Test
 	public void constructorTest() {
-		Energize Energize  = new Energize();
-		assertTrue(Energize.name.equals("Energize"));
-		assertTrue(Energize.description.equals("Gain 9 energy"));
-		assertTrue(Energize.type.equals("Discard"));
-		assertTrue(Energize.cost == 8);
+		Energize energize  = new Energize();
+		assertTrue(energize.name.equals("Energize"));
+		assertTrue(energize.description.equals("Gain 9 energy"));
+		assertTrue(energize.type.equals("Discard"));
+		assertTrue(energize.cost == 8);
+		assertTrue(energize.logic.getClass().equals(EnergizeLogic.class));
+
 	}
 
 }

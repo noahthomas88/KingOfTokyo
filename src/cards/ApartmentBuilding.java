@@ -7,6 +7,7 @@ public class ApartmentBuilding extends Card {
 		this.cost = 5;
 		this.description = "Gain 3 Victory Points";
 		this.type = "Discard";
+		this.logic = new ApartmentBuildingLogic();
 	}
 
 }

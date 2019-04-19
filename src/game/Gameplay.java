@@ -15,8 +15,8 @@ public class Gameplay {
 	public Player currentplayer;
 	public Board gameboard;
 	public GUI gameUI;
-	DeckConstructor deck = new DeckConstructor();
-	HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
+	DeckConstructor deck;
+	HashMap<String, Integer> playerToNumber;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
 		this.gameUI = gui;
@@ -24,6 +24,12 @@ public class Gameplay {
 		this.gameboard = board;
 		this.deck = deck;
 		this.playerToNumber = map;
+		if(this.deck==null) {
+			this.deck = new DeckConstructor();
+		}
+		if (playerToNumber==null) {
+			playerToNumber = new HashMap<String, Integer>();
+		}
 	}
 
 	public void initializeGame() {
@@ -65,6 +71,7 @@ public class Gameplay {
 		}
 		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
+		gameUI.EnableRollButton();
 	}
 
 	public void diceRolled(ArrayList<Dice> dicelist) {
@@ -90,6 +97,7 @@ public class Gameplay {
 		calculateScore(otherdice);
 		gameUI.EnableEndTurnButton();
 		gameUI.updatePlayerText(gameboard);
+		gameUI.DisableRollButton();
 		checkWin();
 	}
 

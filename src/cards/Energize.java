@@ -7,6 +7,7 @@ public class Energize extends Card{
 		this.cost = 8;
 		this.description = "Gain 9 energy";
 		this.type = "Discard";
+		this.logic = new EnergizeLogic();
 	}
 
 }

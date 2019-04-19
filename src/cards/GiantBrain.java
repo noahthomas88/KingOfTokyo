@@ -7,6 +7,7 @@ public class GiantBrain extends Card {
 		this.cost = 5;
 		this.description = "You have 1 extra die roll each turn";
 		this.type = "Keep";
+		this.logic = new GiantBrainLogic();
 	}
 
 }

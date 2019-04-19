@@ -8,10 +8,12 @@ public class NationalGuardTest {
 
 	@Test
 	public void constructorTest() {
-		NationalGuard NationalGuard  = new NationalGuard();
-		assertTrue(NationalGuard.name.equals("National Guard"));
-		assertTrue(NationalGuard.description.equals("Gain 2 Victory Points, But lose 2 Health"));
-		assertTrue(NationalGuard.type.equals("Discard"));
-		assertTrue(NationalGuard.cost == 3);
+		NationalGuard nationalGuard  = new NationalGuard();
+		assertTrue(nationalGuard.name.equals("National Guard"));
+		assertTrue(nationalGuard.description.equals("Gain 2 Victory Points, But lose 2 Health"));
+		assertTrue(nationalGuard.type.equals("Discard"));
+		assertTrue(nationalGuard.cost == 3);
+		assertTrue(nationalGuard.logic.getClass().equals(NationalGuardLogic.class));
+
 	}
 }
