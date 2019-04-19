@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import cards.Card;
 import cards.DeckConstructor;
+import cards.EnergizeLogic;
 import game.Gameplay;
 import main.GUI;
 
@@ -486,35 +487,95 @@ public class GameplayTest {
 		EasyMock.verify(ui, player);
 
 	}
+	
 	@Test
 	public void useCardDoesNotHaveCardTest(){
+		ArrayList<Card> hand = new ArrayList<Card>();
+		Card card = EasyMock.niceMock(Card.class);
+		hand.add(card);
+		hand.add(card);
 		
+		Player test1 = EasyMock.niceMock(Player.class);
+		Player test2 = EasyMock.niceMock(Player.class);
+		ArrayList<Player> playerList = new ArrayList<>();
+		playerList.add(test1);
+		playerList.add(test2);
+		
+		Board board = EasyMock.niceMock(Board.class);		
+		EnergizeLogic logic = EasyMock.strictMock(EnergizeLogic.class);
+		Gameplay gameplay = new Gameplay(null, test1, board, null, null);
+		
+		EasyMock.expect(test1.getCardsInHand()).andReturn(hand);
+		EasyMock.expect(card.getName()).andReturn("Health");
+		EasyMock.expect(card.getName()).andReturn("Energize");
+		
+		EasyMock.replay(card, logic, test1, board);
+		
+		gameplay.useCard("Heal");
+		
+		EasyMock.verify(logic);	
 	}
 	
 	@Test
 	public void useCardHasCardTest() {
 		ArrayList<Card> hand = new ArrayList<Card>();
-		Board board = EasyMock.niceMock(Board.class);
-		GUI ui = EasyMock.createMock(GUI.class);
-		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
-		Player player = EasyMock.createMock(Player.class);
 		Card card = EasyMock.niceMock(Card.class);
-		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
-		
-		hand.add(card);
-		hand.add(card);
 		hand.add(card);
 		
-		player.cardsInHand = hand;
+		Player test1 = EasyMock.niceMock(Player.class);
+		Player test2 = EasyMock.niceMock(Player.class);
+		ArrayList<Player> playerList = new ArrayList<>();
+		playerList.add(test1);
+		playerList.add(test2);
 		
+		Board board = EasyMock.niceMock(Board.class);		
+		EnergizeLogic logic = EasyMock.niceMock(EnergizeLogic.class);
+		Gameplay gameplay = new Gameplay(null, test1, board, null, null);
+		
+		EasyMock.expect(test1.getCardsInHand()).andReturn(hand);
 		EasyMock.expect(card.getName()).andReturn("Health");
+		EasyMock.expect(card.getCardLogic()).andReturn(logic);	
+		EasyMock.expect(board.getPlayerList()).andReturn(playerList);
+		logic.use(test1, playerList);
+		EasyMock.expect(card.getType()).andReturn("Keep");
+
+		EasyMock.replay(card, logic, test1, board);
 		
+		gameplay.useCard("Health");
 		
+		EasyMock.verify(logic);	
 	}
 	
 	@Test
 	public void useCardHasCardDiscardTest() {
+		ArrayList<Card> hand = new ArrayList<Card>();
+		Card card = EasyMock.niceMock(Card.class);
+		hand.add(card);
 		
+		Player test1 = EasyMock.niceMock(Player.class);
+		Player test2 = EasyMock.niceMock(Player.class);
+		ArrayList<Player> playerList = new ArrayList<>();
+		playerList.add(test1);
+		playerList.add(test2);
+		
+		Board board = EasyMock.niceMock(Board.class);		
+		EnergizeLogic logic = EasyMock.niceMock(EnergizeLogic.class);
+		Gameplay gameplay = new Gameplay(null, test1, board, null, null);
+		
+		EasyMock.expect(test1.getCardsInHand()).andReturn(hand);
+		EasyMock.expect(card.getName()).andReturn("Health");
+		EasyMock.expect(card.getCardLogic()).andReturn(logic);	
+		EasyMock.expect(board.getPlayerList()).andReturn(playerList);
+		logic.use(test1, playerList);
+		EasyMock.expect(card.getType()).andReturn("Discard");
+		EasyMock.expect(test1.getCardsInHand()).andReturn(hand);
+
+		EasyMock.replay(card, logic, test1, board);
+		
+		gameplay.useCard("Health");
+		assertTrue(hand.isEmpty());
+		
+		EasyMock.verify(logic);	
 	}
 
 	@Test

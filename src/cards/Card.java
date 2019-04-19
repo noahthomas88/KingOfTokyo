@@ -27,4 +27,8 @@ public class Card {
 	public CardLogic getCardLogic() {
 		return this.logic;
 	}
+	
+	public String getType() {
+		return this.type;
+	}
 }

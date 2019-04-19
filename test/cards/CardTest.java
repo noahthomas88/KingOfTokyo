@@ -34,6 +34,12 @@ public class CardTest {
 	}
 	
 	@Test
+	public void testGetType() {
+		Card mycard = new Card();	
+		assertTrue(mycard.getType().equals("base"));
+	}
+	
+	@Test
 	public void testgetCardLogic() {
 		Card mycard = new Card();
 		CardLogic logic = EasyMock.niceMock(CommuterTrainLogic.class);

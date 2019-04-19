@@ -100,4 +100,8 @@ public class Player {
 		return this.energy;
 	}
 
+	public ArrayList<Card> getCardsInHand() {
+		return this.cardsInHand;
+	}
+
 }

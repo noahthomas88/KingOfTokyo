@@ -2,6 +2,8 @@ package game;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -233,6 +235,16 @@ public class PlayerTest {
 		Player player = new Player("TestDummy");
 		player.energy = 6;
 		assertEquals(player.getEnergy(), 6);
+	}
+	
+	@Test
+	public void getCardsInHand() {
+		Player player = new Player("TestDummy");
+		Card card = EasyMock.niceMock(Card.class);
+		ArrayList<Card> cards = new ArrayList<>();
+		player.cardsInHand = cards;
+		cards.add(card);
+		assertEquals(player.getCardsInHand().get(0), card);
 	}
 	
 	@Test

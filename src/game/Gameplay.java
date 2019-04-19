@@ -179,7 +179,20 @@ public class Gameplay {
 	}
 
 	public void useCard(String cardname) {
-		
+		Card touse = null;
+		ArrayList<Card> cards = currentplayer.getCardsInHand();
+		for(Card card : cards) {
+			if(card.getName().equals(cardname)) {
+				touse = card;
+				break;
+			}
+		}
+		if(touse!=null) {
+			touse.getCardLogic().use(currentplayer, gameboard.getPlayerList());
+			if(touse.getType().equals("Discard")) {
+				currentplayer.getCardsInHand().remove(touse);
+			}
+		}
 	}
 
 	public void checkWin() {
