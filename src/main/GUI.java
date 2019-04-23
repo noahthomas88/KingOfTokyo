@@ -37,6 +37,10 @@ public class GUI {
 	public void viewHand() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
+		if(game.currentplayer.cardsInHand.isEmpty()) {
+			JLabel label = new JLabel("Your hand is empty");
+			panel.add(label);
+		}
 		for(Card card : game.currentplayer.cardsInHand) {
 			JButton cardbutton = new JButton();
 			JTextField description = new JTextField();

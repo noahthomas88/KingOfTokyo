@@ -174,6 +174,7 @@ public class Gameplay {
 			deck.swipe();
 			gameUI.setCards(deck.visibleCard);
 			currentplayer.addEnergy(-2);
+			gameUI.updatePlayerText(gameboard);
 		} else {
 			gameUI.energyWarning();
 		}
