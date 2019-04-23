@@ -26,12 +26,12 @@ public class GasRefineryLogicTest {
 		players.add(p2);
 		players.add(p3);
 		
-		EvacuationOrdersLogic evactuationLogic = new EvacuationOrdersLogic();
+		GasRefineryLogic evactuationLogic = new GasRefineryLogic();
 		evactuationLogic.use(p, players);
 		
 		assertTrue(p.victoryPoints == psaved + 2);
-		assertTrue(p2.victoryPoints == 7);
-		assertTrue(p3.victoryPoints == 4);
+		assertTrue(p2.health == 7);
+		assertTrue(p3.health == 4);
 			
 	}
 
