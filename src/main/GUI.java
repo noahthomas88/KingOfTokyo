@@ -44,13 +44,11 @@ public class GUI {
 			description.setEditable(false);
 			cardbutton.setText(card.name);
 			cardbutton.setPreferredSize(new Dimension(200,200));
-			panel.add(cardbutton);
 			description.setPreferredSize(new Dimension(200,200));
 			panel.add(cardbutton, BorderLayout.CENTER);
 			panel.add(description,BorderLayout.SOUTH);
 		}
 		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.OK_OPTION);
-		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
 	}
 
 
