@@ -140,6 +140,7 @@ public class GUI {
 				button.setText(die.numberToString(die.numberRolled));
 			}
 			button.setEnabled(false);
+			button.setBackground(Color.WHITE);
 		}
 		JOptionPane.showConfirmDialog(null, panel, "Third row, this is your final row", JOptionPane.OK_OPTION);
 
