@@ -14,8 +14,14 @@ public class RootingForTheUnderdogLogic implements CardLogic {
 
 	@Override
 	public void use(Player player, ArrayList<Player> players) {
-		// TODO Auto-generated method stub
-
+		int min = Integer.MAX_VALUE;
+		for (Player p: players) {
+			if (p.victoryPoints < min) {
+				 min = p.victoryPoints;
+			}
+		}
+		if(player.victoryPoints == min){
+			player.victoryPoints++;
+		}
 	}
-
 }
