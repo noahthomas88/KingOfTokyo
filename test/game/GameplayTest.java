@@ -192,6 +192,7 @@ public class GameplayTest {
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("test1", 0);
 		map.put("test2", 1);
+		
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
 		EasyMock.expect(test1.getName()).andStubReturn("test1");

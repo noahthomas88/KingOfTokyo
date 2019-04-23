@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import cards.Card;
 import game.Board;
@@ -35,14 +36,23 @@ public class GUI {
 
 	public void viewHand() {
 		JPanel panel = new JPanel();
-		for (Card card : game.currentplayer.cardsInHand) {
+		panel.setLayout(new BorderLayout());
+		for(Card card : game.currentplayer.cardsInHand) {
 			JButton cardbutton = new JButton();
+			JTextField description = new JTextField();
+			description.setText(card.description);
+			description.setEditable(false);
 			cardbutton.setText(card.name);
-			cardbutton.setPreferredSize(new Dimension(200, 200));
+			cardbutton.setPreferredSize(new Dimension(200,200));
 			panel.add(cardbutton);
+			description.setPreferredSize(new Dimension(200,200));
+			panel.add(cardbutton, BorderLayout.CENTER);
+			panel.add(description,BorderLayout.SOUTH);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Here is your hand", JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
 	}
+
 
 	public void setCards(Card[] cards) {
 		Card c1 = cards[0];
