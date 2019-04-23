@@ -24,7 +24,7 @@ import game.Gameplay;
 import game.Player;
 
 public class GUI {
-	
+
 	HashMap<String, JButton> buttonmap = new HashMap<String, JButton>();
 	HashMap<String, JTextArea> textmap = new HashMap<String, JTextArea>();
 	GUI self = this;
@@ -44,11 +44,13 @@ public class GUI {
 			description.setEditable(false);
 			cardbutton.setText(card.name);
 			cardbutton.setPreferredSize(new Dimension(200,200));
+			panel.add(cardbutton);
 			description.setPreferredSize(new Dimension(200,200));
 			cardbutton.addActionListener(new UseCardListener(card.name));
 			panel.add(cardbutton, BorderLayout.CENTER);
 			panel.add(description,BorderLayout.SOUTH);
 		}
+		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.OK_OPTION);
 		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
 	}
 	
@@ -72,6 +74,7 @@ public class GUI {
 			game.buyCard(index);
 		}
 	}
+
 	
 	public void setCards(Card[] cards) {
 		Card c1 = cards[0];
@@ -84,7 +87,7 @@ public class GUI {
 		b2.setText(c2.name);
 		b3.setText(c3.name);
 	}
-	
+
 	public Integer getNumPlayers() {
 		String result = JOptionPane.showInputDialog("enter number of players");
 		int numplayers = Integer.parseInt(result);
@@ -94,19 +97,19 @@ public class GUI {
 		}
 		return numplayers;
 	}
-	
+
 	public void moveToTokyo(Player player) {
 		JTextArea tokyo = textmap.get("tokyo");
 		tokyo.setText("    Tokyo City \n  Occupied By: \n" + player.name);
 	}
-	
+
 	public void moveToBay(Player player) {
 		JTextArea bay = textmap.get("bay");
 		bay.setText("    Tokyo Bay \n  Occupied By: \n" + player.name);
 	}
-	
+
 	public void setActivePlayer(Integer playerNumber) {
-		for(int i=0;i<playertexts.size();i++) {
+		for (int i = 0; i < playertexts.size(); i++) {
 			playertexts.get(i).setBackground(null);
 		}
 		playertexts.get(playerNumber).setBackground(Color.GREEN);
@@ -127,12 +130,12 @@ public class GUI {
 		}
 		return names;
 	}
-	
+
 	public void displayDice() {
 		JPanel panel = new JPanel();
 		ArrayList<Dice> dicelist = new ArrayList<Dice>();
 		ArrayList<JButton> diebuttons = new ArrayList<JButton>();
-		for(int i=0;i<6;i++) {
+		for (int i = 0; i < 6; i++) {
 			Dice dice = new Dice(game.currentplayer);
 			dice.roll();
 			dicelist.add(dice);
@@ -141,35 +144,35 @@ public class GUI {
 			diebutton.addActionListener(new DieListener(diebutton));
 			panel.add(diebutton);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Select dice to re-roll",JOptionPane.OK_CANCEL_OPTION);
-		int toresolve = 6;
-		while(toresolve>1) {
-			for(int i=0;i<6;i++) {
-				JButton button = diebuttons.get(i);
-				Dice die = dicelist.get(i);
-				if(button.getBackground()!=Color.RED) {
-					button.setEnabled(false);
-					die.isResolved=true;
-					toresolve--;
-				} else {
-					if(die.isResolved) {
-						toresolve--;
-						button.setEnabled(false);
-					} else {
-						die.roll();
-						button.setText(die.numberToString(die.numberRolled));
-					}
-				}
+		JOptionPane.showConfirmDialog(null, panel, "First row, select dice to re-roll", JOptionPane.OK_OPTION);
+		for (int i = 0; i < 6; i++) {
+			JButton button = diebuttons.get(i);
+			Dice die = dicelist.get(i);
+			if (button.getBackground() == Color.RED) {
+				die.roll();
+				button.setText(die.numberToString(die.numberRolled));
 			}
-			JOptionPane.showConfirmDialog(null, panel, "Select dice to re-roll",JOptionPane.OK_CANCEL_OPTION);
 		}
+		JOptionPane.showConfirmDialog(null, panel, "Second row, select dice to re-roll", JOptionPane.OK_OPTION);
+		for (int i = 0; i < 6; i++) {
+			JButton button = diebuttons.get(i);
+			Dice die = dicelist.get(i);
+			if (button.getBackground() == Color.RED) {
+				die.roll();
+				button.setText(die.numberToString(die.numberRolled));
+			}
+			button.setEnabled(false);
+			button.setBackground(Color.WHITE);
+		}
+		JOptionPane.showConfirmDialog(null, panel, "Third row, this is your final row", JOptionPane.OK_OPTION);
+
 		game.diceRolled(dicelist);
 	}
-	
+
 	public void displayStartingPlayer(String name) {
 		JOptionPane.showMessageDialog(null, name + " has been selected as the starting player");
 	}
-	
+
 	public void updatePlayerText(Board myBoard) {
 		for (int i = 0; i < myBoard.playerList.size(); i++) {
 			JLabel playertoset = playertexts.get(i);
@@ -220,7 +223,7 @@ public class GUI {
 		viewHand.addActionListener(new HandListener());
 		textmap.put("tokyo", tokyo);
 		textmap.put("bay", bay);
-		buttonmap.put("die",dieButton);
+		buttonmap.put("die", dieButton);
 		buttonmap.put("end", endTurn);
 		buttonmap.put("cede", cedeTokyo);
 		cardPanel.add(card1);
@@ -229,7 +232,7 @@ public class GUI {
 		cardPanel.add(swipeCards);
 		cardPanel.add(cedeTokyo);
 		tokyoPanel.add(tokyo);
-		if(numberOfPlayers>4) {
+		if (numberOfPlayers > 4) {
 			tokyoPanel.add(bay);
 		}
 		buttonPanel.add(dieButton);
@@ -266,120 +269,120 @@ public class GUI {
 		myframe.pack();
 		myframe.setVisible(true);
 	}
-	
+
 	public void EnableEndTurnButton() {
 		this.buttonmap.get("end").setEnabled(true);
 	}
-	
+
 	public void DisableEndTurnButton() {
 		this.buttonmap.get("end").setEnabled(false);
 	}
-	
+
 	public void EnableCedeButton() {
 		this.buttonmap.get("cede").setEnabled(true);
 	}
-	
+
 	public void EnableRollButton() {
 		this.buttonmap.get("die").setEnabled(true);
 	}
-	
+
 	public void DisableRollButton() {
 		this.buttonmap.get("die").setEnabled(false);
 	}
-	
+
 	public void DisableCedeButton() {
 		this.buttonmap.get("cede").setEnabled(false);
 	}
-	
+
 	public class RollListener implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-				self.displayDice();
+			self.displayDice();
 		}
 	}
-	
+
 	public class DieListener implements ActionListener {
-		
+
 		JButton button;
-		
-		DieListener(JButton button){
+
+		DieListener(JButton button) {
 			this.button = button;
 		}
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			if(this.button.getBackground() == new JButton().getBackground()) {
+			if (this.button.getBackground() == new JButton().getBackground()) {
 				this.button.setBackground(Color.RED);
 			} else {
 				this.button.setBackground(null);
 			}
 		}
 	}
-	
+
 	public class EndListener implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-				game.endTurn();
+			game.endTurn();
 		}
 	}
-	
+
 	public class CedeListener implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-				game.cedeTokyo();
+			game.cedeTokyo();
 		}
 	}
-	
+
 	public class HandListener implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-				self.viewHand();
+			self.viewHand();
 		}
 	}
-	
+
 	public class Card1Listener implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			viewCard(1);
 		}
 	}
-	
+
 	public class Card2Listener implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			viewCard(2);
 		}
 	}
-	
+
 	public class Card3Listener implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			viewCard(3);
 		}
 	}
-	
+
 	public class SwipeListener implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			game.swipeCard();
 		}
 	}
-	
+
 	public class UseCardListener implements ActionListener {
 		String cardname;
-		
-		UseCardListener(String name){
+
+		UseCardListener(String name) {
 			this.cardname = name;
 		}
-		
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			game.useCard(cardname);
@@ -396,7 +399,7 @@ public class GUI {
 
 	public void endGame(Player currentplayer) {
 		JOptionPane.showMessageDialog(null, currentplayer.name + " has won the game!");
-		for(String string : this.buttonmap.keySet()) {
+		for (String string : this.buttonmap.keySet()) {
 			this.buttonmap.get(string).setEnabled(false);
 		}
 		this.DisableCedeButton();
