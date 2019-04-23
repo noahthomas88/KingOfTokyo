@@ -164,6 +164,7 @@ public class Gameplay {
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
+		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
 	}
 

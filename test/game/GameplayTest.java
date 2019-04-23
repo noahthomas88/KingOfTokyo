@@ -442,6 +442,7 @@ public class GameplayTest {
 
 		ui.moveToTokyo(player);
 		player.addVictory(1);
+		ui.updatePlayerText(board);
 		ui.DisableCedeButton();
 
 		EasyMock.replay(player, ui);
