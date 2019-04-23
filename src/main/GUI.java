@@ -146,7 +146,7 @@ public class GUI {
 			diebutton.addActionListener(new DieListener(diebutton));
 			panel.add(diebutton);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "First roll, select dice to re-roll", JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, panel, "First roll, select dice to re-roll", JOptionPane.DEFAULT_OPTION);
 		for (int i = 0; i < 6; i++) {
 			JButton button = diebuttons.get(i);
 			Dice die = dicelist.get(i);
@@ -155,7 +155,7 @@ public class GUI {
 				button.setText(die.numberToString(die.numberRolled));
 			}
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Second roll, select dice to re-roll", JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, panel, "Second roll, select dice to re-roll", JOptionPane.DEFAULT_OPTION);
 		for (int i = 0; i < 6; i++) {
 			JButton button = diebuttons.get(i);
 			Dice die = dicelist.get(i);
@@ -166,7 +166,7 @@ public class GUI {
 			button.setEnabled(false);
 			button.setBackground(Color.WHITE);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Third roll, this is your final row", JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, panel, "Third roll, this is your final row", JOptionPane.DEFAULT_OPTION);
 
 		game.diceRolled(dicelist);
 	}
