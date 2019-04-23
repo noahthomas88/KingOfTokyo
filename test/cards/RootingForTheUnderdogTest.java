@@ -13,7 +13,7 @@ public class RootingForTheUnderdogTest {
 		assertTrue(rootingForTheUnderdog.description.equals("Gain 2 Victory Points and gain 3 Health"));
 		assertTrue(rootingForTheUnderdog.type.equals("Discard"));
 		assertTrue(rootingForTheUnderdog.cost == 6);
-		assertTrue(rootingForTheUnderdog.logic.getClass().equals(rootingForTheUnderdogLogic.class));
+		assertTrue(rootingForTheUnderdog.logic.getClass().equals(RootingForTheUnderdogLogic.class));
 	}
 
 }
