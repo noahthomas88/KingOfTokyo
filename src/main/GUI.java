@@ -53,7 +53,7 @@ public class GUI {
 			panel.add(cardbutton, BorderLayout.CENTER);
 			panel.add(description,BorderLayout.SOUTH);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
 	}
 	
 	public void viewCard(int index) {
@@ -388,6 +388,7 @@ public class GUI {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			game.useCard(cardname);
+			JOptionPane.getRootFrame().dispose();
 		}
 	}
 

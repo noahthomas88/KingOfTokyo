@@ -194,6 +194,7 @@ public class Gameplay {
 				currentplayer.getCardsInHand().remove(touse);
 			}
 		}
+		gameUI.updatePlayerText(gameboard);
 	}
 
 	public void checkWin() {
