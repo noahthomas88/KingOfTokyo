@@ -44,16 +44,36 @@ public class GUI {
 			description.setEditable(false);
 			cardbutton.setText(card.name);
 			cardbutton.setPreferredSize(new Dimension(200,200));
-			panel.add(cardbutton);
 			description.setPreferredSize(new Dimension(200,200));
+			cardbutton.addActionListener(new UseCardListener(card.name));
 			panel.add(cardbutton, BorderLayout.CENTER);
 			panel.add(description,BorderLayout.SOUTH);
 		}
 		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.OK_OPTION);
-		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
+	}
+	
+	public void viewCard(int index) {
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel();
+		JLabel label2 = new JLabel();
+		JTextField description = new JTextField();
+		panel.setLayout(new BorderLayout());
+		Card card = game.deck.visibleCard[index-1];
+		description.setText(card.description);
+		description.setEditable(false);
+		label.setText("Cost: " + card.cost + " energy");
+		label2.setText(card.name);
+		description.setPreferredSize(new Dimension(200,200));
+		panel.add(description, BorderLayout.CENTER);
+		panel.add(label, BorderLayout.SOUTH);
+		panel.add(label2, BorderLayout.NORTH);
+		int option = JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.OK_CANCEL_OPTION);
+		if(option == JOptionPane.OK_OPTION) {
+			game.buyCard(index);
+		}
 	}
 
-
+	
 	public void setCards(Card[] cards) {
 		Card c1 = cards[0];
 		Card c2 = cards[1];
@@ -140,6 +160,7 @@ public class GUI {
 				button.setText(die.numberToString(die.numberRolled));
 			}
 			button.setEnabled(false);
+			button.setBackground(Color.WHITE);
 		}
 		JOptionPane.showConfirmDialog(null, panel, "Third row, this is your final row", JOptionPane.OK_OPTION);
 
@@ -325,7 +346,7 @@ public class GUI {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			game.buyCard(1);
+			viewCard(1);
 		}
 	}
 
@@ -333,7 +354,7 @@ public class GUI {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			game.buyCard(2);
+			viewCard(2);
 		}
 	}
 
@@ -341,7 +362,7 @@ public class GUI {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			game.buyCard(3);
+			viewCard(3);
 		}
 	}
 

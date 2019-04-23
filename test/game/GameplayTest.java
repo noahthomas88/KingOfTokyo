@@ -436,12 +436,13 @@ public class GameplayTest {
 	@Test
 	public void cedeTokyoTest() {
 		Board board = EasyMock.niceMock(Board.class);
-		GUI ui = EasyMock.niceMock(GUI.class);
+		GUI ui = EasyMock.strictMock(GUI.class);
 		Gameplay gameplay = new Gameplay(ui, null, board, null, null);
-		Player player = EasyMock.niceMock(Player.class);
+		Player player = EasyMock.strictMock(Player.class);
 
 		ui.moveToTokyo(player);
 		player.addVictory(1);
+		ui.updatePlayerText(board);
 		ui.DisableCedeButton();
 
 		EasyMock.replay(player, ui);
