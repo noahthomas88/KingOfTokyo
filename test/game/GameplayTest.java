@@ -454,16 +454,17 @@ public class GameplayTest {
 
 	@Test
 	public void swipeCardsTestPlayerHasEnoughEnergy() {
-		Board board = EasyMock.niceMock(Board.class);
-		GUI ui = EasyMock.niceMock(GUI.class);
-		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
-		Player player = EasyMock.niceMock(Player.class);
+		Board board = EasyMock.strictMock(Board.class);
+		GUI ui = EasyMock.strictMock(GUI.class);
+		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
+		Player player = EasyMock.strictMock(Player.class);
 		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
 
 		EasyMock.expect(player.getEnergy()).andReturn(6);
 		deck.swipe();
 		ui.setCards(deck.visibleCard);
 		player.addEnergy(-2);
+		ui.updatePlayerText(board);
 
 		EasyMock.replay(deck, ui, player);
 
