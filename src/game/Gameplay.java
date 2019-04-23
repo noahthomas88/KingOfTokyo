@@ -15,7 +15,7 @@ public class Gameplay {
 	public Player currentplayer;
 	public Board gameboard;
 	public GUI gameUI;
-	DeckConstructor deck;
+	public DeckConstructor deck;
 	HashMap<String, Integer> playerToNumber;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
@@ -164,6 +164,7 @@ public class Gameplay {
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
+		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
 	}
 
@@ -173,6 +174,7 @@ public class Gameplay {
 			deck.swipe();
 			gameUI.setCards(deck.visibleCard);
 			currentplayer.addEnergy(-2);
+			gameUI.updatePlayerText(gameboard);
 		} else {
 			gameUI.energyWarning();
 		}
