@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import javax.swing.JOptionPane;
-
 import cards.Card;
 import cards.DeckConstructor;
 import main.GUI;
@@ -130,7 +128,7 @@ public class Gameplay {
 
 	public void endTurn() {
 		String currentPlayerName = currentplayer.getName();
-		if (playerToNumber.get(currentPlayerName) >= (gameboard.getPlayerListSize() - 1)) {
+		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
 			currentplayer = gameboard.playerList.get(playerToNumber.get(currentPlayerName) + 1);

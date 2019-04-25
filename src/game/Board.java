@@ -53,10 +53,6 @@ public class Board {
 		deck.shuffle();
 	}
 	
-	public int getPlayerListSize() {
-		return playerList.size();
-	}
-	
 	public ArrayList<Player> getPlayerList(){
 		return this.playerList;
 	}

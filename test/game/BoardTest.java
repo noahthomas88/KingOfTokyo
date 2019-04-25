@@ -156,18 +156,6 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void testgetPlayerListSize() {
-		Player test = EasyMock.niceMock(Player.class);
-		Board board = new Board(2);
-		ArrayList<Player> playerList = new ArrayList<>();
-		playerList.add(test);
-		playerList.add(test);
-		board.playerList = playerList;
-		
-		assertEquals(board.getPlayerListSize(), 2);
-	}
-	
-	@Test
 	public void testGetPlayerList() {
 		Board board = new Board(2);
 		ArrayList<Player> playerList = EasyMock.createMock(ArrayList.class);

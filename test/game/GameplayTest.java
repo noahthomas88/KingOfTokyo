@@ -720,11 +720,11 @@ public class GameplayTest {
 		gameplay.playerToNumber = map;
 		
 		EasyMock.expect(test1.getName()).andReturn("test1");
-		EasyMock.expect(board.getPlayerListSize()).andReturn(2);
 		gameplay.beginTurn();
 		
 		EasyMock.replay(test1, board, gameplay);
 		
+		board.numOfPlayers = 2;
 		gameplay.endTurn();
 		
 		EasyMock.verify(gameplay);
@@ -750,11 +750,11 @@ public class GameplayTest {
 		gameplay.playerToNumber = map;
 		
 		EasyMock.expect(test2.getName()).andReturn("test2");
-		EasyMock.expect(board.getPlayerListSize()).andReturn(2);
 		gameplay.beginTurn();
 		
 		EasyMock.replay(test2, board, gameplay);
 		
+		board.numOfPlayers = 2;
 		gameplay.endTurn();
 		
 		EasyMock.verify(gameplay);
