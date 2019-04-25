@@ -439,13 +439,30 @@ public class GameplayTest {
 		GUI ui = EasyMock.strictMock(GUI.class);
 		Gameplay gameplay = new Gameplay(ui, null, board, null, null);
 		Player player = EasyMock.strictMock(Player.class);
+		Player currentPlayer = EasyMock.strictMock(Player.class);
 
-		ui.moveToTokyo(player);
-		player.addVictory(1);
+		ui.moveToTokyo(currentPlayer);
+		currentPlayer.addVictory(1);
 		ui.updatePlayerText(board);
 		ui.DisableCedeButton();
 
 		EasyMock.replay(player, ui);
+		board.cityPlayer = player;
+		gameplay.currentplayer = currentPlayer;
+		gameplay.cedeTokyo();
+		EasyMock.verify(player, ui);
+
+	}
+	
+	@Test
+	public void cedeTokyoSamePlayerTest() {
+		Board board = EasyMock.niceMock(Board.class);
+		GUI ui = EasyMock.strictMock(GUI.class);
+		Gameplay gameplay = new Gameplay(ui, null, board, null, null);
+		Player player = EasyMock.strictMock(Player.class);
+
+		EasyMock.replay(player, ui);
+		board.cityPlayer = player;
 		gameplay.currentplayer = player;
 		gameplay.cedeTokyo();
 		EasyMock.verify(player, ui);

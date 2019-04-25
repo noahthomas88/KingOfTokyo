@@ -161,6 +161,9 @@ public class Gameplay {
 	}
 
 	public void cedeTokyo() {
+		if(gameboard.cityPlayer == currentplayer){
+			return;
+		}
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
