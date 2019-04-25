@@ -400,8 +400,12 @@ public class GUI {
 		JOptionPane.showMessageDialog(null, "Number of players have to be between 2 to 6");
 	}
 
-	public void endGame(Player currentplayer) {
-		JOptionPane.showMessageDialog(null, currentplayer.name + " has won the game!");
+	public void endGame(Player currentplayer, int i) {
+		if(i==1) {
+			JOptionPane.showMessageDialog(null, currentplayer.name + " has won the game with victory points!");
+		} else {
+			JOptionPane.showMessageDialog(null, currentplayer.name + " has won the game by killing the other players!");
+		}
 		for (String string : this.buttonmap.keySet()) {
 			this.buttonmap.get(string).setEnabled(false);
 		}
