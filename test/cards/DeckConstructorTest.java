@@ -2,6 +2,8 @@ package cards;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -20,8 +22,17 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testCreateDeck() {
-		DeckConstructor deckCons = new DeckConstructor();
+		DeckConstructor deckCons = EasyMock.partialMockBuilder(DeckConstructor.class).addMockedMethod("shuffle").createStrictMock();
+		deckCons.shuffle();
+		
+		EasyMock.replay(deckCons);
+		
+		deckCons.deck = new ArrayList<>();
+		deckCons.discard = new ArrayList<>();
+		deckCons.visibleCard = new Card[3];
 		deckCons.createDeck();
+		
+		EasyMock.verify(deckCons);
 		assertFalse(deckCons.deck.isEmpty());
 		
 		String[] cardNames = {"Apartment Building", "Commuter Train", "Corner Store", "Energize", 

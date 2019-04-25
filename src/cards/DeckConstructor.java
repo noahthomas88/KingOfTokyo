@@ -35,6 +35,7 @@ public class DeckConstructor {
 		deck.add(new Skyscraper());
 		deck.add(new Tank());
 		deck.add(new Ultravore());
+		this.shuffle();
 	}
 	
 	public void shuffle() {

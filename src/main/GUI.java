@@ -15,8 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
 import cards.Card;
 import game.Board;
 import game.Dice;
@@ -43,7 +41,8 @@ public class GUI {
 		}
 		for(Card card : game.currentplayer.cardsInHand) {
 			JButton cardbutton = new JButton();
-			JTextField description = new JTextField();
+			JTextArea description = new JTextArea();
+			description.setLineWrap(true);
 			description.setText(card.description);
 			description.setEditable(false);
 			cardbutton.setText(card.name);
@@ -60,7 +59,8 @@ public class GUI {
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel();
 		JLabel label2 = new JLabel();
-		JTextField description = new JTextField();
+		JTextArea description = new JTextArea();
+		description.setLineWrap(true);
 		panel.setLayout(new BorderLayout());
 		Card card = game.deck.visibleCard[index-1];
 		description.setText(card.description);
