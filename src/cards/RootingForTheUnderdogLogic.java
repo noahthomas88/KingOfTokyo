@@ -16,7 +16,7 @@ public class RootingForTheUnderdogLogic implements CardLogic {
 	public void use(Player player, ArrayList<Player> players) {
 		int min = Integer.MAX_VALUE;
 		for (Player p: players) {
-			if (p.victoryPoints < min) {
+			if (p.victoryPoints <= min) {
 				 min = p.victoryPoints;
 			}
 		}
