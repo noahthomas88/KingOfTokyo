@@ -203,7 +203,7 @@ public class Gameplay {
 
 	public void checkWin() {
 		if((currentplayer.getVictoryPoints()>=20 && currentplayer.getHealth() > 0)) {
-			gameUI.endGame(currentplayer);
+			gameUI.endGame(currentplayer, 1);
 			return;
 		}
 		int total = 0;
@@ -213,7 +213,7 @@ public class Gameplay {
 			}
 		}
 		if(total < 2 && total > 0) {
-			gameUI.endGame(currentplayer);
+			gameUI.endGame(currentplayer, 2);
 			return;
 		}
 		
