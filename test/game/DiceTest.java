@@ -38,7 +38,7 @@ public class DiceTest {
 				nonDuplicateFlag = true;
 			}
 		}
-
+		
 		assertTrue(nonDuplicateFlag);
 	}
 

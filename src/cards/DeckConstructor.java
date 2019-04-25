@@ -33,9 +33,9 @@ public class DeckConstructor {
 		deck.add(new JetFighter());
 		deck.add(new NationalGuard());
 		deck.add(new NuclearPowerPlant());
+		deck.add(new RootingForTheUnderdog());
 		deck.add(new Skyscraper());
 		deck.add(new Tank());
-		deck.add(new Ultravore());
 		this.shuffle();
 	}
 	
