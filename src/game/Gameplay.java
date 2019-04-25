@@ -62,9 +62,9 @@ public class Gameplay {
 	public void beginTurn() {
 		gameUI.setActivePlayer(playerToNumber.get(currentplayer.getName()));
 		gameUI.DisableEndTurnButton();
-		if (gameboard.getCityPlayer() == currentplayer) {
+		if (gameboard.cityPlayer == currentplayer) {
 			currentplayer.addVictory(2);
-		}else if (gameboard.getCityPlayer() == null) {
+		}else if (gameboard.cityPlayer == null) {
 			gameboard.cityPlayer = currentplayer;
 			gameUI.moveToTokyo(currentplayer);
 			currentplayer.addVictory(1);
@@ -83,7 +83,7 @@ public class Gameplay {
 			if (result.equals("attack")) {
 				gameboard.doAttack(currentplayer);
 				gameUI.EnableCedeButton();
-			} else if (result.equals("heal") && currentplayer != gameboard.getCityPlayer()) {
+			} else if (result.equals("heal") && currentplayer != gameboard.cityPlayer) {
 				currentplayer.addHealth(1);
 			} else if (result.equals("energy")) {
 				currentplayer.addEnergy(1);
