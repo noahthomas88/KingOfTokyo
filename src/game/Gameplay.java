@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import javax.swing.JOptionPane;
-
 import cards.Card;
 import cards.DeckConstructor;
 import main.GUI;
@@ -15,7 +13,7 @@ public class Gameplay {
 	public Player currentplayer;
 	public Board gameboard;
 	public GUI gameUI;
-	DeckConstructor deck;
+	public DeckConstructor deck;
 	HashMap<String, Integer> playerToNumber;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
@@ -62,9 +60,9 @@ public class Gameplay {
 	public void beginTurn() {
 		gameUI.setActivePlayer(playerToNumber.get(currentplayer.getName()));
 		gameUI.DisableEndTurnButton();
-		if (gameboard.getCityPlayer() == currentplayer) {
+		if (gameboard.cityPlayer == currentplayer) {
 			currentplayer.addVictory(2);
-		}else if (gameboard.getCityPlayer() == null) {
+		}else if (gameboard.cityPlayer == null) {
 			gameboard.cityPlayer = currentplayer;
 			gameUI.moveToTokyo(currentplayer);
 			currentplayer.addVictory(1);
@@ -83,7 +81,7 @@ public class Gameplay {
 			if (result.equals("attack")) {
 				gameboard.doAttack(currentplayer);
 				gameUI.EnableCedeButton();
-			} else if (result.equals("heal") && currentplayer != gameboard.getCityPlayer()) {
+			} else if (result.equals("heal") && currentplayer != gameboard.cityPlayer) {
 				currentplayer.addHealth(1);
 			} else if (result.equals("energy")) {
 				currentplayer.addEnergy(1);
@@ -130,7 +128,7 @@ public class Gameplay {
 
 	public void endTurn() {
 		String currentPlayerName = currentplayer.getName();
-		if (playerToNumber.get(currentPlayerName) >= (gameboard.getPlayerListSize() - 1)) {
+		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
 			currentplayer = gameboard.playerList.get(playerToNumber.get(currentPlayerName) + 1);
@@ -161,9 +159,13 @@ public class Gameplay {
 	}
 
 	public void cedeTokyo() {
+		if(gameboard.cityPlayer == currentplayer){
+			return;
+		}
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
+		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
 	}
 
@@ -173,6 +175,7 @@ public class Gameplay {
 			deck.swipe();
 			gameUI.setCards(deck.visibleCard);
 			currentplayer.addEnergy(-2);
+			gameUI.updatePlayerText(gameboard);
 		} else {
 			gameUI.energyWarning();
 		}
@@ -193,11 +196,12 @@ public class Gameplay {
 				currentplayer.getCardsInHand().remove(touse);
 			}
 		}
+		gameUI.updatePlayerText(gameboard);
 	}
 
 	public void checkWin() {
 		if((currentplayer.getVictoryPoints()>=20 && currentplayer.getHealth() > 0)) {
-			gameUI.endGame(currentplayer);
+			gameUI.endGame(currentplayer, 1);
 			return;
 		}
 		int total = 0;
@@ -207,7 +211,7 @@ public class Gameplay {
 			}
 		}
 		if(total < 2 && total > 0) {
-			gameUI.endGame(currentplayer);
+			gameUI.endGame(currentplayer, 2);
 			return;
 		}
 		

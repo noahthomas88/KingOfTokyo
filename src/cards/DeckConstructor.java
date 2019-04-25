@@ -25,6 +25,7 @@ public class DeckConstructor {
 		deck.add(new Energize());
 		deck.add(new EvacuationOrders());
 		deck.add(new ExtraHead());
+		deck.add(new Flamethrower());
 		deck.add(new GasRefinery());
 		deck.add(new GiantBrain());
 		deck.add(new Heal());
@@ -35,6 +36,7 @@ public class DeckConstructor {
 		deck.add(new Skyscraper());
 		deck.add(new Tank());
 		deck.add(new Ultravore());
+		this.shuffle();
 	}
 	
 	public void shuffle() {
