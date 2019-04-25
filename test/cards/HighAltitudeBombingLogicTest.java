@@ -26,8 +26,8 @@ public class HighAltitudeBombingLogicTest {
 		players.add(p2);
 		players.add(p3);
 		
-		FlamethrowerLogic evactuationLogic = new FlamethrowerLogic();
-		evactuationLogic.use(p, players);
+		HighAltitudeBombingLogic bombingLogic = new HighAltitudeBombingLogic();
+		bombingLogic.use(p, players);
 		
 		assertTrue(p.health == 2);
 		assertTrue(p2.health == 4);
