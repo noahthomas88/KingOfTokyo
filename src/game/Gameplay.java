@@ -200,13 +200,13 @@ public class Gameplay {
 	}
 
 	public void checkWin() {
-		if((currentplayer.victoryPoints >=20 && currentplayer.getHealth() > 0)) {
+		if((currentplayer.victoryPoints >=20 && currentplayer.health > 0)) {
 			gameUI.endGame(currentplayer, 1);
 			return;
 		}
 		int total = 0;
 		for(Player player : gameboard.playerList) {
-			if(player.getHealth() > 0) {
+			if(player.health > 0) {
 				total++;
 			}
 		}

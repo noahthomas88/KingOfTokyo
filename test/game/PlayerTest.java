@@ -229,14 +229,7 @@ public class PlayerTest {
 		Player player = new Player("TestDummy");
 		assertEquals(player.getNumberOfDieRolls(), 3);		
 	}
-	
-	@Test
-	public void getHealthTest() {
-		Player player = new Player("TestDummy");
-		player.health = 1;
-		assertEquals(player.getHealth(), 1);		
-	}
-	
+
 	@Test
 	public void addToHandTest() {
 		Player player = new Player("TestDummy");
