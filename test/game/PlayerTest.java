@@ -7,7 +7,11 @@ import java.util.ArrayList;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import cards.ArmorPlating;
 import cards.Card;
+import cards.FriendOfChildren;
+import cards.MakingStronger;
+import cards.Regeneration;
 import game.Player;
 
 public class PlayerTest {
@@ -99,6 +103,61 @@ public class PlayerTest {
 	}
 	
 	@Test
+	public void testAddHealthWereOnlyMakingItStronger() {
+		Player player = new Player("Test");
+		MakingStronger card = new MakingStronger();
+		player.cardsInHand.add(card);
+		player.addHealth(-2);
+		
+		assertEquals(player.health, 8);
+		assertEquals(player.energy, 1);
+	}
+	
+	@Test
+	public void testAddHealthWereOnlyMakingItStrongerWrongValue() {
+		Player player = new Player("Test");
+		MakingStronger card = new MakingStronger();
+		player.cardsInHand.add(card);
+		player.addHealth(-1);
+		
+		assertEquals(player.health, 9);
+		assertEquals(player.energy, 0);
+	}
+	
+	@Test
+	public void testAddHealthRegeneration() {
+		Player player = new Player("Test");
+		Card card = new Regeneration();
+		player.cardsInHand.add(card);
+		player.addHealth(-4);
+		player.addHealth(2);
+		
+		assertEquals(player.health, 9);
+		
+		player.addHealth(-5);
+		player.addHealth(1);
+		player.addHealth(1);
+		
+		assertEquals(player.health, 8);
+	}
+	
+	@Test
+	public void testAddHealthArmorPlating() {
+		Player player = new Player("Test");
+		Card card = new ArmorPlating();
+		player.cardsInHand.add(card);
+		player.addHealth(-1);
+		
+		assertTrue(player.health == 10);
+		
+		player.addHealth(-5);
+		player.addHealth(1);
+		player.addHealth(1);
+		
+		assertEquals(player.health, 7);
+	}
+	
+	@Test
 	public void testAddHealthExceed() {
 		Player player = new Player("Test");
 		player.health = 7;
@@ -154,6 +213,23 @@ public class PlayerTest {
 		}catch(IllegalArgumentException e) {
 			assertEquals(player.energy, 5);
 		}	
+	}
+	
+	@Test
+	public void testAddEnergyFriendOfChildren() {
+		Player player = new Player("Test");
+		Card card = new FriendOfChildren();
+		player.cardsInHand.add(card);
+		player.addEnergy(4);
+		
+		assertEquals(player.energy, 5);
+		
+		player.energy = 0;
+		
+		player.addEnergy(1);
+		player.addEnergy(1);
+		
+		assertEquals(player.energy, 4);
 	}
 	
 	@Test
