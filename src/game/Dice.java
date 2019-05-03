@@ -30,10 +30,6 @@ public class Dice {
 		this.numberRolled = diceRoller.nextInt(6) + 1;
 		return this.numberRolled;
 	}
-
-	public int getTimesRolled() {
-		return this.timesRolled;
-	}
 	
 	public String numberToString(int number) {
 		if(number < 4) {

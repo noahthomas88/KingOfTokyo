@@ -57,40 +57,6 @@ public class DiceTest {
 		return rollResults;
 	}
 
-	@Test
-	public void getTimesRolledTest() {
-		Player p = EasyMock.niceMock(Player.class);
-		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
-		EasyMock.replay(p);
-		
-		Dice testDice = new Dice(p);
-		assertTrue(testDice.getTimesRolled() == 0);
-		testDice.roll();
-		assertTrue(testDice.getTimesRolled() == 1);
-		testDice.roll();
-		assertTrue(testDice.getTimesRolled() == 2);
-		testDice.roll();
-		assertTrue(testDice.getTimesRolled() == 3);
-	}
-	
-	@Test
-	public void alteredRollLimitTest() {
-		Player p = EasyMock.niceMock(Player.class);
-		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(4);
-		EasyMock.replay(p);
-		
-		Dice testDice = new Dice(p);
-		assertTrue(testDice.getTimesRolled() == 0);
-		testDice.roll();
-		assertTrue(testDice.getTimesRolled() == 1);
-		testDice.roll();
-		assertTrue(testDice.getTimesRolled() == 2);
-		testDice.roll();
-		assertTrue(testDice.getTimesRolled() == 3);
-		testDice.roll();
-		assertTrue(testDice.getTimesRolled() == 4);
-	}
-
 	@Test(expected = UnsupportedOperationException.class)
 	public void isResolvedTest() {
 		Player p = EasyMock.niceMock(Player.class);
