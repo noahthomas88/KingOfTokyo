@@ -210,7 +210,7 @@ public class Gameplay {
 				total++;
 			}
 		}
-		if(total < 2 && total > 0) {
+		if(total == 1) {
 			gameUI.endGame(currentplayer, 2);
 			return;
 		}

@@ -46,7 +46,7 @@ public class CardLoader {
 					index++;
 				} else {
 					cardmap.put(cardname, card);
-					CardLogic logic = getClass(cardname, 0);
+					CardLogic logic = getClass(cardname);
 					card.logic = logic;
 					card = new Card();
 					index = 0;
@@ -66,22 +66,12 @@ public class CardLoader {
 		return cardmap;
 	}
 	
-	public CardLogic getClass(String cardname, int test) {
+	public CardLogic getClass(String cardname) {
 		try {
-			if(test==1) {
-				throw new InstantiationException();
-			} else if(test==2) {
-				throw new IllegalAccessException();
-			}
 			Class<?> cardclass = Class.forName("cards."+cardname+"Logic");
 			return (CardLogic) cardclass.newInstance();
-		} catch (ClassNotFoundException e) {
-			System.err.println("unable to find class to create from name");
-		} catch (InstantiationException e) {
-			System.err.println("unable to instantiate card logic class");
-		} catch (IllegalAccessException e) {
-			System.err.println("illegalaccess during card instantiation");
+		} catch (Exception e) {
+			throw new RuntimeException("unable to create card: " + cardname);
 		}
-		return null;
 	}
 }
