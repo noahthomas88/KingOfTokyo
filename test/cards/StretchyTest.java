@@ -8,7 +8,10 @@ public class StretchyTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		assertTrue(stretchy.name.equals("stretchy"));
+		assertTrue(stretchy.description.equals("Gain 4 Victory Points"));
+		assertTrue(stretchy.type.equals("Discard"));
+		assertTrue(stretchy.cost == 6);
 	}
 
 }
