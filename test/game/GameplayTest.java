@@ -277,39 +277,32 @@ public class GameplayTest {
 
 	@Test
 	public void GameplayInitializationTest() {
-		Board board = EasyMock.createMock(Board.class);
-		GUI ui = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = EasyMock.createMock(DeckConstructor.class);
+		Board board = EasyMock.strictMock(Board.class);
+		GUI ui = EasyMock.strictMock(GUI.class);
+		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
+		
 		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
-		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
-		EasyMock.expect(ui.inputNumPlayers()).andReturn(2);
 		ArrayList<String> names = new ArrayList<String>();
 		names.add("bla");
 		names.add("bla2");
+
+		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
+		
 		EasyMock.expect(ui.inputNames(2)).andReturn(names);
+		board.constructPlayers(names);
 		deck.createDeck();
 		deck.reveal();
-		ui.setCards(null);
+		ui.displayBoard(board, 2, game);
+		ui.setCards(deck.visibleCard);
+		
 		EasyMock.replay(board, ui, deck);
 
-		game.initializeGame();
+		board.numOfPlayers = 2;
+		game.initializeGame(board);
 
 		EasyMock.verify(board, ui, deck);
-	}
-
-	@Test
-	public void GameplayInitializationErrorTest() {
-		GUI ui = EasyMock.createNiceMock(GUI.class);
-		Gameplay game = new Gameplay(ui, null, null, null, null);
-		
-		EasyMock.expect(ui.inputNumPlayers()).andReturn(1);
-		ui.playerCountWarning();
-		
-		EasyMock.replay(ui);
-
-		game.initializeGame();
-		
-		EasyMock.verify(ui);
+		assertTrue(playerToNumber.get("bla") == 0);
+		assertTrue(playerToNumber.get("bla2") == 1);
 	}
 
 	@Test

@@ -30,23 +30,16 @@ public class Gameplay {
 		}
 	}
 
-	public void initializeGame() {
-		int numOfPlayers;
-		try {
-			numOfPlayers = gameUI.inputNumPlayers();
-			gameboard = new Board(numOfPlayers);
-		} catch (IllegalArgumentException e) {
-			gameUI.playerCountWarning();
-			return;
-		}
-		ArrayList<String> names = gameUI.inputNames(numOfPlayers);
+	public void initializeGame(Board board) {
+		this.gameboard = board;
+		ArrayList<String> names = gameUI.inputNames(board.numOfPlayers);
 		gameboard.constructPlayers(names);
-		for (int i = 0; i < gameboard.playerList.size(); i++) {
-			playerToNumber.put(gameboard.playerList.get(i).name, i);
+		for (int i = 0; i < board.numOfPlayers; i++) {
+			playerToNumber.put(names.get(i), i);
 		}
 		deck.createDeck();
 		deck.reveal();
-		gameUI.displayBoard(gameboard, numOfPlayers, this);
+		gameUI.displayBoard(gameboard, board.numOfPlayers, this);
 		gameUI.setCards(deck.visibleCard);
 
 	}
