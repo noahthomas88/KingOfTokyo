@@ -8,6 +8,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import cards.Card;
+import cards.MakingStronger;
 import game.Player;
 
 public class PlayerTest {
@@ -96,6 +97,28 @@ public class PlayerTest {
 		Player player = new Player("Test");
 		player.addHealth(-1);
 		assertEquals(player.health, 9);
+	}
+	
+	@Test
+	public void testAddHealthWereOnlyMakingItStronger() {
+		Player player = new Player("Test");
+		MakingStronger card = new MakingStronger();
+		player.cardsInHand.add(card);
+		player.addHealth(-2);
+		
+		assertEquals(player.health, 8);
+		assertEquals(player.energy, 1);
+	}
+	
+	@Test
+	public void testAddHealthWereOnlyMakingItStrongerWrongValue() {
+		Player player = new Player("Test");
+		MakingStronger card = new MakingStronger();
+		player.cardsInHand.add(card);
+		player.addHealth(-1);
+		
+		assertEquals(player.health, 9);
+		assertEquals(player.energy, 0);
 	}
 	
 	@Test

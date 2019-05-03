@@ -40,6 +40,12 @@ public class Player {
 	
 	public void addHealth(int i) {
 		this.health = this.health + i;
+		//The following if cases are to test for cards that impact the addition of health
+		for(int j = 0; j < this.cardsInHand.size(); j++) {
+			if(this.cardsInHand.get(j).name.equals("We're only making it stronger") && i == -2) {
+				this.addEnergy(1);
+			}
+		}
 		if (this.health >= this.maxHealth + 1) {
 			this.health = this.maxHealth;
 		}
