@@ -16,7 +16,7 @@ public class CardLoaderTest {
 	@Test
 	public void testLoaderNames() {
 		CardLoader loader = new CardLoader();
-		HashMap<String, ArrayList<String>> cardmap = loader.loadCards("cardstest.txt", null, null);
+		HashMap<String, Card> cardmap = loader.loadCards("cardstest.txt", null);
 		assertTrue(cardmap.containsKey("ApartmentBuilding"));
 		assertTrue(cardmap.containsKey("CommuterTrain"));
 	}
@@ -24,28 +24,29 @@ public class CardLoaderTest {
 	@Test
 	public void testLoaderContent1() {
 		CardLoader loader = new CardLoader();
-		HashMap<String, ArrayList<String>> cardmap = loader.loadCards("cardstest.txt", null, null);
-		ArrayList<String> card = cardmap.get("ApartmentBuilding");
-		assertTrue(card.get(0).equals("Apartment Building"));
-		assertTrue(card.get(3).contentEquals("Discard"));
+		HashMap<String, Card> cardmap = loader.loadCards("cardstest.txt", null);
+		Card card = cardmap.get("ApartmentBuilding");
+		assertTrue(card.name.equals("Apartment Building"));
+		assertTrue(card.type.contentEquals("Discard"));
 	}
 	
 	@Test
 	public void testLoaderContent2() {
 		CardLoader loader = new CardLoader();
-		HashMap<String, ArrayList<String>> cardmap = loader.loadCards("cardstest.txt", null, null);
-		ArrayList<String> card = cardmap.get("CommuterTrain");
-		assertTrue(card.get(0).equals("Commuter Train"));
-		assertTrue(card.get(3).contentEquals("Discard"));
+		HashMap<String, Card> cardmap = loader.loadCards("cardstest.txt", null);
+		Card card = cardmap.get("CommuterTrain");
+		assertTrue(card.name.equals("Commuter Train"));
+		assertTrue(card.type.contentEquals("Discard"));
 	}
 	
 	@Test
 	public void testBadFile() {
 		CardLoader loader = new CardLoader();
 		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
+		System.setErr(mockedstream);
 		mockedstream.println("Unable to load cards file!");
 		EasyMock.replay(mockedstream);
-		HashMap<String, ArrayList<String>> cardmap = loader.loadCards("bla.txt", null, mockedstream);
+		HashMap<String, Card> cardmap = loader.loadCards("bla.txt", null);
 		EasyMock.verify(mockedstream);
 		assertEquals(cardmap,null);
 	}
@@ -54,10 +55,11 @@ public class CardLoaderTest {
 	public void testBadSyntax() throws IOException {
 		CardLoader loader = new CardLoader();
 		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
+		System.setErr(mockedstream);
 		BufferedReader mockedreader = EasyMock.createMock(BufferedReader.class);
+		EasyMock.expect(mockedreader.readLine()).andReturn("ApartmentBuilding");
 		EasyMock.expect(mockedreader.readLine()).andReturn("");
-		EasyMock.expect(mockedreader.readLine()).andReturn("");
-		EasyMock.expect(mockedreader.readLine()).andReturn("");
+		EasyMock.expect(mockedreader.readLine()).andReturn("1");
 		EasyMock.expect(mockedreader.readLine()).andReturn("");
 		EasyMock.expect(mockedreader.readLine()).andReturn("");
 		EasyMock.expect(mockedreader.readLine()).andReturn("");
@@ -65,7 +67,7 @@ public class CardLoaderTest {
 		EasyMock.expect(mockedreader.readLine()).andReturn(null);
 		mockedreader.close();
 		EasyMock.replay(mockedstream, mockedreader);
-		HashMap<String, ArrayList<String>> cardmap = loader.loadCards("cardstest.txt", mockedreader, mockedstream);
+		HashMap<String, Card> cardmap = loader.loadCards("cardstest.txt", mockedreader);
 		EasyMock.verify(mockedstream, mockedreader);
 		assertTrue(cardmap!=null);
 	}
@@ -74,12 +76,13 @@ public class CardLoaderTest {
 	public void testIOException() throws IOException {
 		CardLoader loader = new CardLoader();
 		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
+		System.setErr(mockedstream);
 		BufferedReader mockedreader = EasyMock.createMock(BufferedReader.class);
 		EasyMock.expect(mockedreader.readLine()).andThrow(new IOException());
 		mockedstream.println("An IOException occured while loading cards");
 		mockedreader.close();
 		EasyMock.replay(mockedstream, mockedreader);
-		HashMap<String, ArrayList<String>> cardmap = loader.loadCards("cardstest.txt", mockedreader, mockedstream);
+		HashMap<String, Card> cardmap = loader.loadCards("cardstest.txt", mockedreader);
 		EasyMock.verify(mockedstream, mockedreader);
 		assertTrue(cardmap!=null);
 	}
@@ -88,15 +91,57 @@ public class CardLoaderTest {
 	public void testIOException2() throws IOException {
 		CardLoader loader = new CardLoader();
 		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
+		System.setErr(mockedstream);
 		BufferedReader mockedreader = EasyMock.createMock(BufferedReader.class);
 		EasyMock.expect(mockedreader.readLine()).andReturn(null);
 		mockedreader.close();
 		EasyMock.expectLastCall().andThrow(new IOException());
 		mockedstream.println("failed to close reader");
 		EasyMock.replay(mockedstream, mockedreader);
-		HashMap<String, ArrayList<String>> cardmap = loader.loadCards("cardstest.txt", mockedreader, mockedstream);
+		HashMap<String, Card> cardmap = loader.loadCards("cardstest.txt", mockedreader);
 		EasyMock.verify(mockedstream, mockedreader);
 		assertTrue(cardmap!=null);
 	}
+	
+	@Test
+	public void getClassTest() {
+		CardLoader loader = new CardLoader();
+		CardLogic logic = loader.getClass("ApartmentBuilding", 0);
+		assertTrue(logic.getClass().getName().equals("cards.ApartmentBuildingLogic"));
+	}
+	
+	@Test
+	public void getClassTest1() {
+		CardLoader loader = new CardLoader();
+		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
+		System.setErr(mockedstream);
+		mockedstream.println("unable to find class to create from name");
+		EasyMock.replay(mockedstream);
+		loader.getClass("bla", 0);
+		EasyMock.verify(mockedstream);
+	}
+	
+	@Test
+	public void getClassTest2() {
+		CardLoader loader = new CardLoader();
+		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
+		System.setErr(mockedstream);
+		mockedstream.println("unable to instantiate card logic class");
+		EasyMock.replay(mockedstream);
+		loader.getClass("ApartmentBuilding", 1);
+		EasyMock.verify(mockedstream);
+	}
+	
+	@Test
+	public void getClassTest3() {
+		CardLoader loader = new CardLoader();
+		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
+		System.setErr(mockedstream);
+		mockedstream.println("illegalaccess during card instantiation");
+		EasyMock.replay(mockedstream);
+		loader.getClass("ApartmentBuilding", 2);
+		EasyMock.verify(mockedstream);
+	}
+	
 
 }

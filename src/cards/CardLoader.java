@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CardLoader {
@@ -14,10 +13,7 @@ public class CardLoader {
 		
 	}
 	
-	public HashMap<String, ArrayList<String>> loadCards(String filename, BufferedReader reader, PrintStream stream) {
-		if(stream!=null) {
-			System.setErr(stream);
-		}
+	public HashMap<String, Card> loadCards(String filename, BufferedReader reader) {
 		if(reader==null) {
 			try {
 				reader = new BufferedReader(new FileReader(filename));
@@ -26,29 +22,39 @@ public class CardLoader {
 				return null;
 			}
 		}
-		HashMap<String, ArrayList<String>> cardmap = new HashMap<String, ArrayList<String>>();
+		HashMap<String, Card> cardmap = new HashMap<String, Card>();
 		String line = null;
 		int index = 0;
 		try {
-			ArrayList<String> card = new ArrayList<String>();
+			Card card = new Card();
 			String cardname = null;
 			while((line = reader.readLine()) != null) {
 				if(index==0) {
 					cardname = line;
 					index++;
-				} else if(index>=5) {
+				} else if (index==1) {
+					card.name = line;
+					index++;
+				} else if (index==2) {
+					card.cost = Integer.parseInt(line);
+					index++;
+				} else if (index==3) {
+					card.description = line;
+					index++;
+				} else if (index==4) {
+					card.type = line;
+					index++;
+				} else {
 					cardmap.put(cardname, card);
-					card = new ArrayList<String>();
+					CardLogic logic = getClass(cardname, 0);
+					card.logic = logic;
+					card = new Card();
 					index = 0;
 					if(!line.equals("-")) {
 						System.err.println("error in card file syntax");
 					}
-				} else {
-					card.add(line);
-					index++;
 				}
 			}
-			cardmap.put(cardname, card);
 		} catch (IOException e) {
 			System.err.println("An IOException occured while loading cards");
 		}
@@ -58,5 +64,24 @@ public class CardLoader {
 			System.err.println("failed to close reader");
 		}
 		return cardmap;
+	}
+	
+	public CardLogic getClass(String cardname, int test) {
+		try {
+			if(test==1) {
+				throw new InstantiationException();
+			} else if(test==2) {
+				throw new IllegalAccessException();
+			}
+			Class<?> cardclass = Class.forName("cards."+cardname+"Logic");
+			return (CardLogic) cardclass.newInstance();
+		} catch (ClassNotFoundException e) {
+			System.err.println("unable to find class to create from name");
+		} catch (InstantiationException e) {
+			System.err.println("unable to instantiate card logic class");
+		} catch (IllegalAccessException e) {
+			System.err.println("illegalaccess during card instantiation");
+		}
+		return null;
 	}
 }
