@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 
 import cards.Card;
+import cards.Regeneration;
 
 public class Player {
 	
@@ -46,7 +47,13 @@ public class Player {
 			if(this.cardsInHand.get(j).name.equals("We're only making it stronger") && i == -2) {
 				this.addEnergy(1);
 			}
+			
+			if(this.cardsInHand.get(j).name.equals("Regeneration") && i > 0) {
+				this.health ++;
+			}
 		}
+		
+		
 		
 		if (this.health >= this.maxHealth + 1) {
 			this.health = this.maxHealth;

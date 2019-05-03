@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import cards.Card;
 import cards.MakingStronger;
+import cards.Regeneration;
 import game.Player;
 
 public class PlayerTest {
@@ -119,6 +120,23 @@ public class PlayerTest {
 		
 		assertEquals(player.health, 9);
 		assertEquals(player.energy, 0);
+	}
+	
+	@Test
+	public void testAddHealthRegeneration() {
+		Player player = new Player("Test");
+		Card card = new Regeneration();
+		player.cardsInHand.add(card);
+		player.addHealth(-4);
+		player.addHealth(2);
+		
+		assertEquals(player.health, 9);
+		
+		player.addHealth(-5);
+		player.addHealth(1);
+		player.addHealth(1);
+		
+		assertEquals(player.health, 8);
 	}
 	
 	@Test
