@@ -223,12 +223,6 @@ public class PlayerTest {
 		Player player = new Player("TestDummy");
 		assertEquals(player.getName(), "TestDummy");		
 	}
-	
-	@Test
-	public void getNumberOfDieRollsTest() {
-		Player player = new Player("TestDummy");
-		assertEquals(player.getNumberOfDieRolls(), 3);		
-	}
 
 	@Test
 	public void addToHandTest() {

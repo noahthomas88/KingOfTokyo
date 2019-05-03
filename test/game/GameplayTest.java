@@ -828,7 +828,7 @@ public class GameplayTest {
 		gui.energyWarning();
 		EasyMock.replay(gui, deck, player, card);
 
-		player.energy = 1;
+		player.energy = 0;
 		g.buyCard(1);
 
 		EasyMock.verify(gui, deck, player, card);

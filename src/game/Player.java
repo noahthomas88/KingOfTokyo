@@ -83,9 +83,4 @@ public class Player {
 	public String getName() {
 		return this.name;
 	}
-	
-	public int getNumberOfDieRolls(){
-		return this.numberOfDieRolls;
-	}
-
 }
