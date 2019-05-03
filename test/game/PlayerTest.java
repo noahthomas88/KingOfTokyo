@@ -238,16 +238,6 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void getCardsInHand() {
-		Player player = new Player("TestDummy");
-		Card card = EasyMock.niceMock(Card.class);
-		ArrayList<Card> cards = new ArrayList<>();
-		player.cardsInHand = cards;
-		cards.add(card);
-		assertEquals(player.getCardsInHand().get(0), card);
-	}
-	
-	@Test
 	public void getHealthTest() {
 		Player player = new Player("TestDummy");
 		player.health = 1;

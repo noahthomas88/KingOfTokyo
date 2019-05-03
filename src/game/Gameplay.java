@@ -183,7 +183,7 @@ public class Gameplay {
 
 	public void useCard(String cardname) {
 		Card touse = null;
-		ArrayList<Card> cards = currentplayer.getCardsInHand();
+		ArrayList<Card> cards = currentplayer.cardsInHand;
 		for(Card card : cards) {
 			if(card.getName().equals(cardname)) {
 				touse = card;
@@ -193,7 +193,7 @@ public class Gameplay {
 		if(touse!=null) {
 			touse.getCardLogic().use(currentplayer, gameboard.playerList);
 			if(touse.getType().equals("Discard")) {
-				currentplayer.getCardsInHand().remove(touse);
+				currentplayer.cardsInHand.remove(touse);
 			}
 		}
 		gameUI.updatePlayerText(gameboard);

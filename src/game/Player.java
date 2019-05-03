@@ -99,9 +99,4 @@ public class Player {
 	public int getEnergy() {
 		return this.energy;
 	}
-
-	public ArrayList<Card> getCardsInHand() {
-		return this.cardsInHand;
-	}
-
 }
