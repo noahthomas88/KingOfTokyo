@@ -191,7 +191,7 @@ public class Gameplay {
 			}
 		}
 		if(touse!=null) {
-			touse.getCardLogic().use(currentplayer, gameboard.getPlayerList());
+			touse.getCardLogic().use(currentplayer, gameboard.playerList);
 			if(touse.getType().equals("Discard")) {
 				currentplayer.getCardsInHand().remove(touse);
 			}
@@ -205,7 +205,7 @@ public class Gameplay {
 			return;
 		}
 		int total = 0;
-		for(Player player : gameboard.getPlayerList()) {
+		for(Player player : gameboard.playerList) {
 			if(player.getHealth() > 0) {
 				total++;
 			}

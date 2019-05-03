@@ -52,9 +52,5 @@ public class Board {
 		deck.createDeck();
 		deck.shuffle();
 	}
-	
-	public ArrayList<Player> getPlayerList(){
-		return this.playerList;
-	}
 
 }
