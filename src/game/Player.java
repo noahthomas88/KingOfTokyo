@@ -66,6 +66,13 @@ public class Player {
 			this.energy = this.energy - i;
 			throw new IllegalArgumentException();
 		}
+		
+		for(int j = 0; j < this.cardsInHand.size(); j++) {
+			
+			if(this.cardsInHand.get(j).name.equals("Friend of Children") && i > 0) {
+				this.energy ++;
+			}
+		}
 	}
 	
 	public void addVictory(int i) {
