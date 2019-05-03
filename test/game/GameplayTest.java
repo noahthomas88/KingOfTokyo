@@ -36,18 +36,19 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
-
 		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(index + 1);
 		}
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
 
+		for (int index = 0; index < 6; index++) {
+			dicelist.get(index).numberRolled = index + 1;
+		}
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -56,25 +57,26 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
-
-		for (int index = 0; index < 3; index++) {
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(1);
-		}
-
-		for (int index = 3; index < 6; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(index - 1);
 		}
 
 		player.addVictory(1);
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
+		
+		for (int index = 0; index < 3; index++) {
+			dicelist.get(index).numberRolled = 1;
+		}
+
+		for (int index = 3; index < 6; index++) {
+			dicelist.get(index).numberRolled = index - 1;
+		}
 
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -83,25 +85,28 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
+		
+
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
+			dicelist.add(dice);
+		}
+		
+		player.addVictory(2);
+
+		EasyMock.replay(player);
 
 		for (int index = 0; index < 3; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(2);
+			dicelist.get(index).numberRolled = 2;
 		}
 
 		for (int index = 3; index < 6; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(index);
+			dicelist.get(index).numberRolled = index;
 		}
-
-		player.addVictory(2);
-
-		EasyMock.replay(player, dice);
-
+		
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -110,25 +115,26 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
-
-		for (int index = 0; index < 3; index++) {
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(3);
-		}
-
-		for (int index = 3; index < 6; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(index + 1);
 		}
 
 		player.addVictory(3);
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
+		
+		for (int index = 0; index < 3; index++) {
+			dicelist.get(index).numberRolled = 3;
+		}
+
+		for (int index = 3; index < 6; index++) {
+			dicelist.get(index).numberRolled = index + 1;
+		}
 
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -137,23 +143,26 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
-
-		for (int index = 0; index < 5; index++) {
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(2);
 		}
-
-		dicelist.add(dice);
-		EasyMock.expect(dice.getNumberRolled()).andReturn(1);
 
 		player.addVictory(4);
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
 
+		for (int index = 0; index < 5; index++) {
+			dicelist.get(index).numberRolled = 2;
+		}
+
+		for (int index = 5; index < 6; index++) {
+			dicelist.get(index).numberRolled = 1;
+		}
+		
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -162,26 +171,28 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
 
-		for (int index = 0; index < 3; index++) {
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(3);
-		}
-
-		for (int index = 3; index < 6; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(1);
 		}
 
 		player.addVictory(3);
 		player.addVictory(1);
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
 
+		for (int index = 0; index < 3; index++) {
+			dicelist.get(index).numberRolled = 3;
+		}
+
+		for (int index = 3; index < 6; index++) {
+			dicelist.get(index).numberRolled = 1;
+		}
+		
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -195,7 +206,6 @@ public class GameplayTest {
 		
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
-		EasyMock.expect(test1.getName()).andStubReturn("test1");
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		test1.addVictory(2);
@@ -204,6 +214,7 @@ public class GameplayTest {
 
 		EasyMock.replay(gameUI, test1, board);
 
+		test1.name = "test1";
 		board.cityPlayer = test1;
 		gameplay.beginTurn();
 
@@ -222,7 +233,6 @@ public class GameplayTest {
 		map.put("test2", 1);
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
-		EasyMock.expect(test1.getName()).andStubReturn("test1");
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		gameUI.updatePlayerText(board);
@@ -230,6 +240,7 @@ public class GameplayTest {
 
 		EasyMock.replay(gameUI, test1, board);
 
+		test1.name = "test1";
 		board.cityPlayer = test2;
 		gameplay.beginTurn();
 
@@ -247,7 +258,6 @@ public class GameplayTest {
 		map.put("test2", 1);
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
-		EasyMock.expect(test1.getName()).andStubReturn("test1");
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		gameUI.moveToTokyo(test1);
@@ -257,6 +267,7 @@ public class GameplayTest {
 
 		EasyMock.replay(gameUI, test1, board);
 
+		test1.name = "test1";
 		board.cityPlayer = null;
 		gameplay.beginTurn();
 
@@ -271,11 +282,11 @@ public class GameplayTest {
 		DeckConstructor deck = EasyMock.createMock(DeckConstructor.class);
 		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
-		EasyMock.expect(ui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(ui.inputNumPlayers()).andReturn(2);
 		ArrayList<String> names = new ArrayList<String>();
 		names.add("bla");
 		names.add("bla2");
-		EasyMock.expect(ui.getNames(2)).andReturn(names);
+		EasyMock.expect(ui.inputNames(2)).andReturn(names);
 		deck.createDeck();
 		deck.reveal();
 		ui.setCards(null);
@@ -286,26 +297,19 @@ public class GameplayTest {
 		EasyMock.verify(board, ui, deck);
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test
 	public void GameplayInitializationErrorTest() {
-		Board board = EasyMock.createMock(Board.class);
 		GUI ui = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = EasyMock.createMock(DeckConstructor.class);
-		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
-		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
-		EasyMock.expect(ui.getNumPlayers()).andReturn(1);
-		ArrayList<String> names = new ArrayList<String>();
-		names.add("bla");
-		names.add("bla2");
-		EasyMock.expect(ui.getNames(2)).andReturn(names);
-		deck.createDeck();
-		deck.reveal();
-		ui.setCards(null);
-		EasyMock.replay(board, ui, deck);
+		Gameplay game = new Gameplay(ui, null, null, null, null);
+		
+		EasyMock.expect(ui.inputNumPlayers()).andReturn(1);
+		ui.playerCountWarning();
+		
+		EasyMock.replay(ui);
 
 		game.initializeGame();
-
-		EasyMock.verify(board, ui, deck);
+		
+		EasyMock.verify(ui);
 	}
 
 	@Test
@@ -321,9 +325,9 @@ public class GameplayTest {
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
 		ArrayList<Player> playerlist = new ArrayList<Player>();
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
 
 		EasyMock.replay(board, ui);
+		board.playerList = playerlist;
 		game.diceRolled(dice);
 		EasyMock.verify(board, ui);
 	}
@@ -336,7 +340,6 @@ public class GameplayTest {
 		Gameplay game = new Gameplay(ui, player, board, null, null);
 		ArrayList<Dice> dice = new ArrayList<Dice>();
 		ArrayList<Player> playerlist = new ArrayList<Player>();
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
 		Dice die = new Dice(player);
 		die.numberRolled = 4;
 
@@ -345,6 +348,7 @@ public class GameplayTest {
 		ui.updatePlayerText(board);
 
 		EasyMock.replay(board, ui);
+		board.playerList = playerlist;
 		game.diceRolled(dice);
 		EasyMock.verify(board, ui);
 	}
@@ -357,7 +361,6 @@ public class GameplayTest {
 		Gameplay game = new Gameplay(ui, player, board, null, null);
 		ArrayList<Dice> dice = new ArrayList<Dice>();
 		ArrayList<Player> playerlist = new ArrayList<Player>();
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
 		Dice die = new Dice(player);
 		die.numberRolled = 5;
 		player.addEnergy(1);
@@ -366,6 +369,7 @@ public class GameplayTest {
 		ui.updatePlayerText(board);
 
 		EasyMock.replay(board, ui);
+		board.playerList = playerlist;
 		game.diceRolled(dice);
 		EasyMock.verify(board, ui);
 	}
@@ -379,12 +383,12 @@ public class GameplayTest {
 		ArrayList<Dice> dice = new ArrayList<Dice>();
 		Dice die = new Dice(player);
 		ArrayList<Player> playerlist = new ArrayList<Player>();
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
 		die.numberRolled = 6;
 		dice.add(die);
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
 		EasyMock.replay(board, ui);
+		board.playerList = playerlist;
 		board.cityPlayer = player;
 		game.diceRolled(dice);
 		EasyMock.verify(board, ui);
@@ -398,7 +402,6 @@ public class GameplayTest {
 		Gameplay game = new Gameplay(ui, player, board, null, null);
 		ArrayList<Dice> dice = new ArrayList<Dice>();
 		ArrayList<Player> playerlist = new ArrayList<Player>();
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
 		Dice die = new Dice(player);
 		die.numberRolled = 6;
 		dice.add(die);
@@ -406,6 +409,7 @@ public class GameplayTest {
 		ui.updatePlayerText(board);
 
 		EasyMock.replay(board, ui);
+		board.playerList = playerlist;
 		board.cityPlayer = null;
 		game.diceRolled(dice);
 		EasyMock.verify(board, ui);
@@ -421,12 +425,12 @@ public class GameplayTest {
 		gameplay.currentplayer = test1;
 
 		gameplay.selectFirstPlayer();
-		EasyMock.expect(test1.getName()).andStubReturn("test1");
 		gameUI.displayStartingPlayer("test1");
 		gameplay.beginTurn();
 
 		EasyMock.replay(gameplay, test1, gameUI);
 
+		test1.name = "test1";
 		gameplay.beginGame();
 
 		EasyMock.verify(gameplay, test1, gameUI);
@@ -476,7 +480,6 @@ public class GameplayTest {
 		Player player = EasyMock.strictMock(Player.class);
 		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
 
-		EasyMock.expect(player.getEnergy()).andReturn(6);
 		deck.swipe();
 		ui.setCards(deck.visibleCard);
 		player.addEnergy(-2);
@@ -484,6 +487,7 @@ public class GameplayTest {
 
 		EasyMock.replay(deck, ui, player);
 
+		player.energy = 6;
 		gameplay.swipeCard();
 
 		EasyMock.verify(deck, ui, player);
@@ -496,11 +500,11 @@ public class GameplayTest {
 		Player player = EasyMock.niceMock(Player.class);
 		Gameplay gameplay = new Gameplay(ui, player, board, null, null);
 
-		EasyMock.expect(player.getEnergy()).andReturn(1);
 		ui.energyWarning();
 
 		EasyMock.replay(ui, player);
 
+		player.energy = 1;
 		gameplay.swipeCard();
 
 		EasyMock.verify(ui, player);
@@ -510,13 +514,14 @@ public class GameplayTest {
 	@Test
 	public void useCardDoesNotHaveCardTest(){
 		ArrayList<Card> hand = new ArrayList<Card>();
-		Card card = EasyMock.niceMock(Card.class);
-		hand.add(card);
-		hand.add(card);
+		Card card1 = EasyMock.strictMock(Card.class);
+		Card card2 = EasyMock.strictMock(Card.class);
+		hand.add(card1);
+		hand.add(card2);
 		
-		Player test1 = EasyMock.niceMock(Player.class);
-		Player test2 = EasyMock.niceMock(Player.class);
 		ArrayList<Player> playerList = new ArrayList<>();
+		Player test1 = EasyMock.strictMock(Player.class);
+		Player test2 = EasyMock.strictMock(Player.class);
 		playerList.add(test1);
 		playerList.add(test2);
 		
@@ -525,13 +530,13 @@ public class GameplayTest {
 		EnergizeLogic logic = EasyMock.strictMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, null, null);
 		
-		EasyMock.expect(test1.getCardsInHand()).andReturn(hand);
-		EasyMock.expect(card.getName()).andReturn("Health");
-		EasyMock.expect(card.getName()).andReturn("Energize");
 		gui.updatePlayerText(board);
 		
-		EasyMock.replay(card, logic, test1, board, gui);
+		EasyMock.replay(card1, card2, logic, test1, board, gui);
 		
+		card1.name = "Health";
+		card2.name = "Energize";
+		test1.cardsInHand = hand;
 		gameplay.useCard("Heal");
 		
 		EasyMock.verify(logic, gui);	
@@ -554,16 +559,16 @@ public class GameplayTest {
 		EnergizeLogic logic = EasyMock.niceMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, null, null);
 		
-		EasyMock.expect(test1.getCardsInHand()).andReturn(hand);
-		EasyMock.expect(card.getName()).andReturn("Health");
-		EasyMock.expect(card.getCardLogic()).andReturn(logic);	
-		EasyMock.expect(board.getPlayerList()).andReturn(playerList);
 		logic.use(test1, playerList);
-		EasyMock.expect(card.getType()).andReturn("Keep");
 		gui.updatePlayerText(board);
 
 		EasyMock.replay(card, logic, test1, board, gui);
 		
+		card.name = "Health";
+		card.logic = logic;
+		card.type = "Keep";
+		test1.cardsInHand = hand;
+		board.playerList = playerList;
 		gameplay.useCard("Health");
 		
 		EasyMock.verify(logic, gui);	
@@ -585,18 +590,17 @@ public class GameplayTest {
 		Board board = EasyMock.niceMock(Board.class);		
 		EnergizeLogic logic = EasyMock.niceMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, null, null);
-		
-		EasyMock.expect(test1.getCardsInHand()).andReturn(hand);
-		EasyMock.expect(card.getName()).andReturn("Health");
-		EasyMock.expect(card.getCardLogic()).andReturn(logic);	
-		EasyMock.expect(board.getPlayerList()).andReturn(playerList);
+			
 		logic.use(test1, playerList);
-		EasyMock.expect(card.getType()).andReturn("Discard");
-		EasyMock.expect(test1.getCardsInHand()).andReturn(hand);
 		gui.updatePlayerText(board);
 
 		EasyMock.replay(card, logic, test1, board, gui);
 		
+		test1.cardsInHand = hand;
+		board.playerList = playerList;
+		card.name = "Health";
+		card.logic = logic;
+		card.type = "Discard";
 		gameplay.useCard("Health");
 		assertTrue(hand.isEmpty());
 		
@@ -610,11 +614,15 @@ public class GameplayTest {
 		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
 		Player player = EasyMock.createMock(Player.class);
 		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
-		EasyMock.expect(player.getVictoryPoints()).andReturn(20);
-		EasyMock.expect(player.getHealth()).andReturn(1);
 		ui.endGame(gameplay.currentplayer, 1);
+		
 		EasyMock.replay(board, deck, ui, player);
+		
+		player.victoryPoints = 20;
+		player.health = 1;
+		
 		gameplay.checkWin();
+		
 		EasyMock.verify(board, deck, ui, player);
 	}
 
@@ -632,12 +640,16 @@ public class GameplayTest {
 		p2.health = 1;
 		playerlist.add(p1);
 		playerlist.add(p2);
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
-		EasyMock.expect(player.getVictoryPoints()).andReturn(20);
-		EasyMock.expect(player.getHealth()).andReturn(0);
 		ui.endGame(gameplay.currentplayer, 2);
+		
 		EasyMock.replay(board, deck, ui, player);
+		
+		board.playerList = playerlist;
+		player.victoryPoints = 20;
+		player.health = 0;
+		
 		gameplay.checkWin();
+		
 		EasyMock.verify(board, deck, ui, player);
 	}
 
@@ -654,9 +666,9 @@ public class GameplayTest {
 		p2.health = 1;
 		playerlist.add(p1);
 		playerlist.add(p2);
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
 		ui.endGame(gameplay.currentplayer, 2);
 		EasyMock.replay(board, deck, ui);
+		board.playerList = playerlist;
 		gameplay.checkWin();
 		EasyMock.verify(board, deck, ui);
 	}
@@ -674,9 +686,9 @@ public class GameplayTest {
 		p2.health = 0;
 		playerlist.add(p1);
 		playerlist.add(p2);
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
 		ui.endGame(gameplay.currentplayer, 2);
 		EasyMock.replay(board, deck, ui);
+		board.playerList = playerlist;
 		gameplay.checkWin();
 		EasyMock.verify(board, deck, ui);
 	}
@@ -694,8 +706,8 @@ public class GameplayTest {
 		p2.health = 1;
 		playerlist.add(p1);
 		playerlist.add(p2);
-		EasyMock.expect(board.getPlayerList()).andReturn(playerlist);
 		EasyMock.replay(board, deck, ui);
+		board.playerList = playerlist;
 		gameplay.checkWin();
 		EasyMock.verify(board, deck, ui);
 	}
@@ -719,11 +731,11 @@ public class GameplayTest {
 		gameplay.gameboard = board;
 		gameplay.playerToNumber = map;
 		
-		EasyMock.expect(test1.getName()).andReturn("test1");
 		gameplay.beginTurn();
 		
 		EasyMock.replay(test1, board, gameplay);
 		
+		test1.name = "test1";
 		board.numOfPlayers = 2;
 		gameplay.endTurn();
 		
@@ -749,11 +761,11 @@ public class GameplayTest {
 		gameplay.gameboard = board;
 		gameplay.playerToNumber = map;
 		
-		EasyMock.expect(test2.getName()).andReturn("test2");
 		gameplay.beginTurn();
 		
 		EasyMock.replay(test2, board, gameplay);
 		
+		test2.name = "test2";
 		board.numOfPlayers = 2;
 		gameplay.endTurn();
 		
@@ -776,10 +788,7 @@ public class GameplayTest {
 
 		Gameplay g = new Gameplay(gui, player, board, deck, null);
 
-		EasyMock.expect(player.getEnergy()).andReturn(1);
-		EasyMock.expect(card.getCost()).andReturn(1);
 		player.addToHand(card);
-		EasyMock.expect(card.getCost()).andReturn(1);
 		player.addEnergy(-1);
 		deck.buy(0);
 		gui.setCards(deck.visibleCard);
@@ -787,6 +796,8 @@ public class GameplayTest {
 
 		EasyMock.replay(gui, deck, player, card);
 
+		card.cost = 1;
+		player.energy = 1;
 		g.buyCard(1);
 
 		EasyMock.verify(gui, deck, player, card);
@@ -807,12 +818,11 @@ public class GameplayTest {
 
 		Gameplay g = new Gameplay(gui, player, board, deck, null);
 
-		EasyMock.expect(player.getEnergy()).andReturn(0);
-		EasyMock.expect(card.getCost()).andReturn(1);
-
 		gui.energyWarning();
 		EasyMock.replay(gui, deck, player, card);
 
+		card.cost = 1;
+		player.energy = 0;
 		g.buyCard(1);
 
 		EasyMock.verify(gui, deck, player, card);

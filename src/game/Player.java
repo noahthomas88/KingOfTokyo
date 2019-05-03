@@ -79,29 +79,4 @@ public class Player {
 	public void subMaxHealth(){
 		this.maxHealth--;
 	}
-
-	public String getName() {
-		return this.name;
-	}
-	
-	public int getNumberOfDieRolls(){
-		return this.numberOfDieRolls;
-	}
-	
-	public int getHealth(){
-		return this.health;
-	}
-	
-	public int getVictoryPoints(){
-		return this.victoryPoints;
-	}
-
-	public int getEnergy() {
-		return this.energy;
-	}
-
-	public ArrayList<Card> getCardsInHand() {
-		return this.cardsInHand;
-	}
-
 }

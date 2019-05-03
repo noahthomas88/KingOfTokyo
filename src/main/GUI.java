@@ -90,12 +90,12 @@ public class GUI {
 		b3.setText(c3.name);
 	}
 
-	public Integer getNumPlayers() {
+	public Integer inputNumPlayers() {
 		String result = JOptionPane.showInputDialog("enter number of players");
 		int numplayers = Integer.parseInt(result);
 		while (numplayers > 6 || numplayers < 2) {
 			System.err.println("invalid player number trying again");
-			numplayers = getNumPlayers();
+			numplayers = inputNumPlayers();
 		}
 		return numplayers;
 	}
@@ -118,7 +118,7 @@ public class GUI {
 		System.out.println("setting" + playerNumber);
 	}
 
-	public ArrayList<String> getNames(int numOfPlayers) {
+	public ArrayList<String> inputNames(int numOfPlayers) {
 		ArrayList<String> names = new ArrayList<>();
 		for (int index = 0; index < numOfPlayers; index++) {
 			String name = "";

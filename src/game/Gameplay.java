@@ -33,13 +33,13 @@ public class Gameplay {
 	public void initializeGame() {
 		int numOfPlayers;
 		try {
-			numOfPlayers = gameUI.getNumPlayers();
+			numOfPlayers = gameUI.inputNumPlayers();
 			gameboard = new Board(numOfPlayers);
 		} catch (IllegalArgumentException e) {
 			gameUI.playerCountWarning();
 			return;
 		}
-		ArrayList<String> names = gameUI.getNames(numOfPlayers);
+		ArrayList<String> names = gameUI.inputNames(numOfPlayers);
 		gameboard.constructPlayers(names);
 		for (int i = 0; i < gameboard.playerList.size(); i++) {
 			playerToNumber.put(gameboard.playerList.get(i).name, i);
@@ -53,12 +53,12 @@ public class Gameplay {
 
 	public void beginGame() {
 		selectFirstPlayer();
-		gameUI.displayStartingPlayer(currentplayer.getName());
+		gameUI.displayStartingPlayer(currentplayer.name);
 		beginTurn();
 	}
 
 	public void beginTurn() {
-		gameUI.setActivePlayer(playerToNumber.get(currentplayer.getName()));
+		gameUI.setActivePlayer(playerToNumber.get(currentplayer.name));
 		gameUI.DisableEndTurnButton();
 		if (gameboard.cityPlayer == currentplayer) {
 			currentplayer.addVictory(2);
@@ -104,7 +104,7 @@ public class Gameplay {
 		int count2 = 0;
 		int count1 = 0;
 		for (Dice die : dice) {
-			int number = die.getNumberRolled();
+			int number = die.numberRolled;
 			if (number == 1) {
 				count1++;
 			} else if (number == 2) {
@@ -127,7 +127,7 @@ public class Gameplay {
 	}
 
 	public void endTurn() {
-		String currentPlayerName = currentplayer.getName();
+		String currentPlayerName = currentplayer.name;
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
@@ -139,9 +139,9 @@ public class Gameplay {
 	public void buyCard(int number) {
 
 		Card tobuy = deck.visibleCard[number-1];
-		if(currentplayer.getEnergy()>=tobuy.getCost()) {
+		if(currentplayer.energy >=tobuy.cost) {
 			currentplayer.addToHand(deck.visibleCard[number-1]);
-			currentplayer.addEnergy(-tobuy.getCost());
+			currentplayer.addEnergy(-tobuy.cost);
 			deck.buy(number-1);
 			gameUI.setCards(deck.visibleCard);
 			gameUI.updatePlayerText(gameboard);
@@ -170,7 +170,7 @@ public class Gameplay {
 	}
 
 	public void swipeCard() {
-		int playerEnergy = currentplayer.getEnergy();
+		int playerEnergy = currentplayer.energy;
 		if(playerEnergy >= 2) {
 			deck.swipe();
 			gameUI.setCards(deck.visibleCard);
@@ -183,30 +183,30 @@ public class Gameplay {
 
 	public void useCard(String cardname) {
 		Card touse = null;
-		ArrayList<Card> cards = currentplayer.getCardsInHand();
+		ArrayList<Card> cards = currentplayer.cardsInHand;
 		for(Card card : cards) {
-			if(card.getName().equals(cardname)) {
+			if(card.name.equals(cardname)) {
 				touse = card;
 				break;
 			}
 		}
 		if(touse!=null) {
-			touse.getCardLogic().use(currentplayer, gameboard.getPlayerList());
-			if(touse.getType().equals("Discard")) {
-				currentplayer.getCardsInHand().remove(touse);
+			touse.logic.use(currentplayer, gameboard.playerList);
+			if(touse.type.equals("Discard")) {
+				currentplayer.cardsInHand.remove(touse);
 			}
 		}
 		gameUI.updatePlayerText(gameboard);
 	}
 
 	public void checkWin() {
-		if((currentplayer.getVictoryPoints()>=20 && currentplayer.getHealth() > 0)) {
+		if((currentplayer.victoryPoints >=20 && currentplayer.health > 0)) {
 			gameUI.endGame(currentplayer, 1);
 			return;
 		}
 		int total = 0;
-		for(Player player : gameboard.getPlayerList()) {
-			if(player.getHealth() > 0) {
+		for(Player player : gameboard.playerList) {
+			if(player.health > 0) {
 				total++;
 			}
 		}

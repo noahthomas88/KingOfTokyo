@@ -14,7 +14,7 @@ public class Dice {
 		this.timesRolled = 0;
 		this.isResolved = false;
 		this.numberRolled = 1;
-		this.rollLimit = player.getNumberOfDieRolls();
+		this.rollLimit = player.numberOfDieRolls;
 	}
 
 	public int roll() {
@@ -30,10 +30,6 @@ public class Dice {
 		this.numberRolled = diceRoller.nextInt(6) + 1;
 		return this.numberRolled;
 	}
-
-	public int getTimesRolled() {
-		return this.timesRolled;
-	}
 	
 	public String numberToString(int number) {
 		if(number < 4) {
@@ -47,7 +43,4 @@ public class Dice {
 		}
 	}
 
-	public int getNumberRolled() {
-		return this.numberRolled;
-	}
 }

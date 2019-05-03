@@ -217,50 +217,7 @@ public class PlayerTest {
 		player.addHealth(2);
 		assertEquals(player.health, 11);		
 	}
-	
-	@Test
-	public void getNameTest() {
-		Player player = new Player("TestDummy");
-		assertEquals(player.getName(), "TestDummy");		
-	}
-	
-	@Test
-	public void getNumberOfDieRollsTest() {
-		Player player = new Player("TestDummy");
-		assertEquals(player.getNumberOfDieRolls(), 3);		
-	}
-	
-	@Test
-	public void getEnergyTest() {
-		Player player = new Player("TestDummy");
-		player.energy = 6;
-		assertEquals(player.getEnergy(), 6);
-	}
-	
-	@Test
-	public void getCardsInHand() {
-		Player player = new Player("TestDummy");
-		Card card = EasyMock.niceMock(Card.class);
-		ArrayList<Card> cards = new ArrayList<>();
-		player.cardsInHand = cards;
-		cards.add(card);
-		assertEquals(player.getCardsInHand().get(0), card);
-	}
-	
-	@Test
-	public void getHealthTest() {
-		Player player = new Player("TestDummy");
-		player.health = 1;
-		assertEquals(player.getHealth(), 1);		
-	}
-	
-	@Test
-	public void getVictoryPointsTest() {
-		Player player = new Player("TestDummy");
-		player.victoryPoints = 1;
-		assertEquals(player.getVictoryPoints(), 1);		
-	}
-	
+
 	@Test
 	public void addToHandTest() {
 		Player player = new Player("TestDummy");

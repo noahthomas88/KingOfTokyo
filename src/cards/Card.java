@@ -15,20 +15,4 @@ public class Card {
 		this.description = "This is the base card, override me";
 		this.logic = null;
 	}
-	
-	public String getName(){
-		return this.name;
-	}
-
-	public int getCost(){
-		return this.cost;
-	}
-
-	public CardLogic getCardLogic() {
-		return this.logic;
-	}
-	
-	public String getType() {
-		return this.type;
-	}
 }
