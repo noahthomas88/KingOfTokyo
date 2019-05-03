@@ -619,10 +619,10 @@ public class GameplayTest {
 		DeckConstructor deck = EasyMock.niceMock(DeckConstructor.class);
 		Player player = EasyMock.createMock(Player.class);
 		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
-		EasyMock.expect(player.getVictoryPoints()).andReturn(20);
 		EasyMock.expect(player.getHealth()).andReturn(1);
 		ui.endGame(gameplay.currentplayer, 1);
 		EasyMock.replay(board, deck, ui, player);
+		player.victoryPoints = 20;
 		gameplay.checkWin();
 		EasyMock.verify(board, deck, ui, player);
 	}
@@ -641,11 +641,11 @@ public class GameplayTest {
 		p2.health = 1;
 		playerlist.add(p1);
 		playerlist.add(p2);
-		EasyMock.expect(player.getVictoryPoints()).andReturn(20);
 		EasyMock.expect(player.getHealth()).andReturn(0);
 		ui.endGame(gameplay.currentplayer, 2);
 		EasyMock.replay(board, deck, ui, player);
 		board.playerList = playerlist;
+		player.victoryPoints = 20;
 		gameplay.checkWin();
 		EasyMock.verify(board, deck, ui, player);
 	}

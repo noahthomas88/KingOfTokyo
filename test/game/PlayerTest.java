@@ -238,13 +238,6 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void getVictoryPointsTest() {
-		Player player = new Player("TestDummy");
-		player.victoryPoints = 1;
-		assertEquals(player.getVictoryPoints(), 1);		
-	}
-	
-	@Test
 	public void addToHandTest() {
 		Player player = new Player("TestDummy");
 		Card card = EasyMock.niceMock(Card.class);

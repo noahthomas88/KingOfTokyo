@@ -200,7 +200,7 @@ public class Gameplay {
 	}
 
 	public void checkWin() {
-		if((currentplayer.getVictoryPoints()>=20 && currentplayer.getHealth() > 0)) {
+		if((currentplayer.victoryPoints >=20 && currentplayer.getHealth() > 0)) {
 			gameUI.endGame(currentplayer, 1);
 			return;
 		}
