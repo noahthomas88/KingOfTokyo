@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import cards.ArmorPlating;
 import cards.Card;
 import cards.FriendOfChildren;
 import cards.MakingStronger;
@@ -138,6 +139,22 @@ public class PlayerTest {
 		player.addHealth(1);
 		
 		assertEquals(player.health, 8);
+	}
+	
+	@Test
+	public void testAddHealthArmorPlating() {
+		Player player = new Player("Test");
+		Card card = new ArmorPlating();
+		player.cardsInHand.add(card);
+		player.addHealth(-1);
+		
+		assertTrue(player.health == 10);
+		
+		player.addHealth(-5);
+		player.addHealth(1);
+		player.addHealth(1);
+		
+		assertEquals(player.health, 7);
 	}
 	
 	@Test

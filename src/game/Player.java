@@ -2,6 +2,7 @@ package game;
 
 import java.util.ArrayList;
 
+import cards.ArmorPlating;
 import cards.Card;
 import cards.Regeneration;
 
@@ -40,10 +41,14 @@ public class Player {
 	}
 	
 	public void addHealth(int i) {
+		int startingHealth = this.health;
 		this.health = this.health + i;
 		
 		//The following if cases are to check for cards present in hand that impact the addition of health
 		for(int j = 0; j < this.cardsInHand.size(); j++) {
+			if(this.cardsInHand.get(j).name.equals("Armor Plating") && i == -1) {
+				this.health = startingHealth;
+			}
 			if(this.cardsInHand.get(j).name.equals("We're only making it stronger") && i == -2) {
 				this.addEnergy(1);
 			}
