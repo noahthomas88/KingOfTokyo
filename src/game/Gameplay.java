@@ -33,13 +33,13 @@ public class Gameplay {
 	public void initializeGame() {
 		int numOfPlayers;
 		try {
-			numOfPlayers = gameUI.getNumPlayers();
+			numOfPlayers = gameUI.inputNumPlayers();
 			gameboard = new Board(numOfPlayers);
 		} catch (IllegalArgumentException e) {
 			gameUI.playerCountWarning();
 			return;
 		}
-		ArrayList<String> names = gameUI.getNames(numOfPlayers);
+		ArrayList<String> names = gameUI.inputNames(numOfPlayers);
 		gameboard.constructPlayers(names);
 		for (int i = 0; i < gameboard.playerList.size(); i++) {
 			playerToNumber.put(gameboard.playerList.get(i).name, i);
@@ -139,9 +139,9 @@ public class Gameplay {
 	public void buyCard(int number) {
 
 		Card tobuy = deck.visibleCard[number-1];
-		if(currentplayer.energy >=tobuy.getCost()) {
+		if(currentplayer.energy >=tobuy.cost) {
 			currentplayer.addToHand(deck.visibleCard[number-1]);
-			currentplayer.addEnergy(-tobuy.getCost());
+			currentplayer.addEnergy(-tobuy.cost);
 			deck.buy(number-1);
 			gameUI.setCards(deck.visibleCard);
 			gameUI.updatePlayerText(gameboard);
@@ -185,14 +185,14 @@ public class Gameplay {
 		Card touse = null;
 		ArrayList<Card> cards = currentplayer.cardsInHand;
 		for(Card card : cards) {
-			if(card.getName().equals(cardname)) {
+			if(card.name.equals(cardname)) {
 				touse = card;
 				break;
 			}
 		}
 		if(touse!=null) {
-			touse.getCardLogic().use(currentplayer, gameboard.playerList);
-			if(touse.getType().equals("Discard")) {
+			touse.logic.use(currentplayer, gameboard.playerList);
+			if(touse.type.equals("Discard")) {
 				currentplayer.cardsInHand.remove(touse);
 			}
 		}

@@ -282,11 +282,11 @@ public class GameplayTest {
 		DeckConstructor deck = EasyMock.createMock(DeckConstructor.class);
 		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
-		EasyMock.expect(ui.getNumPlayers()).andReturn(2);
+		EasyMock.expect(ui.inputNumPlayers()).andReturn(2);
 		ArrayList<String> names = new ArrayList<String>();
 		names.add("bla");
 		names.add("bla2");
-		EasyMock.expect(ui.getNames(2)).andReturn(names);
+		EasyMock.expect(ui.inputNames(2)).andReturn(names);
 		deck.createDeck();
 		deck.reveal();
 		ui.setCards(null);
@@ -304,11 +304,11 @@ public class GameplayTest {
 		DeckConstructor deck = EasyMock.createMock(DeckConstructor.class);
 		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
-		EasyMock.expect(ui.getNumPlayers()).andReturn(1);
+		EasyMock.expect(ui.inputNumPlayers()).andReturn(1);
 		ArrayList<String> names = new ArrayList<String>();
 		names.add("bla");
 		names.add("bla2");
-		EasyMock.expect(ui.getNames(2)).andReturn(names);
+		EasyMock.expect(ui.inputNames(2)).andReturn(names);
 		deck.createDeck();
 		deck.reveal();
 		ui.setCards(null);
@@ -521,13 +521,14 @@ public class GameplayTest {
 	@Test
 	public void useCardDoesNotHaveCardTest(){
 		ArrayList<Card> hand = new ArrayList<Card>();
-		Card card = EasyMock.niceMock(Card.class);
-		hand.add(card);
-		hand.add(card);
+		Card card1 = EasyMock.strictMock(Card.class);
+		Card card2 = EasyMock.strictMock(Card.class);
+		hand.add(card1);
+		hand.add(card2);
 		
-		Player test1 = EasyMock.niceMock(Player.class);
-		Player test2 = EasyMock.niceMock(Player.class);
 		ArrayList<Player> playerList = new ArrayList<>();
+		Player test1 = EasyMock.strictMock(Player.class);
+		Player test2 = EasyMock.strictMock(Player.class);
 		playerList.add(test1);
 		playerList.add(test2);
 		
@@ -536,11 +537,12 @@ public class GameplayTest {
 		EnergizeLogic logic = EasyMock.strictMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, null, null);
 		
-		EasyMock.expect(card.getName()).andReturn("Health");
-		EasyMock.expect(card.getName()).andReturn("Energize");
 		gui.updatePlayerText(board);
 		
-		EasyMock.replay(card, logic, test1, board, gui);
+		EasyMock.replay(card1, card2, logic, test1, board, gui);
+		
+		card1.name = "Health";
+		card2.name = "Energize";
 		test1.cardsInHand = hand;
 		gameplay.useCard("Heal");
 		
@@ -564,14 +566,14 @@ public class GameplayTest {
 		EnergizeLogic logic = EasyMock.niceMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, null, null);
 		
-		EasyMock.expect(card.getName()).andReturn("Health");
-		EasyMock.expect(card.getCardLogic()).andReturn(logic);	
 		logic.use(test1, playerList);
-		EasyMock.expect(card.getType()).andReturn("Keep");
 		gui.updatePlayerText(board);
 
 		EasyMock.replay(card, logic, test1, board, gui);
 		
+		card.name = "Health";
+		card.logic = logic;
+		card.type = "Keep";
 		test1.cardsInHand = hand;
 		board.playerList = playerList;
 		gameplay.useCard("Health");
@@ -595,17 +597,17 @@ public class GameplayTest {
 		Board board = EasyMock.niceMock(Board.class);		
 		EnergizeLogic logic = EasyMock.niceMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, null, null);
-		
-		EasyMock.expect(card.getName()).andReturn("Health");
-		EasyMock.expect(card.getCardLogic()).andReturn(logic);	
+			
 		logic.use(test1, playerList);
-		EasyMock.expect(card.getType()).andReturn("Discard");
 		gui.updatePlayerText(board);
 
 		EasyMock.replay(card, logic, test1, board, gui);
 		
 		test1.cardsInHand = hand;
 		board.playerList = playerList;
+		card.name = "Health";
+		card.logic = logic;
+		card.type = "Discard";
 		gameplay.useCard("Health");
 		assertTrue(hand.isEmpty());
 		
@@ -793,9 +795,7 @@ public class GameplayTest {
 
 		Gameplay g = new Gameplay(gui, player, board, deck, null);
 
-		EasyMock.expect(card.getCost()).andReturn(1);
 		player.addToHand(card);
-		EasyMock.expect(card.getCost()).andReturn(1);
 		player.addEnergy(-1);
 		deck.buy(0);
 		gui.setCards(deck.visibleCard);
@@ -803,6 +803,7 @@ public class GameplayTest {
 
 		EasyMock.replay(gui, deck, player, card);
 
+		card.cost = 1;
 		player.energy = 1;
 		g.buyCard(1);
 
@@ -824,10 +825,10 @@ public class GameplayTest {
 
 		Gameplay g = new Gameplay(gui, player, board, deck, null);
 
-		EasyMock.expect(card.getCost()).andReturn(1);
 		gui.energyWarning();
 		EasyMock.replay(gui, deck, player, card);
 
+		card.cost = 1;
 		player.energy = 0;
 		g.buyCard(1);
 
