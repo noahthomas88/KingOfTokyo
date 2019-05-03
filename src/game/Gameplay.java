@@ -74,15 +74,17 @@ public class Gameplay {
 			if (result.equals("attack")) {
 				gameboard.doAttack(currentplayer);
 				gameUI.EnableCedeButton();
-			} else if (result.equals("heal") && currentplayer != gameboard.cityPlayer) {
-				currentplayer.addHealth(1);
+			} else if (result.equals("heal")) {
+				if (currentplayer != gameboard.cityPlayer){
+					currentplayer.addHealth(1);
+				}else{
+					break;
+				}	
 			} else if (result.equals("energy")) {
 				currentplayer.addEnergy(1);
 			} else {
 				otherdice.add(die);
-	
 			}
-	
 		}
 	
 		calculateScore(otherdice);
