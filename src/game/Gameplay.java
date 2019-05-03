@@ -104,7 +104,7 @@ public class Gameplay {
 		int count2 = 0;
 		int count1 = 0;
 		for (Dice die : dice) {
-			int number = die.getNumberRolled();
+			int number = die.numberRolled;
 			if (number == 1) {
 				count1++;
 			} else if (number == 2) {

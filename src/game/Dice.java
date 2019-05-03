@@ -47,7 +47,4 @@ public class Dice {
 		}
 	}
 
-	public int getNumberRolled() {
-		return this.numberRolled;
-	}
 }

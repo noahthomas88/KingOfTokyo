@@ -50,7 +50,7 @@ public class DiceTest {
 			EasyMock.replay(p);
 			
 			Dice testDice = new Dice(p);
-			for (int j = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
 				rollResults.add(testDice.roll());
 			}
 		}
@@ -130,14 +130,4 @@ public class DiceTest {
 		assertEquals(testDice.numberToString(6),"heal");
 	}
 
-	@Test
-	public void testGetNumberRolled() {
-		Player p = EasyMock.niceMock(Player.class);
-		EasyMock.expect(p.getNumberOfDieRolls()).andStubReturn(3);
-		EasyMock.replay(p);
-		
-		Dice testDice = new Dice(p);
-		testDice.numberRolled = 5;
-		assertEquals(testDice.getNumberRolled(), 5);
-	}
 }

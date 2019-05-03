@@ -36,18 +36,19 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
-
 		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(index + 1);
 		}
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
 
+		for (int index = 0; index < 6; index++) {
+			dicelist.get(index).numberRolled = index + 1;
+		}
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -56,25 +57,26 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
-
-		for (int index = 0; index < 3; index++) {
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(1);
-		}
-
-		for (int index = 3; index < 6; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(index - 1);
 		}
 
 		player.addVictory(1);
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
+		
+		for (int index = 0; index < 3; index++) {
+			dicelist.get(index).numberRolled = 1;
+		}
+
+		for (int index = 3; index < 6; index++) {
+			dicelist.get(index).numberRolled = index - 1;
+		}
 
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -83,25 +85,28 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
+		
+
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
+			dicelist.add(dice);
+		}
+		
+		player.addVictory(2);
+
+		EasyMock.replay(player);
 
 		for (int index = 0; index < 3; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(2);
+			dicelist.get(index).numberRolled = 2;
 		}
 
 		for (int index = 3; index < 6; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(index);
+			dicelist.get(index).numberRolled = index;
 		}
-
-		player.addVictory(2);
-
-		EasyMock.replay(player, dice);
-
+		
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -110,25 +115,26 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
-
-		for (int index = 0; index < 3; index++) {
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(3);
-		}
-
-		for (int index = 3; index < 6; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(index + 1);
 		}
 
 		player.addVictory(3);
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
+		
+		for (int index = 0; index < 3; index++) {
+			dicelist.get(index).numberRolled = 3;
+		}
+
+		for (int index = 3; index < 6; index++) {
+			dicelist.get(index).numberRolled = index + 1;
+		}
 
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -137,23 +143,26 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
-
-		for (int index = 0; index < 5; index++) {
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(2);
 		}
-
-		dicelist.add(dice);
-		EasyMock.expect(dice.getNumberRolled()).andReturn(1);
 
 		player.addVictory(4);
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
 
+		for (int index = 0; index < 5; index++) {
+			dicelist.get(index).numberRolled = 2;
+		}
+
+		for (int index = 5; index < 6; index++) {
+			dicelist.get(index).numberRolled = 1;
+		}
+		
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
@@ -162,26 +171,28 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(null, player, null, null, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
-		Dice dice = EasyMock.strictMock(Dice.class);
 
-		for (int index = 0; index < 3; index++) {
+		for (int index = 0; index < 6; index++) {
+			Dice dice = EasyMock.strictMock(Dice.class);
 			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(3);
-		}
-
-		for (int index = 3; index < 6; index++) {
-			dicelist.add(dice);
-			EasyMock.expect(dice.getNumberRolled()).andReturn(1);
 		}
 
 		player.addVictory(3);
 		player.addVictory(1);
 
-		EasyMock.replay(player, dice);
+		EasyMock.replay(player);
 
+		for (int index = 0; index < 3; index++) {
+			dicelist.get(index).numberRolled = 3;
+		}
+
+		for (int index = 3; index < 6; index++) {
+			dicelist.get(index).numberRolled = 1;
+		}
+		
 		gameplay.calculateScore(dicelist);
 
-		EasyMock.verify(player, dice);
+		EasyMock.verify(player);
 	}
 
 	@Test
