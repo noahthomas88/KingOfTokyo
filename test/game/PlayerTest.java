@@ -158,23 +158,6 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void testAddEnergyFriendOfChildren() {
-		Player player = new Player("Test");
-		Card card = new FriendOfChildren();
-		player.cardsInHand.add(card);
-		player.addEnergy(4);
-		
-		assertEquals(player.energy, 5);
-		
-		player.energy = 0;
-		
-		player.addEnergy(1);
-		player.addEnergy(1);
-		
-		assertEquals(player.energy, 4);
-	}
-	
-	@Test
 	public void testAddHealthExceed() {
 		Player player = new Player("Test");
 		player.health = 7;
@@ -230,6 +213,23 @@ public class PlayerTest {
 		}catch(IllegalArgumentException e) {
 			assertEquals(player.energy, 5);
 		}	
+	}
+	
+	@Test
+	public void testAddEnergyFriendOfChildren() {
+		Player player = new Player("Test");
+		Card card = new FriendOfChildren();
+		player.cardsInHand.add(card);
+		player.addEnergy(4);
+		
+		assertEquals(player.energy, 5);
+		
+		player.energy = 0;
+		
+		player.addEnergy(1);
+		player.addEnergy(1);
+		
+		assertEquals(player.energy, 4);
 	}
 	
 	@Test
