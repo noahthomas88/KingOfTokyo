@@ -297,26 +297,19 @@ public class GameplayTest {
 		EasyMock.verify(board, ui, deck);
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test
 	public void GameplayInitializationErrorTest() {
-		Board board = EasyMock.createMock(Board.class);
 		GUI ui = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = EasyMock.createMock(DeckConstructor.class);
-		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
-		Gameplay game = new Gameplay(ui, null, board, deck, playerToNumber);
+		Gameplay game = new Gameplay(ui, null, null, null, null);
+		
 		EasyMock.expect(ui.inputNumPlayers()).andReturn(1);
-		ArrayList<String> names = new ArrayList<String>();
-		names.add("bla");
-		names.add("bla2");
-		EasyMock.expect(ui.inputNames(2)).andReturn(names);
-		deck.createDeck();
-		deck.reveal();
-		ui.setCards(null);
-		EasyMock.replay(board, ui, deck);
+		ui.playerCountWarning();
+		
+		EasyMock.replay(ui);
 
 		game.initializeGame();
-
-		EasyMock.verify(board, ui, deck);
+		
+		EasyMock.verify(ui);
 	}
 
 	@Test
