@@ -139,7 +139,7 @@ public class Gameplay {
 	public void buyCard(int number) {
 
 		Card tobuy = deck.visibleCard[number-1];
-		if(currentplayer.getEnergy()>=tobuy.getCost()) {
+		if(currentplayer.energy >=tobuy.getCost()) {
 			currentplayer.addToHand(deck.visibleCard[number-1]);
 			currentplayer.addEnergy(-tobuy.getCost());
 			deck.buy(number-1);
@@ -170,7 +170,7 @@ public class Gameplay {
 	}
 
 	public void swipeCard() {
-		int playerEnergy = currentplayer.getEnergy();
+		int playerEnergy = currentplayer.energy;
 		if(playerEnergy >= 2) {
 			deck.swipe();
 			gameUI.setCards(deck.visibleCard);

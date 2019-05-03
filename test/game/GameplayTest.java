@@ -487,7 +487,6 @@ public class GameplayTest {
 		Player player = EasyMock.strictMock(Player.class);
 		Gameplay gameplay = new Gameplay(ui, player, board, deck, null);
 
-		EasyMock.expect(player.getEnergy()).andReturn(6);
 		deck.swipe();
 		ui.setCards(deck.visibleCard);
 		player.addEnergy(-2);
@@ -495,6 +494,7 @@ public class GameplayTest {
 
 		EasyMock.replay(deck, ui, player);
 
+		player.energy = 6;
 		gameplay.swipeCard();
 
 		EasyMock.verify(deck, ui, player);
@@ -507,11 +507,11 @@ public class GameplayTest {
 		Player player = EasyMock.niceMock(Player.class);
 		Gameplay gameplay = new Gameplay(ui, player, board, null, null);
 
-		EasyMock.expect(player.getEnergy()).andReturn(1);
 		ui.energyWarning();
 
 		EasyMock.replay(ui, player);
 
+		player.energy = 1;
 		gameplay.swipeCard();
 
 		EasyMock.verify(ui, player);
@@ -785,7 +785,6 @@ public class GameplayTest {
 
 		Gameplay g = new Gameplay(gui, player, board, deck, null);
 
-		EasyMock.expect(player.getEnergy()).andReturn(1);
 		EasyMock.expect(card.getCost()).andReturn(1);
 		player.addToHand(card);
 		EasyMock.expect(card.getCost()).andReturn(1);
@@ -796,6 +795,7 @@ public class GameplayTest {
 
 		EasyMock.replay(gui, deck, player, card);
 
+		player.energy = 1;
 		g.buyCard(1);
 
 		EasyMock.verify(gui, deck, player, card);
@@ -816,12 +816,11 @@ public class GameplayTest {
 
 		Gameplay g = new Gameplay(gui, player, board, deck, null);
 
-		EasyMock.expect(player.getEnergy()).andReturn(0);
 		EasyMock.expect(card.getCost()).andReturn(1);
-
 		gui.energyWarning();
 		EasyMock.replay(gui, deck, player, card);
 
+		player.energy = 1;
 		g.buyCard(1);
 
 		EasyMock.verify(gui, deck, player, card);
