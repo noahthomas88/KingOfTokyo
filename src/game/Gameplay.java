@@ -53,12 +53,12 @@ public class Gameplay {
 
 	public void beginGame() {
 		selectFirstPlayer();
-		gameUI.displayStartingPlayer(currentplayer.getName());
+		gameUI.displayStartingPlayer(currentplayer.name);
 		beginTurn();
 	}
 
 	public void beginTurn() {
-		gameUI.setActivePlayer(playerToNumber.get(currentplayer.getName()));
+		gameUI.setActivePlayer(playerToNumber.get(currentplayer.name));
 		gameUI.DisableEndTurnButton();
 		if (gameboard.cityPlayer == currentplayer) {
 			currentplayer.addVictory(2);
@@ -127,7 +127,7 @@ public class Gameplay {
 	}
 
 	public void endTurn() {
-		String currentPlayerName = currentplayer.getName();
+		String currentPlayerName = currentplayer.name;
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {

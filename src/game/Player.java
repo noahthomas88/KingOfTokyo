@@ -79,8 +79,4 @@ public class Player {
 	public void subMaxHealth(){
 		this.maxHealth--;
 	}
-
-	public String getName() {
-		return this.name;
-	}
 }

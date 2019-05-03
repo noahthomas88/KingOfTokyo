@@ -206,7 +206,6 @@ public class GameplayTest {
 		
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
-		EasyMock.expect(test1.getName()).andStubReturn("test1");
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		test1.addVictory(2);
@@ -215,6 +214,7 @@ public class GameplayTest {
 
 		EasyMock.replay(gameUI, test1, board);
 
+		test1.name = "test1";
 		board.cityPlayer = test1;
 		gameplay.beginTurn();
 
@@ -233,7 +233,6 @@ public class GameplayTest {
 		map.put("test2", 1);
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
-		EasyMock.expect(test1.getName()).andStubReturn("test1");
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		gameUI.updatePlayerText(board);
@@ -241,6 +240,7 @@ public class GameplayTest {
 
 		EasyMock.replay(gameUI, test1, board);
 
+		test1.name = "test1";
 		board.cityPlayer = test2;
 		gameplay.beginTurn();
 
@@ -258,7 +258,6 @@ public class GameplayTest {
 		map.put("test2", 1);
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
-		EasyMock.expect(test1.getName()).andStubReturn("test1");
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		gameUI.moveToTokyo(test1);
@@ -268,6 +267,7 @@ public class GameplayTest {
 
 		EasyMock.replay(gameUI, test1, board);
 
+		test1.name = "test1";
 		board.cityPlayer = null;
 		gameplay.beginTurn();
 
@@ -432,12 +432,12 @@ public class GameplayTest {
 		gameplay.currentplayer = test1;
 
 		gameplay.selectFirstPlayer();
-		EasyMock.expect(test1.getName()).andStubReturn("test1");
 		gameUI.displayStartingPlayer("test1");
 		gameplay.beginTurn();
 
 		EasyMock.replay(gameplay, test1, gameUI);
 
+		test1.name = "test1";
 		gameplay.beginGame();
 
 		EasyMock.verify(gameplay, test1, gameUI);
@@ -736,11 +736,11 @@ public class GameplayTest {
 		gameplay.gameboard = board;
 		gameplay.playerToNumber = map;
 		
-		EasyMock.expect(test1.getName()).andReturn("test1");
 		gameplay.beginTurn();
 		
 		EasyMock.replay(test1, board, gameplay);
 		
+		test1.name = "test1";
 		board.numOfPlayers = 2;
 		gameplay.endTurn();
 		
@@ -766,11 +766,11 @@ public class GameplayTest {
 		gameplay.gameboard = board;
 		gameplay.playerToNumber = map;
 		
-		EasyMock.expect(test2.getName()).andReturn("test2");
 		gameplay.beginTurn();
 		
 		EasyMock.replay(test2, board, gameplay);
 		
+		test2.name = "test2";
 		board.numOfPlayers = 2;
 		gameplay.endTurn();
 		
