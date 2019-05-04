@@ -132,7 +132,6 @@ public class Gameplay {
 	}
 	
 	public void buyCard(int number) {
-
 		Card tobuy = deck.visibleCard[number-1];
 		if(currentplayer.energy >=tobuy.cost) {
 			currentplayer.addToHand(deck.visibleCard[number-1]);
