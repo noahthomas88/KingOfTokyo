@@ -16,10 +16,10 @@ public class VastStormLogic implements CardLogic {
 		
 		for(int i = 0; i < players.size(); i++) {
 			int energyHalved = players.get(i).energy;
-			if(energyHalved % 2 == 1) {
-				energyHalved = (energyHalved/2) + 1;
-			} else {
+			if(energyHalved % 2 == 0) {
 				energyHalved = energyHalved/2;
+			} else {
+				energyHalved = (energyHalved/2) + 1;
 			}
 			if(!players.get(i).equals(player)) {
 				players.get(i).energy = energyHalved;
