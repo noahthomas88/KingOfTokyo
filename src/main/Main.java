@@ -1,5 +1,6 @@
 package main;
 
+import game.Board;
 import game.Gameplay;
 
 public class Main {
@@ -7,7 +8,15 @@ public class Main {
 	public static void main(String[] args) {
 		GUI gui = new GUI();
 		Gameplay game = new Gameplay(gui, null, null, null, null);
-		game.initializeGame();
+		Board gameboard;
+		try {
+			int numOfPlayers = gui.inputNumPlayers();
+			gameboard = new Board(numOfPlayers);
+		} catch (IllegalArgumentException e) {
+			gui.playerCountWarning();
+			return;
+		}
+		game.initializeGame(gameboard);
 		game.beginGame();
 	}
 
