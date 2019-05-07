@@ -2,9 +2,7 @@ package game;
 
 import java.util.ArrayList;
 
-import cards.ArmorPlating;
 import cards.Card;
-import cards.Regeneration;
 
 public class Player {
 	

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import cards.ArmorPlating;
 import cards.Card;
 import cards.FriendOfChildren;
 import cards.MakingStronger;
@@ -144,7 +143,8 @@ public class PlayerTest {
 	@Test
 	public void testAddHealthArmorPlating() {
 		Player player = new Player("Test");
-		Card card = new ArmorPlating();
+		Card card = new Card();
+		card.name = "Armor Plating";
 		player.cardsInHand.add(card);
 		player.addHealth(-1);
 		

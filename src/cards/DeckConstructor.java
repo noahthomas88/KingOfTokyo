@@ -2,6 +2,7 @@ package cards;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class DeckConstructor {
 	
@@ -19,23 +20,11 @@ public class DeckConstructor {
 	}
 	
 	public void createDeck(){
-		deck.add(new ApartmentBuilding());
-		deck.add(new CommuterTrain());
-		deck.add(new CornerStore());
-		deck.add(new Energize());
-		deck.add(new EvacuationOrders());
-		deck.add(new ExtraHead());
-		deck.add(new Flamethrower());
-		deck.add(new GasRefinery());
-		deck.add(new GiantBrain());
-		deck.add(new Heal());
-		deck.add(new HighAltitudeBombing());
-		deck.add(new JetFighter());
-		deck.add(new NationalGuard());
-		deck.add(new NuclearPowerPlant());
-		deck.add(new RootingForTheUnderdog());
-		deck.add(new Skyscraper());
-		deck.add(new Tank());
+		CardLoader loader = new CardLoader();
+		HashMap<String, Card> cardmap = loader.loadCards("cards.txt", null);
+		for(String name : cardmap.keySet()) {
+			deck.add(cardmap.get(name));
+		}
 		this.shuffle();
 	}
 	

@@ -35,10 +35,7 @@ public class DeckConstructorTest {
 		EasyMock.verify(deckCons);
 		assertFalse(deckCons.deck.isEmpty());
 		
-		String[] cardNames = {"Apartment Building", "Commuter Train", "Corner Store", "Energize", 
-				"Evacuation Orders", "Extra Head", "Flamethrower", "Gas Refinery", "Giant Brain", "Heal",
-				"High Altitude Bombing", "Jet Fighter", "National Guard", "Nuclear Power Plant", "Rooting for the Underdog",
-				"Skyscraper", "Tank"};
+		String[] cardNames = {"Armor Plating", "Commuter Train", "Apartment Building", "Corner Store"};
 		for (int index = 0; index < cardNames.length; index++) {
 			assertEquals(deckCons.deck.get(index).name, cardNames[index]);
 		}

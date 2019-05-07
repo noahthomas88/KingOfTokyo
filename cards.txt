@@ -4,9 +4,21 @@ Apartment Building
 Gain 3 Victory Points
 Discard
 -
+ArmorPlating
+Armor Plating
+4
+Do not lose health when you lose exactly 1 health
+Keep
+-
 CommuterTrain
 Commuter Train
 4
 Gain 2 Victory Points
+Discard
+-
+CornerStore
+Corner Store
+3
+Gain 1 Victory Point
 Discard
 -
