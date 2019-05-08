@@ -15,7 +15,6 @@ public class ArmorPlatingLogic implements CardLogic {
 	@Override
 	public void use(Player player, ArrayList<Player> players) {
 		throw new UnsupportedOperationException("Double parameter use is not supported for this class");
-
 	}
 
 }
