@@ -33,5 +33,11 @@ public class RootingForTheUnderdogLogicTest {
 		assertTrue(p3.victoryPoints == 12);
 			
 	}
+	
+	@Test(expected = UnsupportedOperationException.class)
+	public void testUse() {
+		RootingForTheUnderdogLogic logic = new RootingForTheUnderdogLogic();
+		logic.use(null);
+	}
 
 }

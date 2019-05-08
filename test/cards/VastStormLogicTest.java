@@ -38,5 +38,11 @@ public class VastStormLogicTest {
 		assertTrue(p4.energy == 3);
 			
 	}
+	
+	@Test(expected = UnsupportedOperationException.class)
+	public void testUse() {
+		VastStormLogic logic = new VastStormLogic();
+		logic.use(null);
+	}
 
 }

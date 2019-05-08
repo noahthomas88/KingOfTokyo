@@ -33,5 +33,11 @@ public class EvacuationOrdersLogicTest {
 		assertTrue(p3.victoryPoints == 11);
 			
 	}
+	
+	@Test(expected = UnsupportedOperationException.class)
+	public void testUse() {
+		EvacuationOrdersLogic logic = new EvacuationOrdersLogic();
+		logic.use(null);
+	}
 
 }

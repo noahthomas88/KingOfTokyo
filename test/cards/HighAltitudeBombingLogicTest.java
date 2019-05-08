@@ -34,5 +34,11 @@ public class HighAltitudeBombingLogicTest {
 		assertTrue(p3.health == 6);
 			
 	}
+	
+	@Test(expected = UnsupportedOperationException.class)
+	public void testUse() {
+		HighAltitudeBombingLogic logic = new HighAltitudeBombingLogic();
+		logic.use(null);
+	}
 
 }
