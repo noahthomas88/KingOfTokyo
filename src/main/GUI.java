@@ -3,6 +3,7 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,26 +34,30 @@ public class GUI {
 	}
 
 	public void viewHand() {
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
+		JPanel bigPanel = new JPanel();
+		bigPanel.setLayout(new FlowLayout());
+		bigPanel.setPreferredSize(new Dimension(1800, 800));
 		if(game.currentplayer.cardsInHand.isEmpty()) {
 			JLabel label = new JLabel("Your hand is empty");
-			panel.add(label);
+			bigPanel.add(label);
 		}
 		for(Card card : game.currentplayer.cardsInHand) {
+			JPanel panel = new JPanel();
+			panel.setLayout(new BorderLayout());
 			JButton cardbutton = new JButton();
 			JTextArea description = new JTextArea();
 			description.setLineWrap(true);
 			description.setText(card.description);
 			description.setEditable(false);
 			cardbutton.setText(card.name);
-			cardbutton.setPreferredSize(new Dimension(200,200));
-			description.setPreferredSize(new Dimension(200,200));
+			cardbutton.setPreferredSize(new Dimension(300,100));
+			description.setPreferredSize(new Dimension(300,100));
 			cardbutton.addActionListener(new UseCardListener(card.name));
 			panel.add(cardbutton, BorderLayout.CENTER);
 			panel.add(description,BorderLayout.SOUTH);
+			bigPanel.add(panel);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
+		JOptionPane.showConfirmDialog(null, bigPanel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
 	}
 	
 	public void viewCard(int index) {
