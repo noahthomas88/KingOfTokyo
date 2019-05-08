@@ -95,35 +95,31 @@ public class BoardTest {
 		names.add("test3");
 		board.constructPlayers(names);
 
-		Player tokyoPlayer = board.playerList.get(0);
-		Player notTokyoPlayer = board.playerList.get(1);
+		Player cityPlayer = board.playerList.get(0);
+		Player outPlayer = board.playerList.get(1);
 		Player bayPlayer = board.playerList.get(2);
-		int originalHealthP3 = bayPlayer.health;
-		int originalHealthP2 = tokyoPlayer.health;
-		int originalHealthP1 = notTokyoPlayer.health;
-		board.cityPlayer = tokyoPlayer;
+		int cityHealth = cityPlayer.health;
+		int outHealth = outPlayer.health;
+		int bayHealth = bayPlayer.health;
+		
+		
+		board.cityPlayer = cityPlayer;
 		board.bayPlayer = bayPlayer;
 
-		for (int i = 0; i < 3; i++) {
-			board.doAttack(tokyoPlayer);
-		}
-		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
-		assertTrue(tokyoPlayer.health == originalHealthP2);
-		assertTrue(bayPlayer.health == originalHealthP3);
+		board.doAttack(cityPlayer, -3);
+		assertTrue(outPlayer.health == outHealth - 3);
+		assertTrue(cityPlayer.health == cityHealth);
+		assertTrue(bayPlayer.health == bayHealth);
 
-		for (int i = 0; i < 2; i++) {
-			board.doAttack(notTokyoPlayer);
-		}
-		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
-		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
-		assertTrue(bayPlayer.health == originalHealthP3 - 2);
+		board.doAttack(outPlayer, -2);
+		assertTrue(outPlayer.health == outHealth - 3);
+		assertTrue(cityPlayer.health == cityHealth - 2);
+		assertTrue(bayPlayer.health == bayHealth - 2);
 
-		for (int i = 0; i < 1; i++) {
-			board.doAttack(bayPlayer);
-		}
-		assertTrue(notTokyoPlayer.health == originalHealthP1 - 4);
-		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
-		assertTrue(bayPlayer.health == originalHealthP3 - 2);
+		board.doAttack(bayPlayer, -1);
+		assertTrue(outPlayer.health == outHealth - 4);
+		assertTrue(cityPlayer.health == cityHealth - 2);
+		assertTrue(bayPlayer.health == bayHealth - 2);
 
 	}
 	
@@ -141,15 +137,11 @@ public class BoardTest {
 		int originalHealthP1 = notTokyoPlayer.health;
 		board.cityPlayer = tokyoPlayer;
 		
-		for(int i = 0; i < 3; i++) {
-			board.doAttack(tokyoPlayer);
-		}
+		board.doAttack(tokyoPlayer, -3);
 		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
 		assertTrue(tokyoPlayer.health == originalHealthP2);
 		
-		for(int i = 0; i < 2; i++) {
-			board.doAttack(notTokyoPlayer);
-		}
+		board.doAttack(notTokyoPlayer, -2);
 		assertTrue(notTokyoPlayer.health == originalHealthP1 - 3);
 		assertTrue(tokyoPlayer.health == originalHealthP2 - 2);
 		

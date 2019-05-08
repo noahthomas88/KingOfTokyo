@@ -3,6 +3,7 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,26 +34,30 @@ public class GUI {
 	}
 
 	public void viewHand() {
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
+		JPanel bigPanel = new JPanel();
+		bigPanel.setLayout(new FlowLayout());
+		bigPanel.setPreferredSize(new Dimension(1800, 800));
 		if(game.currentplayer.cardsInHand.isEmpty()) {
 			JLabel label = new JLabel("Your hand is empty");
-			panel.add(label);
+			bigPanel.add(label);
 		}
 		for(Card card : game.currentplayer.cardsInHand) {
+			JPanel panel = new JPanel();
+			panel.setLayout(new BorderLayout());
 			JButton cardbutton = new JButton();
 			JTextArea description = new JTextArea();
 			description.setLineWrap(true);
 			description.setText(card.description);
 			description.setEditable(false);
 			cardbutton.setText(card.name);
-			cardbutton.setPreferredSize(new Dimension(200,200));
-			description.setPreferredSize(new Dimension(200,200));
+			cardbutton.setPreferredSize(new Dimension(300,100));
+			description.setPreferredSize(new Dimension(300,100));
 			cardbutton.addActionListener(new UseCardListener(card.name));
 			panel.add(cardbutton, BorderLayout.CENTER);
 			panel.add(description,BorderLayout.SOUTH);
+			bigPanel.add(panel);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
+		JOptionPane.showConfirmDialog(null, bigPanel, "Here is your hand",JOptionPane.DEFAULT_OPTION);
 	}
 	
 	public void viewCard(int index) {
@@ -65,7 +70,7 @@ public class GUI {
 		Card card = game.deck.visibleCard[index-1];
 		description.setText(card.description);
 		description.setEditable(false);
-		label.setText("Cost: " + card.cost + " energy");
+		label.setText("Cost: " + card.cost + " energy" + ", " + card.type);
 		label2.setText(card.name);
 		description.setPreferredSize(new Dimension(200,200));
 		panel.add(description, BorderLayout.CENTER);
@@ -137,7 +142,9 @@ public class GUI {
 		JPanel panel = new JPanel();
 		ArrayList<Dice> dicelist = new ArrayList<Dice>();
 		ArrayList<JButton> diebuttons = new ArrayList<JButton>();
-		for (int i = 0; i < 6; i++) {
+		int numberOfDiceRolls = game.currentplayer.numberOfDieRolls;
+		int numberOfDice = game.currentplayer.numberOfDieToRoll;
+		for (int i = 0; i < numberOfDice; i++) {
 			Dice dice = new Dice(game.currentplayer);
 			dice.roll();
 			dicelist.add(dice);
@@ -147,7 +154,7 @@ public class GUI {
 			panel.add(diebutton);
 		}
 		JOptionPane.showConfirmDialog(null, panel, "First roll, select dice to re-roll", JOptionPane.DEFAULT_OPTION);
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < numberOfDice; i++) {
 			JButton button = diebuttons.get(i);
 			Dice die = dicelist.get(i);
 			if (button.getBackground() == Color.RED) {
@@ -156,18 +163,35 @@ public class GUI {
 			}
 		}
 		JOptionPane.showConfirmDialog(null, panel, "Second roll, select dice to re-roll", JOptionPane.DEFAULT_OPTION);
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < numberOfDice; i++) {
 			JButton button = diebuttons.get(i);
 			Dice die = dicelist.get(i);
 			if (button.getBackground() == Color.RED) {
 				die.roll();
 				button.setText(die.numberToString(die.numberRolled));
 			}
-			button.setEnabled(false);
-			button.setBackground(Color.WHITE);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Third roll, this is your final row", JOptionPane.DEFAULT_OPTION);
-
+		if(numberOfDiceRolls == 3) {
+			for (int i = 0; i < numberOfDice; i++) {
+				JButton button = diebuttons.get(i);
+				button.setEnabled(false);
+				button.setBackground(Color.WHITE);
+			}
+			JOptionPane.showConfirmDialog(null, panel, "Third roll, this is your final row", JOptionPane.DEFAULT_OPTION);	
+		}else {
+			JOptionPane.showConfirmDialog(null, panel, "Third roll, you have a fourth row", JOptionPane.DEFAULT_OPTION);
+			for (int i = 0; i < numberOfDice; i++) {
+				JButton button = diebuttons.get(i);
+				Dice die = dicelist.get(i);
+				if (button.getBackground() == Color.RED) {
+					die.roll();
+					button.setText(die.numberToString(die.numberRolled));
+				}
+				button.setEnabled(false);
+				button.setBackground(Color.WHITE);
+			}
+			JOptionPane.showConfirmDialog(null, panel, "Fourth roll, this is your final row", JOptionPane.DEFAULT_OPTION);
+		}
 		game.diceRolled(dicelist);
 	}
 
