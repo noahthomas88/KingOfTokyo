@@ -8,9 +8,6 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import cards.Card;
-import cards.FriendOfChildren;
-import cards.MakingStronger;
-import cards.Regeneration;
 import game.Player;
 
 public class PlayerTest {
@@ -104,7 +101,8 @@ public class PlayerTest {
 	@Test
 	public void testAddHealthWereOnlyMakingItStronger() {
 		Player player = new Player("Test");
-		MakingStronger card = new MakingStronger();
+		Card card = new Card();
+		card.name = "We're only making it stronger";
 		player.cardsInHand.add(card);
 		player.addHealth(-2);
 		
@@ -115,7 +113,7 @@ public class PlayerTest {
 	@Test
 	public void testAddHealthWereOnlyMakingItStrongerWrongValue() {
 		Player player = new Player("Test");
-		MakingStronger card = new MakingStronger();
+		Card card = new Card();
 		player.cardsInHand.add(card);
 		player.addHealth(-1);
 		
@@ -126,7 +124,8 @@ public class PlayerTest {
 	@Test
 	public void testAddHealthRegeneration() {
 		Player player = new Player("Test");
-		Card card = new Regeneration();
+		Card card = new Card();
+		card.name = "Regeneration";
 		player.cardsInHand.add(card);
 		player.addHealth(-4);
 		player.addHealth(2);
@@ -218,7 +217,8 @@ public class PlayerTest {
 	@Test
 	public void testAddEnergyFriendOfChildren() {
 		Player player = new Player("Test");
-		Card card = new FriendOfChildren();
+		Card card = new Card();
+		card.name = "Friend of Children";
 		player.cardsInHand.add(card);
 		player.addEnergy(4);
 		

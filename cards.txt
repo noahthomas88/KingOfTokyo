@@ -22,3 +22,111 @@ Corner Store
 Gain 1 Victory Point
 Discard
 -
+Energize
+Energize
+8
+Gain 9 energy
+Discard
+-
+EvacuationOrders
+Evacuation Orders
+7
+All other monsters lose 5 Victory Points
+Discard
+-
+ExtraHead
+Extra Head
+7
+Gain 1 extra die
+Keep
+-
+Flamethrower
+Flamethrower
+3
+All other players lose 2 health
+Discard
+-
+FriendOfChildren
+Friend of Children
+3
+Whenever you gain energy gain 1 extra energy
+Keep
+-
+GasRefinery
+Gas Refinery
+6
+Gain 2 Victory Points and all other monsters lose 3 health
+Discard
+-
+GiantBrain
+Giant Brain
+5
+You have 1 extra die roll each turn
+Keep
+-
+Heal
+Heal
+3
+Gain 2 Health
+Discard
+-
+HighAltitudeBombing
+High Altitude Bombing
+4
+All monsters including you lose 3 health
+Discard
+-
+JetFighter
+Jet Fighter
+5
+Gain 5 Victory Points and lose 4 health
+Discard
+-
+MakingStronger
+We're only making it stronger
+3
+When you lose 2 health, you gain 1 energy
+Keep
+-
+NationalGuard
+National Guard
+3
+Gain 2 Victory Points, But lose 2 Health
+Discard
+-
+NuclearPowerPlant
+Nuclear Power Plant
+6
+Gain 2 Victory Points and gain 3 Health
+Discard
+-
+Regeneration
+Regeneration
+4
+Whenever you gain health gain 1 extra health
+Keep
+-
+RootingForTheUnderdog
+Rooting for the Underdog
+3
+At the end of turn, if you have the fewest victory points, gain a victory point
+Keep
+-
+Skyscraper
+Skyscraper
+6
+Gain 4 Victory Points
+Discard
+-
+Tank
+Tank
+4
+Gain 4 Victory Points and lose 3 Health
+Discard
+-
+VastStorm
+VastStorm
+6
+Gain 2 victory points and all other monsters and lose 1 energy for every 2 energy they have
+discard
+-

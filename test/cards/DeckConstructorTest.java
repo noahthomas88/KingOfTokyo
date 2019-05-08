@@ -35,10 +35,7 @@ public class DeckConstructorTest {
 		EasyMock.verify(deckCons);
 		assertFalse(deckCons.deck.isEmpty());
 		
-		String[] cardNames = {"Armor Plating", "Commuter Train", "Apartment Building", "Corner Store"};
-		for (int index = 0; index < cardNames.length; index++) {
-			assertEquals(deckCons.deck.get(index).name, cardNames[index]);
-		}
+		assertEquals(deckCons.deck.get(0).name, "Armor Plating");
 	}
 	
 	@Test
@@ -85,8 +82,8 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealEmptyDeck() {
 		DeckConstructor deckCons = EasyMock.createMockBuilder(DeckConstructor.class).addMockedMethod("shuffle").withConstructor().createNiceMock();
-		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
-		
+		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
+		card.name = "notdefault";
 		deckCons.shuffle();
 		EasyMock.replay(deckCons);
 		
@@ -107,8 +104,8 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealOneCardDeck() {
 		DeckConstructor deckCons = new DeckConstructor();
-		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
-			
+		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
+		card.name = "notdefault";
 		deckCons.discard.add(card);
 		deckCons.discard.add(card);
 		deckCons.discard.add(card);
@@ -126,8 +123,8 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealMultiCardDeck() {
 		DeckConstructor deckCons = new DeckConstructor();
-		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
-			
+		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
+		card.name = "notdefault";
 		deckCons.discard.add(card);
 		deckCons.deck.add(card);
 		deckCons.deck.add(card);
@@ -145,7 +142,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testAddToEmptyDiscard(){
 		DeckConstructor deckCons = new DeckConstructor();
-		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
+		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		
 		deckCons.addToDiscard(card);
 		
@@ -155,7 +152,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testAddToNonEmptyDiscard(){
 		DeckConstructor deckCons = new DeckConstructor();
-		Card card = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
+		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		deckCons.discard.add(card);
 		deckCons.addToDiscard(card);
 		
@@ -165,8 +162,10 @@ public class DeckConstructorTest {
 	@Test
 	public void testSwipe(){
 		DeckConstructor deckCons = new DeckConstructor();
-		Card healCard = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
-		Card energizeCard = EasyMock.createMockBuilder(Energize.class).withConstructor().createMock();
+		Card healCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
+		Card energizeCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
+		energizeCard.name = "Energize";
+		healCard.name = "Heal";
 		deckCons.visibleCard[0] = healCard;
 		deckCons.visibleCard[1] = healCard;
 		deckCons.visibleCard[2] = healCard;
@@ -185,8 +184,10 @@ public class DeckConstructorTest {
 	@Test
 	public void testBuy(){
 		DeckConstructor deckCons = new DeckConstructor();
-		Card healCard = EasyMock.createMockBuilder(Heal.class).withConstructor().createMock();
-		Card energizeCard = EasyMock.createMockBuilder(Energize.class).withConstructor().createMock();
+		Card healCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
+		healCard.name = "Heal";
+		Card energizeCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
+		energizeCard.name = "Energize";
 		deckCons.visibleCard[0] = healCard;
 		deckCons.visibleCard[1] = healCard;
 		deckCons.visibleCard[2] = healCard;

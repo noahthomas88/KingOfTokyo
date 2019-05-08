@@ -8,8 +8,7 @@ public class EvacuationOrdersLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
-		
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
