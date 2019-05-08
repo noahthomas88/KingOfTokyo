@@ -192,7 +192,7 @@ public class DeckConstructorTest {
 		deckCons.visibleCard[1] = healCard;
 		deckCons.visibleCard[2] = healCard;
 		deckCons.deck.add(energizeCard);
-		deckCons.buy(2);
+		assertEquals(deckCons.buy(2), healCard);
 		assertEquals("Energize", deckCons.visibleCard[2].name);
 	}
 	
