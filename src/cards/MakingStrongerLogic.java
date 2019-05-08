@@ -8,13 +8,13 @@ public class MakingStrongerLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Single parameter use is not supported for this class");
 
 	}
 
 	@Override
 	public void use(Player player, ArrayList<Player> players) {
-		//no logic as logic is handled in the addHealthMethod(int num) method in player
+		throw new UnsupportedOperationException("Double parameter use is not supported for this class");
 
 	}
 

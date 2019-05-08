@@ -8,7 +8,7 @@ public class GasRefineryLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Single parameter use is not supported for this class");
 
 	}
 
