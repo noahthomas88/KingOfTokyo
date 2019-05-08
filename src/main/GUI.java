@@ -70,7 +70,7 @@ public class GUI {
 		Card card = game.deck.visibleCard[index-1];
 		description.setText(card.description);
 		description.setEditable(false);
-		label.setText("Cost: " + card.cost + " energy");
+		label.setText("Cost: " + card.cost + " energy" + ", " + card.type);
 		label2.setText(card.name);
 		description.setPreferredSize(new Dimension(200,200));
 		panel.add(description, BorderLayout.CENTER);
