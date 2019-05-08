@@ -22,14 +22,14 @@ public class MakingStrongerLogicTest {
 	}
 	
 	@Test
-	public void testLoseOneHealthHaveCard() {
+	public void testLoseNoHealthHaveCard() {
 		Player player = new Player("test");
 		Card card = EasyMock.strictMock(Card.class);
 		card.name = "We're only making it stronger";
 		player.health = 8;
 		player.addToHand(card);
-		player.addHealth(-1);
-		assertEquals(player.health, 7);
+		player.addHealth(0);
+		assertEquals(player.health, 8);
 		assertEquals(player.energy, 0);
 	}
 	
@@ -46,15 +46,36 @@ public class MakingStrongerLogicTest {
 	}
 	
 	@Test
+	public void testLoseTwoHealthNoCard() {
+		Player player = new Player("test");
+		player.health = 8;
+		player.addHealth(-2);
+		assertEquals(player.health, 6);
+		assertEquals(player.energy, 0);
+	}
+	
+	@Test
 	public void testLoseThreeHealthHaveCard() {
 		Player player = new Player("test");
 		Card card = EasyMock.strictMock(Card.class);
 		card.name = "We're only making it stronger";
 		player.health = 8;
 		player.addToHand(card);
-		player.addHealth(1);
-		assertEquals(player.health, 9);
-		assertEquals(player.energy, 0);
+		player.addHealth(-3);
+		assertEquals(player.health, 5);
+		assertEquals(player.energy, 1);
+	}
+	
+	@Test
+	public void testLoseFourHealthHaveCard() {
+		Player player = new Player("test");
+		Card card = EasyMock.strictMock(Card.class);
+		card.name = "We're only making it stronger";
+		player.health = 8;
+		player.addToHand(card);
+		player.addHealth(-4);
+		assertEquals(player.health, 4);
+		assertEquals(player.energy, 2);
 	}
 
 }
