@@ -137,7 +137,9 @@ public class GUI {
 		JPanel panel = new JPanel();
 		ArrayList<Dice> dicelist = new ArrayList<Dice>();
 		ArrayList<JButton> diebuttons = new ArrayList<JButton>();
-		for (int i = 0; i < 6; i++) {
+		int numberOfDiceRolls = game.currentplayer.numberOfDieRolls;
+		int numberOfDice = game.currentplayer.numberOfDieToRoll;
+		for (int i = 0; i < numberOfDice; i++) {
 			Dice dice = new Dice(game.currentplayer);
 			dice.roll();
 			dicelist.add(dice);
@@ -147,7 +149,7 @@ public class GUI {
 			panel.add(diebutton);
 		}
 		JOptionPane.showConfirmDialog(null, panel, "First roll, select dice to re-roll", JOptionPane.DEFAULT_OPTION);
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < numberOfDice; i++) {
 			JButton button = diebuttons.get(i);
 			Dice die = dicelist.get(i);
 			if (button.getBackground() == Color.RED) {
@@ -156,18 +158,35 @@ public class GUI {
 			}
 		}
 		JOptionPane.showConfirmDialog(null, panel, "Second roll, select dice to re-roll", JOptionPane.DEFAULT_OPTION);
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < numberOfDice; i++) {
 			JButton button = diebuttons.get(i);
 			Dice die = dicelist.get(i);
 			if (button.getBackground() == Color.RED) {
 				die.roll();
 				button.setText(die.numberToString(die.numberRolled));
 			}
-			button.setEnabled(false);
-			button.setBackground(Color.WHITE);
 		}
-		JOptionPane.showConfirmDialog(null, panel, "Third roll, this is your final row", JOptionPane.DEFAULT_OPTION);
-
+		if(numberOfDiceRolls == 3) {
+			for (int i = 0; i < numberOfDice; i++) {
+				JButton button = diebuttons.get(i);
+				button.setEnabled(false);
+				button.setBackground(Color.WHITE);
+			}
+			JOptionPane.showConfirmDialog(null, panel, "Third roll, this is your final row", JOptionPane.DEFAULT_OPTION);	
+		}else {
+			JOptionPane.showConfirmDialog(null, panel, "Third roll, you have a fourth row", JOptionPane.DEFAULT_OPTION);
+			for (int i = 0; i < numberOfDice; i++) {
+				JButton button = diebuttons.get(i);
+				Dice die = dicelist.get(i);
+				if (button.getBackground() == Color.RED) {
+					die.roll();
+					button.setText(die.numberToString(die.numberRolled));
+				}
+				button.setEnabled(false);
+				button.setBackground(Color.WHITE);
+			}
+			JOptionPane.showConfirmDialog(null, panel, "Fourth roll, this is your final row", JOptionPane.DEFAULT_OPTION);
+		}
 		game.diceRolled(dicelist);
 	}
 
