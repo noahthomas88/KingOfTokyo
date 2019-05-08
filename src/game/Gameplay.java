@@ -68,25 +68,29 @@ public class Gameplay {
 	public void diceRolled(ArrayList<Dice> dicelist) {
 		
 		ArrayList<Dice> otherdice = new ArrayList<Dice>();
+		int attack = 0;
+		int heal = 0;
+		int energy = 0;
 		
 		for (Dice die : dicelist) {
 			String result = die.numberToString(die.numberRolled);
 			if (result.equals("attack")) {
-				gameboard.doAttack(currentplayer);
-				gameUI.EnableCedeButton();
+				attack++;
 			} else if (result.equals("heal")) {
-				if (currentplayer != gameboard.cityPlayer){
-					currentplayer.addHealth(1);
-				}else{
-					break;
-				}	
+				heal++;
 			} else if (result.equals("energy")) {
-				currentplayer.addEnergy(1);
+				energy++;
 			} else {
 				otherdice.add(die);
 			}
 		}
-	
+		
+		gameboard.doAttack(currentplayer, -attack);
+		gameUI.EnableCedeButton();
+		if (currentplayer != gameboard.cityPlayer){
+			currentplayer.addHealth(heal);
+		}
+		currentplayer.addEnergy(energy);
 		calculateScore(otherdice);
 		gameUI.EnableEndTurnButton();
 		gameUI.updatePlayerText(gameboard);
