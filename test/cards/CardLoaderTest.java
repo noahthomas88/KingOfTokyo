@@ -106,42 +106,14 @@ public class CardLoaderTest {
 	@Test
 	public void getClassTest() {
 		CardLoader loader = new CardLoader();
-		CardLogic logic = loader.getClass("ApartmentBuilding", 0);
+		CardLogic logic = loader.getClass("ApartmentBuilding");
 		assertTrue(logic.getClass().getName().equals("cards.ApartmentBuildingLogic"));
 	}
 	
-	@Test
-	public void getClassTest1() {
+	@Test(expected = RuntimeException.class)
+	public void getBadClassTest() {
 		CardLoader loader = new CardLoader();
-		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
-		System.setErr(mockedstream);
-		mockedstream.println("unable to find class to create from name");
-		EasyMock.replay(mockedstream);
-		loader.getClass("bla", 0);
-		EasyMock.verify(mockedstream);
+		loader.getClass("bla");
 	}
-	
-	@Test
-	public void getClassTest2() {
-		CardLoader loader = new CardLoader();
-		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
-		System.setErr(mockedstream);
-		mockedstream.println("unable to instantiate card logic class");
-		EasyMock.replay(mockedstream);
-		loader.getClass("ApartmentBuilding", 1);
-		EasyMock.verify(mockedstream);
-	}
-	
-	@Test
-	public void getClassTest3() {
-		CardLoader loader = new CardLoader();
-		PrintStream mockedstream = EasyMock.createMock(PrintStream.class);
-		System.setErr(mockedstream);
-		mockedstream.println("illegalaccess during card instantiation");
-		EasyMock.replay(mockedstream);
-		loader.getClass("ApartmentBuilding", 2);
-		EasyMock.verify(mockedstream);
-	}
-	
 
 }
