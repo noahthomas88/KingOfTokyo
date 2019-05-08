@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import cards.Card;
 
 public class Player {
-	
+
 	public String name = "";
 	public int health;
 	public int victoryPoints;
@@ -15,8 +15,8 @@ public class Player {
 	public int maxHealth;
 	public ArrayList<Card> cardsInHand;
 
-	public Player(String name){
-		if(name.equals("")){
+	public Player(String name) {
+		if (name.equals("")) {
 			throw new IllegalArgumentException();
 		}
 		this.health = 10;
@@ -31,77 +31,66 @@ public class Player {
 
 	public String buildPlayerStatusString() {
 		String playerStatusString = "";
-		playerStatusString = "<html>name: " + this.name + "<br/>" 
-				+ "health: " + this.health + "<br/>"
-				+ "victory points: " + this.victoryPoints + "<br/>"
-				+ "energy: " + this.energy + "</html>";
+		playerStatusString = "<html>name: " + this.name + "<br/>" + "health: " + this.health + "<br/>"
+				+ "victory points: " + this.victoryPoints + "<br/>" + "energy: " + this.energy + "</html>";
 		return playerStatusString;
 	}
-	
+
 	public void addHealth(int i) {
 		int startingHealth = this.health;
 		this.health = this.health + i;
-		
-		//The following if cases are to check for cards present in hand that impact the addition of health
-		for(int j = 0; j < this.cardsInHand.size(); j++) {
-			if(this.cardsInHand.get(j).name.equals("Armor Plating") && i == -1) {
-				this.health = startingHealth;
-			}
-			if(this.cardsInHand.get(j).name.equals("We're only making it stronger") && i == -2) {
-				this.addEnergy(1);
-			}
-			
-			if(this.cardsInHand.get(j).name.equals("Regeneration") && i > 0) {
-				this.health ++;
-			}
-		}
-		
-		
-		
+
 		if (this.health >= this.maxHealth + 1) {
 			this.health = this.maxHealth;
 		}
+		addHealthHelper(i);
 	}
-	
+
+	public void addHealthHelper(int i) {
+		
+	}
+
 	public void addEnergy(int i) {
 		this.energy = this.energy + i;
-		if(this.energy < 0) {
+		if (this.energy < 0) {
 			this.energy = this.energy - i;
 			throw new IllegalArgumentException();
 		}
-		
-		for(int j = 0; j < this.cardsInHand.size(); j++) {
-			
-			if(this.cardsInHand.get(j).name.equals("Friend of Children") && i > 0) {
-				this.energy ++;
-			}
-		}
 	}
-	
+
 	public void addVictory(int i) {
 		this.victoryPoints = this.victoryPoints + i;
-		if(this.victoryPoints <= -1) {
+		if (this.victoryPoints <= -1) {
 			this.victoryPoints = 0;
 		}
 	}
 
 	public void addOneDie() {
-		this.numberOfDieToRoll ++;	
+		this.numberOfDieToRoll++;
 	}
 
 	public void subOneDie() {
-		this.numberOfDieToRoll --;
+		this.numberOfDieToRoll--;
 	}
-	
-	public void addMaxHealth(){
+
+	public void addMaxHealth() {
 		this.maxHealth++;
 	}
-	
-	public void addToHand(Card card){
+
+	public void addToHand(Card card) {
 		this.cardsInHand.add(card);
 	}
-	
-	public void subMaxHealth(){
+
+	public void subMaxHealth() {
 		this.maxHealth--;
+	}
+
+	public boolean haveCard(String string) {
+		for (int j = 0; j < this.cardsInHand.size(); j++) {
+			if (this.cardsInHand.get(j).name.equals(string)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

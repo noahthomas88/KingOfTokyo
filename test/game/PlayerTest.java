@@ -69,10 +69,18 @@ public class PlayerTest {
 
 	@Test
 	public void testAddOneHealth() {
-		Player player = new Player("Test");
+		Player player = EasyMock.partialMockBuilder(Player.class).addMockedMethod("addHealthHelper").createStrictMock();
+		
+		player.addHealthHelper(1);
+		
+		EasyMock.replay(player);
+		
 		player.health = 5;
+		player.maxHealth = 10;
 		player.addHealth(1);
+		
 		assertEquals(player.health, 6);
+		EasyMock.verify(player);
 	}
 	
 	@Test
@@ -96,64 +104,6 @@ public class PlayerTest {
 		Player player = new Player("Test");
 		player.addHealth(-1);
 		assertEquals(player.health, 9);
-	}
-	
-	@Test
-	public void testAddHealthWereOnlyMakingItStronger() {
-		Player player = new Player("Test");
-		Card card = new Card();
-		card.name = "We're only making it stronger";
-		player.cardsInHand.add(card);
-		player.addHealth(-2);
-		
-		assertEquals(player.health, 8);
-		assertEquals(player.energy, 1);
-	}
-	
-	@Test
-	public void testAddHealthWereOnlyMakingItStrongerWrongValue() {
-		Player player = new Player("Test");
-		Card card = new Card();
-		player.cardsInHand.add(card);
-		player.addHealth(-1);
-		
-		assertEquals(player.health, 9);
-		assertEquals(player.energy, 0);
-	}
-	
-	@Test
-	public void testAddHealthRegeneration() {
-		Player player = new Player("Test");
-		Card card = new Card();
-		card.name = "Regeneration";
-		player.cardsInHand.add(card);
-		player.addHealth(-4);
-		player.addHealth(2);
-		
-		assertEquals(player.health, 9);
-		
-		player.addHealth(-5);
-		player.addHealth(1);
-		player.addHealth(1);
-		
-		assertEquals(player.health, 8);
-	}
-	
-	@Test
-	public void testAddHealthArmorPlating() {
-		Player player = new Player("Test");
-		Card card = new Card();
-		card.name = "Armor Plating";
-		player.cardsInHand.add(card);
-		player.addHealth(-1);
-		
-		assertTrue(player.health == 10);
-		
-		player.addHealth(-5);
-		player.addHealth(1);
-		player.addHealth(1);
-		
-		assertEquals(player.health, 7);
 	}
 	
 	@Test
@@ -212,24 +162,6 @@ public class PlayerTest {
 		}catch(IllegalArgumentException e) {
 			assertEquals(player.energy, 5);
 		}	
-	}
-	
-	@Test
-	public void testAddEnergyFriendOfChildren() {
-		Player player = new Player("Test");
-		Card card = new Card();
-		card.name = "Friend of Children";
-		player.cardsInHand.add(card);
-		player.addEnergy(4);
-		
-		assertEquals(player.energy, 5);
-		
-		player.energy = 0;
-		
-		player.addEnergy(1);
-		player.addEnergy(1);
-		
-		assertEquals(player.energy, 4);
 	}
 	
 	@Test
@@ -300,6 +232,32 @@ public class PlayerTest {
 		Card card = EasyMock.niceMock(Card.class);
 		player.addToHand(card);
 		assertEquals(player.cardsInHand.get(0), card);		
+	}
+	
+	@Test
+	public void HaveCardEmptyHandTest() {
+		Player player = new Player("TestDummy");
+		Card card1 = EasyMock.niceMock(Card.class);
+		card1.name = "card";
+		assertFalse(player.haveCard("card"));	
+	}
+	
+	@Test
+	public void HaveCardNotOnHandTest() {
+		Player player = new Player("TestDummy");
+		Card card1 = EasyMock.niceMock(Card.class);
+		card1.name = "anothercard";
+		player.addToHand(card1);
+		assertFalse(player.haveCard("card"));	
+	}
+	
+	@Test
+	public void HaveCardOnHandTest() {
+		Player player = new Player("TestDummy");
+		Card card1 = EasyMock.niceMock(Card.class);
+		card1.name = "card";
+		player.addToHand(card1);
+		assertTrue(player.haveCard("card"));	
 	}
 
 }
