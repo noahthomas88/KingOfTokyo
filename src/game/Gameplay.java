@@ -138,9 +138,12 @@ public class Gameplay {
 	public void buyCard(int number) {
 		Card tobuy = deck.visibleCard[number-1];
 		if(currentplayer.energy >=tobuy.cost) {
-			currentplayer.addToHand(deck.visibleCard[number-1]);
+			Card card = deck.buy(number-1);
 			currentplayer.addEnergy(-tobuy.cost);
-			deck.buy(number-1);
+			currentplayer.addToHand(card);
+			if(card.type.equals("Discard")) {
+				this.useCard(card.name);
+			}
 			gameUI.setCards(deck.visibleCard);
 			gameUI.updatePlayerText(gameboard);
 		} else {
@@ -192,6 +195,7 @@ public class Gameplay {
 			touse.logic.use(currentplayer, gameboard.playerList);
 			if(touse.type.equals("Discard")) {
 				currentplayer.cardsInHand.remove(touse);
+				deck.addToDiscard(touse);
 			}
 		}
 		gameUI.updatePlayerText(gameboard);

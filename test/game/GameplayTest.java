@@ -729,14 +729,16 @@ public class GameplayTest {
 		playerList.add(test2);
 		
 		GUI gui = EasyMock.strictMock(GUI.class);
-		Board board = EasyMock.strictMock(Board.class);		
+		Board board = EasyMock.strictMock(Board.class);
+		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
 		EnergizeLogic logic = EasyMock.strictMock(EnergizeLogic.class);
-		Gameplay gameplay = new Gameplay(gui, test1, board, null, null);
+		Gameplay gameplay = new Gameplay(gui, test1, board, deck, null);
 			
 		logic.use(test1, playerList);
+		deck.addToDiscard(card);
 		gui.updatePlayerText(board);
 
-		EasyMock.replay(card, logic, test1, board, gui);
+		EasyMock.replay(deck, card, logic, test1, board, gui);
 		
 		test1.cardsInHand = hand;
 		board.playerList = playerList;
@@ -746,7 +748,7 @@ public class GameplayTest {
 		gameplay.useCard("Health");
 		assertTrue(hand.isEmpty());
 		
-		EasyMock.verify(logic, gui);	
+		EasyMock.verify(deck, logic, gui);	
 	}
 
 	@Test
@@ -940,7 +942,7 @@ public class GameplayTest {
 	}
 
 	@Test
-	public void buyCardUpdatesPlayerDisplayTextTest() {
+	public void buyCardDiscardTest() {
 		GUI gui = EasyMock.strictMock(GUI.class);
 		Player player = EasyMock.strictMock(Player.class);
 		Board board = EasyMock.strictMock(Board.class);
@@ -948,22 +950,62 @@ public class GameplayTest {
 		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
 		deck.visibleCard = new Card[3];
 		
-		Gameplay g = new Gameplay(gui, player, board, deck, null);
+		Gameplay g = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("useCard").createStrictMock();
 
-		player.addToHand(card0);
+		EasyMock.expect(deck.buy(0)).andReturn(card0);
 		player.addEnergy(-1);
-		deck.buy(0);
+		player.addToHand(card0);
+		g.useCard("testCard");
 		gui.setCards(deck.visibleCard);
 		gui.updatePlayerText(board);
 
-		EasyMock.replay(gui, deck, player, card0);
+		EasyMock.replay(g, gui, deck, player, card0);
 		
+		g.gameUI = gui;
+		g.currentplayer = player;
+		g.gameboard = board;
+		g.deck = deck;
 		deck.visibleCard[0] = card0;
 		card0.cost = 1;
 		player.energy = 1;
+		card0.type = "Discard";
+		card0.name = "testCard";
 		g.buyCard(1);
 
-		EasyMock.verify(gui, deck, player);
+		EasyMock.verify(g, gui, deck, player);
+	}
+	
+	@Test
+	public void buyCardKeepTest() {
+		GUI gui = EasyMock.strictMock(GUI.class);
+		Player player = EasyMock.strictMock(Player.class);
+		Board board = EasyMock.strictMock(Board.class);
+		Card card0 = EasyMock.strictMock(Card.class);
+		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
+		deck.visibleCard = new Card[3];
+		
+		Gameplay g = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("useCard").createStrictMock();
+
+		EasyMock.expect(deck.buy(0)).andReturn(card0);
+		player.addEnergy(-1);
+		player.addToHand(card0);
+		gui.setCards(deck.visibleCard);
+		gui.updatePlayerText(board);
+
+		EasyMock.replay(g, gui, deck, player, card0);
+		
+		g.gameUI = gui;
+		g.currentplayer = player;
+		g.gameboard = board;
+		g.deck = deck;
+		deck.visibleCard[0] = card0;
+		card0.cost = 1;
+		player.energy = 1;
+		card0.type = "Keep";
+		card0.name = "testCard";
+		g.buyCard(1);
+
+		EasyMock.verify(g, gui, deck, player);
 	}
 
 	@Test
