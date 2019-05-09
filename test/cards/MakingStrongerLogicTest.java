@@ -22,6 +22,18 @@ public class MakingStrongerLogicTest {
 	}
 	
 	@Test
+	public void testAddTwoHealthHaveCard() {
+		Player player = new Player("test");
+		Card card = EasyMock.strictMock(Card.class);
+		card.name = "We're only making it stronger";
+		player.health = 8;
+		player.addToHand(card);
+		player.addHealth(2);
+		assertEquals(player.health, 10);
+		assertEquals(player.energy, 0);
+	}
+	
+	@Test
 	public void testLoseNoHealthHaveCard() {
 		Player player = new Player("test");
 		Card card = EasyMock.strictMock(Card.class);

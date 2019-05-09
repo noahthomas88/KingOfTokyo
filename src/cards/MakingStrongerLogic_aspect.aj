@@ -11,7 +11,7 @@ public aspect MakingStrongerLogic_aspect {
 	void around(int amount, Player player) : callAddHealth(amount, player) {}
 	
 	after(int amount, Player player) : callAddHealth(amount, player) {
-		if (amount < 0 && player.haveCard("We're only making it stronger")) {
+		if (amount <= 0 && player.haveCard("We're only making it stronger")) {
 			player.addEnergy(-amount/2);
 		}
 	}
