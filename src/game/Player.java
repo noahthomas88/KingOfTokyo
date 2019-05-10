@@ -78,7 +78,11 @@ public class Player {
 		return false;
 	}
 
-	public int getNumberOfDie(int number) {
-		return number;
+	public int getNumberOfDie() {
+		return checkExtraHead(6);
+	}
+
+	private int checkExtraHead(int i) {
+		return -1;
 	}
 }

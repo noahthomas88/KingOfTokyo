@@ -26,7 +26,7 @@ public class ExtraHeadLogicTest {
 		Card card = new Card();
 		card.name = "Extra Head";
 		player.addToHand(card);
-		assertEquals(player.getNumberOfDie(6), 7);
+		assertEquals(player.getNumberOfDie(), 7);
 	}
 
 }

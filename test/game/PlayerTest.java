@@ -47,7 +47,7 @@ public class PlayerTest {
 	@Test
 	public void testgetNumberofDie6() {
 		Player player = new Player("TestDummy");
-		assertTrue(player.getNumberOfDie(6) == 6);
+		assertTrue(player.getNumberOfDie() == 6);
 	}
 
 	@Test
