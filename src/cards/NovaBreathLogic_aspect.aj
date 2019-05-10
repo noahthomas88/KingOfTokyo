@@ -5,17 +5,24 @@ import game.Player;
 
 public aspect NovaBreathLogic_aspect {
 	
-	void around(int amount,Board board,  Player player) : calldoAttack(amount, Gameboard,playerThatCalledAttack) {
-		proceed(amount, board ,player);
+	pointcut nova(Player attacker, int amount, Board board) : execution(void Board.doAttack(Player, int)) && args(attacker, amount) && target(board);
+	
+	void around(Player attacker, int amount, Board board) : nova(attacker, amount, board) {
+		proceed(attacker, amount ,board);
 	}
 	
-	after(int amount, Board board,Player player) : callAddHealth(amount, player) {
-		if (player.haveCard("NovaBreath")) {
-			if(board.bayPlayer != player && board.cityPlayer != player){
-				for(Player p : board.playerList){
-					if(board.bayPlayer != player && board.cityPlayer != player){
-						p.addHealth(-amount);
-					}
+	after(Player attacker, int amount, Board board) : nova(attacker, amount, board) {
+		if (!attacker.haveCard("Nova Breath")) {
+			return;
+		}
+		if(board.cityPlayer.equals(attacker)) {
+			board.bayPlayer.addHealth(amount);
+		}else if (attacker.equals(board.bayPlayer)) {
+			board.cityPlayer.addHealth(amount);
+		}else {
+			for(Player p : board.playerList){
+				if(!p.equals(board.cityPlayer) && !p.equals(board.bayPlayer)){
+					p.addHealth(amount);
 				}
 			}
 		}
