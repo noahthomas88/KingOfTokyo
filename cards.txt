@@ -136,3 +136,7 @@ Nova Breath
 Your attack rolls attack all other monsters
 Keep
 -
+SolarPowered
+Solar Powered
+2
+At the end of your turn gain 1 energy if you have no energy
