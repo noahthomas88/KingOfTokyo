@@ -131,8 +131,8 @@ Gain 2 victory points and all other monsters and lose 1 energy for every 2 energ
 Discard
 -
 NovaBreath
-NovaBreath
-6
+Nova Breath
+7
 Your attack rolls attack all other monsters
 Keep
 -

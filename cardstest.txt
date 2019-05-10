@@ -1,0 +1,12 @@
+ApartmentBuilding
+Apartment Building
+5
+Gain 3 Victory Points
+Discard
+-
+CommuterTrain
+Commuter Train
+4
+Gain 2 Victory Points
+Discard
+-
