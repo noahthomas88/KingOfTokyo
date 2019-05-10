@@ -24,7 +24,7 @@ public class CommuterTrainLogicTest {
 		p.victoryPoints = 10;
 		CommuterTrainLogic cardLogic = new CommuterTrainLogic();
 		int saved = p.victoryPoints;
-		cardLogic.use(p, null);
+		cardLogic.use(p, null, null);
 		assertTrue(p.victoryPoints == saved + 2);
 	}
 

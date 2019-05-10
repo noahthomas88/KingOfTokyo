@@ -25,7 +25,7 @@ public class EnergizeLogicTest {
 		p.energy = 10;
 		EnergizeLogic cardLogic = new EnergizeLogic();
 		int saved = p.energy;
-		cardLogic.use(p, null);
+		cardLogic.use(p, null, null);
 		assertTrue(p.energy == saved + 9);
 		
 	}

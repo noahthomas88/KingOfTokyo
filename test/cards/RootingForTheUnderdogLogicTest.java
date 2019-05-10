@@ -26,7 +26,7 @@ public class RootingForTheUnderdogLogicTest {
 		players.add(p3);
 		
 		RootingForTheUnderdogLogic rootingForTheUnderdogLogic = new RootingForTheUnderdogLogic();
-		rootingForTheUnderdogLogic.use(p, players);
+		rootingForTheUnderdogLogic.use(p, players, null);
 		
 		assertTrue(p.victoryPoints == 11);
 		assertTrue(p2.victoryPoints == 11);
@@ -50,7 +50,7 @@ public class RootingForTheUnderdogLogicTest {
 		players.add(p3);
 		
 		RootingForTheUnderdogLogic rootingForTheUnderdogLogic = new RootingForTheUnderdogLogic();
-		rootingForTheUnderdogLogic.use(p, players);
+		rootingForTheUnderdogLogic.use(p, players, null);
 		
 		assertTrue(p.victoryPoints == 13);
 		assertTrue(p2.victoryPoints == 11);

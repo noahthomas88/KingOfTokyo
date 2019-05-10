@@ -24,7 +24,7 @@ public class SkyscraperLogicTest {
 		p.victoryPoints = 10;
 		SkyscraperLogic cardLogic = new SkyscraperLogic();
 		int saved = p.victoryPoints;
-		cardLogic.use(p, null);
+		cardLogic.use(p, null, null);
 		assertTrue(p.victoryPoints == saved + 4);
 	}
 

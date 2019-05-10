@@ -26,7 +26,7 @@ public class EvacuationOrdersLogicTest {
 		players.add(p3);
 		
 		EvacuationOrdersLogic evactuationLogic = new EvacuationOrdersLogic();
-		evactuationLogic.use(p, players);
+		evactuationLogic.use(p, players, null);
 		
 		assertTrue(p.victoryPoints == 10);
 		assertTrue(p2.victoryPoints == 5);

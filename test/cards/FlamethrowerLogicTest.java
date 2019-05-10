@@ -24,7 +24,7 @@ public class FlamethrowerLogicTest {
 		players.add(p3);
 		
 		FlamethrowerLogic evactuationLogic = new FlamethrowerLogic();
-		evactuationLogic.use(p, players);
+		evactuationLogic.use(p, players, null);
 		
 		assertTrue(p.health == 10);
 		assertTrue(p2.health == 3);

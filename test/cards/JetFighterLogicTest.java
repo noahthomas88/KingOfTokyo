@@ -27,7 +27,7 @@ public class JetFighterLogicTest {
 		JetFighterLogic cardLogic = new JetFighterLogic();
 		int savedVictoryPoints = p.victoryPoints;
 		int savedHealth = p.health;
-		cardLogic.use(p, null);
+		cardLogic.use(p, null, null);
 		assertTrue(p.victoryPoints == savedVictoryPoints + 5);
 		assertTrue(p.health == savedHealth - 4);
 	}

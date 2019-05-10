@@ -2,6 +2,7 @@ package cards;
 
 import java.util.ArrayList;
 
+import game.Board;
 import game.Player;
 
 public class EmptyLogic implements CardLogic {
@@ -12,7 +13,7 @@ public class EmptyLogic implements CardLogic {
 	}
 
 	@Override
-	public void use(Player player, ArrayList<Player> players) {
+	public void use(Player player, ArrayList<Player> players, Board board) {
 		//do nothing
 	}
 
