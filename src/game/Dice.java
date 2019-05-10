@@ -30,17 +30,5 @@ public class Dice {
 		this.numberRolled = diceRoller.nextInt(6) + 1;
 		return this.numberRolled;
 	}
-	
-	public String numberToString(int number) {
-		if(number < 4) {
-			return number + "";
-		} else if (number == 4){
-			return "attack";
-		} else if (number == 5) {
-			return "energy";
-		} else {
-			return "heal";
-		}
-	}
 
 }

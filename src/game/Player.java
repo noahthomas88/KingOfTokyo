@@ -29,10 +29,10 @@ public class Player {
 		this.cardsInHand = new ArrayList<Card>();
 	}
 
-	public String buildPlayerStatusString() {
+	public String buildPlayerStatusString(String name, String health, String energy, String victory) {
 		String playerStatusString = "";
-		playerStatusString = "<html>name: " + this.name + "<br/>" + "health: " + this.health + "<br/>"
-				+ "victory points: " + this.victoryPoints + "<br/>" + "energy: " + this.energy + "</html>";
+		playerStatusString = "<html>"+ name +": " + this.name + "<br/>" + health +": " + this.health + "<br/>"
+				+ victory + ": " + this.victoryPoints + "<br/>" + energy +": " + this.energy + "</html>";
 		return playerStatusString;
 	}
 

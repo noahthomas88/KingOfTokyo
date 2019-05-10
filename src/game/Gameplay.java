@@ -7,6 +7,7 @@ import java.util.Random;
 import cards.Card;
 import cards.DeckConstructor;
 import main.GUI;
+import main.Messages;
 
 public class Gameplay {
 
@@ -65,7 +66,7 @@ public class Gameplay {
 		gameUI.EnableRollButton();
 	}
 
-	public void diceRolled(ArrayList<Dice> dicelist) {
+	public void diceRolled(ArrayList<Dice> dicelist, Messages message) {
 		
 		ArrayList<Dice> otherdice = new ArrayList<Dice>();
 		int attack = 0;
@@ -73,12 +74,12 @@ public class Gameplay {
 		int energy = 0;
 		
 		for (Dice die : dicelist) {
-			String result = die.numberToString(die.numberRolled);
-			if (result.equals("attack")) {
+			String result = gameUI.numberToString(die.numberRolled);
+			if (result.equals(message.getString("GUI.64"))) {
 				attack++;
-			} else if (result.equals("heal")) {
+			} else if (result.equals(message.getString("GUI.65"))) {
 				heal++;
-			} else if (result.equals("energy")) {
+			} else if (result.equals(message.getString("GUI.62"))) {
 				energy++;
 			} else {
 				otherdice.add(die);

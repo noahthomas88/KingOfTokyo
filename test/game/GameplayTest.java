@@ -13,6 +13,7 @@ import cards.DeckConstructor;
 import cards.EnergizeLogic;
 import game.Gameplay;
 import main.GUI;
+import main.Messages;
 
 public class GameplayTest {
 
@@ -404,7 +405,7 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(die.numberToString(1)).andReturn("1");
+		EasyMock.expect(ui.numberToString(1)).andReturn("1");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
 		player.addHealth(0);
@@ -416,12 +417,12 @@ public class GameplayTest {
 		game.checkWin();
 
 		EasyMock.replay(die, board, ui, game);
-		
+		Messages message = new Messages("en");
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
-		game.diceRolled(dice);
+		game.diceRolled(dice, message);
 		
 		EasyMock.verify(die, ui, game);
 	}
@@ -437,7 +438,7 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(die.numberToString(1)).andReturn("energy");
+		EasyMock.expect(ui.numberToString(1)).andReturn("energy");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
 		player.addHealth(0);
@@ -449,12 +450,12 @@ public class GameplayTest {
 		game.checkWin();
 
 		EasyMock.replay(board, player, ui, die, game);
-		
+		Messages message = new Messages("en");
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
-		game.diceRolled(dice);
+		game.diceRolled(dice, message);
 		
 		EasyMock.verify(player, ui, die, game);
 	}
@@ -470,7 +471,7 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(die.numberToString(1)).andReturn("attack");
+		EasyMock.expect(ui.numberToString(1)).andReturn("attack");
 		board.doAttack(player, -1);
 		ui.EnableCedeButton();
 		player.addHealth(0);
@@ -482,12 +483,12 @@ public class GameplayTest {
 		game.checkWin();
 
 		EasyMock.replay(board, player, ui, die, game);
-		
+		Messages message = new Messages("en");
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
-		game.diceRolled(dice);
+		game.diceRolled(dice, message);
 		
 		EasyMock.verify(board, player, ui, die, game);
 	}
@@ -503,7 +504,7 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(die.numberToString(1)).andReturn("heal");
+		EasyMock.expect(ui.numberToString(1)).andReturn("heal");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
 		player.addHealth(1);
@@ -513,14 +514,14 @@ public class GameplayTest {
 		ui.updatePlayerText(board);
 		ui.DisableRollButton();
 		game.checkWin();
-
+		Messages message = new Messages("en");
 		EasyMock.replay(board, player, ui, die, game);
 		
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
-		game.diceRolled(dice);
+		game.diceRolled(dice, message);
 		
 		EasyMock.verify(player, ui, die, game);
 	}
@@ -536,7 +537,7 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(die.numberToString(1)).andReturn("heal");
+		EasyMock.expect(ui.numberToString(1)).andReturn("heal");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
 		player.addEnergy(0);
@@ -547,13 +548,13 @@ public class GameplayTest {
 		game.checkWin();
 
 		EasyMock.replay(board, player, ui, die, game);
-		
+		Messages message = new Messages("en");
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
 		board.cityPlayer = player;
-		game.diceRolled(dice);
+		game.diceRolled(dice, message);
 		
 		EasyMock.verify(ui, die, game);
 	}

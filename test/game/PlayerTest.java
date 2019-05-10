@@ -38,7 +38,7 @@ public class PlayerTest {
 	@Test
 	public void testBuildPlayerStatusString() {
 		Player player = new Player("TestDummy");
-		String result = player.buildPlayerStatusString();
+		String result = player.buildPlayerStatusString("name","health", "energy", "victory points");
 		assertTrue(result.equals("<html>name: " + player.name + "<br/>" 
 							+ "health: " + player.health + "<br/>"
 							+ "victory points: " + player.victoryPoints + "<br/>"

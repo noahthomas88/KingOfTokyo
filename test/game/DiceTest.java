@@ -85,21 +85,5 @@ public class DiceTest {
 		testDice.roll();
 		testDice.roll();
 	}
-	
-	@Test
-	public void testNumberToString() {
-		Player p = EasyMock.niceMock(Player.class);
-
-		EasyMock.replay(p);
-		
-		p.numberOfDieRolls = 3;
-		Dice testDice = new Dice(p);
-		assertEquals(testDice.numberToString(1),"1");
-		assertEquals(testDice.numberToString(2),"2");
-		assertEquals(testDice.numberToString(3),"3");
-		assertEquals(testDice.numberToString(4),"attack");
-		assertEquals(testDice.numberToString(5),"energy");
-		assertEquals(testDice.numberToString(6),"heal");
-	}
 
 }
