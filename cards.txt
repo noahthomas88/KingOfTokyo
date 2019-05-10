@@ -128,5 +128,10 @@ VastStorm
 VastStorm
 6
 Gain 2 victory points and all other monsters and lose 1 energy for every 2 energy they have
-discard
+Discard
 -
+NovaBreath
+NovaBreath
+6
+Your attack rolls attack all other monsters
+Keep
