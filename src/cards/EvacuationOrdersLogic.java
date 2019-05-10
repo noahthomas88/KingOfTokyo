@@ -19,7 +19,6 @@ public class EvacuationOrdersLogic implements CardLogic {
 				players.get(i).addVictory(-5);
 			}
 		}
-
 	}
 
 }

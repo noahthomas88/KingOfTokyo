@@ -9,7 +9,6 @@ public class HighAltitudeBombingLogic implements CardLogic {
 	@Override
 	public void use(Player player) {
 		throw new UnsupportedOperationException("Single parameter use is not supported for this class");
-
 	}
 
 	@Override
@@ -17,7 +16,6 @@ public class HighAltitudeBombingLogic implements CardLogic {
 		for(int i = 0; i < players.size(); i++){
 			players.get(i).addHealth(-3);
 		}
-
 	}
 
 }

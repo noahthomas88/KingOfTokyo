@@ -13,8 +13,7 @@ public class TankLogic implements CardLogic {
 
 	@Override
 	public void use(Player player, ArrayList<Player> players) {
-		use(player);
-		
+		use(player);	
 	}
 
 }
