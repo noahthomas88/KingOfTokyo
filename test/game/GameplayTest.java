@@ -750,6 +750,42 @@ public class GameplayTest {
 		
 		EasyMock.verify(deck, logic, gui);	
 	}
+	
+	@Test
+	public void useCardHasCardCannotUseTest() {
+		ArrayList<Card> hand = new ArrayList<Card>();
+		Card card = EasyMock.strictMock(Card.class);
+		hand.add(card);
+		
+		Player test1 = EasyMock.strictMock(Player.class);
+		Player test2 = EasyMock.strictMock(Player.class);
+		ArrayList<Player> playerList = new ArrayList<>();
+		playerList.add(test1);
+		playerList.add(test2);
+		
+		GUI gui = EasyMock.strictMock(GUI.class);
+		Board board = EasyMock.strictMock(Board.class);
+		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
+		EnergizeLogic logic = EasyMock.strictMock(EnergizeLogic.class);
+		Gameplay gameplay = new Gameplay(gui, test1, board, deck, null);
+			
+		logic.use(test1, playerList);
+		EasyMock.expectLastCall().andThrow(new UnsupportedOperationException());
+		gui.cardCannotUseWarning();
+		gui.updatePlayerText(board);
+
+		EasyMock.replay(deck, card, logic, test1, board, gui);
+		
+		test1.cardsInHand = hand;
+		board.playerList = playerList;
+		card.name = "Health";
+		card.logic = logic;
+		card.type = "Keep";
+		gameplay.useCard("Health");
+		assertFalse(hand.isEmpty());
+		
+		EasyMock.verify(deck, logic, gui);	
+	}
 
 	@Test
 	public void checkWinTest1() {
