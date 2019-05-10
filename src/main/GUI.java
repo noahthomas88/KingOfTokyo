@@ -142,7 +142,7 @@ public class GUI {
 		JPanel panel = new JPanel();
 		ArrayList<Dice> dicelist = new ArrayList<Dice>();
 		ArrayList<JButton> diebuttons = new ArrayList<JButton>();
-		int numberOfDiceRolls = game.currentplayer.numberOfDieRolls;
+		int numberOfDiceRolls = game.currentplayer.getNumberOfRolls();
 		int numberOfDice = game.currentplayer.getNumberOfDie();
 		for (int i = 0; i < numberOfDice; i++) {
 			Dice dice = new Dice(game.currentplayer);

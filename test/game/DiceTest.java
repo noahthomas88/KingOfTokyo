@@ -14,9 +14,10 @@ public class DiceTest {
 	public void diceConstructorTest() {
 		Player p = EasyMock.niceMock(Player.class);
 		
+		EasyMock.expect(p.getNumberOfRolls()).andReturn(3);
+		
 		EasyMock.replay(p);
 		
-		p.numberOfDieRolls = 3;
 		Dice testDice = new Dice(p);
 		
 		assertTrue(testDice != null);
@@ -49,9 +50,9 @@ public class DiceTest {
 		for (int i = 0; i < 10; i++) {
 			Player p = EasyMock.niceMock(Player.class);
 			
+			EasyMock.expect(p.getNumberOfRolls()).andReturn(3);
 			EasyMock.replay(p);
 			
-			p.numberOfDieRolls = 3;
 			Dice testDice = new Dice(p);
 			for (int j = 0; j < 3; j++) {
 				rollResults.add(testDice.roll());
@@ -64,9 +65,9 @@ public class DiceTest {
 	public void isResolvedTest() {
 		Player p = EasyMock.niceMock(Player.class);
 		
+		EasyMock.expect(p.getNumberOfRolls()).andReturn(3);
 		EasyMock.replay(p);
 		
-		p.numberOfDieRolls = 3;
 		Dice testDice = new Dice(p);
 		testDice.isResolved = true;
 		testDice.roll();
@@ -76,9 +77,9 @@ public class DiceTest {
 	public void defaultThreeRollMaximumTest() {
 		Player p = EasyMock.niceMock(Player.class);
 
+		EasyMock.expect(p.getNumberOfRolls()).andReturn(3);
 		EasyMock.replay(p);
-
-		p.numberOfDieRolls = 3;
+		
 		Dice testDice = new Dice(p);
 		testDice.roll();
 		testDice.roll();
@@ -90,9 +91,9 @@ public class DiceTest {
 	public void testNumberToString() {
 		Player p = EasyMock.niceMock(Player.class);
 
+		EasyMock.expect(p.getNumberOfRolls()).andReturn(3);
 		EasyMock.replay(p);
 		
-		p.numberOfDieRolls = 3;
 		Dice testDice = new Dice(p);
 		assertEquals(testDice.numberToString(1),"1");
 		assertEquals(testDice.numberToString(2),"2");

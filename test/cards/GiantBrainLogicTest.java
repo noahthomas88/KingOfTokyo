@@ -8,22 +8,25 @@ import game.Player;
 
 public class GiantBrainLogicTest {
 
-	@Test
-	public void test() {
-		Player p = new Player("PlayerName");
-		assertTrue(p.numberOfDieRolls == 3);
-		GiantBrainLogic cardLogic = new GiantBrainLogic();
-		cardLogic.use(p);
-		assertTrue(p.numberOfDieRolls == 4);
+	@Test(expected = UnsupportedOperationException.class)
+	public void testUse() {
+		ArmorPlatingLogic logic = new ArmorPlatingLogic();
+		logic.use(null);
+	}
+	
+	@Test(expected = UnsupportedOperationException.class)
+	public void testUse2() {
+		ArmorPlatingLogic logic = new ArmorPlatingLogic();
+		logic.use(null, null);
 	}
 	
 	@Test
-	public void test2() {
-		Player p = new Player("PlayerName");
-		assertTrue(p.numberOfDieRolls == 3);
-		GiantBrainLogic cardLogic = new GiantBrainLogic();
-		cardLogic.use(p, null);
-		assertTrue(p.numberOfDieRolls == 4);
+	public void testHaveCard() {
+		Player player = new Player("test");
+		Card card = new Card();
+		card.name = "Giant Brain";
+		player.addToHand(card);
+		assertEquals(player.getNumberOfRolls(), 4);
 	}
 
 }

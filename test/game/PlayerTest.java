@@ -19,7 +19,6 @@ public class PlayerTest {
 		assertTrue(player.victoryPoints == 0);
 		assertTrue(player.energy == 0);
 		assertTrue(player.name.equals("test"));
-		assertTrue(player.numberOfDieRolls == 3);
 		assertTrue(player.maxHealth == 10);
 		assertTrue(player.cardsInHand.size() == 0);
 	}
