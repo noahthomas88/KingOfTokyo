@@ -5,16 +5,16 @@ import game.Player;
 
 public aspect SolarPoweredLogic_aspect {
 
-	pointcut callEndTurn(Gameplay game, Player player) : execution(void Gameplay.endTurn()) && args() && target(player);
+	pointcut callEndTurn(Gameplay game) : execution(void Gameplay.endTurn()) && args() && target(game);
 
-	void around(int amount, Player player) : callEndTurn(game, player) {
-		proceed(amount, player);
-	}
-
-	after(int amount, Player player) : callEndTurn(game, player) {
-		if (player.energy <= 0 && player.haveCard("Solar Powered")) {
-			player.addEnergy(1);
+	before(Gameplay game) : callEndTurn(game) {
+		if (game.currentplayer.energy <= 0 && game.currentplayer.haveCard("Solar Powered")) {
+			game.currentplayer.addEnergy(1);
 		}
+	}
+	
+	void around(Gameplay game) : callEndTurn(game) {
+		proceed(game);
 	}
 
 }
