@@ -19,8 +19,6 @@ public class PlayerTest {
 		assertTrue(player.victoryPoints == 0);
 		assertTrue(player.energy == 0);
 		assertTrue(player.name.equals("test"));
-		assertTrue(player.numberOfDieRolls == 3);
-		assertTrue(player.numberOfDieToRoll == 6);
 		assertTrue(player.maxHealth == 10);
 		assertTrue(player.cardsInHand.size() == 0);
 	}
@@ -38,7 +36,7 @@ public class PlayerTest {
 	@Test
 	public void testBuildPlayerStatusString() {
 		Player player = new Player("TestDummy");
-		String result = player.buildPlayerStatusString();
+		String result = player.buildPlayerStatusString("name","health", "energy", "victory points");
 		assertTrue(result.equals("<html>name: " + player.name + "<br/>" 
 							+ "health: " + player.health + "<br/>"
 							+ "victory points: " + player.victoryPoints + "<br/>"
@@ -46,41 +44,20 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void testPlayerNumberOfDie() {
+	public void testgetNumberofDie6() {
 		Player player = new Player("TestDummy");
-		assertTrue(player.numberOfDieToRoll == 6);
-	}
-	
-	@Test
-	public void testAddOneDie() {
-		Player player = new Player("TestDummy");
-		assertTrue(player.numberOfDieToRoll == 6);
-		player.addOneDie();
-		assertTrue(player.numberOfDieToRoll == 7);
-	}
-	
-	@Test
-	public void testSubOneDie() {
-		Player player = new Player("TestDummy");
-		assertTrue(player.numberOfDieToRoll == 6);
-		player.subOneDie();
-		assertTrue(player.numberOfDieToRoll == 5);
+		assertTrue(player.getNumberOfDie() == 6);
 	}
 
 	@Test
 	public void testAddOneHealth() {
-		Player player = EasyMock.partialMockBuilder(Player.class).addMockedMethod("addHealthHelper").createStrictMock();
-		
-		player.addHealthHelper(1);
-		
-		EasyMock.replay(player);
-		
+		Player player = new Player("test");
+				
 		player.health = 5;
 		player.maxHealth = 10;
 		player.addHealth(1);
 		
 		assertEquals(player.health, 6);
-		EasyMock.verify(player);
 	}
 	
 	@Test

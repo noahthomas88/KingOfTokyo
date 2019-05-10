@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import game.Gameplay;
+
 public class DeckConstructor {
 	
 	ArrayList<Card> deck;
@@ -64,10 +66,11 @@ public class DeckConstructor {
 		reveal();
 	}
 	
-	public void buy(int index){
-		this.discard.add(this.visibleCard[index]);
+	public Card buy(int index){
+		Card toBuy = this.visibleCard[index];
 		this.visibleCard[index] = new Card();
 		reveal();
+		return toBuy;
 	}
 	
 	public Card[] getVisibleCard() {
