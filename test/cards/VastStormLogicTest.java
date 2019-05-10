@@ -32,7 +32,7 @@ public class VastStormLogicTest {
 		VastStormLogic stormLogic = new VastStormLogic();
 		stormLogic.use(p, players);
 		
-		assertTrue(p.energy == 2);
+		assertTrue(p.victoryPoints == 2);
 		assertTrue(p2.energy == 1);
 		assertTrue(p3.energy == 2);
 		assertTrue(p4.energy == 3);
