@@ -14,7 +14,7 @@ import game.Player;
 public class NovaBreathLogicTest {
 
 	@Test
-	public void testAddTwoHealthHaveCard() {
+	public void testAttackEffectsAllPlayers() {
 		Player player = new Player("test");
 		Player player2 = new Player("test");
 		ArrayList<Player> playerList = new ArrayList<Player>();
