@@ -193,8 +193,8 @@ public class GUI {
 		JPanel panel = new JPanel();
 		ArrayList<Dice> dicelist = new ArrayList<Dice>();
 		ArrayList<JButton> diebuttons = new ArrayList<JButton>();
-		int numberOfDiceRolls = game.currentplayer.numberOfDieRolls;
-		int numberOfDice = game.currentplayer.numberOfDieToRoll;
+		int numberOfDiceRolls = game.currentplayer.getNumberOfRolls();
+		int numberOfDice = game.currentplayer.getNumberOfDie();
 		for (int i = 0; i < numberOfDice; i++) {
 			Dice dice = new Dice(game.currentplayer);
 			dice.roll();
@@ -501,6 +501,10 @@ public class GUI {
 		}
 		this.DisableCedeButton();
 		this.DisableEndTurnButton();
+	}
+
+	public void cardCannotUseWarning() {
+		JOptionPane.showMessageDialog(null, "This card cannot be used");
 	}
 
 }

@@ -19,8 +19,6 @@ public class PlayerTest {
 		assertTrue(player.victoryPoints == 0);
 		assertTrue(player.energy == 0);
 		assertTrue(player.name.equals("test"));
-		assertTrue(player.numberOfDieRolls == 3);
-		assertTrue(player.numberOfDieToRoll == 6);
 		assertTrue(player.maxHealth == 10);
 		assertTrue(player.cardsInHand.size() == 0);
 	}
@@ -46,25 +44,9 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void testPlayerNumberOfDie() {
+	public void testgetNumberofDie6() {
 		Player player = new Player("TestDummy");
-		assertTrue(player.numberOfDieToRoll == 6);
-	}
-	
-	@Test
-	public void testAddOneDie() {
-		Player player = new Player("TestDummy");
-		assertTrue(player.numberOfDieToRoll == 6);
-		player.addOneDie();
-		assertTrue(player.numberOfDieToRoll == 7);
-	}
-	
-	@Test
-	public void testSubOneDie() {
-		Player player = new Player("TestDummy");
-		assertTrue(player.numberOfDieToRoll == 6);
-		player.subOneDie();
-		assertTrue(player.numberOfDieToRoll == 5);
+		assertTrue(player.getNumberOfDie() == 6);
 	}
 
 	@Test
