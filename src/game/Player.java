@@ -10,7 +10,6 @@ public class Player {
 	public int health;
 	public int victoryPoints;
 	public int energy;
-	public int numberOfDieToRoll;
 	public int numberOfDieRolls;
 	public int maxHealth;
 	public ArrayList<Card> cardsInHand;
@@ -23,7 +22,6 @@ public class Player {
 		this.victoryPoints = 0;
 		this.energy = 0;
 		this.name = name;
-		this.numberOfDieToRoll = 6;
 		this.numberOfDieRolls = 3;
 		this.maxHealth = 10;
 		this.cardsInHand = new ArrayList<Card>();
@@ -59,14 +57,6 @@ public class Player {
 		}
 	}
 
-	public void addOneDie() {
-		this.numberOfDieToRoll++;
-	}
-
-	public void subOneDie() {
-		this.numberOfDieToRoll--;
-	}
-
 	public void addMaxHealth() {
 		this.maxHealth++;
 	}
@@ -86,5 +76,9 @@ public class Player {
 			}
 		}
 		return false;
+	}
+
+	public int getNumberOfDie(int number) {
+		return number;
 	}
 }

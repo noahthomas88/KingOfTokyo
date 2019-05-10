@@ -8,24 +8,25 @@ import game.Player;
 
 public class ExtraHeadLogicTest {
 
-	@Test
-	public void extraHeadUseTest() {
-		Player p = new Player("NewPlayer");
-		assertTrue(p.numberOfDieToRoll == 6);
-		ExtraHeadLogic cardLogic = new ExtraHeadLogic();
-		cardLogic.use(p);
-		assertTrue(p.numberOfDieToRoll == 7);
-		
+	@Test(expected = UnsupportedOperationException.class)
+	public void testUse() {
+		ArmorPlatingLogic logic = new ArmorPlatingLogic();
+		logic.use(null);
+	}
+	
+	@Test(expected = UnsupportedOperationException.class)
+	public void testUse2() {
+		ArmorPlatingLogic logic = new ArmorPlatingLogic();
+		logic.use(null, null);
 	}
 	
 	@Test
-	public void extraHeadUseTest2() {
-		Player p = new Player("NewPlayer");
-		assertTrue(p.numberOfDieToRoll == 6);
-		ExtraHeadLogic cardLogic = new ExtraHeadLogic();
-		cardLogic.use(p, null);
-		assertTrue(p.numberOfDieToRoll == 7);
-		
+	public void testHaveCard() {
+		Player player = new Player("test");
+		Card card = new Card();
+		card.name = "Extra Head";
+		player.addToHand(card);
+		assertEquals(player.getNumberOfDie(6), 7);
 	}
 
 }
