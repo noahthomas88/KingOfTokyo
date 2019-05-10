@@ -69,18 +69,13 @@ public class PlayerTest {
 
 	@Test
 	public void testAddOneHealth() {
-		Player player = EasyMock.partialMockBuilder(Player.class).addMockedMethod("addHealthHelper").createStrictMock();
-		
-		player.addHealthHelper(1);
-		
-		EasyMock.replay(player);
-		
+		Player player = new Player("test");
+				
 		player.health = 5;
 		player.maxHealth = 10;
 		player.addHealth(1);
 		
 		assertEquals(player.health, 6);
-		EasyMock.verify(player);
 	}
 	
 	@Test
