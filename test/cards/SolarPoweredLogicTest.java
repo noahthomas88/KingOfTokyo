@@ -37,7 +37,7 @@ public class SolarPoweredLogicTest {
 		game.currentplayer = player;
 		game.endTurn();
 		
-		assertEquals(player.health, 9);
+		assertEquals(player.energy, 3);
 	}
 
 }
