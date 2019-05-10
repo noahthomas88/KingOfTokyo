@@ -20,8 +20,6 @@ public class VastStormLogic implements CardLogic {
 			} else {
 				players.get(i).addEnergy(-originalEnergy/2);
 			}
-
 		}
-
 	}
 }
