@@ -17,7 +17,7 @@ public class Player {
 		if (name.equals("")) {
 			throw new IllegalArgumentException();
 		}
-		this.health = 0;
+		this.health = 10;
 		this.victoryPoints = 0;
 		this.energy = 0;
 		this.name = name;
