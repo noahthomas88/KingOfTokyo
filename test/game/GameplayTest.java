@@ -923,55 +923,55 @@ public class GameplayTest {
 		Player test1 = EasyMock.strictMock(Player.class);
 		Player test2 = EasyMock.strictMock(Player.class);
 		Board board = EasyMock.strictMock(Board.class);
+		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 		ArrayList<Player> players = new ArrayList<>();
 		players.add(test1);
 		players.add(test2);
-		board.playerList = players;
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("test1", 0);
 		map.put("test2", 1);
-		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
+		
+		gameplay.beginTurn();
+		
+		EasyMock.replay(board, gameplay);
+		
+		test1.name = "test1";
 		gameplay.gameUI = gameUI;
 		gameplay.currentplayer = test1;
 		gameplay.gameboard = board;
 		gameplay.playerToNumber = map;
-		
-		gameplay.beginTurn();
-		
-		EasyMock.replay(test1, board, gameplay);
-		
-		test1.name = "test1";
 		board.numOfPlayers = 2;
+		board.playerList = players;
 		gameplay.endTurn();
 		
 		EasyMock.verify(gameplay);
 		assertEquals(gameplay.currentplayer, test2);		
 	}
 	@Test
-	public void endTurnTest2() {
+	public void endTurnEndTest() {
 		GUI gameUI = EasyMock.strictMock(GUI.class);
 		Player test1 = EasyMock.strictMock(Player.class);
 		Player test2 = EasyMock.strictMock(Player.class);
 		Board board = EasyMock.strictMock(Board.class);
+		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 		ArrayList<Player> players = new ArrayList<>();
 		players.add(test1);
 		players.add(test2);
-		board.playerList = players;
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("test1", 0);
 		map.put("test2", 1);
-		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
+		
+		gameplay.beginTurn();
+		
+		EasyMock.replay(board, gameplay);
+		
+		test2.name = "test2";
 		gameplay.gameUI = gameUI;
 		gameplay.currentplayer = test2;
 		gameplay.gameboard = board;
 		gameplay.playerToNumber = map;
-		
-		gameplay.beginTurn();
-		
-		EasyMock.replay(test2, board, gameplay);
-		
-		test2.name = "test2";
 		board.numOfPlayers = 2;
+		board.playerList = players;
 		gameplay.endTurn();
 		
 		EasyMock.verify(gameplay);
