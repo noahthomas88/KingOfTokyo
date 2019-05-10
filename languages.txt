@@ -2,3 +2,5 @@ English
 en
 Klingon
 kn
+Chinese
+CN
