@@ -37,17 +37,11 @@ public class Player {
 	}
 
 	public void addHealth(int i) {
-		int startingHealth = this.health;
 		this.health = this.health + i;
 
 		if (this.health >= this.maxHealth + 1) {
 			this.health = this.maxHealth;
 		}
-		addHealthHelper(i);
-	}
-
-	public void addHealthHelper(int i) {
-		
 	}
 
 	public void addEnergy(int i) {
