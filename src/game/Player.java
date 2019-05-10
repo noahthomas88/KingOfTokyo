@@ -77,11 +77,7 @@ public class Player {
 	}
 
 	public int getNumberOfDie() {
-		return checkExtraHead(6);
-	}
-
-	private int checkExtraHead(int i) {
-		return -1;
+		return 6;
 	}
 
 	public int getNumberOfRolls() {

@@ -4,13 +4,9 @@ import game.Player;
 
 public aspect ExtraHeadLogic_aspect {
 
-	pointcut extraHead(int amount, Player player) : call(int Player.checkExtraHead(int)) && args(amount) && target(player);
+	pointcut extraHead(Player player) : execution(int Player.getNumberOfDie()) && target(player);
 
-	int around(int amount, Player player) : extraHead(amount, player) {
-		if (player.haveCard("Extra Head")) {
-			return amount + 1;
-		} else {
-			return amount;
-		}
+	int around(Player player): extraHead(player) {
+		return player.haveCard("Extra Head")? proceed(player) + 1 : proceed(player);
 	}
 }
