@@ -3,7 +3,7 @@ package cards;
 import game.Board;
 import game.Player;
 
-public aspect NovaBreaheLogic_aspect {
+public aspect NovaBreathLogic_aspect {
 	
 	void around(int amount,Board board,  Player player) : calldoAttack(amount, Gameboard,playerThatCalledAttack) {
 		proceed(amount, board ,player);

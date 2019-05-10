@@ -1,6 +1,7 @@
 package cards;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -71,6 +72,9 @@ public class CardLoader {
 			Class<?> cardclass = Class.forName("cards."+cardname+"Logic");
 			return (CardLogic) cardclass.newInstance();
 		} catch (Exception e) {
+			if (new File("src/cards/" + cardname + "Logic_aspect.aj").exists()) {
+				return new EmptyLogic();
+			}
 			throw new RuntimeException("unable to create card: " + cardname);
 		}
 	}
