@@ -15,7 +15,7 @@ public class Gameplay {
 	public Board gameboard;
 	public GUI gameUI;
 	public DeckConstructor deck;
-	HashMap<String, Integer> playerToNumber;
+	public HashMap<String, Integer> playerToNumber;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
 		this.gameUI = gui;
