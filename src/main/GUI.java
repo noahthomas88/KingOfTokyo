@@ -437,4 +437,8 @@ public class GUI {
 		this.DisableEndTurnButton();
 	}
 
+	public void cardCannotUseWarning() {
+		JOptionPane.showMessageDialog(null, "This card cannot be used");
+	}
+
 }

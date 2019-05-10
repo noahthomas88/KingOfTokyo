@@ -192,7 +192,11 @@ public class Gameplay {
 			}
 		}
 		if(touse!=null) {
-			touse.logic.use(currentplayer, gameboard.playerList);
+			try {
+				touse.logic.use(currentplayer, gameboard.playerList);
+			}catch(UnsupportedOperationException e){
+				gameUI.cardCannotUseWarning();
+			}
 			if(touse.type.equals("Discard")) {
 				currentplayer.cardsInHand.remove(touse);
 				deck.addToDiscard(touse);
