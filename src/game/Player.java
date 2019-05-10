@@ -85,10 +85,6 @@ public class Player {
 	}
 
 	public int getNumberOfRolls() {
-		return checkGiantBrain(3);
-	}
-
-	private int checkGiantBrain(int i) {
-		return -1;
+		return 3;
 	}
 }

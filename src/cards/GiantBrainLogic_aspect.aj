@@ -4,13 +4,9 @@ import game.Player;
 
 public aspect GiantBrainLogic_aspect {
 
-	pointcut giantBrain(int amount, Player player) : call(int Player.checkGiantBrain(int)) && args(amount) && target(player);
+	pointcut giantBrain(Player player) : execution(int Player.getNumberOfRolls()) && target(player);
 
-	int around(int amount, Player player) : giantBrain(amount, player) {
-		if (player.haveCard("Giant Brain")) {
-			return amount + 1;
-		} else {
-			return amount;
-		}
+	int around(Player player): giantBrain(player) {
+		return player.haveCard("Giant Brain")? proceed(player) + 1 : proceed(player);
 	}
 }
