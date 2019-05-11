@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import game.Player;
 import main.GUI;
 
-public class GasRefineryLogic implements CardLogic {
+public class DeathFromAboveLogic implements CardLogic {
 
 	@Override
 	public void use(Player player) {
@@ -14,13 +14,8 @@ public class GasRefineryLogic implements CardLogic {
 
 	@Override
 	public void use(Player player, ArrayList<Player> players, GUI gui) {
-		for(int i = 0; i < players.size(); i++) {
-			if(!players.get(i).equals(player)){
-				players.get(i).addHealth(-3);
-			} else {
-				player.addVictory(2);
-			}
-		}
+		System.out.println("HI");
+		player.addVictory(2);
 	}
 
 }

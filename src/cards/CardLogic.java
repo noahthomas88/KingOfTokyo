@@ -2,13 +2,13 @@ package cards;
 
 import java.util.ArrayList;
 
-import game.Board;
 import game.Player;
+import main.GUI;
 
 public interface CardLogic {
 
 	void use(Player player);
 	
-	void use(Player player, ArrayList<Player> players, Board board);
+	void use(Player player, ArrayList<Player> players, GUI gui);
 
 }

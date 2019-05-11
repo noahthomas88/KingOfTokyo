@@ -194,7 +194,7 @@ public class Gameplay {
 		}
 		if(touse!=null) {
 			try {
-				touse.logic.use(currentplayer, gameboard.playerList, gameboard);
+				touse.logic.use(currentplayer, gameboard.playerList, null);
 			}catch(UnsupportedOperationException e){
 				gameUI.cardCannotUseWarning();
 			}

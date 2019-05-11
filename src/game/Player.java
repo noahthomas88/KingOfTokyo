@@ -19,7 +19,7 @@ public class Player {
 		}
 		this.health = 10;
 		this.victoryPoints = 0;
-		this.energy = 0;
+		this.energy = 999;
 		this.name = name;
 		this.maxHealth = 10;
 		this.cardsInHand = new ArrayList<Card>();

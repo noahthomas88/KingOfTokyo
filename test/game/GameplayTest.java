@@ -702,7 +702,7 @@ public class GameplayTest {
 		EnergizeLogic logic = EasyMock.strictMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, null, null);
 		
-		logic.use(test1, playerList, board);
+		logic.use(test1, playerList, null);
 		gui.updatePlayerText(board);
 
 		EasyMock.replay(card, logic, test1, board, gui);
@@ -735,7 +735,7 @@ public class GameplayTest {
 		EnergizeLogic logic = EasyMock.strictMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, deck, null);
 			
-		logic.use(test1, playerList, board);
+		logic.use(test1, playerList, null);
 		deck.addToDiscard(card);
 		gui.updatePlayerText(board);
 
@@ -770,7 +770,7 @@ public class GameplayTest {
 		EnergizeLogic logic = EasyMock.strictMock(EnergizeLogic.class);
 		Gameplay gameplay = new Gameplay(gui, test1, board, deck, null);
 			
-		logic.use(test1, playerList, board);
+		logic.use(test1, playerList, null);
 		EasyMock.expectLastCall().andThrow(new UnsupportedOperationException());
 		gui.cardCannotUseWarning();
 		gui.updatePlayerText(board);
