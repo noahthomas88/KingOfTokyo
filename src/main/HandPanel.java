@@ -23,13 +23,14 @@ public class HandPanel extends JPanel {
 	Messages messages;
 	Player player;
 	Gameplay game;
+	JButton cardbutton;
 	
 	public HandPanel(Messages messages, Gameplay game, Player player) {
 		this.messages = messages;
 		this.game = game;
 		this.player = player;
-		this.setPreferredSize(new Dimension(300,320));
-		this.setLayout(new FlowLayout());
+		this.setPreferredSize(new Dimension(300,300));
+		this.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
 		this.viewHand();
 	}
 	
@@ -50,20 +51,20 @@ public class HandPanel extends JPanel {
 		ArrayList<Card> playerCard = player.cardsInHand;
 		Card card = playerCard.get(0);
 							
-		JButton cardbutton = new JButton();
+		cardbutton = new JButton();
 		cardbutton.setText(card.name);
-		cardbutton.setPreferredSize(new Dimension(180,100));
+		cardbutton.setPreferredSize(new Dimension(200,100));
 		cardbutton.addActionListener(new UseCardListener(card.name));
 			
 		JTextArea description = new JTextArea();
 		description.setLineWrap(true);
 		description.setText(card.description);
 		description.setEditable(false);
-		description.setPreferredSize(new Dimension(180,150));
+		description.setPreferredSize(new Dimension(200,150));
 
 		JPanel cardPanel = new JPanel();
-		cardPanel.setLayout(new FlowLayout());
-		cardPanel.setPreferredSize(new Dimension(180,250));
+		cardPanel.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+		cardPanel.setPreferredSize(new Dimension(200,250));
 		cardPanel.add(cardbutton);
 		cardPanel.add(description);
 		
