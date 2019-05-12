@@ -21,7 +21,7 @@ public class GameplayTest {
 	public void GameplayConstructorTest() {
 		Player currentplayer = new Player("null");
 		Board gameboard = new Board(2);
-		GUI gameUI = new GUI();
+		GUI gameUI = EasyMock.strictMock(GUI.class);
 		DeckConstructor deck = new DeckConstructor();
 		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 		Gameplay game = new Gameplay(gameUI, currentplayer, gameboard, deck, playerToNumber);
