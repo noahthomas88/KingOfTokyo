@@ -133,6 +133,7 @@ public class Gameplay {
 		} else {
 			currentplayer = gameboard.playerList.get(playerToNumber.get(currentPlayerName) + 1);
 		}
+		gameUI.replaceDice();
 		beginTurn();
 	}
 	

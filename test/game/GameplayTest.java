@@ -931,9 +931,10 @@ public class GameplayTest {
 		map.put("test1", 0);
 		map.put("test2", 1);
 		
+		gameUI.replaceDice();
 		gameplay.beginTurn();
 		
-		EasyMock.replay(board, gameplay);
+		EasyMock.replay(board, gameplay,gameUI);
 		
 		test1.name = "test1";
 		gameplay.gameUI = gameUI;
@@ -944,7 +945,7 @@ public class GameplayTest {
 		board.playerList = players;
 		gameplay.endTurn();
 		
-		EasyMock.verify(gameplay);
+		EasyMock.verify(gameplay,gameUI);
 		assertEquals(gameplay.currentplayer, test2);		
 	}
 	@Test
