@@ -7,10 +7,6 @@ public aspect NovaBreathLogic_aspect {
 	
 	pointcut nova(Player attacker, int amount, Board board) : execution(void Board.doAttack(Player, int)) && args(attacker, amount) && target(board);
 	
-	void around(Player attacker, int amount, Board board) : nova(attacker, amount, board) {
-		proceed(attacker, amount ,board);
-	}
-	
 	after(Player attacker, int amount, Board board) : nova(attacker, amount, board) {
 		if (!attacker.haveCard("Nova Breath")) {
 			return;

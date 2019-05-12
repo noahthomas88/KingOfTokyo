@@ -22,7 +22,7 @@ public class NovaBreathLogicTest {
 		playerList.add(p3 = new Player("test3"));
 		playerList.add(p4 = new Player("test4"));
 
-		Board b = new Board(3);
+		Board b = new Board(4);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		b.bayPlayer = p2;
@@ -51,7 +51,7 @@ public class NovaBreathLogicTest {
 		playerList.add(p3 = new Player("test3"));
 		playerList.add(p4 = new Player("test4"));
 
-		Board b = new Board(3);
+		Board b = new Board(4);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		b.bayPlayer = p2;
@@ -80,7 +80,7 @@ public class NovaBreathLogicTest {
 		playerList.add(p3 = new Player("test3"));
 		playerList.add(p4 = new Player("test4"));
 
-		Board b = new Board(3);
+		Board b = new Board(4);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		b.bayPlayer = p2;
