@@ -72,7 +72,7 @@ public class GUI {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
-		panel.setPreferredSize(new Dimension(1800,900));
+		panel.setPreferredSize(new Dimension(1900,900));
 		
 		this.cardsPanel = new CardsPanel(messages, game);
 		this.playerPanel = new PlayerPanel(messages, game);
@@ -92,10 +92,10 @@ public class GUI {
 	}
 	
 	public Integer inputNumPlayers() {
-		String result = JOptionPane.showInputDialog(messages.getString("GUI.9")); //$NON-NLS-1$
+		String result = JOptionPane.showInputDialog(messages.getString("GUI.9"));
 		int numplayers = Integer.parseInt(result);
 		while (numplayers > 6 || numplayers < 2) {
-			System.err.println(messages.getString("GUI.10")); //$NON-NLS-1$
+			System.err.println(messages.getString("GUI.10"));
 			numplayers = inputNumPlayers();
 		}
 		return numplayers;
@@ -134,9 +134,9 @@ public class GUI {
 			String name = ""; //$NON-NLS-1$
 			while (name.equals("")) {
 				name = JOptionPane
-						.showInputDialog(messages.getString("GUI.18") + (index + 1) + messages.getString("GUI.19")); //$NON-NLS-1$ //$NON-NLS-2$
+						.showInputDialog(messages.getString("GUI.18") + (index + 1) + messages.getString("GUI.19"));
 				if (name.equals("")) {
-					JOptionPane.showMessageDialog(null, messages.getString("GUI.21")); //$NON-NLS-1$
+					JOptionPane.showMessageDialog(null, messages.getString("GUI.21"));
 				}
 			}
 			names.add(name);
@@ -193,7 +193,7 @@ public class GUI {
 		}
 		this.dicePanel.dieButton.setEnabled(false);
 		for(HandPanel p : this.playerPanel.playerHands) {
-			p.cardbutton.setEnabled(false);
+			if(p!=null && p.cardbutton!=null)	p.cardbutton.setEnabled(false);
 		}
 		this.tokyoPanel.cedeTokyoCity.setEnabled(false);
 		this.tokyoPanel.cedeTokyoBay.setEnabled(false);
@@ -218,5 +218,9 @@ public class GUI {
 
 	public String numberToString(int numberRolled) {
 		return this.dicePanel.numberToString(numberRolled);
+	}
+	
+	public void replaceDice() {
+		this.dicePanel.setUp();
 	}
 }

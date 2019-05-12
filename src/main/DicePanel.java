@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import game.Dice;
 import game.Gameplay;
@@ -19,41 +20,80 @@ public class DicePanel extends JPanel {
 	Messages messages;
 	Gameplay game;
 	JButton dieButton;
+	JButton resolve;
+	JTextArea information;
+	JPanel dice;
+	ArrayList<Dice> dicelist;
+	ArrayList<JButton> diebuttons;
+	int numberOfDiceRolls;
+	int numberOfDice;
+	int count;	
 	
 	public DicePanel(Messages messages, Gameplay game) {
 		this.messages = messages;
 		this.game = game;
 		this.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
-		this.setPreferredSize(new Dimension(300,300));
-		dieButton = new JButton(messages.getString("GUI.39")); //$NON-NLS-1$
-		dieButton.addActionListener(new RollListener());
-		this.add(dieButton);
+		this.setPreferredSize(new Dimension(400,300));
+		dice = new JPanel(new FlowLayout(FlowLayout.CENTER,0,0));
+		dice.setPreferredSize(new Dimension(400,200));
+		
+		setUp();
 	}
 	
-	class RollListener implements ActionListener {
+	public void setUp() {
+		dicelist = new ArrayList<Dice>();
+		diebuttons = new ArrayList<JButton>();
+		count = 0;
+		this.removeAll();
+		this.dice.removeAll();
+		
+		dieButton = new JButton(messages.getString("GUI.39"));
+		dieButton.addActionListener(new RollListener());
+		dieButton.setPreferredSize(new Dimension(100,100));
+		this.add(dieButton);
+		
+		this.repaint();
+		this.revalidate();
+	}
 
+	class RollListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			displayDice();
+			if (count != 0) {
+				nextRow();
+			}else {
+				firstRow();
+			}
 		}
 	}
 	
-	public void displayDice() {
-		JPanel panel = new JPanel();
-		ArrayList<Dice> dicelist = new ArrayList<Dice>();
-		ArrayList<JButton> diebuttons = new ArrayList<JButton>();
-		int numberOfDiceRolls = game.currentplayer.getNumberOfRolls();
-		int numberOfDice = game.currentplayer.getNumberOfDie();
+	public void firstRow() {		
+		numberOfDiceRolls = game.currentplayer.getNumberOfRolls();
+		numberOfDice = game.currentplayer.getNumberOfDie();
 		for (int i = 0; i < numberOfDice; i++) {
-			Dice dice = new Dice(game.currentplayer);
-			dice.roll();
-			dicelist.add(dice);
+			Dice die = new Dice(game.currentplayer);
+			die.roll();
+			dicelist.add(die);
 			JButton diebutton = new JButton(numberToString(dicelist.get(i).numberRolled));
 			diebuttons.add(diebutton);
 			diebutton.addActionListener(new DieListener(diebutton));
-			panel.add(diebutton);
+			diebutton.setPreferredSize(new Dimension(100,100));
+			dice.add(diebutton);
 		}
-		JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.22"), JOptionPane.DEFAULT_OPTION); //$NON-NLS-1$
+		
+		information = new JTextArea("1/" + numberOfDiceRolls);
+		information.setEditable(false);
+		information.setLineWrap(true);
+		information.setPreferredSize(new Dimension(100,100));
+		
+		resolve = new JButton("resolve");
+		resolve.addActionListener(new ResolveListener());
+		resolve.setPreferredSize(new Dimension(100,100));
+		
+		this.add(information);
+		this.add(resolve);
+		this.add(dice);
+		
 		for (int i = 0; i < numberOfDice; i++) {
 			JButton button = diebuttons.get(i);
 			Dice die = dicelist.get(i);
@@ -62,24 +102,14 @@ public class DicePanel extends JPanel {
 				button.setText(numberToString(die.numberRolled));
 			}
 		}
-		JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.23"), JOptionPane.DEFAULT_OPTION); //$NON-NLS-1$
-		for (int i = 0; i < numberOfDice; i++) {
-			JButton button = diebuttons.get(i);
-			Dice die = dicelist.get(i);
-			if (button.getBackground() == Color.RED) {
-				die.roll();
-				button.setText(numberToString(die.numberRolled));
-			}
-		}
-		if (numberOfDiceRolls == 3) {
-			for (int i = 0; i < numberOfDice; i++) {
-				JButton button = diebuttons.get(i);
-				button.setEnabled(false);
-				button.setBackground(Color.WHITE);
-			}
-			JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.24"), JOptionPane.DEFAULT_OPTION); //$NON-NLS-1$
-		} else {
-			JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.25"), JOptionPane.DEFAULT_OPTION); //$NON-NLS-1$
+		this.revalidate();
+		count++;
+	}
+	
+	public void nextRow() {
+		if(numberOfDiceRolls > count) {
+			count++;
+			information.setText(count + "/" + numberOfDiceRolls);
 			for (int i = 0; i < numberOfDice; i++) {
 				JButton button = diebuttons.get(i);
 				Dice die = dicelist.get(i);
@@ -87,12 +117,11 @@ public class DicePanel extends JPanel {
 					die.roll();
 					button.setText(numberToString(die.numberRolled));
 				}
-				button.setEnabled(false);
-				button.setBackground(Color.WHITE);
 			}
-			JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.26"), JOptionPane.DEFAULT_OPTION); //$NON-NLS-1$
+		}else {
+			JOptionPane.showMessageDialog(null, "Exceed Roll Limit", "Warning", 0);
 		}
-		game.diceRolled(dicelist, messages);
+		this.revalidate();
 	}
 	
 	public String numberToString(int number) {
@@ -107,8 +136,7 @@ public class DicePanel extends JPanel {
 		}
 	}
 	
-	public class DieListener implements ActionListener {
-
+	class DieListener implements ActionListener {
 		JButton button;
 
 		DieListener(JButton button) {
@@ -124,5 +152,18 @@ public class DicePanel extends JPanel {
 			}
 		}
 	}
+	
+	class ResolveListener implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			for(JButton d : diebuttons) {
+				d.setEnabled(false);
+			}
+			resolve.setEnabled(false);
+			dieButton.setEnabled(false);
+			game.diceRolled(dicelist, messages);
+		}
+
+	}
 }
