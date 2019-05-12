@@ -11,6 +11,7 @@ import org.junit.Test;
 import game.Board;
 import game.Gameplay;
 import game.Player;
+import main.GUI;
 
 public class SolarPoweredLogicTest {
 
@@ -19,6 +20,7 @@ public class SolarPoweredLogicTest {
 		Player player = new Player("test");
 		Card card = EasyMock.strictMock(Card.class);
 		Board board = EasyMock.strictMock(Board.class);
+		GUI gui = EasyMock.strictMock(GUI.class);
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 
 		card.name = "Solar Powered";
@@ -32,8 +34,8 @@ public class SolarPoweredLogicTest {
 		game.currentplayer = player;
 		game.gameboard = board;
 		game.playerToNumber = playerToNumber;
+		game.gameUI = gui;
 		
-		System.out.println(game.currentplayer.name);
 		game.endTurn();
 		
 		assertEquals(player.energy, 1);
@@ -44,6 +46,7 @@ public class SolarPoweredLogicTest {
 		Player player = new Player("test");
 		Card card = EasyMock.strictMock(Card.class);
 		Board board = EasyMock.strictMock(Board.class);
+		GUI gui = EasyMock.strictMock(GUI.class);
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 
 		card.name = "Solar Powered";
@@ -57,8 +60,8 @@ public class SolarPoweredLogicTest {
 		game.currentplayer = player;
 		game.gameboard = board;
 		game.playerToNumber = playerToNumber;
+		game.gameUI = gui;
 		
-		System.out.println(game.currentplayer.name);
 		game.endTurn();
 		
 		assertEquals(player.energy, 3);
