@@ -148,3 +148,9 @@ Death From Above
 Gain 2 victory points and take control of Tokyo if you are not
 Discard
 -
+SpikedTail
+Spiked tail
+5
+If you roll at least 1 attack, add an attack to your roll.
+Keep
+-
