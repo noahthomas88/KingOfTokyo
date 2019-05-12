@@ -14,8 +14,8 @@ public class DeathFromAboveLogic implements CardLogic {
 
 	@Override
 	public void use(Player player, ArrayList<Player> players, GUI gui) {
-		System.out.println("HI");
 		player.addVictory(2);
+		gui.moveToTokyo(player);
 	}
 
 }
