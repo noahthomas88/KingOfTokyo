@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import cards.Card;
 import game.Board;
 import game.Dice;
@@ -31,40 +33,29 @@ public class GUI {
 	HashMap<String, JButton> buttonmap = new HashMap<String, JButton>();
 	HashMap<String, JTextArea> textmap = new HashMap<String, JTextArea>();
 	GUI self = this;
-	ArrayList<JLabel> playertexts;
 	Gameplay game;
 	Messages messages;
+	PlayerPanel playerPanel;
 
 	public GUI() {
-	}
-
-	public void viewHand() {
-		JPanel bigPanel = new JPanel();
-		bigPanel.setLayout(new FlowLayout());
-		bigPanel.setPreferredSize(new Dimension(1800, 800));
-		if(game.currentplayer.cardsInHand.isEmpty()) {
-			JLabel label = new JLabel(messages.getString("GUI.0")); //$NON-NLS-1$
-			bigPanel.add(label);
-		}
-		for(Card card : game.currentplayer.cardsInHand) {
-			JPanel panel = new JPanel();
-			panel.setLayout(new BorderLayout());
-			JButton cardbutton = new JButton();
-			JTextArea description = new JTextArea();
-			description.setLineWrap(true);
-			description.setText(card.description);
-			description.setEditable(false);
-			cardbutton.setText(card.name);
-			cardbutton.setPreferredSize(new Dimension(300,100));
-			description.setPreferredSize(new Dimension(300,100));
-			cardbutton.addActionListener(new UseCardListener(card.name));
-			panel.add(cardbutton, BorderLayout.CENTER);
-			panel.add(description,BorderLayout.SOUTH);
-			bigPanel.add(panel);
-		}
-		JOptionPane.showConfirmDialog(null, bigPanel, messages.getString("GUI.1"),JOptionPane.DEFAULT_OPTION); //$NON-NLS-1$
+		inputLanguage();
 	}
 	
+	public void inputLanguage() {
+		HashMap<String, String> languages = getLanguages();
+		JPanel panel = new JPanel();
+		for (String language : languages.keySet()) {
+			JButton languagebutton = new JButton(language);
+			languagebutton.addActionListener(new LanguageListener(languages.get(language)));
+			panel.add(languagebutton);
+		}
+
+		int result = JOptionPane.showConfirmDialog(null, panel, "Please select a language", JOptionPane.DEFAULT_OPTION);
+		if (result == 0) {
+			messages = new Messages("en");
+		}
+	}
+
 	public void viewCard(int index) {
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel();
@@ -72,22 +63,22 @@ public class GUI {
 		JTextArea description = new JTextArea();
 		description.setLineWrap(true);
 		panel.setLayout(new BorderLayout());
-		Card card = game.deck.visibleCard[index-1];
+		Card card = game.deck.visibleCard[index - 1];
 		description.setText(card.description);
 		description.setEditable(false);
 		label.setText(messages.getString("GUI.2") + card.cost + messages.getString("GUI.3") + ", " + card.type); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		label2.setText(card.name);
-		description.setPreferredSize(new Dimension(200,200));
+		description.setPreferredSize(new Dimension(200, 200));
 		panel.add(description, BorderLayout.CENTER);
 		panel.add(label, BorderLayout.SOUTH);
 		panel.add(label2, BorderLayout.NORTH);
-		int option = JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.5"),JOptionPane.OK_CANCEL_OPTION); //$NON-NLS-1$
-		if(option == JOptionPane.OK_OPTION) {
+		int option = JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.5"), //$NON-NLS-1$
+				JOptionPane.OK_CANCEL_OPTION);
+		if (option == JOptionPane.OK_OPTION) {
 			game.buyCard(index);
 		}
 	}
 
-	
 	public void setCards(Card[] cards) {
 		Card c1 = cards[0];
 		Card c2 = cards[1];
@@ -109,31 +100,16 @@ public class GUI {
 		}
 		return numplayers;
 	}
-	
-	public void inputLanguage() {
-		HashMap<String, String> languages = getLanguages();
-		JPanel panel = new JPanel();
-		for(String language : languages.keySet()) {
-			JButton languagebutton = new JButton(language);
-			languagebutton.addActionListener(new LanguageListener(languages.get(language)));
-			panel.add(languagebutton);
-		}
-		
-		int result = JOptionPane.showConfirmDialog(null, panel, "Please select a language",JOptionPane.DEFAULT_OPTION);
-		if(result==0) {
-			messages = new Messages("en");
-		}
-	}
-	
-	public HashMap<String,String> getLanguages() {
-		HashMap<String,String> languages = null;
+
+	public HashMap<String, String> getLanguages() {
+		HashMap<String, String> languages = null;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("languages.txt"));
 			String buffer;
 			languages = new HashMap<String, String>();
 			try {
-				while((buffer = reader.readLine())!=null) {
-					languages.put(buffer,reader.readLine());
+				while ((buffer = reader.readLine()) != null) {
+					languages.put(buffer, reader.readLine());
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -155,11 +131,7 @@ public class GUI {
 	}
 
 	public void setActivePlayer(Integer playerNumber) {
-		for (int i = 0; i < playertexts.size(); i++) {
-			playertexts.get(i).setBackground(null);
-		}
-		playertexts.get(playerNumber).setBackground(Color.GREEN);
-		System.out.println(messages.getString("GUI.15") + playerNumber); //$NON-NLS-1$
+		this.playerPanel.setActivePlayer(playerNumber);
 	}
 
 	public ArrayList<String> inputNames(int numOfPlayers) {
@@ -167,7 +139,8 @@ public class GUI {
 		for (int index = 0; index < numOfPlayers; index++) {
 			String name = ""; //$NON-NLS-1$
 			while (name.equals("")) { //$NON-NLS-1$
-				name = JOptionPane.showInputDialog(messages.getString("GUI.18") + (index + 1) + messages.getString("GUI.19")); //$NON-NLS-1$ //$NON-NLS-2$
+				name = JOptionPane
+						.showInputDialog(messages.getString("GUI.18") + (index + 1) + messages.getString("GUI.19")); //$NON-NLS-1$ //$NON-NLS-2$
 				if (name.equals("")) { //$NON-NLS-1$
 					JOptionPane.showMessageDialog(null, messages.getString("GUI.21")); //$NON-NLS-1$
 				}
@@ -176,12 +149,12 @@ public class GUI {
 		}
 		return names;
 	}
-	
+
 	public String numberToString(int number) {
-		if(number < 4) {
+		if (number < 4) {
 			return number + "";
-		} else if (number == 4){
-			return  messages.getString("GUI.64");
+		} else if (number == 4) {
+			return messages.getString("GUI.64");
 		} else if (number == 5) {
 			return messages.getString("GUI.62");
 		} else {
@@ -222,14 +195,14 @@ public class GUI {
 				button.setText(numberToString(die.numberRolled));
 			}
 		}
-		if(numberOfDiceRolls == 3) {
+		if (numberOfDiceRolls == 3) {
 			for (int i = 0; i < numberOfDice; i++) {
 				JButton button = diebuttons.get(i);
 				button.setEnabled(false);
 				button.setBackground(Color.WHITE);
 			}
-			JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.24"), JOptionPane.DEFAULT_OPTION);	 //$NON-NLS-1$
-		}else {
+			JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.24"), JOptionPane.DEFAULT_OPTION); //$NON-NLS-1$
+		} else {
 			JOptionPane.showConfirmDialog(null, panel, messages.getString("GUI.25"), JOptionPane.DEFAULT_OPTION); //$NON-NLS-1$
 			for (int i = 0; i < numberOfDice; i++) {
 				JButton button = diebuttons.get(i);
@@ -251,10 +224,7 @@ public class GUI {
 	}
 
 	public void updatePlayerText(Board myBoard) {
-		for (int i = 0; i < myBoard.playerList.size(); i++) {
-			JLabel playertoset = playertexts.get(i);
-			playertoset.setText(myBoard.playerList.get(i).buildPlayerStatusString(messages.getString("GUI.60"),messages.getString("GUI.61"),messages.getString("GUI.62"),messages.getString("GUI.63")));
-		}
+		this.playerPanel.updatePlayerText();
 	}
 
 	public void displayBoard(Board myBoard, int numberOfPlayers, Gameplay game) {
@@ -266,7 +236,6 @@ public class GUI {
 		panel.setLayout(new BorderLayout());
 		JPanel cardPanel = new JPanel();
 		JPanel tokyoPanel = new JPanel();
-		JPanel playerPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 
 		JButton card1 = new JButton(messages.getString("GUI.7")); //$NON-NLS-1$
@@ -296,8 +265,7 @@ public class GUI {
 		dieButton.addActionListener(new RollListener());
 		endTurn.addActionListener(new EndListener());
 		cedeTokyo.addActionListener(new CedeListener());
-		JButton viewHand = new JButton(messages.getString("GUI.42")); //$NON-NLS-1$
-		viewHand.addActionListener(new HandListener());
+
 		textmap.put("tokyo", tokyo); //$NON-NLS-1$
 		textmap.put("bay", bay); //$NON-NLS-1$
 		buttonmap.put("die", dieButton); //$NON-NLS-1$
@@ -319,23 +287,12 @@ public class GUI {
 		card2.setPreferredSize(new Dimension(200, 200));
 		card3.setPreferredSize(new Dimension(200, 200));
 		swipeCards.setPreferredSize(new Dimension(200, 50));
-		tokyo.setPreferredSize(new Dimension(400, 400));
-		bay.setPreferredSize(new Dimension(400, 400));
+		tokyo.setPreferredSize(new Dimension(400, 200));
+		bay.setPreferredSize(new Dimension(400, 200));
 		dieButton.setPreferredSize(new Dimension(100, 100));
-
-		playertexts = new ArrayList<JLabel>();
-		for (int i = 0; i < 6; i++) {
-			JLabel playertext = new JLabel(messages.getString("GUI.48")); //$NON-NLS-1$
-			playertext.setPreferredSize(new Dimension(250, 250));
-			playerPanel.add(playertext);
-			playertext.setOpaque(true);
-			playertexts.add(playertext);
-		}
-		playerPanel.add(viewHand);
-		for (int i = 0; i < myBoard.playerList.size(); i++) {
-			JLabel playertoset = playertexts.get(i);
-			playertoset.setText(myBoard.playerList.get(i).buildPlayerStatusString(messages.getString("GUI.60"),messages.getString("GUI.61"),messages.getString("GUI.62"),messages.getString("GUI.63")));
-		}
+		
+		this.playerPanel = new PlayerPanel(messages, myBoard, game);
+		playerPanel.setUp();
 
 		panel.add(cardPanel, BorderLayout.NORTH);
 		panel.add(tokyoPanel, BorderLayout.CENTER);
@@ -413,14 +370,6 @@ public class GUI {
 		}
 	}
 
-	public class HandListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			self.viewHand();
-		}
-	}
-
 	public class Card1Listener implements ActionListener {
 
 		@Override
@@ -453,23 +402,8 @@ public class GUI {
 		}
 	}
 
-	public class UseCardListener implements ActionListener {
-		String cardname;
-
-		UseCardListener(String name) {
-			this.cardname = name;
-		}
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			game.useCard(cardname);
-			JOptionPane.getRootFrame().dispose();
-		}
-	}
-	
 	public class LanguageListener implements ActionListener {
 		String code;
-		
 
 		LanguageListener(String code) {
 			this.code = code;
@@ -491,7 +425,7 @@ public class GUI {
 	}
 
 	public void endGame(Player currentplayer, int i) {
-		if(i==1) {
+		if (i == 1) {
 			JOptionPane.showMessageDialog(null, currentplayer.name + messages.getString("GUI.57")); //$NON-NLS-1$
 		} else {
 			JOptionPane.showMessageDialog(null, currentplayer.name + messages.getString("GUI.58")); //$NON-NLS-1$
@@ -506,5 +440,4 @@ public class GUI {
 	public void cardCannotUseWarning() {
 		JOptionPane.showMessageDialog(null, "This card cannot be used");
 	}
-
 }
