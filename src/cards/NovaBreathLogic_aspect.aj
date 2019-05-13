@@ -11,7 +11,7 @@ public aspect NovaBreathLogic_aspect {
 		if (!attacker.haveCard("Nova Breath")) {
 			return;
 		}
-		if(board.cityPlayer.equals(attacker)) {
+		if(board.cityPlayer.equals(attacker) && board.bayPlayer != null) {
 			board.bayPlayer.addHealth(amount);
 		}else if (attacker.equals(board.bayPlayer)) {
 			board.cityPlayer.addHealth(amount);
