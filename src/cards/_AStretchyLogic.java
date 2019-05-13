@@ -3,6 +3,7 @@ package cards;
 import java.util.ArrayList;
 
 import game.Player;
+import main.GUI;
 
 public class _AStretchyLogic implements CardLogic {
 
@@ -13,9 +14,9 @@ public class _AStretchyLogic implements CardLogic {
 	}
 
 	@Override
-	public void use(Player player, ArrayList<Player> players) {
+	public void use(Player player, ArrayList<Player> players, GUI gui) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
