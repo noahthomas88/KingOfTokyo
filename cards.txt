@@ -128,5 +128,29 @@ VastStorm
 VastStorm
 6
 Gain 2 victory points and all other monsters and lose 1 energy for every 2 energy they have
-discard
+Discard
+-
+NovaBreath
+Nova Breath
+7
+Your attack rolls attack all other monsters
+Keep
+-
+SolarPowered
+Solar Powered
+2
+At the end of your turn gain 1 energy if you have no energy
+Keep
+-
+DeathFromAbove
+Death From Above
+5
+Gain 2 victory points and take control of Tokyo if you are not
+Discard
+-
+SpikedTail
+Spiked tail
+5
+If you roll at least 1 attack, add an attack to your roll.
+Keep
 -

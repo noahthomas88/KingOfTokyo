@@ -3,6 +3,7 @@ package cards;
 import java.util.ArrayList;
 
 import game.Player;
+import main.GUI;
 
 public class NationalGuardLogic implements CardLogic {
 	
@@ -13,9 +14,8 @@ public class NationalGuardLogic implements CardLogic {
 	}
 
 	@Override
-	public void use(Player player, ArrayList<Player> players) {
-		use(player);
-		
+	public void use(Player player, ArrayList<Player> players, GUI gui) {
+		use(player);	
 	}
 
 }

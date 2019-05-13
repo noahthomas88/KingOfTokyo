@@ -15,7 +15,7 @@ public class Gameplay {
 	public Board gameboard;
 	public GUI gameUI;
 	public DeckConstructor deck;
-	HashMap<String, Integer> playerToNumber;
+	public HashMap<String, Integer> playerToNumber;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
 		this.gameUI = gui;
@@ -133,6 +133,7 @@ public class Gameplay {
 		} else {
 			currentplayer = gameboard.playerList.get(playerToNumber.get(currentPlayerName) + 1);
 		}
+		gameUI.replaceDice();
 		beginTurn();
 	}
 	
@@ -194,7 +195,7 @@ public class Gameplay {
 		}
 		if(touse!=null) {
 			try {
-				touse.logic.use(currentplayer, gameboard.playerList);
+				touse.logic.use(currentplayer, gameboard.playerList, gameUI);
 			}catch(UnsupportedOperationException e){
 				gameUI.cardCannotUseWarning();
 			}

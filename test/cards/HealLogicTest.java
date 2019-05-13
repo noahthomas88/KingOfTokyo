@@ -24,7 +24,7 @@ public class HealLogicTest {
 		p.health = 8;
 		HealLogic cardLogic = new HealLogic();
 		int savedHealth = p.health;
-		cardLogic.use(p, null);
+		cardLogic.use(p, null, null);
 		assertTrue(p.health == savedHealth + 2);
 	}
 

@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import game.Player;
 import main.GUI;
 
-public class TankLogic implements CardLogic {
+public class EmptyLogic implements CardLogic {
 
+	@Override
 	public void use(Player player) {
-		player.addHealth(-3);
-		player.addVictory(4);
+		//do nothing, used for cards with aspect
 	}
 
 	@Override
 	public void use(Player player, ArrayList<Player> players, GUI gui) {
-		use(player);	
+		//do nothing
 	}
 
 }

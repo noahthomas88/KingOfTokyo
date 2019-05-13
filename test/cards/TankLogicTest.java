@@ -27,7 +27,7 @@ public class TankLogicTest {
 		TankLogic cardLogic = new TankLogic();
 		int savedVictoryPoints = p.victoryPoints;
 		int savedHealth = p.health;
-		cardLogic.use(p, null);
+		cardLogic.use(p, null, null);
 		assertTrue(p.victoryPoints == savedVictoryPoints + 4);
 		assertTrue(p.health == savedHealth - 3);
 	}

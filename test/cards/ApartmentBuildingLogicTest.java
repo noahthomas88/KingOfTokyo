@@ -24,7 +24,7 @@ public class ApartmentBuildingLogicTest {
 		p.victoryPoints = 10;
 		ApartmentBuildingLogic cardLogic = new ApartmentBuildingLogic();
 		int saved = p.victoryPoints;
-		cardLogic.use(p, null);
+		cardLogic.use(p, null, null);
 		assertTrue(p.victoryPoints == saved + 3);
 	}
 

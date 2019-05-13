@@ -27,7 +27,7 @@ public class GasRefineryLogicTest {
 		players.add(p3);
 		
 		GasRefineryLogic evactuationLogic = new GasRefineryLogic();
-		evactuationLogic.use(p, players);
+		evactuationLogic.use(p, players, null);
 		
 		assertTrue(p.victoryPoints == psaved + 2);
 		assertTrue(p2.health == 7);

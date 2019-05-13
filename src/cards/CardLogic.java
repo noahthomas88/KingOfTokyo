@@ -3,11 +3,12 @@ package cards;
 import java.util.ArrayList;
 
 import game.Player;
+import main.GUI;
 
 public interface CardLogic {
 
 	void use(Player player);
 	
-	void use(Player player, ArrayList<Player> players);
+	void use(Player player, ArrayList<Player> players, GUI gui);
 
 }

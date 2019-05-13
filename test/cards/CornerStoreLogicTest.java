@@ -24,7 +24,7 @@ public class CornerStoreLogicTest {
 		p.victoryPoints = 10;
 		CornerStoreLogic cardLogic = new CornerStoreLogic();
 		int saved = p.victoryPoints;
-		cardLogic.use(p, null);
+		cardLogic.use(p, null, null);
 		assertTrue(p.victoryPoints == saved + 1);
 	}
 
