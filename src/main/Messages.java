@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -9,8 +10,7 @@ public class Messages {
 	private ResourceBundle RESOURCE_BUNDLE;
 
 	public Messages(String code) {
-		BUNDLE_NAME = "main.messages" + code;
-		RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
+		RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME, new Locale(code));
 	}
 	
 	public String getString(String key) {
