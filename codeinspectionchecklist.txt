@@ -2,7 +2,7 @@ Ch 2 Names Should always be descriptive
 Ch 3 Functions Should have descriptive names, a function should only be responsible for one thing
 Ch 4 Comments Will not be needed because we used good naming techniques
 Ch 5 Formatting Reduce spacing between related elements. If codes are directly related, they should be near each other.
-Ch 6 Demeter Hide the data’s implementation 
+Ch 6 Demeter Hide the data's implementation 
 
 
 Concrete Vehicle
@@ -17,8 +17,8 @@ double getPercentFuelRemaining();
 These two examples show the difference between objects and data structures. Objects hide their data behind abstractions and expose functions that operate on that data. Data structure expose their data and have no meaningful functions.
 
 The Law of Demeter says that a method f of a class C should only call the methods of these:
-•C
-• An object created by f
+
+An object created by f
 If it is an object we should use only one . for a function call not a field
 
 Ch 7 Error Handling Errors should be caught in a try catch, not a throws declaration. Errors should also have descriptive names.
@@ -60,21 +60,22 @@ Tests: Should provide full coverage except for GUI, test boundary conditions, te
     
  
   5. Will everyone apply all criteria from every chapter from Clean Code? Or will each person specialize in a few criteria?
-We will break the criteria down dynamically as we conduct inspections. People will be assigned chapters to look for criteria in the code with “important” chapters receiving overlap.
+We will break the criteria down dynamically as we conduct inspections. People will be assigned chapters to look for criteria in the code with â€œimportantâ€� chapters receiving overlap.
  
 Scope:
   6. Will your team inspect every file in your codebase? Every file you touch in your feature branch? Or something else entirely?
-    Our team will inspect all new and modified code.
+    Our team will inspect all new and modified code. Each memeber will be responsible for the code that they push onto the feature branch. The team will inspect the
+    code before pushing to master. through this process each line of code should be inspected by at least one member.
  
   7. Of those files, will each person look at every file in consideration? Or will your team assign different files to different people?
-    The team will collectively divide and conquer to look at every file in consideration
+    The team will collectively divide and conquer to look at every file in consideration.
  
 Tools:
   8. To what extent can your inspection criteria be automated? Automation will increase your inspection's speed and reliability.
     We can use tools such as find bugs and code coverage tools to aid in inspection but the majority of the review will be by hand.
  
   9. Which aspects of your inspection criteria will need human intervention?
-Aspects other than find bugs and coverage tools will need human intervention. Making code easily readable will require human assessment.
+Aspects other than find bugs and coverage tools will need human intervention. Making code easily readable will require human assessment as well as easily readible formatting. of course we will use cntrl + shift + F to auto format things but there could be anomalies.
  
  
 Have one person commit your team's plan to GitLab and have them submit a link to it in the box below. Add the graders as Developers to your project. Then, move on to the Practice Code Inspection.
