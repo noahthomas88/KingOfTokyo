@@ -921,8 +921,8 @@ public class GameplayTest {
 	@Test
 	public void endTurnTest() {
 		GUI gameUI = EasyMock.strictMock(GUI.class);
-		Player test1 = EasyMock.strictMock(Player.class);
-		Player test2 = EasyMock.strictMock(Player.class);
+		Player test1 = new Player("test1");
+		Player test2 = new Player("test2");
 		Board board = EasyMock.strictMock(Board.class);
 		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 		ArrayList<Player> players = new ArrayList<>();
@@ -952,8 +952,8 @@ public class GameplayTest {
 	@Test
 	public void endTurnEndTest() {
 		GUI gameUI = EasyMock.strictMock(GUI.class);
-		Player test1 = EasyMock.strictMock(Player.class);
-		Player test2 = EasyMock.strictMock(Player.class);
+		Player test1 = new Player("test1");
+		Player test2 = new Player("test2");
 		Board board = EasyMock.strictMock(Board.class);
 		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 		ArrayList<Player> players = new ArrayList<>();
