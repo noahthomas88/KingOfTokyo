@@ -154,3 +154,15 @@ Spiked tail
 If you roll at least 1 attack, add an attack to your roll.
 Keep
 -
+EnergyHoarder
+Energy Hoarder
+3
+Gain 1 victory point for every 6 energy points you have at the end of the turn
+Keep
+-
+MediaFriendly
+Media Friendly
+3
+Gain 1 victory point whenever you buy a power card
+Keep
+-
