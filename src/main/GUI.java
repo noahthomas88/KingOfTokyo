@@ -25,6 +25,7 @@ public class GUI {
 	GUI self = this;
 	Gameplay game;
 	Messages messages;
+	ArrayList<JPanel> panels;
 	PlayerPanel playerPanel;
 	TokyoPanel tokyoPanel;
 	CardsPanel cardsPanel;
@@ -69,6 +70,7 @@ public class GUI {
 	
 	public void displayBoard(Board myBoard, int numberOfPlayers, Gameplay game) {
 		this.game = game;
+		this.panels = new ArrayList<>();
 		myframe = new JFrame();
 		myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -82,11 +84,15 @@ public class GUI {
 		this.dicePanel = new DicePanel(messages, game);
 		this.buttonPanel = new ButtonPanel(messages, game);
 		
-		panel.add(tokyoPanel);
-		panel.add(cardsPanel);
-		panel.add(buttonPanel);
-		panel.add(dicePanel);
-		panel.add(playerPanel);
+		panels.add(tokyoPanel);
+		panels.add(cardsPanel);
+		panels.add(buttonPanel);
+		panels.add(dicePanel);
+		panels.add(playerPanel);
+		
+		for(JPanel p : panels) {
+			panel.add(p);
+		}
 
 		myframe.add(panel);
 		myframe.pack();
@@ -224,5 +230,24 @@ public class GUI {
 	
 	public void replaceDice() {
 		this.dicePanel.setUp();
+	}
+
+	public boolean checkBeforeResolve() {
+		return this.dicePanel.checkIsResolve();	
+	}
+
+	public boolean isCurrentPlayer(Player player) {
+		return game.currentplayer.equals(player);
+	}
+
+	public void usePlotTwist() {
+		this.dicePanel.usePlotTwist();
+	}
+
+	public void update() {
+		for(JPanel p : panels) {
+			p.repaint();
+			p.validate();
+		}
 	}
 }
