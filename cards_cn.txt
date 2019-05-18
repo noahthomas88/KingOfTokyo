@@ -1,156 +1,156 @@
 ApartmentBuilding
-Apartment Building
+公寓建築購買
 5
-Gain 3 Victory Points
+獲得3個勝利點
 Discard
 -
 ArmorPlating
-Armor Plating
+護甲電鍍
 4
-Do not lose health when you lose exactly 1 health
+當你完全失去1的健康時, 不要失去健康
 Keep
 -
 CommuterTrain
-Commuter Train
+通勤列車
 4
-Gain 2 Victory Points
+獲得2個勝利點
 Discard
 -
 CornerStore
-Corner Store
+角落專賣店
 3
-Gain 1 Victory Point
+獲得1個勝利點
 Discard
 -
 Energize
-Energize
+激勵
 8
-Gain 9 energy
+獲得9能量
 Discard
 -
 EvacuationOrders
-Evacuation Orders
+疏散令
 7
-All other monsters lose 5 Victory Points
+所有其他怪物失去5個勝利點
 Discard
 -
 ExtraHead
-Extra Head
+額外的頭部
 7
-Gain 1 extra die
+獲得1個額外的模具
 Keep
 -
 Flamethrower
-Flamethrower
+噴火器
 3
-All other players lose 2 health
+所有其他玩家失去2個生殖器
 Discard
 -
 FriendOfChildren
-Friend of Children
+兒童情人
 3
-Whenever you gain energy gain 1 extra energy
+每當你獲得能量時, 就會獲得1個額外的能量
 Keep
 -
 GasRefinery
-Gas Refinery
+燃氣精煉廠
 6
-Gain 2 Victory Points and all other monsters lose 3 health
+獲得2個勝利點和所有其他怪物失去3個健康
 Discard
 -
 GiantBrain
-Giant Brain
+巨型器官
 5
-You have 1 extra die roll each turn
+你每個回合有一個額外的死亡卷
 Keep
 -
 Heal
-Heal
+治癒
 3
-Gain 2 Health
+增益2運行狀況
 Discard
 -
 HighAltitudeBombing
-High Altitude Bombing
+高空轟炸
 4
-All monsters including you lose 3 health
+包括你在內的所有怪物都失去了3項健康
 Discard
 -
 JetFighter
-Jet Fighter
+噴氣貨車
 5
-Gain 5 Victory Points and lose 4 health
+獲得5個勝利點, 失去4個健康
 Discard
 -
 MakingStronger
-We're only making it stronger
+我們只是在把它變大
 3
-When you lose 2 health, you gain 1 energy
+當你失去2個健康, 你獲得1能量
 Keep
 -
 NationalGuard
-National Guard
+國民警衛隊
 3
-Gain 2 Victory Points, But lose 2 Health
+獲得2個勝利點, 但失去2個健康
 Discard
 -
 NuclearPowerPlant
-Nuclear Power Plant
+花式發電廠
 6
-Gain 2 Victory Points and gain 3 Health
+獲得2個勝利點, 獲得3個健康
 Discard
 -
 Regeneration
-Regeneration
+再生
 4
-Whenever you gain health gain 1 extra health
+每當你獲得健康獲得額外的健康
 Keep
 -
 RootingForTheUnderdog
-Rooting for the Underdog
+為失敗者紮根
 3
-At the end of turn, if you have the fewest victory points, gain a victory point
+在回合結束時, 如果你的勝利點最少, 就獲得一個勝利點 "
 Keep
 -
 Skyscraper
-Skyscraper
+天空塔
 6
-Gain 4 Victory Points
+獲得4個勝利點
 Discard
 -
 Tank
-Tank
+重型移動箱
 4
-Gain 4 Victory Points and lose 3 Health
+獲得4個勝利點, 失去3個健康
 Discard
 -
 VastStorm
-VastStorm
+巨大的濕
 6
-Gain 2 victory points and all other monsters and lose 1 energy for every 2 energy they have
+獲得2個勝利點和所有其他怪物, 失去1能量, 每2個能量, 他們有
 Discard
 -
 NovaBreath
-Nova Breath
+諾瓦呼吸
 7
-Your attack rolls attack all other monsters
+你的攻擊卷攻擊所有其他怪物
 Keep
 -
 SolarPowered
-Solar Powered
+太陽能運行
 2
-At the end of your turn gain 1 energy if you have no energy
+在你的回合結束時, 如果你沒有能量, 就獲得1能量
 Keep
 -
 DeathFromAbove
-Death From Above
+從天空向上的死亡
 5
-Gain 2 victory points and take control of Tokyo if you are not
+獲得2個勝利點, 並控制東京, 如果你不是
 Discard
 -
 SpikedTail
-Spiked tail
+尖刺尾巴
 5
-If you roll at least 1 attack, add an attack to your roll.
+如果您滾動至少1次攻擊, 請將攻擊添加到您的滾動中。
 Keep
 -
