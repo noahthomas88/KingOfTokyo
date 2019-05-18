@@ -20,7 +20,7 @@ public class MediaFriendlyLogicTest {
 		Player player = new Player("test");
 		Card card = EasyMock.strictMock(Card.class);
 		Board board = EasyMock.strictMock(Board.class);
-		GUI gui = EasyMock.strictMock(GUI.class);
+		GUI gui = EasyMock.niceMock(GUI.class);
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
 		
@@ -44,12 +44,14 @@ public class MediaFriendlyLogicTest {
 		
 		Card testCard = EasyMock.strictMock(Card.class);
 		testCard.name = "TestCard";
+		testCard.type = "NotDiscard";
 		testCard.cost = 4;
 		game.deck.visibleCard = new Card[3];
-		
+		EasyMock.expect(deck.buy(0)).andReturn(testCard);
 		
 		game.deck.visibleCard[0] = testCard;
 		
+		EasyMock.replay(card, board, gui, game, deck);
 		game.buyCard(1);
 		
 		assertEquals(player.victoryPoints, 1);
