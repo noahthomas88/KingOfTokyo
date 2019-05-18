@@ -12,14 +12,14 @@ public class Board {
 	public Player bayPlayer;
 	public DeckConstructor deck;
 
-	public Board(int numOfPlayers) {
+	public Board(int numOfPlayers, DeckConstructor deck) {
 		if (numOfPlayers < 2 || numOfPlayers > 6) {
 			throw new IllegalArgumentException();
 		}
 
 		this.numOfPlayers = numOfPlayers;
 		this.playerList = new ArrayList<Player>();
-		this.deck = new DeckConstructor();
+		this.deck = deck;
 	}
 
 	public void constructPlayers(ArrayList<String> names) {

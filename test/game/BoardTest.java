@@ -12,14 +12,14 @@ public class BoardTest {
 
 	@Test
 	public void testNumOfPlayersmin() {
-		Board board = new Board(2);
+		Board board = new Board(2, null);
 
 		assertEquals(2, board.numOfPlayers);
 	}
 
 	@Test
 	public void testNumOfPlayersmax() {
-		Board board = new Board(6);
+		Board board = new Board(6, null);
 
 		assertEquals(6, board.numOfPlayers);
 	}
@@ -27,7 +27,7 @@ public class BoardTest {
 	@Test
 	public void testNumOfPlayersLB() {
 		try {
-			Board board = new Board(1);
+			Board board = new Board(1, null);
 			fail("should throw IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
 		}
@@ -36,7 +36,7 @@ public class BoardTest {
 	@Test
 	public void testNumOfPlayersUB() {
 		try {
-			Board board = new Board(7);
+			Board board = new Board(7, null);
 			fail("should throw IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
 		}
@@ -44,7 +44,7 @@ public class BoardTest {
 
 	@Test
 	public void testConstructPlayers() {
-		Board board = new Board(2);
+		Board board = new Board(2, null);
 
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
@@ -58,7 +58,7 @@ public class BoardTest {
 
 	@Test
 	public void testConstructPlayersIllegal() {
-		Board board = new Board(2);
+		Board board = new Board(2, null);
 
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
@@ -73,7 +73,7 @@ public class BoardTest {
 
 	@Test
 	public void testInitializeDeck() {
-		Board board = new Board(2);
+		Board board = new Board(2, null);
 		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
 		board.deck = deck;
 
@@ -88,7 +88,7 @@ public class BoardTest {
 
 	@Test
 	public void testDoAttackWithBothTokyoSpotsFull() {
-		Board board = new Board(3);
+		Board board = new Board(3, null);
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
 		names.add("test2");
@@ -125,7 +125,7 @@ public class BoardTest {
 	
 	@Test
 	public void testDoAttackWithNoBayPlayer() {
-		Board board = new Board(2);
+		Board board = new Board(2, null);
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
 		names.add("test2");

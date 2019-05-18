@@ -19,7 +19,7 @@ public class SpikedTailLogicTest {
 		playerList.add(p2 = new Player("test2"));
 		playerList.add(p3 = new Player("test3"));
 
-		Board b = new Board(3);
+		Board b = new Board(3, null);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		
@@ -44,7 +44,7 @@ public class SpikedTailLogicTest {
 		playerList.add(p2 = new Player("test2"));
 		playerList.add(p3 = new Player("test3"));
 
-		Board b = new Board(3);
+		Board b = new Board(3, null);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		

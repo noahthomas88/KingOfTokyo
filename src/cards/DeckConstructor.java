@@ -11,19 +11,21 @@ public class DeckConstructor {
 	ArrayList<Card> deck;
 	public Card[] visibleCard;
 	ArrayList<Card> discard;
+	String locale;
 
-	public DeckConstructor() {
+	public DeckConstructor(String locale) {
 		this.deck = new ArrayList<>();
 		this.visibleCard = new Card[3];
 		for (int index = 0; index < 3; index++) {
 			this.visibleCard[index] = new Card();
 		}
 		this.discard = new ArrayList<>();
+		this.locale = locale;
 	}
 	
 	public void createDeck(){
 		CardLoader loader = new CardLoader();
-		HashMap<String, Card> cardmap = loader.loadCards("cards.txt", null);
+		HashMap<String, Card> cardmap = loader.loadCards("cards_"+ this.locale +".txt", null);
 		for(String name : cardmap.keySet()) {
 			deck.add(cardmap.get(name));
 		}

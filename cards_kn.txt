@@ -1,0 +1,156 @@
+ApartmentBuilding
+apartment vIleghDI'
+5
+lang yay 3 Soq
+Discard
+-
+ArmorPlating
+may'luch Plating
+4
+wej porgh Damo' ghaH manongqu' HeghDI' exactly 1 porgh Damo' ghaH chIl
+Keep
+-
+CommuterTrain
+commuter qulmey
+4
+lang yay 2 Soq
+Discard
+-
+CornerStore
+jIba'laH ngevwI'
+3
+lang yay 1 Soq
+Discard
+-
+Energize
+laQ
+8
+9 HoS Soq
+Discard
+-
+EvacuationOrders
+che' tlham
+7
+lang yay 5 luj latlh Hoch monsters
+Discard
+-
+ExtraHead
+DuywI' nach
+7
+1 Hegh DuywI' Soq
+Keep
+-
+Flamethrower
+flamethrower
+3
+porgh Damo' ghaH 2 luj latlh Hoch DawI'pu'
+Discard
+-
+FriendOfChildren
+jup puq
+3
+whenever Soq SoH 1 HoS DuywI' Soq HoS
+Keep
+-
+GasRefinery
+SIp Refinery
+6
+lang yay 2 Soq 'ej porgh Damo' ghaH 3 luj latlh Hoch monsters
+Discard
+-
+GiantBrain
+giant yab
+5
+1 DuywI' Hegh Hoch tlhe' tetlh Daghaj
+Keep
+-
+Heal
+vor neH
+3
+Soq 2 porgh Damo' ghaH
+Discard
+-
+HighAltitudeBombing
+jen 'Iv Bombing
+4
+3 porgh Damo' ghaH luj Hoch monsters, SoH DaH nobvam
+Discard
+-
+JetFighter
+bIQ Duj
+5
+lang yay 5 Soq 'ej porgh 4 Damo' ghaH luj
+Discard
+-
+MakingStronger
+'oH neH chenmoH maH toblu'pa'
+3
+HeghDI' 2 porgh Damo' ghaH SoH luj, 1 HoS Soq SoH
+Keep
+-
+NationalGuard
+national 'avwI'
+3
+lang yay 2 Soq 'ach 2 porgh Damo' ghaH chIl
+Discard
+-
+NuclearPowerPlant
+lIngchugh HoS poch
+6
+lang yay 2 Soq je porgh 3 Damo' ghaH Soq
+Discard
+-
+Regeneration
+lup
+4
+whenever Soq SoH 1 DuywI' porgh Damo' ghaH Soq porgh Damo' ghaH
+Keep
+-
+RootingForTheUnderdog
+Underdog 'oQqar
+3
+legh tlhe', bertlham fewest yay lang chorDaq, yay lang Soq
+Keep
+-
+Skyscraper
+qach
+6
+lang yay 4 Soq
+Discard
+-
+Tank
+meyrI'
+4
+lang yay 4 Soq 'ej porgh 3 Damo' ghaH luj
+Discard
+-
+VastStorm
+yIteb jev
+6
+lang yay 2 latlh Hoch monsters 'ej Soq 'ej 1 HoS Hoch 2 HoS luj
+Discard
+-
+NovaBreath
+puyjaq tlhuH
+7
+monsters Hoch latlh joq HIvmeH HIv tetlh
+Keep
+-
+SolarPowered
+HoS solar
+2
+legh tlhe' megh'an 1 HoS Soq pagh HoS chorDaq
+Keep
+-
+DeathFromAbove
+Hegh vo' wovbe'
+5
+lang yay 2 Soq 'ej tokyo SeH vaj SoHbe'.
+Discard
+-
+SpikedTail
+DuQwI' tlhuQ
+5
+vaj qaSlaH 1 HIv tetlh SoH, HIv chel tetlh.
+Keep
+-

@@ -24,7 +24,7 @@ public class Gameplay {
 		this.deck = deck;
 		this.playerToNumber = map;
 		if(this.deck==null) {
-			this.deck = new DeckConstructor();
+			this.deck = gameboard.deck;
 		}
 		if (playerToNumber==null) {
 			playerToNumber = new HashMap<String, Integer>();
