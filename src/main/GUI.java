@@ -31,6 +31,7 @@ public class GUI {
 	DicePanel dicePanel;
 	ButtonPanel buttonPanel;
 	JFrame myframe;
+	public String locale;
 
 	public GUI() {
 		inputLanguage();
@@ -61,6 +62,7 @@ public class GUI {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			messages = new Messages(code);
+			locale = code;
 			JOptionPane.getRootFrame().dispose();
 		}
 	}
