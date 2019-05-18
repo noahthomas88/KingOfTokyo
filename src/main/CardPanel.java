@@ -55,7 +55,7 @@ public class CardPanel extends JPanel {
 		costType.setText(messages.getString("GUI.2") + card.cost + messages.getString("GUI.3") + ", " + card.type); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		costType.setPreferredSize(new Dimension(300, 50));
 
-		buy = new JButton("Buy");
+		buy = new JButton(messages.getString("GUI.71"));
 		buy.addActionListener(new BuyListener());
 		buy.setPreferredSize(new Dimension(300, 50));
 
