@@ -1,156 +1,156 @@
 ApartmentBuilding
-Apartment Building
+apartment vIleghDI'
 5
-Gain 3 Victory Points
+lang yay 3 Soq
 Discard
 -
 ArmorPlating
-Armor Plating
+may'luch Plating
 4
-Do not lose health when you lose exactly 1 health
+wej porgh Damo' ghaH manongqu' HeghDI' exactly 1 porgh Damo' ghaH chIl
 Keep
 -
 CommuterTrain
-Commuter Train
+commuter qulmey
 4
-Gain 2 Victory Points
+lang yay 2 Soq
 Discard
 -
 CornerStore
-Corner Store
+jIba'laH ngevwI'
 3
-Gain 1 Victory Point
+lang yay 1 Soq
 Discard
 -
 Energize
-Energize
+laQ
 8
-Gain 9 energy
+9 HoS Soq
 Discard
 -
 EvacuationOrders
-Evacuation Orders
+che' tlham
 7
-All other monsters lose 5 Victory Points
+lang yay 5 luj latlh Hoch monsters
 Discard
 -
 ExtraHead
-Extra Head
+DuywI' nach
 7
-Gain 1 extra die
+1 Hegh DuywI' Soq
 Keep
 -
 Flamethrower
-Flamethrower
+flamethrower
 3
-All other players lose 2 health
+porgh Damo' ghaH 2 luj latlh Hoch DawI'pu'
 Discard
 -
 FriendOfChildren
-Friend of Children
+jup puq
 3
-Whenever you gain energy gain 1 extra energy
+whenever Soq SoH 1 HoS DuywI' Soq HoS
 Keep
 -
 GasRefinery
-Gas Refinery
+SIp Refinery
 6
-Gain 2 Victory Points and all other monsters lose 3 health
+lang yay 2 Soq 'ej porgh Damo' ghaH 3 luj latlh Hoch monsters
 Discard
 -
 GiantBrain
-Giant Brain
+giant yab
 5
-You have 1 extra die roll each turn
+1 DuywI' Hegh Hoch tlhe' tetlh Daghaj
 Keep
 -
 Heal
-Heal
+vor neH
 3
-Gain 2 Health
+Soq 2 porgh Damo' ghaH
 Discard
 -
 HighAltitudeBombing
-High Altitude Bombing
+jen 'Iv Bombing
 4
-All monsters including you lose 3 health
+3 porgh Damo' ghaH luj Hoch monsters, SoH DaH nobvam
 Discard
 -
 JetFighter
-Jet Fighter
+bIQ Duj
 5
-Gain 5 Victory Points and lose 4 health
+lang yay 5 Soq 'ej porgh 4 Damo' ghaH luj
 Discard
 -
 MakingStronger
-We're only making it stronger
+'oH neH chenmoH maH toblu'pa'
 3
-When you lose 2 health, you gain 1 energy
+HeghDI' 2 porgh Damo' ghaH SoH luj, 1 HoS Soq SoH
 Keep
 -
 NationalGuard
-National Guard
+national 'avwI'
 3
-Gain 2 Victory Points, But lose 2 Health
+lang yay 2 Soq 'ach 2 porgh Damo' ghaH chIl
 Discard
 -
 NuclearPowerPlant
-Nuclear Power Plant
+lIngchugh HoS poch
 6
-Gain 2 Victory Points and gain 3 Health
+lang yay 2 Soq je porgh 3 Damo' ghaH Soq
 Discard
 -
 Regeneration
-Regeneration
+lup
 4
-Whenever you gain health gain 1 extra health
+whenever Soq SoH 1 DuywI' porgh Damo' ghaH Soq porgh Damo' ghaH
 Keep
 -
 RootingForTheUnderdog
-Rooting for the Underdog
+Underdog 'oQqar
 3
-At the end of turn, if you have the fewest victory points, gain a victory point
+legh tlhe', bertlham fewest yay lang chorDaq, yay lang Soq
 Keep
 -
 Skyscraper
-Skyscraper
+qach
 6
-Gain 4 Victory Points
+lang yay 4 Soq
 Discard
 -
 Tank
-Tank
+meyrI'
 4
-Gain 4 Victory Points and lose 3 Health
+lang yay 4 Soq 'ej porgh 3 Damo' ghaH luj
 Discard
 -
 VastStorm
-VastStorm
+yIteb jev
 6
-Gain 2 victory points and all other monsters and lose 1 energy for every 2 energy they have
+lang yay 2 latlh Hoch monsters 'ej Soq 'ej 1 HoS Hoch 2 HoS luj
 Discard
 -
 NovaBreath
-Nova Breath
+puyjaq tlhuH
 7
-Your attack rolls attack all other monsters
+monsters Hoch latlh joq HIvmeH HIv tetlh
 Keep
 -
 SolarPowered
-Solar Powered
+HoS solar
 2
-At the end of your turn gain 1 energy if you have no energy
+legh tlhe' megh'an 1 HoS Soq pagh HoS chorDaq
 Keep
 -
 DeathFromAbove
-Death From Above
+Hegh vo' wovbe'
 5
-Gain 2 victory points and take control of Tokyo if you are not
+lang yay 2 Soq 'ej tokyo SeH vaj SoHbe'.
 Discard
 -
 SpikedTail
-Spiked tail
+DuQwI' tlhuQ
 5
-If you roll at least 1 attack, add an attack to your roll.
+vaj qaSlaH 1 HIv tetlh SoH, HIv chel tetlh.
 Keep
 -
