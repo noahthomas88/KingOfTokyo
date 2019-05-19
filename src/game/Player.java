@@ -12,6 +12,7 @@ public class Player {
 	public int extraDie;
 	public int energy;
 	public int maxHealth;
+	public int extraRoll;
 	public ArrayList<Card> cardsInHand;
 
 	public Player(String name) {
@@ -83,6 +84,6 @@ public class Player {
 	}
 
 	public int getNumberOfRolls() {
-		return 3;
+		return 3 + extraRoll;
 	}
 }
