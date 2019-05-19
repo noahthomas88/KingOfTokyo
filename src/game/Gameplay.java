@@ -128,6 +128,8 @@ public class Gameplay {
 
 	public void endTurn() {
 		String currentPlayerName = currentplayer.name;
+		currentplayer.extraDie = 0;
+		currentplayer.extraRoll = 0;
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
