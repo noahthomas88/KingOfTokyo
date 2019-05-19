@@ -27,6 +27,9 @@ public class Board {
 	public void constructPlayers(ArrayList<String> names) {
 		for (int i = 0; i < this.numOfPlayers; i++) {
 			this.playerList.add(new Player(names.get(i)));
+		} 
+		for (int i = 0; i < playerList.size(); i++){
+			this.playerList.get(i).playerList = this.playerList;
 		}
 	}
 

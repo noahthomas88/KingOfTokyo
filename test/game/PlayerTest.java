@@ -78,6 +78,28 @@ public class PlayerTest {
 	}
 	
 	@Test
+	public void testAddNegativeHealthAtZeroHealth() {
+		Player player = new Player("test");
+				
+		player.health = 0;
+		player.maxHealth = 10;
+		player.addHealth(-1);
+		
+		assertEquals(player.health, 0);
+	}
+	
+	@Test
+	public void testAddNegativeHealthAtOneHealth() {
+		Player player = new Player("test");
+				
+		player.health = 1;
+		player.maxHealth = 10;
+		player.addHealth(-1);
+		
+		assertEquals(player.health, 0);
+	}
+	
+	@Test
 	public void testAddNegativeHealth() {
 		Player player = new Player("Test");
 		player.addHealth(-1);
