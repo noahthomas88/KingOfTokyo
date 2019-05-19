@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		GUI gui = new GUI();
 		Board gameboard;
-		DeckConstructor deck = new DeckConstructor(gui.locale);
+		DeckConstructor deck = new DeckConstructor(gui.locale, gui);
 		try {
 			int numOfPlayers = gui.inputNumPlayers();
 			gameboard = new Board(numOfPlayers, deck, gui);

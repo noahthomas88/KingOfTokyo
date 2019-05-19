@@ -14,33 +14,37 @@ import game.Player;
 import main.GUI;
 import main.Messages;
 
-public class AcidAttackLogicTest {
+public class FreezeTimeLogicTest {
 
 	@Test
-	public void addsOneAttackTest() {
+	public void RolledThreeOnesGetAnotherTurnTest() {
 		Player player = new Player("test");
-		Player attackedPlayer = new Player("test");
-		attackedPlayer.health = 2;
+		player.victoryPoints = 0;
 		Card card = new Card();
-		card.name = "Acid Attack";
+		card.name = "Freeze Time";
 		player.addToHand(card);
-		
+
 		ArrayList<Dice> dice = new ArrayList<Dice>();
 		Messages message = EasyMock.niceMock(Messages.class);
 		Board board = new Board(2, null);
 		GUI gui = EasyMock.niceMock(GUI.class);
-		Gameplay gameplay = new Gameplay(gui,player,board,null,null);
+		Gameplay gameplay = new Gameplay(gui, player, board, null, null);
+
+		Dice oneDie = new Dice(gameplay.currentplayer);
+		oneDie.numberRolled = 1;
+		dice.add(oneDie);
+		dice.add(oneDie);
+		dice.add(oneDie);
+		dice.add(oneDie);
+
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player);
-		players.add(attackedPlayer);
-		board.playerList  = players;
+		board.playerList = players;
 		board.cityPlayer = player;
-		
+
 		gameplay.diceRolled(dice, message);
-		
-		assertEquals(1,attackedPlayer.health);
-	
-		
+
+		assertEquals(0, player.victoryPoints = 3);		
 	}
 
 }
