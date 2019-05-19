@@ -5,15 +5,13 @@ import java.util.ArrayList;
 import game.Player;
 import main.GUI;
 
-public class CornerStoreLogic implements CardLogic {
+public class CornerStoreLogic extends CardLogic {
 
-	@Override
 	public void use(Player player) {
 		player.addVictory(1);
 
 	}
 
-	@Override
 	public void use(Player player, ArrayList<Player> players, GUI gui) {
 		use(player);
 	}

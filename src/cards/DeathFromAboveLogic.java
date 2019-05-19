@@ -5,14 +5,8 @@ import java.util.ArrayList;
 import game.Player;
 import main.GUI;
 
-public class DeathFromAboveLogic implements CardLogic {
+public class DeathFromAboveLogic extends CardLogic {
 
-	@Override
-	public void use(Player player) {
-		throw new UnsupportedOperationException("Single parameter use is not supported for this class");
-	}
-
-	@Override
 	public void use(Player player, ArrayList<Player> players, GUI gui) {
 		player.addVictory(2);
 		gui.moveToTokyo(player);
