@@ -14,6 +14,8 @@ public class Player {
 	public int maxHealth;
 	public int extraRoll;
 	public ArrayList<Card> cardsInHand;
+	public ArrayList<Player> playerList = new ArrayList<Player>();
+	public boolean playerDeathThisTurn;
 
 	public Player(String name) {
 		if (name.equals("")) {
@@ -26,6 +28,7 @@ public class Player {
 		this.name = name;
 		this.maxHealth = 10;
 		this.cardsInHand = new ArrayList<Card>();
+		this.playerDeathThisTurn = false;
 	}
 
 	public String buildPlayerStatusString(String name, String health, String energy, String victory) {
@@ -36,11 +39,15 @@ public class Player {
 	}
 
 	public void addHealth(int i) {
-		this.health = this.health + i;
+		if(this.health > 0) {
+			this.health = this.health + i;
 
-		if (this.health >= this.maxHealth + 1) {
-			this.health = this.maxHealth;
-		}
+			if (this.health >= this.maxHealth + 1) {
+				this.health = this.maxHealth;
+			} else if (this.health <= 0) {
+				this.playerDeath();
+			}
+		}	
 	}
 
 	public void addEnergy(int i) {
@@ -97,5 +104,6 @@ public class Player {
 	
 	public void playerDeath() {
 		this.health = 0;
+		this.playerDeathThisTurn = true;
 	}
 }

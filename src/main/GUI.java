@@ -34,7 +34,6 @@ public class GUI {
 	DicePanel dicePanel;
 	ButtonPanel buttonPanel;
 	JFrame myframe;
-	JButton healButton;
 	public String locale;
 	JButton tentacleButton;
 
@@ -87,13 +86,9 @@ public class GUI {
 		this.tokyoPanel = new TokyoPanel(messages, game);	
 		this.dicePanel = new DicePanel(messages, game);
 		this.buttonPanel = new ButtonPanel(messages, game);
-		this.healButton = new JButton(messages.getString("GUI.65"));
-		healButton.setEnabled(false);
-		healButton.addActionListener(new HealListener());
 		this.tentacleButton = new JButton(messages.getString("GUI.76"));
 		tentacleButton.setEnabled(false);
 		tentacleButton.addActionListener(new TentacleListener());
-		playerPanel.add(healButton);
 		playerPanel.add(tentacleButton);
 		panels.add(tokyoPanel);
 		panels.add(cardsPanel);
@@ -111,11 +106,6 @@ public class GUI {
 	}
 	
 	public void checkEnableButton(Player currentplayer) {
-		if(currentplayer.haveCard("Rapid Healing")) {
-			this.healButton.setEnabled(true);
-		} else {
-			this.healButton.setEnabled(false);
-		}
 		if(currentplayer.haveCard("Parasitic Tentacles")) {
 			this.tentacleButton.setEnabled(true);
 		} else {
@@ -333,18 +323,7 @@ public class GUI {
 		}
 		
 	}
-	
-	class HealListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			if(game.currentplayer.health<10 && game.currentplayer.energy > 1) {
-				game.currentplayer.addEnergy(-2);
-				game.currentplayer.addHealth(1);
-			}
-		}
-
-	}
-	
+		
 	class TentacleListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
