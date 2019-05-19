@@ -406,7 +406,6 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(ui.numberToString(1)).andReturn("1");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
 		game.calculateScore(dice);
@@ -437,7 +436,6 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(ui.numberToString(1)).andReturn("energy");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
@@ -450,7 +448,7 @@ public class GameplayTest {
 		Messages message = new Messages("en");
 		player.health = 5;
 		player.energy = 5;
-		die.numberRolled = 1;
+		die.numberRolled = 5;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
@@ -472,7 +470,6 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(ui.numberToString(1)).andReturn("attack");
 		board.doAttack(player, -1);
 		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
@@ -485,7 +482,7 @@ public class GameplayTest {
 		Messages message = new Messages("en");
 		player.health = 5;
 		player.energy = 5;
-		die.numberRolled = 1;
+		die.numberRolled = 4;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
@@ -506,8 +503,7 @@ public class GameplayTest {
 		dice.add(die);
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
-		
-		EasyMock.expect(ui.numberToString(1)).andReturn("heal");
+	
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
@@ -519,7 +515,7 @@ public class GameplayTest {
 		EasyMock.replay(board, ui, die, game);
 		
 		player.health = 5;
-		die.numberRolled = 1;
+		die.numberRolled = 6;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
@@ -540,7 +536,6 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
-		EasyMock.expect(ui.numberToString(1)).andReturn("heal");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
@@ -552,7 +547,7 @@ public class GameplayTest {
 		EasyMock.replay(board, ui, die, game);
 		Messages message = new Messages("en");
 		player.health = 5;
-		die.numberRolled = 1;
+		die.numberRolled = 6;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
