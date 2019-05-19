@@ -23,7 +23,7 @@ public class PoisonQuillsLogicTest {
 		attackedPlayer.health = 2;
 		player.victoryPoints = 0;
 		Card card = new Card();
-		card.name = "Gourmet";
+		card.name = "Poison Quills";
 		player.addToHand(card);
 
 		ArrayList<Dice> dice = new ArrayList<Dice>();
