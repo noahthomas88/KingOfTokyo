@@ -113,7 +113,7 @@ public class DicePanel extends JPanel {
 				JButton button = diebuttons.get(i);
 				button.setBackground(null);
 			}
-			JOptionPane.showMessageDialog(null, "Exceed Roll Limit", "Warning", 0);
+			JOptionPane.showMessageDialog(null, messages.getString("GUI.75"), "Warning", 0);
 		}
 		this.revalidate();
 	}
@@ -136,9 +136,9 @@ public class DicePanel extends JPanel {
 
 	public void usePlotTwist() {
 		String toChange = JOptionPane
-				.showInputDialog("Which dice would you like to change (1 to max from left to right and top to bottom)");
+				.showInputDialog(messages.getString("GUI.73"));
 		String changeTo = JOptionPane
-				.showInputDialog("What would you like to change to (1, 2, 3, 4 for attack, 5 for energy, 6 for heal)");
+				.showInputDialog(messages.getString("GUI.74"));
 		if (Integer.parseInt(toChange) >= 1 && Integer.parseInt(toChange) <= numberOfDice) {
 			if (Integer.parseInt(changeTo) >= 1 && Integer.parseInt(changeTo) <= 6) {
 				dicelist.get(Integer.parseInt(toChange) - 1).numberRolled = Integer.parseInt(changeTo);

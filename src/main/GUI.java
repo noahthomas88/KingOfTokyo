@@ -221,7 +221,7 @@ public class GUI {
 	}
 	
 	public void cardCannotUseWarning() {
-		JOptionPane.showMessageDialog(null, "This card cannot be used");
+		JOptionPane.showMessageDialog(null, messages.getString("GUI.72"));
 	}
 
 	public String numberToString(int numberRolled) {
@@ -252,11 +252,11 @@ public class GUI {
 	}
 
 	public String chooseDice() {
-		return JOptionPane.showInputDialog("Which dice would you like to change (1 to max from left to right and top to bottom)");
+		return JOptionPane.showInputDialog(messages.getString("GUI.73"));
 	}
 
 	public String inputChange() {
-		return JOptionPane.showInputDialog("What would you like to change to (1, 2, 3, 4 for attack, 5 for energy, 6 for heal)");
+		return JOptionPane.showInputDialog(messages.getString("GUI.74"));
 	}
 
 	public boolean checkDieNumber(String die) {
