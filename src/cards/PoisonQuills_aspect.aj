@@ -19,7 +19,7 @@ public aspect PoisonQuills_aspect {
 				}
 			}
 			if (twosCounter >= 3) {
-				gameplay.gameboard.doAttack(gameplay.currentplayer, -2, gameplay.gameUI);
+				gameplay.gameboard.doAttack(gameplay.currentplayer, -2);
 			}
 		}
 	}
