@@ -44,7 +44,7 @@ public class FreezeTimeLogicTest {
 
 		gameplay.diceRolled(dice, message);
 
-		assertEquals(0, player.victoryPoints = 2);		
+		assertEquals(0, player.victoryPoints = 3);		
 	}
 
 }
