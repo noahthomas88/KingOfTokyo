@@ -6,7 +6,7 @@ import game.Dice;
 import game.Gameplay;
 import main.Messages;
 
-public aspect AcidAttackLogicAspect {
+public aspect AcidAttackLogic_aspect {
 	
 	pointcut callDiceRolled(ArrayList<Dice> dice, Messages message, Gameplay gameplay)  : execution(void Gameplay.diceRolled(ArrayList<Dice>, Messages)) && args(dice, message) && target(gameplay) ;
 
