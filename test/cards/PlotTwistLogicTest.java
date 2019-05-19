@@ -8,12 +8,6 @@ import main.GUI;
 
 public class PlotTwistLogicTest {
 
-	@Test(expected = UnsupportedOperationException.class)
-	public void testUse() {
-		PlotTwistLogic logic = new PlotTwistLogic();
-		logic.use(null);
-	}
-	
 	@Test
 	public void testNotResolve() {
 		PlotTwistLogic logic = new PlotTwistLogic();
