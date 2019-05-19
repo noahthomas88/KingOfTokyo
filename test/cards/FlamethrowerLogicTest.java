@@ -31,11 +31,4 @@ public class FlamethrowerLogicTest {
 		assertTrue(p3.health == 8);
 			
 	}
-	
-	@Test(expected = UnsupportedOperationException.class)
-	public void testUse() {
-		FlamethrowerLogic logic = new FlamethrowerLogic();
-		logic.use(null);
-	}
-
 }
