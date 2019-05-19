@@ -400,7 +400,7 @@ public class GameplayTest {
 		Board board = EasyMock.strictMock(Board.class);
 		GUI ui = EasyMock.strictMock(GUI.class);
 		Dice die = EasyMock.strictMock(Dice.class);
-		Player player = EasyMock.strictMock(Player.class);
+		Player player = new Player("test");
 		ArrayList<Dice> dice = new ArrayList<Dice>();
 		dice.add(die);
 		
@@ -409,8 +409,6 @@ public class GameplayTest {
 		EasyMock.expect(ui.numberToString(1)).andReturn("1");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
-		player.addHealth(0);
-		player.addEnergy(0);
 		game.calculateScore(dice);
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
@@ -431,7 +429,7 @@ public class GameplayTest {
 	@Test
 	public void GameplayDiceRolledTestEnergy() {
 		Board board = EasyMock.strictMock(Board.class);
-		Player player = EasyMock.strictMock(Player.class);
+		Player player = new Player("test");
 		GUI ui = EasyMock.strictMock(GUI.class);
 		Dice die = EasyMock.strictMock(Dice.class);
 		ArrayList<Dice> dice = new ArrayList<Dice>();
@@ -442,29 +440,31 @@ public class GameplayTest {
 		EasyMock.expect(ui.numberToString(1)).andReturn("energy");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
-		player.addHealth(0);
-		player.addEnergy(1);
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
 		ui.DisableRollButton();
 		game.checkWin();
 
-		EasyMock.replay(board, player, ui, die, game);
+		EasyMock.replay(board, ui, die, game);
 		Messages message = new Messages("en");
+		player.health = 5;
+		player.energy = 5;
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
 		game.diceRolled(dice, message);
 		
-		EasyMock.verify(player, ui, die, game);
+		EasyMock.verify(ui, die, game);
+		assertEquals(5, player.health);
+		assertEquals(6, player.energy);
 	}
 
 	@Test
 	public void GameplayDiceRolledTestAttack() {
 		Board board = EasyMock.strictMock(Board.class);
-		Player player = EasyMock.strictMock(Player.class);
+		Player player = new Player("test");
 		GUI ui = EasyMock.strictMock(GUI.class);
 		Dice die = EasyMock.strictMock(Dice.class);
 		ArrayList<Dice> dice = new ArrayList<Dice>();
@@ -475,29 +475,31 @@ public class GameplayTest {
 		EasyMock.expect(ui.numberToString(1)).andReturn("attack");
 		board.doAttack(player, -1);
 		ui.EnableCedeButton();
-		player.addHealth(0);
-		player.addEnergy(0);
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
 		ui.DisableRollButton();
 		game.checkWin();
 
-		EasyMock.replay(board, player, ui, die, game);
+		EasyMock.replay(board, ui, die, game);
 		Messages message = new Messages("en");
+		player.health = 5;
+		player.energy = 5;
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
 		game.diceRolled(dice, message);
 		
-		EasyMock.verify(board, player, ui, die, game);
+		EasyMock.verify(board, ui, die, game);
+		assertEquals(5, player.health);
+		assertEquals(5, player.energy);
 	}
 
 	@Test
 	public void GameplayDiceRolledTestHeal() {
 		Board board = EasyMock.strictMock(Board.class);
-		Player player = EasyMock.strictMock(Player.class);
+		Player player = new Player("test");
 		GUI ui = EasyMock.strictMock(GUI.class);
 		Dice die = EasyMock.strictMock(Dice.class);
 		ArrayList<Dice> dice = new ArrayList<Dice>();
@@ -508,29 +510,29 @@ public class GameplayTest {
 		EasyMock.expect(ui.numberToString(1)).andReturn("heal");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
-		player.addHealth(1);
-		player.addEnergy(0);
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
 		ui.DisableRollButton();
 		game.checkWin();
 		Messages message = new Messages("en");
-		EasyMock.replay(board, player, ui, die, game);
+		EasyMock.replay(board, ui, die, game);
 		
+		player.health = 5;
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
 		game.currentplayer = player;
 		game.diceRolled(dice, message);
 		
-		EasyMock.verify(player, ui, die, game);
+		EasyMock.verify(ui, die, game);
+		assertEquals(6, player.health);
 	}
 
 	@Test
 	public void GameplayDiceRolledTestCannotHeal() {
 		Board board = EasyMock.strictMock(Board.class);
-		Player player = EasyMock.strictMock(Player.class);
+		Player player = new Player("test");
 		GUI ui = EasyMock.strictMock(GUI.class);
 		Dice die = EasyMock.strictMock(Dice.class);
 		ArrayList<Dice> dice = new ArrayList<Dice>();
@@ -541,15 +543,15 @@ public class GameplayTest {
 		EasyMock.expect(ui.numberToString(1)).andReturn("heal");
 		board.doAttack(player, 0);
 		ui.EnableCedeButton();
-		player.addEnergy(0);
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
 		ui.DisableRollButton();
 		game.checkWin();
 
-		EasyMock.replay(board, player, ui, die, game);
+		EasyMock.replay(board, ui, die, game);
 		Messages message = new Messages("en");
+		player.health = 5;
 		die.numberRolled = 1;
 		game.gameUI = ui;
 		game.gameboard = board;
@@ -558,6 +560,7 @@ public class GameplayTest {
 		game.diceRolled(dice, message);
 		
 		EasyMock.verify(ui, die, game);
+		assertEquals(5, player.health);
 	}
 
 	@Test
