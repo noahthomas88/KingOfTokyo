@@ -11,6 +11,8 @@ public aspect Detrivore {
 	pointcut callDiceRolled(ArrayList<Dice> dice, Messages message, Gameplay gameplay)  : execution(void Gameplay.diceRolled(ArrayList<Dice>, Messages)) && args(dice, message) && target(gameplay) ;
 
 	after (ArrayList<Dice> dice, Messages message, Gameplay gameplay) : callDiceRolled(dice,message, gameplay){
-		gameplay.currentplayer.addVictory(2);
+		if(gameplay.currentplayer.haveCard("Detrivore")){
+			gameplay.currentplayer.addVictory(2);	
+		}
 	}
 }
