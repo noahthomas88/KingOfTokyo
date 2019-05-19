@@ -14,7 +14,7 @@ public aspect FireBreathingLogic_aspect {
 		if(gameplay.currentplayer.haveCard("Fire Breathing")){
 			for(Dice die : dice){
 				if(die.numberRolled == 4){
-					gameplay.gameboard.doAttack(gameplay.currentplayer, -1, gameplay.gameUI);
+					gameplay.gameboard.doAttack(gameplay.currentplayer, -1);
 				}
 			}
 		}
