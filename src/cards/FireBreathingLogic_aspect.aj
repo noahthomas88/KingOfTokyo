@@ -36,7 +36,7 @@ public aspect FireBreathingLogic_aspect {
 				attack++;
 			}
 			
-			gameplay.gameboard.doAttack(gameplay.currentplayer, -attack);
+			gameplay.gameboard.doAttack(gameplay.currentplayer, -attack, gameplay.gameUI);
 			gameplay.gameUI.EnableCedeButton();
 			if (gameplay.currentplayer != gameplay.gameboard.cityPlayer){
 				gameplay.currentplayer.addHealth(heal);

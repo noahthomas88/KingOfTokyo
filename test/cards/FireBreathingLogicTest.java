@@ -11,31 +11,36 @@ import game.Board;
 import game.Dice;
 import game.Gameplay;
 import game.Player;
+import main.GUI;
 import main.Messages;
 
 public class FireBreathingLogicTest {
 
 	@Test
-	public void NeighborsLoseOneHealthTest() {
+	public void NeighborsLoseOneAdditionalHealthTest() {
 		Player player = new Player("test");
 		Player attackedPlayer = new Player("test");
 		attackedPlayer.health = 2;
-		Card card = EasyMock.strictMock(Card.class);
-		card.name = "Acid Attack";
-		Gameplay gameplay = EasyMock.mock(Gameplay.class);
+		Card card = new Card();
+		card.name = "Fire Breathing";
+		player.addToHand(card);
+		
 		ArrayList<Dice> dice = new ArrayList<Dice>();
-		Messages message = EasyMock.mock(Messages.class);
-		Board board = EasyMock.mock(Board.class);
+		Messages message = EasyMock.niceMock(Messages.class);
+		Board board = new Board(2, null);
+		GUI gui = EasyMock.niceMock(GUI.class);
+		Gameplay gameplay = new Gameplay(gui,player,board,null,null);
+		Dice attackDie = new Dice(gameplay.currentplayer);
+		attackDie.numberRolled = 4;
+		dice.add(attackDie);
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player);
 		players.add(attackedPlayer);
-		board.playerList = players;
+		board.playerList  = players;
 		board.cityPlayer = player;
-		gameplay.gameboard = board;
-		gameplay.currentplayer = player;
-
+		
 		gameplay.diceRolled(dice, message);
-
-		assertEquals(1, attackedPlayer.health);
+		
+		assertEquals(0,attackedPlayer.health);
 	}
 }
