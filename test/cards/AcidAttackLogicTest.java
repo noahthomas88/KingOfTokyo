@@ -27,8 +27,9 @@ public class AcidAttackLogicTest {
 		
 		ArrayList<Dice> dice = new ArrayList<Dice>();
 		Messages message = EasyMock.niceMock(Messages.class);
-		Board board = new Board(2, null, null);
 		GUI gui = EasyMock.niceMock(GUI.class);
+		DeckConstructor dc = new DeckConstructor(null, gui);
+		Board board = new Board(2, null, null);
 		Gameplay gameplay = new Gameplay(gui,player,board,null,null);
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player);
