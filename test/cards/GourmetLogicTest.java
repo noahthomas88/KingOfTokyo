@@ -14,15 +14,15 @@ import game.Player;
 import main.GUI;
 import main.Messages;
 
-public class FireBreathingLogicTest {
+public class GourmetLogicTest {
 
 	@Test
-	public void NeighborsLoseOneAdditionalHealthTest() {
+	public void RolledThreeOnesGain2ExtraVictoryPointsTest() {
 		Player player = new Player("test");
 		Player attackedPlayer = new Player("test");
-		attackedPlayer.health = 2;
+		player.victoryPoints = 0;
 		Card card = new Card();
-		card.name = "Fire Breathing";
+		card.name = "Gourmet";
 		player.addToHand(card);
 
 		ArrayList<Dice> dice = new ArrayList<Dice>();
@@ -30,9 +30,13 @@ public class FireBreathingLogicTest {
 		Board board = new Board(2, null);
 		GUI gui = EasyMock.niceMock(GUI.class);
 		Gameplay gameplay = new Gameplay(gui, player, board, null, null);
-		Dice attackDie = new Dice(gameplay.currentplayer);
-		attackDie.numberRolled = 4;
-		dice.add(attackDie);
+
+		Dice oneDie = new Dice(gameplay.currentplayer);
+		oneDie.numberRolled = 1;
+		dice.add(oneDie);
+		dice.add(oneDie);
+		dice.add(oneDie);
+
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player);
 		players.add(attackedPlayer);
@@ -41,6 +45,7 @@ public class FireBreathingLogicTest {
 
 		gameplay.diceRolled(dice, message);
 
-		assertEquals(0, attackedPlayer.health);
+		assertEquals(5, player.victoryPoints);
 	}
+
 }
