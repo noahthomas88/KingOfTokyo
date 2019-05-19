@@ -14,12 +14,13 @@ import game.Player;
 import main.GUI;
 import main.Messages;
 
-public class GourmetLogicTest {
+public class PoisonQuillsLogicTest {
 
 	@Test
-	public void RolledThreeOnesGainTwoExtraVictoryPointsTest() {
+	public void RolledThreeTwosAddTwoAttacksTest() {
 		Player player = new Player("test");
 		Player attackedPlayer = new Player("test");
+		attackedPlayer.health = 2;
 		player.victoryPoints = 0;
 		Card card = new Card();
 		card.name = "Gourmet";
@@ -31,11 +32,11 @@ public class GourmetLogicTest {
 		GUI gui = EasyMock.niceMock(GUI.class);
 		Gameplay gameplay = new Gameplay(gui, player, board, null, null);
 
-		Dice oneDie = new Dice(gameplay.currentplayer);
-		oneDie.numberRolled = 1;
-		dice.add(oneDie);
-		dice.add(oneDie);
-		dice.add(oneDie);
+		Dice twoDie = new Dice(gameplay.currentplayer);
+		twoDie.numberRolled = 2;
+		dice.add(twoDie);
+		dice.add(twoDie);
+		dice.add(twoDie);
 
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player);
@@ -45,7 +46,7 @@ public class GourmetLogicTest {
 
 		gameplay.diceRolled(dice, message);
 
-		assertEquals(3, player.victoryPoints);
+		assertEquals(0, attackedPlayer.health);
 	}
 
 }
