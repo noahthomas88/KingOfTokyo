@@ -94,4 +94,8 @@ public class Player {
 	public int getNumberOfRolls() {
 		return 3 + extraRoll;
 	}
+	
+	public void playerDeath() {
+		this.health = 0;
+	}
 }
