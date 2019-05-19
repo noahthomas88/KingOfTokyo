@@ -45,7 +45,7 @@ public class GourmetLogicTest {
 
 		gameplay.diceRolled(dice, message);
 
-		assertEquals(5, player.victoryPoints);
+		assertEquals(3, player.victoryPoints);
 	}
 
 }
