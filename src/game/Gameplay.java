@@ -40,6 +40,7 @@ public class Gameplay {
 		}
 		deck.createDeck();
 		deck.reveal();
+		deck.setUI(gameUI);
 		gameUI.displayBoard(gameboard, board.numOfPlayers, this);
 		gameUI.setCards(deck.visibleCard);
 

@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import cards.Card;
+import cards.DeckConstructor;
 import game.Board;
 import game.Gameplay;
 import game.Player;
@@ -384,5 +385,22 @@ public class GUI {
 			}
 		}
 
+	}
+
+	public void opportunist(Card[] visibleCard, int index, DeckConstructor deck) {
+		for(Player player : game.gameboard.playerList) {
+			if(player.haveCard("Opportunist")) {
+				int result = JOptionPane.showConfirmDialog(null, null, "Would you like to buy" + visibleCard[index].name, JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION) {
+					if(player.energy >= visibleCard[index].cost) {
+						player.addEnergy(-visibleCard[index].cost);
+						player.cardsInHand.add(visibleCard[index]);
+						visibleCard[index] = new Card();
+						deck.reveal();
+					}
+				}
+			}
+		}
+		
 	}
 }

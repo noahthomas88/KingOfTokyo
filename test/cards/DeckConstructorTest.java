@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import main.GUI;
+
 public class DeckConstructorTest {
 	
 	@Test
@@ -82,6 +84,8 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealEmptyDeck() {
 		DeckConstructor deckCons = EasyMock.createMockBuilder(DeckConstructor.class).addMockedMethod("shuffle").withConstructor("en").createNiceMock();
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		deckCons.setUI(ui);
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.shuffle();
@@ -104,6 +108,8 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealOneCardDeck() {
 		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		deckCons.setUI(ui);
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.discard.add(card);
@@ -123,6 +129,8 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealMultiCardDeck() {
 		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		deckCons.setUI(ui);
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.discard.add(card);
@@ -162,6 +170,8 @@ public class DeckConstructorTest {
 	@Test
 	public void testSwipe(){
 		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		deckCons.setUI(ui);
 		Card healCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		Card energizeCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		energizeCard.name = "Energize";
@@ -184,6 +194,8 @@ public class DeckConstructorTest {
 	@Test
 	public void testBuy(){
 		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		deckCons.setUI(ui);
 		Card healCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		healCard.name = "Heal";
 		Card energizeCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
@@ -203,6 +215,14 @@ public class DeckConstructorTest {
 		Card[] cards = new Card[3];
 		deckCons.visibleCard = cards;
 		assertEquals(cards,deckCons.getVisibleCard());
+	}
+	
+	@Test
+	public void testSetGUI(){
+		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI ui = EasyMock.createNiceMock(GUI.class);
+		deckCons.setUI(ui);
+		assertEquals(ui, deckCons.gameUI);
 	}
 	
 
