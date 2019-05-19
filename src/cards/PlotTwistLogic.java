@@ -5,15 +5,12 @@ import java.util.ArrayList;
 import game.Player;
 import main.GUI;
 
-public class CornerStoreLogic extends CardLogic {
-
-	public void use(Player player) {
-		player.addVictory(1);
-
-	}
+public class PlotTwistLogic extends CardLogic {
 
 	public void use(Player player, ArrayList<Player> players, GUI gui) {
-		use(player);
+		if (gui.checkBeforeResolve() && gui.isCurrentPlayer(player)) {
+			gui.usePlotTwist();
+		}
 	}
 
 }

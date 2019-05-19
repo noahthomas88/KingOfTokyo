@@ -1,7 +1,5 @@
 package cards;
 
-import static org.junit.Assert.*;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -10,12 +8,6 @@ import main.GUI;
 
 public class DeathFromAboveLogicTest {
 
-	@Test(expected = UnsupportedOperationException.class)
-	public void testUse() {
-		DeathFromAboveLogic logic = new DeathFromAboveLogic();
-		logic.use(null);
-	}
-	
 	@Test
 	public void useCard() {
 		DeathFromAboveLogic logic = new DeathFromAboveLogic();

@@ -1,5 +1,6 @@
 package cards;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -29,16 +30,8 @@ public class HighAltitudeBombingLogicTest {
 		HighAltitudeBombingLogic bombingLogic = new HighAltitudeBombingLogic();
 		bombingLogic.use(p, players, null);
 		
-		assertTrue(p.health == 2);
-		assertTrue(p2.health == 4);
-		assertTrue(p3.health == 6);
-			
+		assertEquals(2, p.health);
+		assertEquals(4, p2.health);
+		assertEquals(6, p3.health);			
 	}
-	
-	@Test(expected = UnsupportedOperationException.class)
-	public void testUse() {
-		HighAltitudeBombingLogic logic = new HighAltitudeBombingLogic();
-		logic.use(null);
-	}
-
 }

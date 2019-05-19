@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,6 +26,7 @@ public class GUI {
 	GUI self = this;
 	Gameplay game;
 	Messages messages;
+	ArrayList<JPanel> panels;
 	PlayerPanel playerPanel;
 	TokyoPanel tokyoPanel;
 	CardsPanel cardsPanel;
@@ -69,6 +71,7 @@ public class GUI {
 	
 	public void displayBoard(Board myBoard, int numberOfPlayers, Gameplay game) {
 		this.game = game;
+		this.panels = new ArrayList<>();
 		myframe = new JFrame();
 		myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -82,11 +85,15 @@ public class GUI {
 		this.dicePanel = new DicePanel(messages, game);
 		this.buttonPanel = new ButtonPanel(messages, game);
 		
-		panel.add(tokyoPanel);
-		panel.add(cardsPanel);
-		panel.add(buttonPanel);
-		panel.add(dicePanel);
-		panel.add(playerPanel);
+		panels.add(tokyoPanel);
+		panels.add(cardsPanel);
+		panels.add(buttonPanel);
+		panels.add(dicePanel);
+		panels.add(playerPanel);
+		
+		for(JPanel p : panels) {
+			panel.add(p);
+		}
 
 		myframe.add(panel);
 		myframe.pack();
@@ -123,11 +130,11 @@ public class GUI {
 	}
 
 	public void moveToTokyo(Player player) {
-		this.tokyoPanel.moveToTokyo(player);
+		tokyoPanel.moveToTokyo(player);
 	}
 
 	public void moveToBay(Player player) {
-		this.tokyoPanel.movetoBay(player);
+		tokyoPanel.movetoBay(player);
 	}
 
 	public ArrayList<String> inputNames(int numOfPlayers) {
@@ -147,39 +154,39 @@ public class GUI {
 	}
 	
 	public void setActivePlayer(Integer playerNumber) {
-		this.playerPanel.setActivePlayer(playerNumber);
+		playerPanel.setActivePlayer(playerNumber);
 	}
 	
 	public void setCards(Card[] cards) {
-		this.cardsPanel.update();
+		cardsPanel.update();
 	}
 
 	public void updatePlayerText(Board myBoard) {
-		this.playerPanel.updatePlayerText();
+		playerPanel.updatePlayerText();
 	}
 
 	public void EnableEndTurnButton() {
-		this.buttonPanel.endTurn.setEnabled(true); 
+		buttonPanel.endTurn.setEnabled(true); 
 	}
 
 	public void DisableEndTurnButton() {
-		this.buttonPanel.endTurn.setEnabled(false);
+		buttonPanel.endTurn.setEnabled(false);
 	}
 
 	public void EnableRollButton() {
-		this.dicePanel.dieButton.setEnabled(true); //$NON-NLS-1$
+		dicePanel.dieButton.setEnabled(true); 
 	}
 
 	public void DisableRollButton() {
-		this.dicePanel.dieButton.setEnabled(false); //$NON-NLS-1$
+		dicePanel.dieButton.setEnabled(false);
 	}
 
 	public void EnableCedeButton() {
-		this.tokyoPanel.cedeTokyoCity.setEnabled(true); //$NON-NLS-1$
+		tokyoPanel.cedeTokyoCity.setEnabled(true);
 	}
 	
 	public void DisableCedeButton() {
-		this.tokyoPanel.cedeTokyoCity.setEnabled(false);
+		tokyoPanel.cedeTokyoCity.setEnabled(false);
 	}
 
 	public void endGame(Player currentplayer, int i) {
@@ -188,17 +195,17 @@ public class GUI {
 		} else {
 			JOptionPane.showMessageDialog(null, currentplayer.name + messages.getString("GUI.58")); //$NON-NLS-1$
 		}
-		this.buttonPanel.swipeCards.setEnabled(false);
-		this.buttonPanel.endTurn.setEnabled(false);
+		buttonPanel.swipeCards.setEnabled(false);
+		buttonPanel.endTurn.setEnabled(false);
 		for(i=0;i<3;i++) {
-			this.cardsPanel.cards.get(i).buy.setEnabled(false);
+			cardsPanel.cards.get(i).buy.setEnabled(false);
 		}
-		this.dicePanel.dieButton.setEnabled(false);
-		for(HandPanel p : this.playerPanel.playerHands) {
+		dicePanel.dieButton.setEnabled(false);
+		for(HandPanel p : playerPanel.playerHands) {
 			if(p!=null && p.cardbutton!=null)	p.cardbutton.setEnabled(false);
 		}
-		this.tokyoPanel.cedeTokyoCity.setEnabled(false);
-		this.tokyoPanel.cedeTokyoBay.setEnabled(false);
+		tokyoPanel.cedeTokyoCity.setEnabled(false);
+		tokyoPanel.cedeTokyoBay.setEnabled(false);
 		
 	}
 
@@ -215,14 +222,92 @@ public class GUI {
 	}
 	
 	public void cardCannotUseWarning() {
-		JOptionPane.showMessageDialog(null, "This card cannot be used");
+		JOptionPane.showMessageDialog(null, messages.getString("GUI.72"));
 	}
 
 	public String numberToString(int numberRolled) {
-		return this.dicePanel.numberToString(numberRolled);
+		return dicePanel.numberToString(numberRolled);
 	}
 	
 	public void replaceDice() {
-		this.dicePanel.setUp();
+		dicePanel.setUp();
+	}
+
+	public boolean checkBeforeResolve() {
+		return dicePanel.checkIsResolve();	
+	}
+
+	public boolean isCurrentPlayer(Player player) {
+		return game.currentplayer.equals(player);
+	}
+
+	public void usePlotTwist() {
+		dicePanel.usePlotTwist();
+	}
+
+	public void update() {
+		for(JPanel p : panels) {
+			p.repaint();
+			p.validate();
+		}
+	}
+
+	public String chooseDice() {
+		return JOptionPane.showInputDialog(messages.getString("GUI.73"));
+	}
+
+	public String inputChange() {
+		return JOptionPane.showInputDialog(messages.getString("GUI.74"));
+	}
+
+	public boolean checkDieNumber(String die) {
+		return Integer.parseInt(die) >= 1 && Integer.parseInt(die) <= dicePanel.numberOfDice;
+	}
+
+	public void updateDie(String die, String changeTo) {
+		dicePanel.dicelist.get(Integer.parseInt(die) - 1).numberRolled = Integer.parseInt(changeTo);
+		dicePanel.diebuttons.get(Integer.parseInt(die) - 1).setText(numberToString(Integer.parseInt(changeTo)));
+		update();
+	}
+
+	public boolean checkNumber(String changeTo) {
+		return Integer.parseInt(changeTo) >= 1 && Integer.parseInt(changeTo) <= 6;
+	}
+
+	public void HealingRay(Player currentplayer, Board gameboard) {
+		if(currentplayer.haveCard("Healing Ray")) {
+			int result = JOptionPane.showConfirmDialog(null, null, "Would you like to use Healing Ray?", JOptionPane.YES_NO_OPTION);
+			if (result == JOptionPane.YES_OPTION) {
+				for(Player player : gameboard.playerList) {
+					if(player.health<10) {
+						if(player.energy > 1) {
+							player.addHealth(1);
+							player.addEnergy(-2);
+							currentplayer.addEnergy(2);
+						} else if (player.energy == 1) {
+							player.addHealth(1);
+							player.addEnergy(-1);
+							currentplayer.addEnergy(1);
+						}
+						this.updatePlayerText(gameboard);
+					}
+				}
+			}
+		}
+		
+	}
+
+	public void Camouflage(Player indexedPlayer) {
+		if(indexedPlayer.haveCard("Camouflage")) {
+			Random random = new Random();
+			int result = random.nextInt(6);
+			if(result == 5) {
+				JOptionPane.showConfirmDialog(null, null, "Camouflage saved a health point", JOptionPane.DEFAULT_OPTION);
+				indexedPlayer.addHealth(1);
+			} else {
+				JOptionPane.showConfirmDialog(null, null, "Camouflage failed", JOptionPane.DEFAULT_OPTION);
+			}
+		}
+		
 	}
 }

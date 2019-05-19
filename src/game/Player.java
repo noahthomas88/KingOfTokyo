@@ -9,8 +9,10 @@ public class Player {
 	public String name = "";
 	public int health;
 	public int victoryPoints;
+	public int extraDie;
 	public int energy;
 	public int maxHealth;
+	public int extraRoll;
 	public ArrayList<Card> cardsInHand;
 
 	public Player(String name) {
@@ -20,6 +22,7 @@ public class Player {
 		this.health = 10;
 		this.victoryPoints = 0;
 		this.energy = 0;
+		this.extraDie = 0;
 		this.name = name;
 		this.maxHealth = 10;
 		this.cardsInHand = new ArrayList<Card>();
@@ -62,6 +65,14 @@ public class Player {
 	public void addToHand(Card card) {
 		this.cardsInHand.add(card);
 	}
+	
+	public void removeCard(String string) {
+		for(int i = 0; i < this.cardsInHand.size(); i++) {
+			if(this.cardsInHand.get(i).name.equals(string)) {
+				this.cardsInHand.remove(i);
+			}
+		}
+	}
 
 	public void subMaxHealth() {
 		this.maxHealth--;
@@ -77,10 +88,10 @@ public class Player {
 	}
 
 	public int getNumberOfDie() {
-		return 6;
+		return 6 + extraDie;
 	}
 
 	public int getNumberOfRolls() {
-		return 3;
+		return 3 + extraRoll;
 	}
 }

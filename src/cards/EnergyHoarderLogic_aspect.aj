@@ -12,9 +12,4 @@ public aspect EnergyHoarderLogic_aspect {
 			game.currentplayer.addVictory(victoryPerSix);
 		}
 	}
-	
-	void around(Gameplay game) : callEndTurn(game) {
-		proceed(game);
-	}
-
 }

@@ -7,7 +7,7 @@ public aspect AlienOrigin_aspect {
 	pointcut callBuyCard(int number, Gameplay gameplay) : execution(void Gameplay.buyCard(int)) && args(number) && target(gameplay);
 
 	void around(int number, Gameplay gameplay) : callBuyCard(number, gameplay) {
-		if(gameplay.currentplayer.haveCard("Alien Origin")){
+		if (gameplay.currentplayer.haveCard("Alien Origin")) {
 			Card tobuy = gameplay.deck.visibleCard[number - 1];
 			if (gameplay.currentplayer.energy >= tobuy.cost - 1) {
 				Card card = gameplay.deck.buy(number - 1);
@@ -21,8 +21,7 @@ public aspect AlienOrigin_aspect {
 			} else {
 				gameplay.gameUI.energyWarning();
 			}
-		}
-		else{
+		} else {
 			proceed(number, gameplay);
 		}
 	}

@@ -110,6 +110,13 @@ public class CardLoaderTest {
 		assertTrue(logic.getClass().getName().equals("cards.ApartmentBuildingLogic"));
 	}
 	
+	@Test
+	public void getAspectTest() {
+		CardLoader loader = new CardLoader();
+		CardLogic logic = loader.getClass("ExtraHead");
+		assertTrue(logic.getClass().getName().equals("cards.CardLogic"));
+	}
+	
 	@Test(expected = RuntimeException.class)
 	public void getBadClassTest() {
 		CardLoader loader = new CardLoader();

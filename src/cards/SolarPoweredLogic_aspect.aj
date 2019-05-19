@@ -12,9 +12,5 @@ public aspect SolarPoweredLogic_aspect {
 			game.currentplayer.addEnergy(1);
 		}
 	}
-	
-	void around(Gameplay game) : callEndTurn(game) {
-		proceed(game);
-	}
 
 }

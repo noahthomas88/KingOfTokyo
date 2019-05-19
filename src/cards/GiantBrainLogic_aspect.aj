@@ -6,7 +6,9 @@ public aspect GiantBrainLogic_aspect {
 
 	pointcut giantBrain(Player player) : execution(int Player.getNumberOfRolls()) && target(player);
 
-	int around(Player player): giantBrain(player) {
-		return player.haveCard("Giant Brain")? proceed(player) + 1 : proceed(player);
+	before(Player player): giantBrain(player) {
+		if(player.haveCard("Giant Brain")) {
+			player.extraRoll++;
+		}
 	}
 }

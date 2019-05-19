@@ -74,19 +74,19 @@ public class Gameplay {
 		int energy = 0;
 		
 		for (Dice die : dicelist) {
-			String result = gameUI.numberToString(die.numberRolled);
-			if (result.equals(message.getString("GUI.64"))) {
+			if (die.numberRolled == 4) {
 				attack++;
-			} else if (result.equals(message.getString("GUI.65"))) {
+			} else if (die.numberRolled == 6) {
+				gameUI.HealingRay(this.currentplayer, this.gameboard);
 				heal++;
-			} else if (result.equals(message.getString("GUI.62"))) {
+			} else if (die.numberRolled == 5) {
 				energy++;
 			} else {
 				otherdice.add(die);
 			}
 		}
 		
-		gameboard.doAttack(currentplayer, -attack);
+		gameboard.doAttack(currentplayer, -attack, gameUI);
 		gameUI.EnableCedeButton();
 		if (currentplayer != gameboard.cityPlayer){
 			currentplayer.addHealth(heal);
@@ -128,6 +128,8 @@ public class Gameplay {
 
 	public void endTurn() {
 		String currentPlayerName = currentplayer.name;
+		currentplayer.extraDie = 0;
+		currentplayer.extraRoll = 0;
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {

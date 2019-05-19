@@ -34,12 +34,4 @@ public class GasRefineryLogicTest {
 		assertTrue(p3.health == 4);
 			
 	}
-	
-	@Test(expected = UnsupportedOperationException.class)
-	public void testUse() {
-		GasRefineryLogic logic = new GasRefineryLogic();
-		logic.use(null);
-	}
-
-
 }
