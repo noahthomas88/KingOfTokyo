@@ -22,7 +22,7 @@ public class DetrivoreLogicTest {
 		Card card = new Card();
 		card.name = "Detrivore";
 		player.addToHand(card);
-		Board board = new Board(2, null);
+		Board board = new Board(2, null, null);
 		GUI gui = EasyMock.niceMock(GUI.class);
 		Gameplay gameplay = new Gameplay(gui,player,board,null,null);
 		ArrayList<Dice> dice = new ArrayList<Dice>();
