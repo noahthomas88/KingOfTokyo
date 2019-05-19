@@ -52,6 +52,7 @@ public class Gameplay {
 	}
 
 	public void beginTurn() {
+		gameUI.checkHealButton(currentplayer);
 		gameUI.setActivePlayer(playerToNumber.get(currentplayer.name));
 		gameUI.DisableEndTurnButton();
 		if (gameboard.cityPlayer == currentplayer) {
