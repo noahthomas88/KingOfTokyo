@@ -237,5 +237,12 @@ public class PlayerTest {
 		player.addToHand(card1);
 		assertTrue(player.haveCard("card"));	
 	}
+	
+	@Test
+	public void playerDeath() {
+		Player player = new Player("TestDummy");
+		player.playerDeath();
+		assertEquals(player.health, 0);
+	}
 
 }
