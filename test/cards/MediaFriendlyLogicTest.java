@@ -17,80 +17,33 @@ public class MediaFriendlyLogicTest {
 	
 	@Test
 	public void testBuyCardHaveCard() {
-		Player player = new Player("test");
+		Player player = EasyMock.strictMock(Player.class);
 		Card card = EasyMock.strictMock(Card.class);
 		Board board = EasyMock.strictMock(Board.class);
 		GUI gui = EasyMock.niceMock(GUI.class);
-		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
+		Gameplay game = new Gameplay(gui, player, board, deck, null);
 		
-		game.deck = deck;
-
-		card.name = "Solar Powered";
-		board.numOfPlayers = 1;
-		board.playerList = new ArrayList<>();
-		board.playerList.add(player);
-		
-		player.victoryPoints = 0;
+		deck.visibleCard = new Card[3];
+		Card toBuy = EasyMock.strictMock(Card.class);
+		deck.visibleCard[0] = toBuy;
 		player.energy = 4;
-		player.addToHand(card);
-		HashMap<String, Integer> playerToNumber= new HashMap<>();
-		playerToNumber.put("test", 0);
+		toBuy.cost = 4;
+		toBuy.type = "Keep";
 		
-		game.currentplayer = player;
-		game.gameboard = board;
-		game.playerToNumber = playerToNumber;
-		game.gameUI = gui;
+		EasyMock.expect(player.haveCard("Media Friendly")).andReturn(true);
+		player.addVictory(1);
+		EasyMock.expect(player.haveCard("Alien Origin")).andReturn(false);
+		EasyMock.expect(deck.buy(0)).andReturn(toBuy);
+		player.addEnergy(-4);
+		player.addToHand(toBuy);
+		gui.setCards(deck.visibleCard);
+		gui.updatePlayerText(board);
 		
-		Card testCard = EasyMock.strictMock(Card.class);
-		testCard.name = "TestCard";
-		testCard.type = "NotDiscard";
-		testCard.cost = 4;
-		game.deck.visibleCard = new Card[3];
-		EasyMock.expect(deck.buy(0)).andReturn(testCard);
+		EasyMock.replay(card, board, gui, player, deck);
 		
-		game.deck.visibleCard[0] = testCard;
-		
-		EasyMock.replay(card, board, gui, game, deck);
 		game.buyCard(1);
 		
-		assertEquals(player.victoryPoints, 1);
+		EasyMock.verify(gui, player, deck);
 	}
-	
-	@Test
-	public void testBuyTwoCardsHaveCard() {
-		Player player = new Player("test");
-		Card card = EasyMock.strictMock(Card.class);
-		Board board = EasyMock.strictMock(Board.class);
-		GUI gui = EasyMock.strictMock(GUI.class);
-		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
-
-		card.name = "Solar Powered";
-		board.numOfPlayers = 1;
-		board.playerList = new ArrayList<>();
-		board.playerList.add(player);
-		
-		player.victoryPoints = 0;
-		player.addToHand(card);
-		HashMap<String, Integer> playerToNumber= new HashMap<>();
-		playerToNumber.put("test", 0);
-		
-		game.currentplayer = player;
-		game.gameboard = board;
-		game.playerToNumber = playerToNumber;
-		game.gameUI = gui;
-		
-		
-		Card card2 = EasyMock.strictMock(Card.class);
-		card.name = "TestCard";
-		game.deck.visibleCard[0] = card;
-		game.deck.visibleCard[1] = card2;
-		
-		
-		game.buyCard(0);
-		game.buyCard(1);
-		
-		assertEquals(player.victoryPoints, 2);
-	}
-
 }
