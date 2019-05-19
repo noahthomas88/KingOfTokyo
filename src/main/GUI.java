@@ -35,6 +35,7 @@ public class GUI {
 	JFrame myframe;
 	JButton healButton;
 	public String locale;
+	JButton tentacleButton;
 
 	public GUI() {
 		inputLanguage();
@@ -88,7 +89,11 @@ public class GUI {
 		this.healButton = new JButton(messages.getString("GUI.65"));
 		healButton.setEnabled(false);
 		healButton.addActionListener(new HealListener());
+		this.tentacleButton = new JButton(messages.getString("GUI.76"));
+		tentacleButton.setEnabled(false);
+		tentacleButton.addActionListener(new TentacleListener());
 		playerPanel.add(healButton);
+		playerPanel.add(tentacleButton);
 		panels.add(tokyoPanel);
 		panels.add(cardsPanel);
 		panels.add(buttonPanel);
@@ -104,11 +109,16 @@ public class GUI {
 		myframe.setVisible(true);
 	}
 	
-	public void checkHealButton(Player currentplayer) {
+	public void checkEnableButton(Player currentplayer) {
 		if(currentplayer.haveCard("Rapid Healing")) {
 			this.healButton.setEnabled(true);
 		} else {
 			this.healButton.setEnabled(false);
+		}
+		if(currentplayer.haveCard("Parasitic Tentacles")) {
+			this.tentacleButton.setEnabled(true);
+		} else {
+			this.tentacleButton.setEnabled(false);
 		}
 	}
 	
@@ -329,6 +339,48 @@ public class GUI {
 			if(game.currentplayer.health<10 && game.currentplayer.energy > 1) {
 				game.currentplayer.addEnergy(-2);
 				game.currentplayer.addHealth(1);
+			}
+		}
+
+	}
+	
+	class TentacleListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			JPanel panel =  new JPanel();
+			for(Player player : game.gameboard.playerList) {
+				for(Card card : player.cardsInHand) {
+					JButton buybutton = new JButton(card.name + ":" + card.cost);
+					buybutton.addActionListener(new BuyListener(card.name));
+					panel.add(buybutton);
+				}
+			}
+			JOptionPane.showConfirmDialog(null, panel, "Please select a card to buy", JOptionPane.DEFAULT_OPTION);
+		}
+
+	}
+	
+	class BuyListener implements ActionListener {
+		
+		String name;
+		
+		public BuyListener(String name) {
+			this.name = name;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			for(Player player : game.gameboard.playerList) {
+				for(Card card : player.cardsInHand) {
+					if(card.name.equals(this.name)) {
+						if(game.currentplayer.energy>=card.cost) {
+							game.currentplayer.addEnergy(-card.cost);
+							player.addEnergy(card.cost);
+							game.currentplayer.cardsInHand.add(card);
+							player.cardsInHand.remove(card);
+						}
+					}
+				}
 			}
 		}
 
