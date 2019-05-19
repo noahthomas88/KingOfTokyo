@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import cards.Card;
+import cards.DeckConstructor;
 import game.Board;
 import game.Gameplay;
 import game.Player;
@@ -34,6 +35,7 @@ public class GUI {
 	ButtonPanel buttonPanel;
 	JFrame myframe;
 	public String locale;
+	JButton tentacleButton;
 
 	public GUI() {
 		inputLanguage();
@@ -84,7 +86,10 @@ public class GUI {
 		this.tokyoPanel = new TokyoPanel(messages, game);	
 		this.dicePanel = new DicePanel(messages, game);
 		this.buttonPanel = new ButtonPanel(messages, game);
-		
+		this.tentacleButton = new JButton(messages.getString("GUI.76"));
+		tentacleButton.setEnabled(false);
+		tentacleButton.addActionListener(new TentacleListener());
+		playerPanel.add(tentacleButton);
 		panels.add(tokyoPanel);
 		panels.add(cardsPanel);
 		panels.add(buttonPanel);
@@ -98,6 +103,14 @@ public class GUI {
 		myframe.add(panel);
 		myframe.pack();
 		myframe.setVisible(true);
+	}
+	
+	public void checkEnableButton(Player currentplayer) {
+		if(currentplayer.haveCard("Parasitic Tentacles")) {
+			this.tentacleButton.setEnabled(true);
+		} else {
+			this.tentacleButton.setEnabled(false);
+		}
 	}
 	
 	public Integer inputNumPlayers() {
@@ -306,6 +319,65 @@ public class GUI {
 				indexedPlayer.addHealth(1);
 			} else {
 				JOptionPane.showConfirmDialog(null, null, "Camouflage failed", JOptionPane.DEFAULT_OPTION);
+			}
+		}
+		
+	}
+		
+	class TentacleListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			JPanel panel =  new JPanel();
+			for(Player player : game.gameboard.playerList) {
+				for(Card card : player.cardsInHand) {
+					JButton buybutton = new JButton(card.name + ":" + card.cost);
+					buybutton.addActionListener(new BuyListener(card.name));
+					panel.add(buybutton);
+				}
+			}
+			JOptionPane.showConfirmDialog(null, panel, "Please select a card to buy", JOptionPane.DEFAULT_OPTION);
+		}
+
+	}
+	
+	class BuyListener implements ActionListener {
+		
+		String name;
+		
+		public BuyListener(String name) {
+			this.name = name;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			for(Player player : game.gameboard.playerList) {
+				for(Card card : player.cardsInHand) {
+					if(card.name.equals(this.name)) {
+						if(game.currentplayer.energy>=card.cost) {
+							game.currentplayer.addEnergy(-card.cost);
+							player.addEnergy(card.cost);
+							game.currentplayer.cardsInHand.add(card);
+							player.cardsInHand.remove(card);
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	public void opportunist (int index, DeckConstructor deck) {
+		for(Player player : game.gameboard.playerList) {
+			if(player.haveCard("Opportunist")) {
+				int result = JOptionPane.showConfirmDialog(null, null, "Would you like to buy" + deck.visibleCard[index].name, JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION) {
+					if(player.energy >= deck.visibleCard[index].cost) {
+						player.addEnergy(-deck.visibleCard[index].cost);
+						player.cardsInHand.add(deck.visibleCard[index]);
+						deck.visibleCard[index] = new Card();
+						deck.reveal();
+					}
+				}
 			}
 		}
 		

@@ -8,7 +8,8 @@ import main.GUI;
 public class EvenBiggerLogic extends CardLogic{
 	
 	public void use(Player player) {
-		player.maxHealth = 12;
+		player.addMaxHealth();
+		player.addMaxHealth();
 	}
 
 	public void use(Player player, ArrayList<Player> players, GUI gui) {

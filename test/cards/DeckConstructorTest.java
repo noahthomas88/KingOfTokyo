@@ -7,11 +7,14 @@ import java.util.ArrayList;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import main.GUI;
+
 public class DeckConstructorTest {
 	
 	@Test
 	public void testConstrctor() {
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		assertTrue(deckCons.deck.isEmpty());
 		assertEquals(deckCons.visibleCard.length, 3);
 		for (int index = 0; index < 3; index++) {
@@ -22,7 +25,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testCreateDeck() {
-		DeckConstructor deckCons = EasyMock.partialMockBuilder(DeckConstructor.class).withConstructor("en").addMockedMethod("shuffle").createStrictMock();
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = EasyMock.partialMockBuilder(DeckConstructor.class).withConstructor("en", mockedUI).addMockedMethod("shuffle").createStrictMock();
 		deckCons.shuffle();
 		
 		EasyMock.replay(deckCons);
@@ -40,7 +44,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testAddDiscardToDeckEmptyToEmpty() {
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		deckCons.addDiscardtoDeck();
 		assertTrue(deckCons.deck.isEmpty());
 		assertTrue(deckCons.discard.isEmpty());
@@ -48,7 +53,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testAddDiscardToDeckOneToEmpty() {
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card card = EasyMock.niceMock(Card.class);
 		deckCons.discard.add(card);
 		deckCons.addDiscardtoDeck();
@@ -58,7 +64,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testAddDiscardToDeckMultiToEmpty() {
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card card = EasyMock.niceMock(Card.class);
 		deckCons.discard.add(card);
 		deckCons.discard.add(card);
@@ -69,7 +76,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testAddDiscardToDeckMultiToOne() {
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card card = EasyMock.niceMock(Card.class);
 		deckCons.deck.add(card);
 		deckCons.discard.add(card);
@@ -81,7 +89,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testRevealEmptyDeck() {
-		DeckConstructor deckCons = EasyMock.createMockBuilder(DeckConstructor.class).addMockedMethod("shuffle").withConstructor("en").createNiceMock();
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = EasyMock.partialMockBuilder(DeckConstructor.class).withConstructor("en", mockedUI).addMockedMethod("shuffle").createStrictMock();
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.shuffle();
@@ -103,7 +112,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testRevealOneCardDeck() {
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.discard.add(card);
@@ -122,7 +132,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testRevealMultiCardDeck() {
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.discard.add(card);
@@ -141,7 +152,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testAddToEmptyDiscard(){
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		
 		deckCons.addToDiscard(card);
@@ -151,7 +163,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testAddToNonEmptyDiscard(){
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		deckCons.discard.add(card);
 		deckCons.addToDiscard(card);
@@ -161,7 +174,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testSwipe(){
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card healCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		Card energizeCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		energizeCard.name = "Energize";
@@ -183,7 +197,8 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testBuy(){
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card healCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		healCard.name = "Heal";
 		Card energizeCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
@@ -199,7 +214,8 @@ public class DeckConstructorTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testGetVisibleCard(){
-		DeckConstructor deckCons = new DeckConstructor("en");
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
 		Card[] cards = new Card[3];
 		deckCons.visibleCard = cards;
 		assertEquals(cards,deckCons.getVisibleCard());

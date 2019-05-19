@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import org.easymock.EasyMock;
+
 import game.Gameplay;
+import main.GUI;
 
 public class DeckConstructor {
 	
@@ -12,8 +15,9 @@ public class DeckConstructor {
 	public Card[] visibleCard;
 	ArrayList<Card> discard;
 	String locale;
+	GUI gameUI;
 
-	public DeckConstructor(String locale) {
+	public DeckConstructor(String locale, GUI UI) {
 		this.deck = new ArrayList<>();
 		this.visibleCard = new Card[3];
 		for (int index = 0; index < 3; index++) {
@@ -21,6 +25,7 @@ public class DeckConstructor {
 		}
 		this.discard = new ArrayList<>();
 		this.locale = locale;
+		this.gameUI = UI;
 	}
 	
 	public void createDeck(){
@@ -50,6 +55,7 @@ public class DeckConstructor {
 					shuffle();
 				}
 				this.visibleCard[index] = this.deck.remove(0);
+				gameUI.opportunist(index, this);
 			}
 			index++;
 		}

@@ -7,19 +7,22 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import cards.DeckConstructor;
+import main.GUI;
 
 public class BoardTest {
 
 	@Test
 	public void testNumOfPlayersmin() {
-		Board board = new Board(2, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board board = new Board(2, null, mockedUI);
 
 		assertEquals(2, board.numOfPlayers);
 	}
 
 	@Test
 	public void testNumOfPlayersmax() {
-		Board board = new Board(6, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board board = new Board(6, null, mockedUI);
 
 		assertEquals(6, board.numOfPlayers);
 	}
@@ -27,7 +30,8 @@ public class BoardTest {
 	@Test
 	public void testNumOfPlayersLB() {
 		try {
-			Board board = new Board(1, null);
+			GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+			Board board = new Board(1, null, mockedUI);
 			fail("should throw IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
 		}
@@ -36,7 +40,8 @@ public class BoardTest {
 	@Test
 	public void testNumOfPlayersUB() {
 		try {
-			Board board = new Board(7, null);
+			GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+			Board board = new Board(7, null, mockedUI);
 			fail("should throw IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
 		}
@@ -44,7 +49,8 @@ public class BoardTest {
 
 	@Test
 	public void testConstructPlayers() {
-		Board board = new Board(2, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board board = new Board(2, null, mockedUI);
 
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
@@ -58,7 +64,8 @@ public class BoardTest {
 
 	@Test
 	public void testConstructPlayersIllegal() {
-		Board board = new Board(2, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board board = new Board(2, null, mockedUI);
 
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
@@ -73,7 +80,8 @@ public class BoardTest {
 
 	@Test
 	public void testInitializeDeck() {
-		Board board = new Board(2, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board board = new Board(2, null, mockedUI);
 		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
 		board.deck = deck;
 
@@ -88,7 +96,8 @@ public class BoardTest {
 
 	@Test
 	public void testDoAttackWithBothTokyoSpotsFull() {
-		Board board = new Board(3, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board board = new Board(3, null, mockedUI);
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
 		names.add("test2");
@@ -125,7 +134,8 @@ public class BoardTest {
 	
 	@Test
 	public void testDoAttackWithNoBayPlayer() {
-		Board board = new Board(2, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board board = new Board(2, null, mockedUI);
 		ArrayList<String> names = new ArrayList<>();
 		names.add("test1");
 		names.add("test2");
