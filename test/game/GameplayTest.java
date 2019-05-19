@@ -296,6 +296,7 @@ public class GameplayTest {
 		
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
+		EasyMock.expect(test1.haveCard("Ultravore")).andReturn(false);
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		test1.addVictory(2);
