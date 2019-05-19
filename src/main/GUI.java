@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -271,5 +272,42 @@ public class GUI {
 
 	public boolean checkNumber(String changeTo) {
 		return Integer.parseInt(changeTo) >= 1 && Integer.parseInt(changeTo) <= 6;
+	}
+
+	public void HealingRay(Player currentplayer, Board gameboard) {
+		if(currentplayer.haveCard("Healing Ray")) {
+			int result = JOptionPane.showConfirmDialog(null, null, "Would you like to use Healing Ray?", JOptionPane.YES_NO_OPTION);
+			if (result == JOptionPane.YES_OPTION) {
+				for(Player player : gameboard.playerList) {
+					if(player.health<10) {
+						if(player.energy > 1) {
+							player.addHealth(1);
+							player.addEnergy(-2);
+							currentplayer.addEnergy(2);
+						} else if (player.energy == 1) {
+							player.addHealth(1);
+							player.addEnergy(-1);
+							currentplayer.addEnergy(1);
+						}
+						this.updatePlayerText(gameboard);
+					}
+				}
+			}
+		}
+		
+	}
+
+	public void Camouflage(Player indexedPlayer) {
+		if(indexedPlayer.haveCard("Camouflage")) {
+			Random random = new Random();
+			int result = random.nextInt(6);
+			if(result == 5) {
+				JOptionPane.showConfirmDialog(null, null, "Camouflage saved a health point", JOptionPane.DEFAULT_OPTION);
+				indexedPlayer.addHealth(1);
+			} else {
+				JOptionPane.showConfirmDialog(null, null, "Camouflage failed", JOptionPane.DEFAULT_OPTION);
+			}
+		}
+		
 	}
 }

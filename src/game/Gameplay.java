@@ -78,6 +78,7 @@ public class Gameplay {
 			if (result.equals(message.getString("GUI.64"))) {
 				attack++;
 			} else if (result.equals(message.getString("GUI.65"))) {
+				gameUI.HealingRay(this.currentplayer, this.gameboard);
 				heal++;
 			} else if (result.equals(message.getString("GUI.62"))) {
 				energy++;
@@ -86,7 +87,7 @@ public class Gameplay {
 			}
 		}
 		
-		gameboard.doAttack(currentplayer, -attack);
+		gameboard.doAttack(currentplayer, -attack, gameUI);
 		gameUI.EnableCedeButton();
 		if (currentplayer != gameboard.cityPlayer){
 			currentplayer.addHealth(heal);

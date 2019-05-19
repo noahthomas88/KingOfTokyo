@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 
 import cards.DeckConstructor;
+import main.GUI;
 
 public class Board {
 
@@ -28,10 +29,11 @@ public class Board {
 		}
 	}
 
-	public void doAttack(Player attacker, int attack) {
+	public void doAttack(Player attacker, int attack, GUI gameUI) {
 		if (cityPlayer.equals(attacker) || (bayPlayer != null && bayPlayer.equals(attacker))) {
 			for (Player indexedPlayer : playerList)
 				if (!indexedPlayer.equals(cityPlayer) && !indexedPlayer.equals(bayPlayer)) {
+					gameUI.Camouflage(indexedPlayer);
 					indexedPlayer.addHealth(attack);
 				}
 		} else if (bayPlayer != null) {
