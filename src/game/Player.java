@@ -9,6 +9,7 @@ public class Player {
 	public String name = "";
 	public int health;
 	public int victoryPoints;
+	public int extraDie;
 	public int energy;
 	public int maxHealth;
 	public ArrayList<Card> cardsInHand;
@@ -20,6 +21,7 @@ public class Player {
 		this.health = 10;
 		this.victoryPoints = 0;
 		this.energy = 0;
+		this.extraDie = 0;
 		this.name = name;
 		this.maxHealth = 10;
 		this.cardsInHand = new ArrayList<Card>();
@@ -77,7 +79,7 @@ public class Player {
 	}
 
 	public int getNumberOfDie() {
-		return 6;
+		return 6 + extraDie;
 	}
 
 	public int getNumberOfRolls() {

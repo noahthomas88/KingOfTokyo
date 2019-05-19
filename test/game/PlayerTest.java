@@ -15,12 +15,13 @@ public class PlayerTest {
 	@Test
 	public void testPlayerConstructor() {
 		Player player = new Player("test");
-		assertTrue(player.health == 10);
-		assertTrue(player.victoryPoints == 0);
-		assertTrue(player.energy == 0);
-		assertTrue(player.name.equals("test"));
-		assertTrue(player.maxHealth == 10);
-		assertTrue(player.cardsInHand.size() == 0);
+		assertEquals(10, player.health);
+		assertEquals(0, player.victoryPoints);
+		assertEquals(0, player.energy);
+		assertEquals(0, player.extraDie);
+		assertEquals("test", player.name);
+		assertEquals(10, player.maxHealth);
+		assertEquals(0, player.cardsInHand.size());
 	}
 	
 	@Test
@@ -46,7 +47,7 @@ public class PlayerTest {
 	@Test
 	public void testgetNumberofDie6() {
 		Player player = new Player("TestDummy");
-		assertTrue(player.getNumberOfDie() == 6);
+		assertEquals(6, player.getNumberOfDie());
 	}
 
 	@Test
