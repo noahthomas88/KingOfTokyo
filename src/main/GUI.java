@@ -365,6 +365,18 @@ public class GUI {
 		}
 
 	}
+	
+	class WingListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			if(game.currentplayer.energy>1) {
+				game.currentplayer.addEnergy(-2);
+				game.currentplayer.wings = true;
+			}
+		}
+
+	}
 
 	public void opportunist (int index, DeckConstructor deck) {
 		for(Player player : game.gameboard.playerList) {

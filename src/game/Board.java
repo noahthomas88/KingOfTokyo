@@ -38,7 +38,9 @@ public class Board {
 			for (Player indexedPlayer : playerList)
 				if (!indexedPlayer.equals(cityPlayer) && !indexedPlayer.equals(bayPlayer)) {
 					gameUI.Camouflage(indexedPlayer);
-					indexedPlayer.addHealth(attack);
+					if(!indexedPlayer.wings) {
+						indexedPlayer.addHealth(attack);
+					}
 				}
 		} else if (bayPlayer != null) {
 			cityPlayer.addHealth(attack);

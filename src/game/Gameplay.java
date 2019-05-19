@@ -52,6 +52,7 @@ public class Gameplay {
 	}
 
 	public void beginTurn() {
+		currentplayer.wings = false;
 		gameUI.checkEnableButton(currentplayer);
 		gameUI.setActivePlayer(playerToNumber.get(currentplayer.name));
 		gameUI.DisableEndTurnButton();
