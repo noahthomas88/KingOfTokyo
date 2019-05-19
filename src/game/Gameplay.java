@@ -74,12 +74,11 @@ public class Gameplay {
 		int energy = 0;
 		
 		for (Dice die : dicelist) {
-			String result = gameUI.numberToString(die.numberRolled);
-			if (result.equals(message.getString("GUI.64"))) {
+			if (die.numberRolled == 4) {
 				attack++;
-			} else if (result.equals(message.getString("GUI.65"))) {
+			} else if (die.numberRolled == 6) {
 				heal++;
-			} else if (result.equals(message.getString("GUI.62"))) {
+			} else if (die.numberRolled == 5) {
 				energy++;
 			} else {
 				otherdice.add(die);
