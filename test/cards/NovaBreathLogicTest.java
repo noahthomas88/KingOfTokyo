@@ -10,6 +10,7 @@ import org.junit.Test;
 import game.Board;
 import game.Dice;
 import game.Player;
+import main.GUI;
 
 public class NovaBreathLogicTest {
 
@@ -21,8 +22,8 @@ public class NovaBreathLogicTest {
 		playerList.add(p2 = new Player("test2"));
 		playerList.add(p3 = new Player("test3"));
 		playerList.add(p4 = new Player("test4"));
-
-		Board b = new Board(4, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board b = new Board(4, null, mockedUI);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		b.bayPlayer = p2;
@@ -50,8 +51,8 @@ public class NovaBreathLogicTest {
 		playerList.add(p2 = new Player("test2"));
 		playerList.add(p3 = new Player("test3"));
 		playerList.add(p4 = new Player("test4"));
-
-		Board b = new Board(4, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board b = new Board(4, null, mockedUI);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		b.bayPlayer = p2;
@@ -79,8 +80,8 @@ public class NovaBreathLogicTest {
 		playerList.add(p2 = new Player("test2"));
 		playerList.add(p3 = new Player("test3"));
 		playerList.add(p4 = new Player("test4"));
-
-		Board b = new Board(4, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board b = new Board(4, null, mockedUI);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		b.bayPlayer = p2;

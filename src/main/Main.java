@@ -12,7 +12,7 @@ public class Main {
 		DeckConstructor deck = new DeckConstructor(gui.locale);
 		try {
 			int numOfPlayers = gui.inputNumPlayers();
-			gameboard = new Board(numOfPlayers, deck);
+			gameboard = new Board(numOfPlayers, deck, gui);
 		} catch (IllegalArgumentException e) {
 			gui.playerCountWarning();
 			return;

@@ -86,7 +86,7 @@ public class Gameplay {
 			}
 		}
 		
-		gameboard.doAttack(currentplayer, -attack, gameUI);
+		gameboard.doAttack(currentplayer, -attack);
 		gameUI.EnableCedeButton();
 		if (currentplayer != gameboard.cityPlayer){
 			currentplayer.addHealth(heal);

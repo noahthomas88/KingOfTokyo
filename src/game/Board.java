@@ -12,12 +12,13 @@ public class Board {
 	public Player cityPlayer;
 	public Player bayPlayer;
 	public DeckConstructor deck;
+	public GUI gameUI;
 
-	public Board(int numOfPlayers, DeckConstructor deck) {
+	public Board(int numOfPlayers, DeckConstructor deck, GUI UI) {
 		if (numOfPlayers < 2 || numOfPlayers > 6) {
 			throw new IllegalArgumentException();
 		}
-
+		this.gameUI = UI;
 		this.numOfPlayers = numOfPlayers;
 		this.playerList = new ArrayList<Player>();
 		this.deck = deck;
@@ -29,7 +30,7 @@ public class Board {
 		}
 	}
 
-	public void doAttack(Player attacker, int attack, GUI gameUI) {
+	public void doAttack(Player attacker, int attack) {
 		if (cityPlayer.equals(attacker) || (bayPlayer != null && bayPlayer.equals(attacker))) {
 			for (Player indexedPlayer : playerList)
 				if (!indexedPlayer.equals(cityPlayer) && !indexedPlayer.equals(bayPlayer)) {

@@ -4,10 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.easymock.EasyMock;
 import org.junit.Test;
 
 import game.Board;
 import game.Player;
+import main.GUI;
 
 public class SpikedTailLogicTest {
 
@@ -18,8 +20,8 @@ public class SpikedTailLogicTest {
 		playerList.add(p1 = new Player("test1"));
 		playerList.add(p2 = new Player("test2"));
 		playerList.add(p3 = new Player("test3"));
-
-		Board b = new Board(3, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board b = new Board(3, null, mockedUI);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		
@@ -43,8 +45,8 @@ public class SpikedTailLogicTest {
 		playerList.add(p1 = new Player("test1"));
 		playerList.add(p2 = new Player("test2"));
 		playerList.add(p3 = new Player("test3"));
-
-		Board b = new Board(3, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board b = new Board(3, null, mockedUI);
 		b.playerList = playerList;
 		b.cityPlayer = p1;
 		

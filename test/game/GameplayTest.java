@@ -20,7 +20,8 @@ public class GameplayTest {
 	@Test
 	public void GameplayConstructorTest() {
 		Player currentplayer = new Player("null");
-		Board gameboard = new Board(2 ,null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board gameboard = new Board(2, null, mockedUI);
 		GUI gameUI = EasyMock.strictMock(GUI.class);
 		DeckConstructor deck = new DeckConstructor("en");
 		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
@@ -1072,7 +1073,8 @@ public class GameplayTest {
 
 	@Test
 	public void selectFirstPlayerTest() {
-		Board board = new Board(3, null);
+		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		Board board = new Board(3, null, mockedUI);
 		ArrayList<String> names = new ArrayList<String>();
 		names.add("first");
 		names.add("second");
