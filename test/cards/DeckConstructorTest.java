@@ -14,7 +14,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testConstrctor() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		assertTrue(deckCons.deck.isEmpty());
 		assertEquals(deckCons.visibleCard.length, 3);
 		for (int index = 0; index < 3; index++) {
@@ -26,7 +26,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testCreateDeck() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = EasyMock.partialMockBuilder(DeckConstructor.class).withConstructor("en", mockedUI).addMockedMethod("shuffle").createStrictMock();
+		DeckConstructor deckCons = EasyMock.partialMockBuilder(DeckConstructor.class).withConstructor("en").addMockedMethod("shuffle").createStrictMock();
 		deckCons.shuffle();
 		
 		EasyMock.replay(deckCons);
@@ -45,7 +45,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testAddDiscardToDeckEmptyToEmpty() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		deckCons.addDiscardtoDeck();
 		assertTrue(deckCons.deck.isEmpty());
 		assertTrue(deckCons.discard.isEmpty());
@@ -54,7 +54,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testAddDiscardToDeckOneToEmpty() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card card = EasyMock.niceMock(Card.class);
 		deckCons.discard.add(card);
 		deckCons.addDiscardtoDeck();
@@ -65,7 +65,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testAddDiscardToDeckMultiToEmpty() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card card = EasyMock.niceMock(Card.class);
 		deckCons.discard.add(card);
 		deckCons.discard.add(card);
@@ -77,7 +77,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testAddDiscardToDeckMultiToOne() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card card = EasyMock.niceMock(Card.class);
 		deckCons.deck.add(card);
 		deckCons.discard.add(card);
@@ -90,7 +90,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealEmptyDeck() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = EasyMock.partialMockBuilder(DeckConstructor.class).withConstructor("en", mockedUI).addMockedMethod("shuffle").createStrictMock();
+		DeckConstructor deckCons = EasyMock.partialMockBuilder(DeckConstructor.class).withConstructor("en").addMockedMethod("shuffle").createStrictMock();
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.shuffle();
@@ -113,7 +113,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealOneCardDeck() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.discard.add(card);
@@ -133,7 +133,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testRevealMultiCardDeck() {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
 		deckCons.discard.add(card);
@@ -153,7 +153,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testAddToEmptyDiscard(){
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		
 		deckCons.addToDiscard(card);
@@ -164,7 +164,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testAddToNonEmptyDiscard(){
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		deckCons.discard.add(card);
 		deckCons.addToDiscard(card);
@@ -175,7 +175,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testSwipe(){
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card healCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		Card energizeCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		energizeCard.name = "Energize";
@@ -198,7 +198,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testBuy(){
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card healCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		healCard.name = "Heal";
 		Card energizeCard = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
@@ -215,7 +215,7 @@ public class DeckConstructorTest {
 	@Test
 	public void testGetVisibleCard(){
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deckCons = new DeckConstructor("en", mockedUI);
+		DeckConstructor deckCons = new DeckConstructor("en");
 		Card[] cards = new Card[3];
 		deckCons.visibleCard = cards;
 		assertEquals(cards,deckCons.getVisibleCard());

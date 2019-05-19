@@ -23,7 +23,7 @@ public class GameplayTest {
 		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
 		Board gameboard = new Board(2, null, mockedUI);
 		GUI gameUI = EasyMock.strictMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		HashMap<String, Integer> playerToNumber = new HashMap<String, Integer>();
 		Gameplay game = new Gameplay(gameUI, currentplayer, gameboard, deck, playerToNumber);
 		assertEquals(game.gameUI, gameUI);
@@ -35,8 +35,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTestNoduplication() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 
 		ArrayList<Dice> dicelist = new ArrayList<>();
@@ -58,8 +57,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTest3One() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 		ArrayList<Dice> dicelist = new ArrayList<>();
 		for (int index = 0; index < 6; index++) {
@@ -87,8 +85,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTest3Two() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 		ArrayList<Dice> dicelist = new ArrayList<>();
 		
@@ -118,8 +115,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTest3Three() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 		ArrayList<Dice> dicelist = new ArrayList<>();
 		for (int index = 0; index < 6; index++) {
@@ -147,8 +143,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTest5Two() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 		ArrayList<Dice> dicelist = new ArrayList<>();
 		for (int index = 0; index < 6; index++) {
@@ -176,8 +171,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTest5One() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 		ArrayList<Dice> dicelist = new ArrayList<>();
 		for (int index = 0; index < 6; index++) {
@@ -205,8 +199,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTest5Three() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 		ArrayList<Dice> dicelist = new ArrayList<>();
 		for (int index = 0; index < 6; index++) {
@@ -234,8 +227,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTest3One3Three() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 		ArrayList<Dice> dicelist = new ArrayList<>();
 
@@ -265,8 +257,7 @@ public class GameplayTest {
 	@Test
 	public void CalculateScoreTest2One2Two2Three() {
 		Player player = EasyMock.strictMock(Player.class);
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
-		DeckConstructor deck = new DeckConstructor("en", mockedUI);
+		DeckConstructor deck = new DeckConstructor("en");
 		Gameplay gameplay = new Gameplay(null, player, null, deck, null);
 		ArrayList<Dice> dicelist = new ArrayList<>();
 

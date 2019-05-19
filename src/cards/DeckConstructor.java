@@ -15,9 +15,9 @@ public class DeckConstructor {
 	public Card[] visibleCard;
 	ArrayList<Card> discard;
 	String locale;
-	GUI gameUI;
+	GUI gameUI = EasyMock.createNiceMock(GUI.class);
 
-	public DeckConstructor(String locale, GUI UI) {
+	public DeckConstructor(String locale) {
 		this.deck = new ArrayList<>();
 		this.visibleCard = new Card[3];
 		for (int index = 0; index < 3; index++) {
@@ -25,7 +25,10 @@ public class DeckConstructor {
 		}
 		this.discard = new ArrayList<>();
 		this.locale = locale;
-		this.gameUI = UI;
+	}
+	
+	public void setUI(GUI ui) {
+		this.gameUI = ui;
 	}
 	
 	public void createDeck(){
