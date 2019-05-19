@@ -983,55 +983,53 @@ public class GameplayTest {
 	@Test
 	public void buyCardDiscardTest() {
 		GUI gui = EasyMock.strictMock(GUI.class);
-		Player player = EasyMock.strictMock(Player.class);
+		Player player = new Player("test");
 		Board board = EasyMock.strictMock(Board.class);
 		Card card0 = EasyMock.strictMock(Card.class);
 		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
 		deck.visibleCard = new Card[3];
 		
 		Gameplay g = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("useCard").createStrictMock();
-
+		player.energy = 1;
+		
 		EasyMock.expect(deck.buy(0)).andReturn(card0);
-		player.addEnergy(-1);
-		player.addToHand(card0);
 		g.useCard("testCard");
 		gui.setCards(deck.visibleCard);
 		gui.updatePlayerText(board);
 
-		EasyMock.replay(g, gui, deck, player, card0);
+		EasyMock.replay(g, gui, deck, card0);
 		
 		g.gameUI = gui;
 		g.currentplayer = player;
 		g.gameboard = board;
 		g.deck = deck;
 		deck.visibleCard[0] = card0;
-		card0.cost = 1;
-		player.energy = 1;
+		card0.cost = 1;		
 		card0.type = "Discard";
 		card0.name = "testCard";
+		
 		g.buyCard(1);
 
-		EasyMock.verify(g, gui, deck, player);
+		EasyMock.verify(g, gui, deck);
+		assertEquals(0, player.energy);
 	}
 	
 	@Test
 	public void buyCardKeepTest() {
 		GUI gui = EasyMock.strictMock(GUI.class);
-		Player player = EasyMock.strictMock(Player.class);
 		Board board = EasyMock.strictMock(Board.class);
 		Card card0 = EasyMock.strictMock(Card.class);
 		DeckConstructor deck = EasyMock.strictMock(DeckConstructor.class);
 		deck.visibleCard = new Card[3];
 		
+		Player player = new Player("test");
 		Gameplay g = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("useCard").createStrictMock();
 
 		EasyMock.expect(deck.buy(0)).andReturn(card0);
-		player.addEnergy(-1);
-		player.addToHand(card0);
 		gui.setCards(deck.visibleCard);
 		gui.updatePlayerText(board);
 
-		EasyMock.replay(g, gui, deck, player, card0);
+		EasyMock.replay(g, gui, deck, card0);
 		
 		g.gameUI = gui;
 		g.currentplayer = player;
@@ -1044,7 +1042,8 @@ public class GameplayTest {
 		card0.name = "testCard";
 		g.buyCard(1);
 
-		EasyMock.verify(g, gui, deck, player);
+		EasyMock.verify(g, gui, deck);
+		assertEquals(0, player.energy);
 	}
 
 	@Test
@@ -1061,7 +1060,8 @@ public class GameplayTest {
 		}
 
 		Gameplay g = new Gameplay(gui, player, board, deck, null);
-
+		
+		EasyMock.expect(player.haveCard("Alien Origin")).andReturn(false);
 		gui.energyWarning();
 		EasyMock.replay(gui, deck, player, card);
 
