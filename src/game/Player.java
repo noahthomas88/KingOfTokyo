@@ -65,6 +65,14 @@ public class Player {
 	public void addToHand(Card card) {
 		this.cardsInHand.add(card);
 	}
+	
+	public void removeCard(String string) {
+		for(int i = 0; i < this.cardsInHand.size(); i++) {
+			if(this.cardsInHand.get(i).name.equals(string)) {
+				this.cardsInHand.remove(i);
+			}
+		}
+	}
 
 	public void subMaxHealth() {
 		this.maxHealth--;
