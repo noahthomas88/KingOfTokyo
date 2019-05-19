@@ -129,11 +129,11 @@ public class GUI {
 	}
 
 	public void moveToTokyo(Player player) {
-		this.tokyoPanel.moveToTokyo(player);
+		tokyoPanel.moveToTokyo(player);
 	}
 
 	public void moveToBay(Player player) {
-		this.tokyoPanel.movetoBay(player);
+		tokyoPanel.movetoBay(player);
 	}
 
 	public ArrayList<String> inputNames(int numOfPlayers) {
@@ -153,39 +153,39 @@ public class GUI {
 	}
 	
 	public void setActivePlayer(Integer playerNumber) {
-		this.playerPanel.setActivePlayer(playerNumber);
+		playerPanel.setActivePlayer(playerNumber);
 	}
 	
 	public void setCards(Card[] cards) {
-		this.cardsPanel.update();
+		cardsPanel.update();
 	}
 
 	public void updatePlayerText(Board myBoard) {
-		this.playerPanel.updatePlayerText();
+		playerPanel.updatePlayerText();
 	}
 
 	public void EnableEndTurnButton() {
-		this.buttonPanel.endTurn.setEnabled(true); 
+		buttonPanel.endTurn.setEnabled(true); 
 	}
 
 	public void DisableEndTurnButton() {
-		this.buttonPanel.endTurn.setEnabled(false);
+		buttonPanel.endTurn.setEnabled(false);
 	}
 
 	public void EnableRollButton() {
-		this.dicePanel.dieButton.setEnabled(true); //$NON-NLS-1$
+		dicePanel.dieButton.setEnabled(true); 
 	}
 
 	public void DisableRollButton() {
-		this.dicePanel.dieButton.setEnabled(false); //$NON-NLS-1$
+		dicePanel.dieButton.setEnabled(false);
 	}
 
 	public void EnableCedeButton() {
-		this.tokyoPanel.cedeTokyoCity.setEnabled(true); //$NON-NLS-1$
+		tokyoPanel.cedeTokyoCity.setEnabled(true);
 	}
 	
 	public void DisableCedeButton() {
-		this.tokyoPanel.cedeTokyoCity.setEnabled(false);
+		tokyoPanel.cedeTokyoCity.setEnabled(false);
 	}
 
 	public void endGame(Player currentplayer, int i) {
@@ -194,17 +194,17 @@ public class GUI {
 		} else {
 			JOptionPane.showMessageDialog(null, currentplayer.name + messages.getString("GUI.58")); //$NON-NLS-1$
 		}
-		this.buttonPanel.swipeCards.setEnabled(false);
-		this.buttonPanel.endTurn.setEnabled(false);
+		buttonPanel.swipeCards.setEnabled(false);
+		buttonPanel.endTurn.setEnabled(false);
 		for(i=0;i<3;i++) {
-			this.cardsPanel.cards.get(i).buy.setEnabled(false);
+			cardsPanel.cards.get(i).buy.setEnabled(false);
 		}
-		this.dicePanel.dieButton.setEnabled(false);
-		for(HandPanel p : this.playerPanel.playerHands) {
+		dicePanel.dieButton.setEnabled(false);
+		for(HandPanel p : playerPanel.playerHands) {
 			if(p!=null && p.cardbutton!=null)	p.cardbutton.setEnabled(false);
 		}
-		this.tokyoPanel.cedeTokyoCity.setEnabled(false);
-		this.tokyoPanel.cedeTokyoBay.setEnabled(false);
+		tokyoPanel.cedeTokyoCity.setEnabled(false);
+		tokyoPanel.cedeTokyoBay.setEnabled(false);
 		
 	}
 
@@ -225,15 +225,15 @@ public class GUI {
 	}
 
 	public String numberToString(int numberRolled) {
-		return this.dicePanel.numberToString(numberRolled);
+		return dicePanel.numberToString(numberRolled);
 	}
 	
 	public void replaceDice() {
-		this.dicePanel.setUp();
+		dicePanel.setUp();
 	}
 
 	public boolean checkBeforeResolve() {
-		return this.dicePanel.checkIsResolve();	
+		return dicePanel.checkIsResolve();	
 	}
 
 	public boolean isCurrentPlayer(Player player) {
@@ -241,7 +241,7 @@ public class GUI {
 	}
 
 	public void usePlotTwist() {
-		this.dicePanel.usePlotTwist();
+		dicePanel.usePlotTwist();
 	}
 
 	public void update() {
@@ -249,5 +249,27 @@ public class GUI {
 			p.repaint();
 			p.validate();
 		}
+	}
+
+	public String chooseDice() {
+		return JOptionPane.showInputDialog("Which dice would you like to change (1 to max from left to right and top to bottom)");
+	}
+
+	public String inputChange() {
+		return JOptionPane.showInputDialog("What would you like to change to (1, 2, 3, 4 for attack, 5 for energy, 6 for heal)");
+	}
+
+	public boolean checkDieNumber(String die) {
+		return Integer.parseInt(die) >= 1 && Integer.parseInt(die) <= dicePanel.numberOfDice;
+	}
+
+	public void updateDie(String die, String changeTo) {
+		dicePanel.dicelist.get(Integer.parseInt(die) - 1).numberRolled = Integer.parseInt(changeTo);
+		dicePanel.diebuttons.get(Integer.parseInt(die) - 1).setText(numberToString(Integer.parseInt(changeTo)));
+		update();
+	}
+
+	public boolean checkNumber(String changeTo) {
+		return Integer.parseInt(changeTo) >= 1 && Integer.parseInt(changeTo) <= 6;
 	}
 }

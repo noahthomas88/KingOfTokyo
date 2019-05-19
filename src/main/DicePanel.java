@@ -131,7 +131,7 @@ public class DicePanel extends JPanel {
 	}
 
 	public boolean checkIsResolve() {
-		return (numberOfDiceRolls == count) && (count != 0);
+		return (numberOfDiceRolls == count) && (count != 0) && resolve.isEnabled();
 	}
 
 	public void usePlotTwist() {
