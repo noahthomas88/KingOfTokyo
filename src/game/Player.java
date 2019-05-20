@@ -17,6 +17,7 @@ public class Player {
 	public ArrayList<Player> playerList = new ArrayList<Player>();
 	public boolean playerDeathThisTurn;
 	public boolean wings;
+	public boolean herdCuller;
 
 	public Player(String name) {
 		if (name.equals("")) {

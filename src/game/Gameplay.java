@@ -132,6 +132,7 @@ public class Gameplay {
 		String currentPlayerName = currentplayer.name;
 		currentplayer.extraDie = 0;
 		currentplayer.extraRoll = 0;
+		currentplayer.herdCuller = true;
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
