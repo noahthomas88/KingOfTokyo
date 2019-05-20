@@ -16,7 +16,7 @@ public class Gameplay {
 	public GUI gameUI;
 	public DeckConstructor deck;
 	public HashMap<String, Integer> playerToNumber;
-	public Boolean redoTurn;
+	public boolean redoTurn;
 	public boolean cede;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
