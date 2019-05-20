@@ -195,7 +195,7 @@ public class GUI {
 	}
 
 	public void EnableCedeButton() {
-		tokyoPanel.cedeTokyoCity.setEnabled(true);
+		tokyoPanel.enableCede();
 	}
 	
 	public void DisableCedeButton() {
