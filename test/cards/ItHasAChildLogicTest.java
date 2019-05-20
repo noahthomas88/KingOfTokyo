@@ -26,6 +26,7 @@ public class ItHasAChildLogicTest {
 		board.playerList = new ArrayList<>();
 		board.playerList.add(player);
 		
+		player.energy = 4;
 		player.addToHand(card);
 		
 		player.addHealth(-10);
@@ -33,6 +34,7 @@ public class ItHasAChildLogicTest {
 		assertEquals(player.victoryPoints, 0);
 		assertEquals(player.health, 10);
 		assertEquals(player.cardsInHand.size(), 0);
+		assertEquals(player.energy, 4);
 	}
 
 }
