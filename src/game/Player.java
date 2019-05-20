@@ -19,6 +19,7 @@ public class Player {
 	public boolean wings;
 	public boolean herdCuller;
 	public int energyStore = 0;
+	public boolean hurtOthers;
 
 	public Player(String name) {
 		if (name.equals("")) {
