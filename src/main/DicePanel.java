@@ -240,17 +240,17 @@ public class DicePanel extends JPanel {
 	}
 
 	public void rerow3s() {
-		if(!(numberOfDiceRolls > count) && game.currentplayer.haveCard("Background Dweller")) {
+		if(numberOfDiceRolls == count && game.currentplayer.haveCard("Background Dweller")) {
 			for (int i = 0; i < numberOfDice; i++) {
 				JButton button = diebuttons.get(i);
-				if (button.getText() == "3" && button.getBackground() == Color.RED) {
+				if (button.getText().equals("3") && button.getBackground() == Color.RED) {
 					Dice die = dicelist.get(i);
 					die.roll();
 					button.setText(numberToString(die.numberRolled));
 				}
-				
 				button.setBackground(null);
 			}
 		}
+		this.repaint();
 	}
 }

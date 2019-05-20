@@ -16,7 +16,7 @@ public class Gameplay {
 	public GUI gameUI;
 	public DeckConstructor deck;
 	public HashMap<String, Integer> playerToNumber;
-	public Boolean redoTurn;
+	public boolean redoTurn;
 	public boolean cede;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
@@ -132,6 +132,12 @@ public class Gameplay {
 		currentplayer.extraDie = 0;
 		currentplayer.extraRoll = 0;
 		currentplayer.herdCuller = true;
+		if(redoTurn) {
+			redoTurn = false;
+			gameUI.replaceDice();
+			beginTurn();
+			return;
+		}
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {

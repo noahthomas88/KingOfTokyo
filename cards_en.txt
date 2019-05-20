@@ -1,3 +1,21 @@
+AcidAttack
+Acid Attack
+6
+Add an attack to your roll
+Keep
+-
+AlienOrigin
+Alien Origin
+3
+Buying power cards costs you 1 less energy point
+Keep
+-
+AlphaMonster
+Alpha Monster
+5
+Gain 1 victory point when you roll at least one attack
+Keep
+-
 ApartmentBuilding
 Apartment Building
 5
@@ -10,11 +28,35 @@ Armor Plating
 Do not lose health when you lose exactly 1 health
 Keep
 -
+BackgroundDweller
+Background Dweller
+4
+You can always reroll any 3 you have
+Keep
+-
+BatteryMonster
+Battery Monster
+3
+When you buy battery monster place 6 energy on it from the bank, at the start of each turn take 2 energy off and add them to your pool. When there are no energy left discard this card.
+Keep
+-
+Burrowing
+Burrowing
+5
+Add an attack to your Roll while you are in Tokyo. When you yield Tokyo the monster taking it loses 1 health
+Keep
+-
 CommuterTrain
 Commuter Train
 4
 Gain 2 Victory Points
 Discard
+-
+CompleteDestruction
+Complete destruction
+3
+If you roll 1, 2, 3, heart, attack, and energy, gain 9 victory points in addition to the regular effects
+Keep
 -
 CornerStore
 Corner Store
@@ -22,11 +64,41 @@ Corner Store
 Gain 1 Victory Point
 Discard
 -
+DeathFromAbove
+Death from above
+5
+Gain 2 victory points and take control of tokyo if you do not already control it
+Discard
+-
+Detrivore
+Detrivore
+4
+When you roll at least a 1, 2 or 3 gain 2 victory points
+Keep
+-
+EaterOfTheDead
+Eater of the Dead
+4
+Gain 3 victory points every time a monster goes to 0 hearts
+Keep
+-
 Energize
 Energize
 8
 Gain 9 energy
 Discard
+-
+EnergyDrink
+Energy Drink
+4
+Spend 1 energy points to get 1 extra die roll.
+Keep
+-
+EnergyHoarder
+Energy Hoarder
+3
+Gain 1 victory point for every 6 energy points you have at the end of the turn
+Keep
 -
 EvacuationOrders
 Evacuation Orders
@@ -34,16 +106,40 @@ Evacuation Orders
 All other monsters lose 5 Victory Points
 Discard
 -
+EvenBigger
+Even bigger
+4
+The player has 12 maximum health as long as he/she owns this card. The player gain 2 health he/she buys this card. 
+Keep
+-
 ExtraHead
 Extra Head
 7
 Gain 1 extra die
 Keep
 -
+FireBreathing
+Fire Breathing
+4
+Your neighbors lose 1 health when you roll at least one attack
+Keep
+-
 Flamethrower
 Flamethrower
 3
 All other players lose 2 health
+Discard
+-
+FreezeTime
+Freeze Time
+5
+On a turn when you roll 111 or more you can take another turn with one less dice
+Keep
+-
+Frenzy
+Frenzy
+7
+Take another turn after this one then discard this card
 Discard
 -
 FriendOfChildren
@@ -64,17 +160,35 @@ Giant Brain
 You have 1 extra die roll each turn
 Keep
 -
+Gourmet
+Gourmet
+4
+When you roll 111 or more gain 2 extra victory points
+Keep
+-
 Heal
 Heal
 3
 Gain 2 Health
 Discard
 -
+HerdCuller
+Herd Culler
+3
+You can change one of your dice to a 1 dice each turn
+Keep
+-
 HighAltitudeBombing
 High Altitude Bombing
 4
 All monsters including you lose 3 health
 Discard
+-
+ItHasAChild
+It has a child
+7
+If you reach 0 health, discard all your cards and lose all your victory points. Gain 10 health and continue playing outside Tokyo
+Keep
 -
 JetFighter
 Jet Fighter
@@ -88,17 +202,47 @@ We're only making it stronger
 When you lose 2 health, you gain 1 energy
 Keep
 -
+MediaFriendly
+Media Friendly
+3
+Gain 1 victory point whenever you buy a power card
+Keep
+-
 NationalGuard
 National Guard
 3
 Gain 2 Victory Points, But lose 2 Health
 Discard
 -
+NovaBreath
+Nova Breath
+7
+Your attack rolls attack all other monsters
+Keep
+-
 NuclearPowerPlant
 Nuclear Power Plant
 6
 Gain 2 Victory Points and gain 3 Health
 Discard
+-
+PlotTwist
+Plot Twist
+3
+Before resolving your dice you may change one die to any result, discard after use
+Keep
+-
+PoisonQuills
+Poison Quills
+3
+When you roll 2, 2, 2 or more, add 2 attacks to your roll
+Keep
+-
+RapidHealing
+Rapid Healing
+3
+Spend 2 energy at any time to heal one heart
+Keep
 -
 Regeneration
 Regeneration
@@ -118,22 +262,10 @@ Skyscraper
 Gain 4 Victory Points
 Discard
 -
-Tank
-Tank
+SmokeCloud
+Smoke Cloud
 4
-Gain 4 Victory Points and lose 3 Health
-Discard
--
-VastStorm
-VastStorm
-6
-Gain 2 victory points and all other monsters and lose 1 energy for every 2 energy they have
-Discard
--
-NovaBreath
-Nova Breath
-7
-Your attack rolls attack all other monsters
+Place 3 Smoke counters on this card. Spend 1 Smoke counter for an extra roll. Discard this card when all smoke counters are spent
 Keep
 -
 SolarPowered
@@ -142,21 +274,33 @@ Solar Powered
 At the end of your turn gain 1 energy if you have no energy
 Keep
 -
-DeathFromAbove
-Death From Above
-5
-Gain 2 victory points and take control of Tokyo if you are not
-Discard
--
 SpikedTail
 Spiked tail
 5
-If you roll at least 1 attack, add an attack to your roll.
+If you roll at least 1 attack, add an attack to your roll
 Keep
 -
-EnergyHoarder
-Energy Hoarder
+Stretchy
+Stretchy
 3
-Gain 1 victory point for every 6 energy points you have at the end of the turn
+Before resolving your dice you can spend 2 energy to change any of your dice to any result
 Keep
+-
+Tank
+Tank
+4
+Gain 4 Victory Points and lose 3 Health
+Discard
+-
+Ultravore
+Ultravore
+4
+Gain 1 extra victory point when beginning your turn in tokyo. If you roll an attack dice in tokyo add an attack to your roll
+Keep
+-
+VastStorm
+VastStorm
+6
+Gain 2 victory points and all other monsters and lose 1 energy for every 2 energy they have
+Discard
 -

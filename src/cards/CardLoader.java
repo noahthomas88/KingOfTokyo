@@ -72,10 +72,7 @@ public class CardLoader {
 			Class<?> cardclass = Class.forName("cards."+cardname+"Logic");
 			return (CardLogic) cardclass.newInstance();
 		} catch (Exception e) {
-			if (new File("src/cards/" + cardname + "Logic_aspect.aj").exists()) {
-				return new CardLogic();
-			}
-			throw new RuntimeException("unable to create card: " + cardname);
+			return new CardLogic();
 		}
 	}
 }

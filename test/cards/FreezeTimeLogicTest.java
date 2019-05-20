@@ -43,8 +43,7 @@ public class FreezeTimeLogicTest {
 		board.cityPlayer = player;
 
 		gameplay.diceRolled(dice, message);
-
-		assertEquals(0, player.victoryPoints = 3);		
+		assertTrue(gameplay.redoTurn);
 	}
 
 }

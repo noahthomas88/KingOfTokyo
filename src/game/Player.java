@@ -27,7 +27,7 @@ public class Player {
 		}
 		this.health = 10;
 		this.victoryPoints = 0;
-		this.energy = 0;
+		this.energy = 999;
 		this.extraDie = 0;
 		this.name = name;
 		this.maxHealth = 10;
