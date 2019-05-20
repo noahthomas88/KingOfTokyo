@@ -147,7 +147,7 @@ public class Gameplay {
 			Card card = deck.buy(number-1);
 			currentplayer.addEnergy(-tobuy.cost);
 			currentplayer.addToHand(card);
-			if(card.type.equals("Discard")) {
+			if(card.type.equals("Discard") || card.name.equals("Even Bigger") || card.name.equals("Battery Monster")) {
 				this.useCard(card.name);
 			}
 			gameUI.setCards(deck.visibleCard);

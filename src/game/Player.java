@@ -18,6 +18,7 @@ public class Player {
 	public boolean playerDeathThisTurn;
 	public boolean wings;
 	public boolean herdCuller;
+	public int energyStore = 0;
 
 	public Player(String name) {
 		if (name.equals("")) {
