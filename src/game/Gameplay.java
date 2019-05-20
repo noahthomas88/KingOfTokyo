@@ -16,6 +16,7 @@ public class Gameplay {
 	public GUI gameUI;
 	public DeckConstructor deck;
 	public HashMap<String, Integer> playerToNumber;
+	public Boolean redoTurn;
 	public boolean cede;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
@@ -123,7 +124,6 @@ public class Gameplay {
 		if (count1 > 2) {
 			currentplayer.addVictory(1 + (count1 - 3));
 		}
-		
 		
 	}
 

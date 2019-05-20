@@ -19,7 +19,6 @@ public class GourmetLogicTest {
 	@Test
 	public void RolledThreeOnesGainTwoExtraVictoryPointsTest() {
 		Player player = new Player("test");
-		Player attackedPlayer = new Player("test");
 		player.victoryPoints = 0;
 		Card card = new Card();
 		card.name = "Gourmet";
@@ -27,8 +26,8 @@ public class GourmetLogicTest {
 
 		ArrayList<Dice> dice = new ArrayList<Dice>();
 		Messages message = EasyMock.niceMock(Messages.class);
-		Board board = new Board(2, null, null);
 		GUI gui = EasyMock.niceMock(GUI.class);
+		Board board = new Board(2, null, gui);
 		Gameplay gameplay = new Gameplay(gui, player, board, null, null);
 
 		Dice oneDie = new Dice(gameplay.currentplayer);
@@ -39,7 +38,6 @@ public class GourmetLogicTest {
 
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player);
-		players.add(attackedPlayer);
 		board.playerList = players;
 		board.cityPlayer = player;
 
