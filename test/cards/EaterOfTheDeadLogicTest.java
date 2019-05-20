@@ -22,6 +22,12 @@ public class EaterOfTheDeadLogicTest {
 		Board board = EasyMock.strictMock(Board.class);
 		card.name = "Eater of the Dead";
 		
+		GUI ui = EasyMock.niceMock(GUI.class);
+		Gameplay game = EasyMock.niceMock(Gameplay.class);
+		ui.game = game;
+		player.ui = ui;
+		player2.ui = ui;
+		
 		board.numOfPlayers = 2;
 		ArrayList<Player> playerList = new ArrayList<>();
 		playerList.add(player);

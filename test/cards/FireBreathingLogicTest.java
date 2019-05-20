@@ -20,7 +20,7 @@ public class FireBreathingLogicTest {
 	public void NeighborsLoseOneAdditionalHealthTest() {
 		Player player = new Player("test");
 		Player attackedPlayer = new Player("test");
-		attackedPlayer.health = 2;
+		attackedPlayer.health = 3;
 		Card card = new Card();
 		card.name = "Fire Breathing";
 		player.addToHand(card);
@@ -41,6 +41,6 @@ public class FireBreathingLogicTest {
 
 		gameplay.diceRolled(dice, message);
 
-		assertEquals(0, attackedPlayer.health);
+		assertEquals(1, attackedPlayer.health);
 	}
 }

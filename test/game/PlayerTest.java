@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import cards.Card;
 import game.Player;
+import main.GUI;
 
 public class PlayerTest {
 
@@ -91,7 +92,12 @@ public class PlayerTest {
 	@Test
 	public void testAddNegativeHealthAtOneHealth() {
 		Player player = new Player("test");
-				
+			
+		GUI ui = EasyMock.niceMock(GUI.class);
+		Gameplay game = EasyMock.niceMock(Gameplay.class);
+		player.ui = ui;
+		ui.game = game;
+		
 		player.health = 1;
 		player.maxHealth = 10;
 		player.addHealth(-1);
@@ -263,6 +269,10 @@ public class PlayerTest {
 	@Test
 	public void playerDeath() {
 		Player player = new Player("TestDummy");
+		GUI ui = EasyMock.niceMock(GUI.class);
+		Gameplay game = EasyMock.niceMock(Gameplay.class);
+		player.ui = ui;
+		ui.game = game;
 		player.playerDeath();
 		assertEquals(player.health, 0);
 	}

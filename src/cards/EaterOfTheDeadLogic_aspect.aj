@@ -19,7 +19,6 @@ public aspect EaterOfTheDeadLogic_aspect {
 		if(playerWithCard != null) {
 			playerWithCard.addVictory(3);
 		}
-		player.playerDeathThisTurn = false;	
 	}
 
 }

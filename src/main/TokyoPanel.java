@@ -52,7 +52,7 @@ public class TokyoPanel extends JPanel {
 		
 		cedeTokyoBay = new JButton(messages.getString("GUI.70"));
 		cedeTokyoBay.setEnabled(false);
-		cedeTokyoBay.addActionListener(new CedeListener());
+		cedeTokyoBay.addActionListener(new CedeBayListener());
 		cedeTokyoBay.setPreferredSize(new Dimension(100, 150));
 		
 		this.add(tokyo);
@@ -68,6 +68,13 @@ public class TokyoPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			game.cedeTokyo();
+		}
+	}
+	
+	class CedeBayListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			game.cedeBay();
 		}
 	}
 

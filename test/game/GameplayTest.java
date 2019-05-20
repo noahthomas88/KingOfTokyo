@@ -619,6 +619,42 @@ public class GameplayTest {
 		EasyMock.verify(player, ui);
 
 	}
+	
+	@Test
+	public void cedeBayTest() {
+		Board board = EasyMock.strictMock(Board.class);
+		GUI ui = EasyMock.strictMock(GUI.class);
+		Player player = EasyMock.strictMock(Player.class);
+		Player currentPlayer = EasyMock.strictMock(Player.class);
+		Gameplay gameplay = new Gameplay(ui, currentPlayer, board, null, null);
+		
+		EasyMock.expect(player.haveCard("Burrowing")).andReturn(false);
+		ui.moveToBay(currentPlayer);
+		currentPlayer.addVictory(1);
+		ui.updatePlayerText(board);
+		ui.DisableCedeButton();
+
+		EasyMock.replay(currentPlayer, player, ui);
+		board.bayPlayer = player;
+		gameplay.cedeBay();
+		EasyMock.verify(currentPlayer, player, ui);
+
+	}
+	
+	@Test
+	public void cedeBaySamePlayerTest() {
+		Board board = EasyMock.strictMock(Board.class);
+		GUI ui = EasyMock.strictMock(GUI.class);
+		Gameplay gameplay = new Gameplay(ui, null, board, null, null);
+		Player player = EasyMock.strictMock(Player.class);
+
+		EasyMock.replay(player, ui);
+		board.bayPlayer = player;
+		gameplay.currentplayer = player;
+		gameplay.cedeBay();
+		EasyMock.verify(player, ui);
+
+	}
 
 	@Test
 	public void swipeCardsTestPlayerHasEnoughEnergy() {
@@ -952,6 +988,74 @@ public class GameplayTest {
 		
 		EasyMock.verify(gameplay,gameUI);
 		assertEquals(gameplay.currentplayer, test2);		
+	}
+	
+	@Test
+	public void endTurnDeadTest() {
+		GUI gameUI = EasyMock.strictMock(GUI.class);
+		Player test1 = new Player("test1");
+		Player test2 = new Player("test2");
+		Board board = EasyMock.strictMock(Board.class);
+		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
+		ArrayList<Player> players = new ArrayList<>();
+		players.add(test1);
+		players.add(test2);
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("test1", 0);
+		map.put("test2", 1);
+		
+		gameUI.replaceDice();
+		gameplay.beginTurn();
+		
+		EasyMock.replay(board, gameplay,gameUI);
+		
+		test1.name = "test1";
+		test2.playerDeathThisTurn = true;
+		gameplay.gameUI = gameUI;
+		gameplay.currentplayer = test1;
+		gameplay.gameboard = board;
+		gameplay.playerToNumber = map;
+		board.numOfPlayers = 2;
+		board.playerList = players;
+		gameplay.endTurn();
+		
+		EasyMock.verify(gameplay,gameUI);
+		assertEquals(gameplay.currentplayer, test1);		
+	}
+	
+	@Test
+	public void endTurnDeadNotRotateTest() {
+		GUI gameUI = EasyMock.strictMock(GUI.class);
+		Player test1 = new Player("test1");
+		Player test2 = new Player("test2");
+		Player test3 = new Player("test3");
+		Board board = EasyMock.strictMock(Board.class);
+		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
+		ArrayList<Player> players = new ArrayList<>();
+		players.add(test1);
+		players.add(test2);
+		players.add(test3);
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("test1", 0);
+		map.put("test2", 1);
+		map.put("test3", 2);
+		
+		gameUI.replaceDice();
+		gameplay.beginTurn();
+		
+		EasyMock.replay(board, gameplay,gameUI);
+		
+		test2.playerDeathThisTurn = true;
+		gameplay.gameUI = gameUI;
+		gameplay.currentplayer = test1;
+		gameplay.gameboard = board;
+		gameplay.playerToNumber = map;
+		board.numOfPlayers = 3;
+		board.playerList = players;
+		gameplay.endTurn();
+		
+		EasyMock.verify(gameplay,gameUI);
+		assertEquals(gameplay.currentplayer, test3);		
 	}
 	
 	@Test

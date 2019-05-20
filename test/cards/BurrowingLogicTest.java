@@ -37,6 +37,28 @@ public class BurrowingLogicTest {
 		EasyMock.verify(currentPlayer, player, ui);
 
 	}
+	
+	@Test
+	public void cedeBayTest() {
+		Board board = EasyMock.strictMock(Board.class);
+		GUI ui = EasyMock.strictMock(GUI.class);
+		Player player = EasyMock.strictMock(Player.class);
+		Player currentPlayer = EasyMock.strictMock(Player.class);
+		Gameplay gameplay = new Gameplay(ui, currentPlayer, board, null, null);
+		
+		EasyMock.expect(player.haveCard("Burrowing")).andReturn(true);
+		currentPlayer.addHealth(-1);
+		ui.moveToBay(currentPlayer);
+		currentPlayer.addVictory(1);
+		ui.updatePlayerText(board);
+		ui.DisableCedeButton();
+
+		EasyMock.replay(currentPlayer, player, ui);
+		board.bayPlayer = player;
+		gameplay.cedeBay();
+		EasyMock.verify(currentPlayer, player, ui);
+
+	}
 
 
 	@Test

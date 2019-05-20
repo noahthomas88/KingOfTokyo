@@ -304,3 +304,9 @@ VastStorm
 Gain 2 victory points and all other monsters and lose 1 energy for every 2 energy they have
 Discard
 -
+Parasitic Tentacles
+Parasitic Tentacles
+4
+You can buy power cards from other monsters, pay them the energy price on the card
+Keep
+-

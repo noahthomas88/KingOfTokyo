@@ -30,6 +30,7 @@ public class Board {
 		} 
 		for (int i = 0; i < playerList.size(); i++){
 			this.playerList.get(i).playerList = this.playerList;
+			this.playerList.get(i).ui = gameUI;
 		}
 	}
 

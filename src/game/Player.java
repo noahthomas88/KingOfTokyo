@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 
 import cards.Card;
+import main.GUI;
 
 public class Player {
 
@@ -20,6 +21,7 @@ public class Player {
 	public boolean herdCuller;
 	public int energyStore = 0;
 	public boolean hurtOthers;
+	public GUI ui;
 
 	public Player(String name) {
 		if (name.equals("")) {
@@ -109,5 +111,6 @@ public class Player {
 	public void playerDeath() {
 		this.health = 0;
 		this.playerDeathThisTurn = true;
+		this.ui.game.cedeTokyo();
 	}
 }

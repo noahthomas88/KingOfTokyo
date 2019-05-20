@@ -138,11 +138,23 @@ public class Gameplay {
 			beginTurn();
 			return;
 		}
+		
+		int index;
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
-			currentplayer = gameboard.playerList.get(0);
+			index = 0;
 		} else {
-			currentplayer = gameboard.playerList.get(playerToNumber.get(currentPlayerName) + 1);
+			index = playerToNumber.get(currentPlayerName) + 1;
 		}
+		
+		while(gameboard.playerList.get(index).playerDeathThisTurn) {
+			index++;
+			if(index >= gameboard.numOfPlayers) {
+				index = 0;
+			}
+		}
+		
+		currentplayer = gameboard.playerList.get(index);
+		
 		gameUI.replaceDice();
 		beginTurn();
 	}
@@ -180,6 +192,21 @@ public class Gameplay {
 		}
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
+		currentplayer.addVictory(1);
+		gameUI.updatePlayerText(gameboard);
+		gameUI.DisableCedeButton();
+		cede = true;
+	}
+	
+	public void cedeBay() {
+		if(gameboard.bayPlayer == currentplayer){
+			return;
+		}
+		if(gameboard.bayPlayer.haveCard("Burrowing")) {
+			currentplayer.addHealth(-1);
+		}
+		gameboard.cityPlayer = currentplayer;
+		gameUI.moveToBay(currentplayer);
 		currentplayer.addVictory(1);
 		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
@@ -238,5 +265,4 @@ public class Gameplay {
 		}
 		
 	}
-
 }

@@ -25,7 +25,7 @@ import game.Player;
 public class GUI {
 
 	GUI self = this;
-	Gameplay game;
+	public Gameplay game;
 	Messages messages;
 	ArrayList<JPanel> panels;
 	PlayerPanel playerPanel;

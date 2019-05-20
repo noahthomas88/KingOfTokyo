@@ -20,7 +20,7 @@ public class PoisonQuillsLogicTest {
 	public void RolledThreeTwosAddTwoAttacksTest() {
 		Player player = new Player("test");
 		Player attackedPlayer = new Player("test");
-		attackedPlayer.health = 2;
+		attackedPlayer.health = 3;
 		player.victoryPoints = 0;
 		Card card = new Card();
 		card.name = "Poison Quills";
@@ -46,7 +46,7 @@ public class PoisonQuillsLogicTest {
 
 		gameplay.diceRolled(dice, message);
 
-		assertEquals(0, attackedPlayer.health);
+		assertEquals(1, attackedPlayer.health);
 	}
 
 }
