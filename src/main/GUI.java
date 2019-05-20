@@ -195,7 +195,7 @@ public class GUI {
 	}
 
 	public void EnableCedeButton() {
-		tokyoPanel.cedeTokyoCity.setEnabled(true);
+		tokyoPanel.enableCede();
 	}
 	
 	public void DisableCedeButton() {
@@ -358,6 +358,86 @@ public class GUI {
 							player.addEnergy(card.cost);
 							game.currentplayer.cardsInHand.add(card);
 							player.cardsInHand.remove(card);
+						}
+					}
+				}
+			}
+		}
+
+	}
+	
+	class WingListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			if(game.currentplayer.energy>1) {
+				game.currentplayer.addEnergy(-2);
+				game.currentplayer.wings = true;
+			}
+		}
+
+	}
+	
+	class LabListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Card peek = game.deck.deck.get(0);
+			int result = JOptionPane.showConfirmDialog(null, null, "Would you like to buy" + peek.name+ "for " + peek.cost, JOptionPane.YES_NO_OPTION);
+			if (result == JOptionPane.YES_OPTION) {
+				if(game.currentplayer.energy >= peek.cost) {
+					game.currentplayer.addEnergy(-peek.cost);
+					game.currentplayer.cardsInHand.add(game.deck.deck.remove(0));
+				}
+			}
+		}
+
+	}
+	
+	class MimicListener implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			JPanel panel =  new JPanel();
+			for(Player player : game.gameboard.playerList) {
+				for(Card card : player.cardsInHand) {
+					JButton buybutton = new JButton(card.name);
+					buybutton.addActionListener(new CopyListener(card.name));
+					panel.add(buybutton);
+				}
+			}
+			JOptionPane.showConfirmDialog(null, panel, "Please select a card to mimic", JOptionPane.DEFAULT_OPTION);
+		}
+
+	}
+	
+	class CopyListener implements ActionListener {
+		
+		String name;
+		
+		public CopyListener(String name) {
+			this.name = name;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			boolean used = false;
+			for(Card card : game.currentplayer.cardsInHand) {
+				if(card.mimic==true) {
+					used = true;
+				}
+			}
+			if(used) {
+				if(game.currentplayer.energy>0) {
+					game.currentplayer.addEnergy(-1);
+				}
+			} else {
+				for(Player player : game.gameboard.playerList) {
+					for(Card card : player.cardsInHand) {
+						if(card.name.equals(this.name)) {
+							game.currentplayer.cardsInHand.add(card);
+							card.mimic = true;
+							return;
 						}
 					}
 				}

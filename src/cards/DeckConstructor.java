@@ -11,7 +11,7 @@ import main.GUI;
 
 public class DeckConstructor {
 	
-	ArrayList<Card> deck;
+	public ArrayList<Card> deck;
 	public Card[] visibleCard;
 	ArrayList<Card> discard;
 	String locale;

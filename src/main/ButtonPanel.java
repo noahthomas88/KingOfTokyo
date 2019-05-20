@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import cards.Card;
 import game.Gameplay;
 
 public class ButtonPanel extends JPanel {
@@ -47,6 +49,16 @@ public class ButtonPanel extends JPanel {
 	public class EndListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			if(game.currentplayer.haveCard("Metamorph")) {
+				int result = JOptionPane.showConfirmDialog(null, null, "Discard all cards for energy?", JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION) {
+					for(Card card : game.currentplayer.cardsInHand) {
+						game.currentplayer.addEnergy(card.cost);
+						game.currentplayer.cardsInHand.remove(card);
+					}
+				}
+				game.gameUI.update();
+			}
 			game.endTurn();
 		}
 	}

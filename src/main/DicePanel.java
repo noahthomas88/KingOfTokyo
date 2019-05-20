@@ -6,12 +6,14 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import cards.Card;
 import game.Dice;
 import game.Gameplay;
 import game.Player;
@@ -191,9 +193,50 @@ public class DicePanel extends JPanel {
 			}
 			resolve.setEnabled(false);
 			dieButton.setEnabled(false);
+			for(Player player : game.gameboard.playerList) {
+				if(player.haveCard("Psychic Probe") && player != game.currentplayer) {
+					JPanel panel = new JPanel();
+					int index = 0;
+					for(Dice die : dicelist) {
+						JButton reroll = new JButton(numberToString(die.numberRolled));
+						reroll.addActionListener(new RerollListener(index, player));
+						index++;
+						panel.add(reroll);
+					}
+					JOptionPane.showConfirmDialog(null, panel, "The owner of psychic probe may select a die to reroll or ok to skip", JOptionPane.DEFAULT_OPTION);
+					
+				}
+			}
 			game.diceRolled(dicelist, messages);
 		}
 
+	}
+	
+	class RerollListener implements ActionListener {
+		
+		int index;
+		Player player;
+		
+		public RerollListener(int index, Player player) {
+			this.index = index;
+			this.player = player;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Random random = new Random();
+			int result = random.nextInt(6);
+			dicelist.get(index).numberRolled = result;
+			if(result==6) {
+				JOptionPane.showConfirmDialog(null, null, "Psychic Probe lost due to rolling heart", JOptionPane.DEFAULT_OPTION);
+				for(Card card : this.player.cardsInHand) {
+					if(card.name.equals("Psychic Probe")) {
+						this.player.cardsInHand.remove(card);
+					}
+				}
+			}
+			JOptionPane.getRootFrame().dispose();
+		}
 	}
 
 	public void rerow3s() {

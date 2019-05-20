@@ -14,7 +14,7 @@ import game.Player;
 import main.GUI;
 import main.Messages;
 
-public class Ultravore {
+public class UltravoreTest {
 
 	@Test
 	public void testBeginTurn() {
@@ -44,7 +44,6 @@ public class Ultravore {
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
 		board.doAttack(player, -2);
-		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
@@ -53,8 +52,6 @@ public class Ultravore {
 
 		EasyMock.replay(board, ui, die, game);
 		Messages message = new Messages("en");
-		player.health = 5;
-		player.energy = 5;
 		
 		Card ultravore = new Card();
 		ultravore.name = "Ultravore";
@@ -69,8 +66,6 @@ public class Ultravore {
 		game.diceRolled(dice, message);
 		
 		EasyMock.verify(board, ui, die, game);
-		assertEquals(5, player.health);
-		assertEquals(5, player.energy);
 	}
 
 }

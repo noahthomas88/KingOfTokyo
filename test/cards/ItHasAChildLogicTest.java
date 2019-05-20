@@ -12,29 +12,29 @@ import game.Gameplay;
 import game.Player;
 import main.GUI;
 
-public class EaterOfTheDeadLogicTest {
+public class ItHasAChildLogicTest {
 	
 	@Test
-	public void eaterOfTheDeadLogicTest() {
+	public void DeathWithCard() {
 		Player player = new Player("test");
-		Player player2 = new Player("test2");
 		Card card = EasyMock.strictMock(Card.class);
 		Board board = EasyMock.strictMock(Board.class);
-		GUI gui = EasyMock.strictMock(GUI.class);
-		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
 
-		card.name = "Eater of the Dead";
+		card.name = "It Has a Child";
 		
 		board.numOfPlayers = 2;
 		board.playerList = new ArrayList<>();
 		board.playerList.add(player);
-		board.playerList.add(player2);
 		
+		player.energy = 4;
 		player.addToHand(card);
 		
-		player2.playerDeath();
+		player.addHealth(-10);
 		
-		assertEquals(player.victoryPoints, 3);
+		assertEquals(player.victoryPoints, 0);
+		assertEquals(player.health, 10);
+		assertEquals(player.cardsInHand.size(), 0);
+		assertEquals(player.energy, 4);
 	}
 
 }

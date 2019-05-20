@@ -17,6 +17,7 @@ public class Gameplay {
 	public DeckConstructor deck;
 	public HashMap<String, Integer> playerToNumber;
 	public Boolean redoTurn;
+	public boolean cede;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
 		this.gameUI = gui;
@@ -53,6 +54,7 @@ public class Gameplay {
 	}
 
 	public void beginTurn() {
+		currentplayer.wings = false;
 		gameUI.checkEnableButton(currentplayer);
 		gameUI.setActivePlayer(playerToNumber.get(currentplayer.name));
 		gameUI.DisableEndTurnButton();
@@ -87,9 +89,7 @@ public class Gameplay {
 				otherdice.add(die);
 			}
 		}
-		
 		gameboard.doAttack(currentplayer, -attack);
-		gameUI.EnableCedeButton();
 		if (currentplayer != gameboard.cityPlayer){
 			currentplayer.addHealth(heal);
 		}
@@ -131,6 +131,7 @@ public class Gameplay {
 		String currentPlayerName = currentplayer.name;
 		currentplayer.extraDie = 0;
 		currentplayer.extraRoll = 0;
+		currentplayer.herdCuller = true;
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
@@ -146,7 +147,7 @@ public class Gameplay {
 			Card card = deck.buy(number-1);
 			currentplayer.addEnergy(-tobuy.cost);
 			currentplayer.addToHand(card);
-			if(card.type.equals("Discard")) {
+			if(card.type.equals("Discard") || card.name.equals("Even Bigger") || card.name.equals("Battery Monster")) {
 				this.useCard(card.name);
 			}
 			gameUI.setCards(deck.visibleCard);
@@ -168,11 +169,15 @@ public class Gameplay {
 		if(gameboard.cityPlayer == currentplayer){
 			return;
 		}
+		if(gameboard.cityPlayer.haveCard("Burrowing")) {
+			currentplayer.addHealth(-1);
+		}
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
 		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
+		cede = true;
 	}
 
 	public void swipeCard() {

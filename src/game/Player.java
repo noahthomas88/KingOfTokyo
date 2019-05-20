@@ -16,6 +16,9 @@ public class Player {
 	public ArrayList<Card> cardsInHand;
 	public ArrayList<Player> playerList = new ArrayList<Player>();
 	public boolean playerDeathThisTurn;
+	public boolean wings;
+	public boolean herdCuller;
+	public int energyStore = 0;
 
 	public Player(String name) {
 		if (name.equals("")) {
