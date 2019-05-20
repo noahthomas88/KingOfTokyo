@@ -304,3 +304,69 @@ lang yay
 lang yay 2 latlh Hoch monsters 'ej Soq 'ej 1 HoS Hoch 2 HoS luj
 Discard
 -
+Parasitic Tentacles
+qab DeS
+4
+laH HoS chaw' vIje' latlh monsters, HoS 'ay' yIDIl chaH chaw' SoH
+Keep
+-
+Herbivore
+DIghna'
+5
+lang yay 1 Soq legh tlhe' megh'an vaj porgh Damo' ghaH luj pagh.
+Keep
+-
+Opportunist
+val
+3
+whenever 'ang HoS chaw' 'oH je' SIbI' DuH Daghaj.
+Keep
+-
+HealingRay
+tIH vor neH
+4
+porgh Damo' ghaH tetlh laH DanoHmeH SoH chenmoH latlh monsters porgh Damo' ghaH Soq. 2 HoS ghob'e' yIbuS Hoch monster (1 chugh Qav wa') Hoch tIq mIw Soq chaH
+Keep
+-
+Camouflage
+So' 
+3
+HeghDI' Hegh Hoch tIq luj SoH luj tIq tetlh SoH, QIH ghaH wa' reduces Hoch tIq tetlh
+Keep
+-
+Wings
+tel
+6
+2 HoS wej porgh Damo' ghaH luj tlhe' rep
+Keep
+-
+PsychicProbe
+'arqon vIt nejwI'
+3
+Hegh wIv laH reroll SoH qaSpu'DI' Qav tetlh monster Hoch latlh. vaj chaw' reroll tIq polHa' SoH
+Keep
+-
+Jets
+puv
+5
+tIq luj dont vaj tokyo jegh SoH attacker
+Keep
+-
+Metamorph
+choH
+3
+legh tlhe' megh'an vay' pol chaw' naQ cost qaStaHvIS HoS regain Daghaj laH polHa' SoH
+Keep
+-
+MadeInALab
+qaStaHvIS lab chenmoH
+2
+during bIje'be'chugh vaj HoS chaw' mIw, laH legh yor chaw' choQ peek 'ej 'oH je' pagh 'oH lan wItI'nISmo' legh choQ yor SoH
+Keep
+-
+Mimic
+rap
+8
+pol chaw' ghaj vay' monster wutlh qaStaHvIS chu' 'ej mimic token tuQmoH 'oH. 'ech chaw' je chaw' duplicate Men 'oH neH je' SoH. 1 HoS legh tlhe' mimic token vIH 'ej chaw' mimicking SoH choH start 'arghbej.
+Keep
+-
