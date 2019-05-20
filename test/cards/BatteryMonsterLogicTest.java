@@ -32,12 +32,12 @@ public class BatteryMonsterLogicTest {
 	}
 	
 	@Test
-	public void BatteryMonsterRemoveTest() {
+	public void BatteryMonsterAspectTest() {
 		Player player = new Player("test");
 		Card card = EasyMock.strictMock(Card.class);
 		Board board = EasyMock.strictMock(Board.class);
 		GUI gui = EasyMock.strictMock(GUI.class);
-		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
+		Gameplay game = new Gameplay(gui, player, board, null, null);
 
 		card.name = "Battery Monster";
 		card.logic = new BatteryMonsterLogic();
@@ -47,13 +47,11 @@ public class BatteryMonsterLogicTest {
 		board.playerList.add(player);
 		
 		player.addToHand(card);
-		card.logic.use(player, null, null);
+		card.logic.use(player, null, gui);
+		
+		assertEquals(player.energyStore, 6);
 		
 		game.currentplayer = player;
-		game.beginTurn();
-		assertEquals(player.energyStore, 6);
-		assertEquals(player.energy, 0);
-		
 		game.beginTurn();
 		assertEquals(player.energyStore, 4);
 		assertEquals(player.energy, 2);
@@ -63,8 +61,12 @@ public class BatteryMonsterLogicTest {
 		assertEquals(player.energy, 4);
 		
 		game.beginTurn();
+		assertEquals(player.energyStore, 0);
+		assertEquals(player.energy, 6);
+		
+		game.beginTurn();
 
-		assertTrue(player.haveCard("Battery Monster"));
+		assertTrue(!player.haveCard("Battery Monster"));
 		
 	}
 
