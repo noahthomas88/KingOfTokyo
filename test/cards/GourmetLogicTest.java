@@ -19,7 +19,6 @@ public class GourmetLogicTest {
 	@Test
 	public void RolledThreeOnesGainTwoExtraVictoryPointsTest() {
 		Player player = new Player("test");
-		Player attackedPlayer = new Player("test");
 		player.victoryPoints = 0;
 		Card card = new Card();
 		card.name = "Gourmet";
@@ -39,7 +38,6 @@ public class GourmetLogicTest {
 
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player);
-		players.add(attackedPlayer);
 		board.playerList = players;
 		board.cityPlayer = player;
 
