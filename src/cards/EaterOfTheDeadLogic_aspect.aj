@@ -4,7 +4,7 @@ import game.Player;
 
 public aspect EaterOfTheDeadLogic_aspect {
 	
-	pointcut callPlayerDeath(Player player) : execution(void Player.playerDeath()) && args() && target(player);
+	pointcut callPlayerDeath(Player player) : execution(void Player.playerDeath()) && target(player);
 
 	after(Player player) : callPlayerDeath(player) {
 		Player playerWithCard = null;

@@ -26,6 +26,7 @@ public class MediaFriendlyLogicTest {
 		
 		deck.visibleCard = new Card[3];
 		Card toBuy = EasyMock.strictMock(Card.class);
+		toBuy.name = "test";
 		deck.visibleCard[0] = toBuy;
 		player.energy = 4;
 		toBuy.cost = 4;

@@ -39,7 +39,7 @@ public class DeckConstructorTest {
 		EasyMock.verify(deckCons);
 		assertFalse(deckCons.deck.isEmpty());
 		
-		assertEquals(deckCons.deck.get(0).name, "Apartment Building");
+		assertEquals(deckCons.deck.get(0).name, "Flamethrower");
 	}
 	
 	@Test

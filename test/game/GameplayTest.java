@@ -296,6 +296,7 @@ public class GameplayTest {
 		
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
+		EasyMock.expect(test1.haveCard("Battery Monster")).andReturn(false);
 		EasyMock.expect(test1.haveCard("Ultravore")).andReturn(false);
 		gameUI.checkEnableButton(test1);
 		gameUI.setActivePlayer(0);
@@ -325,6 +326,7 @@ public class GameplayTest {
 		map.put("test2", 1);
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
+		EasyMock.expect(test1.haveCard("Battery Monster")).andReturn(false);
 		gameUI.checkEnableButton(test1);
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
@@ -351,6 +353,7 @@ public class GameplayTest {
 		map.put("test2", 1);
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
+		EasyMock.expect(test1.haveCard("Battery Monster")).andReturn(false);
 		gameUI.checkEnableButton(test1);
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
@@ -506,6 +509,7 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 	
+		ui.HealingRay(player, board);
 		board.doAttack(player, 0);
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
@@ -537,6 +541,7 @@ public class GameplayTest {
 		
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
+		ui.HealingRay(player, board);
 		board.doAttack(player, 0);
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
