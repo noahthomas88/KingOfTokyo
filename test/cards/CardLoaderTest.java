@@ -116,11 +116,4 @@ public class CardLoaderTest {
 		CardLogic logic = loader.getClass("ExtraHead");
 		assertTrue(logic.getClass().getName().equals("cards.CardLogic"));
 	}
-	
-	@Test(expected = RuntimeException.class)
-	public void getBadClassTest() {
-		CardLoader loader = new CardLoader();
-		loader.getClass("bla");
-	}
-
 }

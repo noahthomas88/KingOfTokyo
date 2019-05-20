@@ -199,7 +199,7 @@ public class GUI {
 	}
 	
 	public void DisableCedeButton() {
-		tokyoPanel.cedeTokyoCity.setEnabled(false);
+		
 	}
 
 	public void endGame(Player currentplayer, int i) {

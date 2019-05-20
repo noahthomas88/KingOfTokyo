@@ -48,9 +48,10 @@ public class Board {
 			bayPlayer.addHealth(attack);
 		} else {
 			gameUI.EnableCedeButton();
-			if(originalCity.equals(cityPlayer) || originalCity.haveCard("Jets")) {
-				cityPlayer.addHealth(attack);
+			if((!originalCity.equals(cityPlayer)) && originalCity.haveCard("Jets")) {
+				return;
 			}
+			originalCity.addHealth(attack);
 		}
 	}
 

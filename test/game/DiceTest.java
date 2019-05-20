@@ -61,30 +61,4 @@ public class DiceTest {
 		return rollResults;
 	}
 
-	@Test(expected = UnsupportedOperationException.class)
-	public void isResolvedTest() {
-		Player p = EasyMock.niceMock(Player.class);
-		
-		EasyMock.expect(p.getNumberOfRolls()).andReturn(3);
-		EasyMock.replay(p);
-		
-		Dice testDice = new Dice(p);
-		testDice.isResolved = true;
-		testDice.roll();
-	}
-
-	@Test(expected = UnsupportedOperationException.class)
-	public void defaultThreeRollMaximumTest() {
-		Player p = EasyMock.niceMock(Player.class);
-
-		EasyMock.expect(p.getNumberOfRolls()).andReturn(3);
-		EasyMock.replay(p);
-		
-		Dice testDice = new Dice(p);
-		testDice.roll();
-		testDice.roll();
-		testDice.roll();
-		testDice.roll();
-	}
-
 }
