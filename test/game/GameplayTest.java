@@ -587,6 +587,7 @@ public class GameplayTest {
 		Player currentPlayer = EasyMock.strictMock(Player.class);
 		Gameplay gameplay = new Gameplay(ui, currentPlayer, board, null, null);
 		
+		EasyMock.expect(player.haveCard("Burrowing")).andReturn(false);
 		ui.moveToTokyo(currentPlayer);
 		currentPlayer.addVictory(1);
 		ui.updatePlayerText(board);
