@@ -7,6 +7,7 @@ public class Card {
 	public String description;
 	public int cost; 
 	public CardLogic logic;
+	public boolean mimic = false;
 	
 	public Card() {
 		this.name = "default";
