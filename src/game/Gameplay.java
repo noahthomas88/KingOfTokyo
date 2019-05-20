@@ -16,6 +16,7 @@ public class Gameplay {
 	public GUI gameUI;
 	public DeckConstructor deck;
 	public HashMap<String, Integer> playerToNumber;
+	public boolean cede;
 
 	public Gameplay(GUI gui, Player player, Board board, DeckConstructor deck, HashMap<String, Integer> map) {
 		this.gameUI = gui;
@@ -87,9 +88,7 @@ public class Gameplay {
 				otherdice.add(die);
 			}
 		}
-		
 		gameboard.doAttack(currentplayer, -attack);
-		gameUI.EnableCedeButton();
 		if (currentplayer != gameboard.cityPlayer){
 			currentplayer.addHealth(heal);
 		}
@@ -132,6 +131,7 @@ public class Gameplay {
 		String currentPlayerName = currentplayer.name;
 		currentplayer.extraDie = 0;
 		currentplayer.extraRoll = 0;
+		currentplayer.herdCuller = true;
 		if (playerToNumber.get(currentPlayerName) >= (gameboard.numOfPlayers - 1)) {
 			currentplayer = gameboard.playerList.get(0);
 		} else {
@@ -174,6 +174,7 @@ public class Gameplay {
 		currentplayer.addVictory(1);
 		gameUI.updatePlayerText(gameboard);
 		gameUI.DisableCedeButton();
+		cede = true;
 	}
 
 	public void swipeCard() {

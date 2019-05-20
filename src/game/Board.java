@@ -34,6 +34,7 @@ public class Board {
 	}
 
 	public void doAttack(Player attacker, int attack) {
+		Player originalCity = cityPlayer;
 		if (cityPlayer.equals(attacker) || (bayPlayer != null && bayPlayer.equals(attacker))) {
 			for (Player indexedPlayer : playerList)
 				if (!indexedPlayer.equals(cityPlayer) && !indexedPlayer.equals(bayPlayer)) {
@@ -46,7 +47,10 @@ public class Board {
 			cityPlayer.addHealth(attack);
 			bayPlayer.addHealth(attack);
 		} else {
-			cityPlayer.addHealth(attack);
+			gameUI.EnableCedeButton();
+			if(originalCity.equals(cityPlayer) || originalCity.haveCard("Jets")) {
+				cityPlayer.addHealth(attack);
+			}
 		}
 	}
 

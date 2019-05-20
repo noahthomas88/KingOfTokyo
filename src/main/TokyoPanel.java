@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -45,7 +46,7 @@ public class TokyoPanel extends JPanel {
 		bay.setPreferredSize(new Dimension(200, 150));
 		
 		cedeTokyoCity = new JButton(messages.getString("GUI.41"));
-		cedeTokyoCity.setEnabled(false);
+		cedeTokyoCity.setEnabled(true);
 		cedeTokyoCity.addActionListener(new CedeListener());
 		cedeTokyoCity.setPreferredSize(new Dimension(100, 150));
 		
@@ -55,9 +56,7 @@ public class TokyoPanel extends JPanel {
 		cedeTokyoBay.setPreferredSize(new Dimension(100, 150));
 		
 		this.add(tokyo);
-		this.add(cedeTokyoCity);
-		this.add(bay);
-		this.add(cedeTokyoBay);		
+		this.add(bay);	
 		
 		if (game.gameboard.numOfPlayers <= 4) {
 			bay.setVisible(false);
@@ -78,5 +77,9 @@ public class TokyoPanel extends JPanel {
 
 	public void movetoBay(Player player) {
 		bay.setText(messages.getString("GUI.14") + player.name);
+	}
+
+	public void enableCede() {
+		JOptionPane.showMessageDialog(null, cedeTokyoCity);
 	}
 }

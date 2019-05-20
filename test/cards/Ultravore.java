@@ -44,7 +44,6 @@ public class Ultravore {
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
 		board.doAttack(player, -2);
-		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
