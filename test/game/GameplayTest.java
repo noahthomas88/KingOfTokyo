@@ -297,6 +297,7 @@ public class GameplayTest {
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
 		EasyMock.expect(test1.haveCard("Ultravore")).andReturn(false);
+		gameUI.checkEnableButton(test1);
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		test1.addVictory(2);
@@ -324,6 +325,7 @@ public class GameplayTest {
 		map.put("test2", 1);
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
+		gameUI.checkEnableButton(test1);
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		gameUI.updatePlayerText(board);
@@ -349,6 +351,7 @@ public class GameplayTest {
 		map.put("test2", 1);
 		Gameplay gameplay = new Gameplay(gameUI, test1, board, null, map);
 
+		gameUI.checkEnableButton(test1);
 		gameUI.setActivePlayer(0);
 		gameUI.DisableEndTurnButton();
 		gameUI.moveToTokyo(test1);
@@ -409,7 +412,6 @@ public class GameplayTest {
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
 		board.doAttack(player, 0);
-		ui.EnableCedeButton();
 		game.calculateScore(dice);
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
@@ -439,7 +441,6 @@ public class GameplayTest {
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
 		board.doAttack(player, 0);
-		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
@@ -473,7 +474,6 @@ public class GameplayTest {
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
 		board.doAttack(player, -1);
-		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
@@ -507,7 +507,6 @@ public class GameplayTest {
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 	
 		board.doAttack(player, 0);
-		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
@@ -539,7 +538,6 @@ public class GameplayTest {
 		Gameplay game = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("calculateScore").addMockedMethod("checkWin").createStrictMock();
 		
 		board.doAttack(player, 0);
-		ui.EnableCedeButton();
 		game.calculateScore(new ArrayList<Dice>());
 		ui.EnableEndTurnButton();
 		ui.updatePlayerText(board);
