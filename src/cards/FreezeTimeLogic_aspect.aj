@@ -18,12 +18,8 @@ public aspect FreezeTimeLogic_aspect {
 					onesCounter++;
 				}
 			}
-			if(onesCounter <= 3){
-				gameplay.currentplayer.extraDie--;
-				gameplay.currentplayer.extraRoll = 3;
-				gameplay.gameUI.DisableEndTurnButton();
-				gameplay.gameUI.updatePlayerText(gameplay.gameboard);
-				gameplay.gameUI.EnableRollButton();
+			if(onesCounter > 2){
+				gameplay.redoTurn = true;
 			}
 		}
 	}

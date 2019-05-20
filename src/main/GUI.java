@@ -462,4 +462,8 @@ public class GUI {
 		}
 		
 	}
+
+	public void frenzy() {
+		this.game.redoTurn = true;
+	}
 }
