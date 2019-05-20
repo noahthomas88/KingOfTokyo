@@ -1,13 +1,49 @@
+AcidAttack
+pey HIv
+6
+HIv chel tetlh
+Keep
+-
+AlienOrigin
+nov mung
+3
+lang qup 1 HoS SoH costs HoS chaw' je'
+Keep
+-
+AlphaMonster
+wa'DIch Ha'DIbaH
+5
+lang yay 1 Soq HeghDI' qaSlaH wa' HIv tetlh
+Keep
+-
 ApartmentBuilding
-apartment vIleghDI'
+vIleghDI' vIleghDI'
 5
 lang yay 3 Soq
 Discard
 -
 ArmorPlating
-may'luch Plating
+may'luch jengva'
 4
 wej porgh Damo' ghaH manongqu' HeghDI' exactly 1 porgh Damo' ghaH chIl
+Keep
+-
+BackgroundDweller
+patmey lulo'ta' Dweller
+4
+vay' 3 laH reH reroll SoH
+Keep
+-
+BatteryMonster
+'ul 'aplo'mey Monster
+3
+HeghDI' 'ul 'aplo'mey monster Daq 6 HoS 'oH beyIl'e' vo' je' SoH, DeSDu' start Hoch tlhe' 2 HoS teq 'ej chaHvaD chel pool. HeghDI' tu'lu' wa'DIch chaw' DeghwI' polHa' poS HoS pagh.
+Keep
+-
+Burrowing
+SoH
+5
+HIv chel tetlh poStaHvIS neH tokyo. HeghDI' tokyo jegh 1 porgh Damo' ghaH luj monster 'oH tlhap
 Keep
 -
 CommuterTrain
@@ -16,11 +52,35 @@ commuter qulmey
 lang yay 2 Soq
 Discard
 -
+CompleteDestruction
+naQmoH wanI'mey QIH
+3
+vaj 1, 2, 3 tetlh SoH, 9 yay lang in addition to regular 'angbogh Da Soq tIq, HIv je HoS.
+Keep
+-
 CornerStore
 jIba'laH ngevwI'
 3
 lang yay 1 Soq
 Discard
+-
+DeathFromAbove
+Hegh vo' wovbe'
+5
+lang yay 2 Soq 'ej tokyo SeH vaj 'oH wej chonayta' yISeH SoH
+Discard
+-
+Detrivore
+SopwI'
+4
+HeghDI' qaSlaH 1 tetlh SoH, lang yay 2 Soq 2 3 pagh
+Keep
+-
+Eaterofthedead
+SopwI' lommey
+4
+lang yay 3 Soq Hoch poH ghoS monster 0 tIq
+Keep
 -
 Energize
 laQ
@@ -28,11 +88,29 @@ laQ
 9 HoS Soq
 Discard
 -
+EnergyDrink
+HoS HIq
+4
+1 HoS volchaHDaj 1 DuywI' Hegh tetlh Suq 'arghbej.
+Keep
+-
+EnergyHoarder
+HoS Hoarder
+3
+1 yay lang Hoch 6 HoS lang Daghaj legh tlhe' megh'an Soq
+Keep
+-
 EvacuationOrders
-che' tlham
+evacuation tlham
 7
 lang yay 5 luj latlh Hoch monsters
 Discard
+-
+EvenBigger
+vabDot 'u'
+4
+12 'aqroS porgh Damo' ghaH ghaj DawI'pu' Hoch nI' law' chaw' lach'eghDI' he/she. DawI'pu' Soq 2 porgh Damo' ghaH chaw' je' he/she. 
+Keep
 -
 ExtraHead
 DuywI' nach
@@ -40,10 +118,28 @@ DuywI' nach
 1 Hegh DuywI' Soq
 Keep
 -
+FireBreathing
+qul tlhuH
+4
+1 porgh Damo' ghaH luj jIl HeghDI' qaSlaH wa' HIv tetlh
+Keep
+-
 Flamethrower
-flamethrower
+baH
 3
 porgh Damo' ghaH 2 luj latlh Hoch DawI'pu'
+Discard
+-
+FreezeTime
+poH taD
+5
+tlhe' ghorgh 111 tetlh pagh, ralqu'nIStaH latlh laH tlhap SoH qup Hegh tlhe' wa'
+Keep
+-
+Frenzy
+maw'
+7
+latlh tlhe' qaSpu'DI' chaw' vaj polHa' wa' tlhap
 Discard
 -
 FriendOfChildren
@@ -64,17 +160,35 @@ giant yab
 1 DuywI' Hegh Hoch tlhe' tetlh Daghaj
 Keep
 -
+Gourmet
+Soj 'eyqu'
+4
+ghorgh lang DuywI' yay 2 tetlh 111 pagh latlh Soq SoH
+Keep
+-
 Heal
 vor neH
 3
 Soq 2 porgh Damo' ghaH
 Discard
 -
+HerdCuller
+'Iv neH
+3
+Hegh wa' laH choH SoH Damoj 1 Hegh Hoch
+Keep
+-
 HighAltitudeBombing
 jen 'Iv Bombing
 4
 3 porgh Damo' ghaH luj Hoch monsters, SoH DaH nobvam
 Discard
+-
+ItHasAChild
+puq ghaHDI' ghaj
+7
+SIch SoH Hoch chaw' polHa' 'ej Hoch yay lang luj porgh Damo' ghaH 0. 10 porgh Damo' ghaH Soq 'ej Hur tokyo reH taH
+Keep
 -
 JetFighter
 bIQ Duj
@@ -88,11 +202,23 @@ MakingStronger
 HeghDI' 2 porgh Damo' ghaH SoH luj, 1 HoS Soq SoH
 Keep
 -
+MediaFriendly
+maqoch
+3
+lang yay 1 Soq whenever HoS chaw' je'
+Keep
+-
 NationalGuard
 national 'avwI'
 3
 lang yay 2 Soq 'ach 2 porgh Damo' ghaH chIl
 Discard
+-
+NovaBreath
+puyjaq tlhuH
+7
+monsters Hoch latlh joq HIvmeH HIv tetlh
+Keep
 -
 NuclearPowerPlant
 lIngchugh HoS poch
@@ -100,8 +226,26 @@ lIngchugh HoS poch
 lang yay 2 Soq je porgh 3 Damo' ghaH Soq
 Discard
 -
+PlotTwist
+tlhe'
+3
+pa' Hegh resolving chaq wa' Hegh choH vay' ghot'e', qaSpu'DI' lo' polHa' SoH
+Keep
+-
+PoisonQuills
+Quills tar
+3
+HeghDI' 2, 2, 2 pagh latlh tetlh SoH, 2 HIv chel tetlh
+Keep
+-
+RapidHealing
+ngIm vor neH
+3
+2 HoS 'arghbej DeSDu' vay' poH wa' tIq vor neH
+Keep
+-
 Regeneration
-lup
+HoSchoH
 4
 whenever Soq SoH 1 DuywI' porgh Damo' ghaH Soq porgh Damo' ghaH
 Keep
@@ -113,27 +257,15 @@ legh tlhe', bertlham fewest yay lang chorDaq, yay lang Soq
 Keep
 -
 Skyscraper
-qach
+ghurqu' je
 6
 lang yay 4 Soq
 Discard
 -
-Tank
-meyrI'
+SmokeCloud
+tlhIch 'eng
 4
-lang yay 4 Soq 'ej porgh 3 Damo' ghaH luj
-Discard
--
-VastStorm
-yIteb jev
-6
-lang yay 2 latlh Hoch monsters 'ej Soq 'ej 1 HoS Hoch 2 HoS luj
-Discard
--
-NovaBreath
-puyjaq tlhuH
-7
-monsters Hoch latlh joq HIvmeH HIv tetlh
+Daq 3 tlhIch SuwamHa'bej chaw'. [1 SuwamHa'bej tlhIch DuywI' tetlh. ghaHDaq 'arghbej BERNARDO. Discard 'arghbej chaw' HeghDI' SuwamHa'bej tlhIch Hoch
 Keep
 -
 SolarPowered
@@ -142,15 +274,33 @@ HoS solar
 legh tlhe' megh'an 1 HoS Soq pagh HoS chorDaq
 Keep
 -
-DeathFromAbove
-Hegh vo' wovbe'
-5
-lang yay 2 Soq 'ej tokyo SeH vaj SoHbe'.
-Discard
--
 SpikedTail
 DuQwI' tlhuQ
 5
-vaj qaSlaH 1 HIv tetlh SoH, HIv chel tetlh.
+vaj qaSlaH 1 HIv tetlh SoH, HIv chel tetlh
 Keep
+-
+Stretchy
+wochbogh
+3
+pa' Hegh resolving 2 HoS vIvoqHa' Hegh wIQaw'laH vay' ghot'e' laH 'arghbej SoH
+Keep
+-
+Tank
+chom
+4
+lang yay 4 Soq 'ej porgh 3 Damo' ghaH luj
+Discard
+-
+Ultravore
+la ya
+4
+lang DuywI' yay 1 Soq HeghDI' tlhe' tagh neH tokyo. vaj Hegh HIv tetlh SoH neH tokyo HIv chel tetlh
+Keep
+-
+VastStorm
+lang yay
+6
+lang yay 2 latlh Hoch monsters 'ej Soq 'ej 1 HoS Hoch 2 HoS luj
+Discard
 -
