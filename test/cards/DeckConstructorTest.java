@@ -112,7 +112,7 @@ public class DeckConstructorTest {
 	
 	@Test
 	public void testRevealOneCardDeck() {
-		GUI mockedUI = EasyMock.createNiceMock(GUI.class);
+		GUI mockedUI = EasyMock.strictMock(GUI.class);
 		DeckConstructor deckCons = new DeckConstructor("en");
 		Card card = EasyMock.createMockBuilder(Card.class).withConstructor().createMock();
 		card.name = "notdefault";
@@ -120,9 +120,17 @@ public class DeckConstructorTest {
 		deckCons.discard.add(card);
 		deckCons.discard.add(card);
 		deckCons.deck.add(card);
+		deckCons.setUI(mockedUI);
+		
+		mockedUI.opportunist(0, deckCons);
+		mockedUI.opportunist(1, deckCons);
+		mockedUI.opportunist(2, deckCons);
+		
+		EasyMock.replay(mockedUI);
 		
 		deckCons.reveal();
 		
+		EasyMock.verify(mockedUI);
 		assertTrue(deckCons.discard.isEmpty());
 		assertEquals(deckCons.deck.size(), 1);
 		for (int index = 0; index<3; index++) {

@@ -46,4 +46,35 @@ public class FreezeTimeLogicTest {
 		assertTrue(gameplay.redoTurn);
 	}
 
+	@Test
+	public void RolledThreeTwosNoMoreTurnTest() {
+		Player player = new Player("test");
+		player.victoryPoints = 0;
+		Card card = new Card();
+		card.name = "Freeze Time";
+		player.addToHand(card);
+
+		ArrayList<Dice> dice = new ArrayList<Dice>();
+		Messages message = EasyMock.niceMock(Messages.class);
+		Board board = new Board(2, null, null);
+		GUI gui = EasyMock.niceMock(GUI.class);
+		Gameplay gameplay = new Gameplay(gui, player, board, null, null);
+
+		Dice oneDie = new Dice(gameplay.currentplayer);
+		Dice twoDie = new Dice(gameplay.currentplayer);
+		twoDie.numberRolled = 2;
+		dice.add(twoDie);
+		dice.add(twoDie);
+		oneDie.numberRolled = 1;
+		dice.add(oneDie);
+		dice.add(oneDie);
+
+		ArrayList<Player> players = new ArrayList<Player>();
+		players.add(player);
+		board.playerList = players;
+		board.cityPlayer = player;
+
+		gameplay.diceRolled(dice, message);
+		assertFalse(gameplay.redoTurn);
+	}
 }

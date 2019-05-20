@@ -60,6 +60,8 @@ public class BoardTest {
 
 		assertEquals("test1", board.playerList.get(0).name);
 		assertEquals("test2", board.playerList.get(1).name);
+		assertEquals(board.playerList.get(0).playerList, board.playerList);
+		assertEquals(board.playerList.get(1).playerList, board.playerList);
 	}
 
 	@Test

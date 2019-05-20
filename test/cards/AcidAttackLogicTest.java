@@ -29,7 +29,6 @@ public class AcidAttackLogicTest {
 		Messages message = EasyMock.niceMock(Messages.class);
 		GUI gui = EasyMock.niceMock(GUI.class);
 		Board board = new Board(2, null, gui);
-		DeckConstructor dc = new DeckConstructor(null);
 		Gameplay gameplay = new Gameplay(gui,player,board,null,null);
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player);
@@ -40,8 +39,6 @@ public class AcidAttackLogicTest {
 		gameplay.diceRolled(dice, message);
 		
 		assertEquals(1,attackedPlayer.health);
-	
-		
 	}
 
 }

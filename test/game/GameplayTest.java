@@ -953,6 +953,42 @@ public class GameplayTest {
 		EasyMock.verify(gameplay,gameUI);
 		assertEquals(gameplay.currentplayer, test2);		
 	}
+	
+	@Test
+	public void endTurnRedoTest() {
+		GUI gameUI = EasyMock.strictMock(GUI.class);
+		Player test1 = new Player("test1");
+		Player test2 = new Player("test2");
+		Board board = EasyMock.strictMock(Board.class);
+		Gameplay gameplay = EasyMock.partialMockBuilder(Gameplay.class).addMockedMethod("beginTurn").createStrictMock();
+		ArrayList<Player> players = new ArrayList<>();
+		players.add(test1);
+		players.add(test2);
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("test1", 0);
+		map.put("test2", 1);
+		
+		gameUI.replaceDice();
+		gameplay.beginTurn();
+		
+		EasyMock.replay(board, gameplay,gameUI);
+		
+		test1.name = "test1";
+		gameplay.gameUI = gameUI;
+		gameplay.currentplayer = test1;
+		gameplay.gameboard = board;
+		gameplay.playerToNumber = map;
+		gameplay.redoTurn = true;
+		board.numOfPlayers = 2;
+		board.playerList = players;
+		gameplay.endTurn();
+		
+		EasyMock.verify(gameplay,gameUI);
+		assertEquals(gameplay.currentplayer, test1);
+		assertEquals(gameplay.redoTurn, false);
+	}
+	
+	
 	@Test
 	public void endTurnEndTest() {
 		GUI gameUI = EasyMock.strictMock(GUI.class);

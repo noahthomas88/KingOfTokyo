@@ -28,6 +28,7 @@ public class SmokeCloudLogicTest {
 		Card card = new Card();
 		SmokeCloudLogic logic = new SmokeCloudLogic();
 		card.logic = logic;
+		card.name = "Smoke Cloud";
 		logic.count = 1;
 		Player player = new Player("test");
 		player.addToHand(card);

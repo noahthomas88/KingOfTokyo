@@ -13,7 +13,6 @@ public aspect EaterOfTheDeadLogic_aspect {
 			Player indexedPlayer = player.playerList.get(i);
 			if(!indexedPlayer.name.equals(player.name) && indexedPlayer.haveCard("Eater of the Dead")) {
 				playerWithCard = indexedPlayer;
-				System.out.println(playerWithCard.name);
 			}
 		}
 		
