@@ -169,6 +169,9 @@ public class Gameplay {
 		if(gameboard.cityPlayer == currentplayer){
 			return;
 		}
+		if(gameboard.cityPlayer.haveCard("Burrowing")) {
+			currentplayer.addHealth(-1);
+		}
 		gameboard.cityPlayer = currentplayer;
 		gameUI.moveToTokyo(currentplayer);
 		currentplayer.addVictory(1);
