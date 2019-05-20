@@ -310,3 +310,63 @@ Parasitic Tentacles
 You can buy power cards from other monsters, pay them the energy price on the card
 Keep
 -
+Herbivore
+Herbivore
+5
+Gain 1 victory point at the end of the turn if no one loses health.
+Keep
+-
+Opportunist
+Opportunist
+3
+Whenever a power card is revealed to you have the option of buying it immediately.
+Keep
+-
+HealingRay
+Healing Ray
+4
+You can use a health roll to make other monsters gain health. Each monster must pay you 2 energy (1 if its their last one) for each heart they gain this way
+Keep
+-
+Camouflage
+Camouflage 
+3
+When you lose a heart roll a die for each heart you lost, Each heart roll reduces the damage taken by one
+Keep
+-
+Wings
+Wings
+6
+Spend 2 energy to not lose health this turn
+Keep
+-
+PsychicProbe
+Psychic Probe
+3
+You can reroll a die of your choice after the last Roll of each other monster. If you reroll a heart discard this card
+Keep
+-
+Jets
+Jets
+5
+Don¡¯t lose hearts if you yield tokyo to attacker
+Keep
+-
+Metamorph
+Metamorph
+3
+At the end of your turn you can discard any keep cards you have to regain their full cost in energy
+Keep
+-
+MadeInALab
+Made in a lab
+2
+During the buy power cards step, you can peek at the top card of the deck and buy it or put it back at the top of the deck
+Keep
+-
+Mimic
+Mimic
+8
+Choose a keep card any monster has in play and put a mimic token on it. This card counts as a duplicate of that card as if you had just bought it. Spend 1 energy at the start of your turn to move the mimic token and change the card you are mimicking.
+Keep
+-
