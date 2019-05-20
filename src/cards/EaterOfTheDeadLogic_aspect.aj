@@ -8,6 +8,7 @@ public aspect EaterOfTheDeadLogic_aspect {
 
 	after(Player player) : callPlayerDeath(player) {
 		Player playerWithCard = null;
+		
 		for(int i = 0; i < player.playerList.size(); i++) {
 			Player indexedPlayer = player.playerList.get(i);
 			if(!indexedPlayer.name.equals(player.name) && indexedPlayer.haveCard("Eater of the Dead")) {
@@ -15,6 +16,7 @@ public aspect EaterOfTheDeadLogic_aspect {
 				System.out.println(playerWithCard.name);
 			}
 		}
+		
 		if(playerWithCard != null) {
 			playerWithCard.addVictory(3);
 		}
